@@ -1,0 +1,974 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="代码注释," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="佛祖保佑12345678910111213141516171819202122232425262728293031/*                   _ooOoo_                  o8888888o                  88&quot; . &quot;88                  (| -_- |)                  O\  =  /O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有趣代码注释">
+<meta property="og:url" content="http://yoursite.com/2016/07/12/有趣代码注释/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="佛祖保佑12345678910111213141516171819202122232425262728293031/*                   _ooOoo_                  o8888888o                  88&quot; . &quot;88                  (| -_- |)                  O\  =  /O">
+<meta property="og:updated_time" content="2016-08-21T09:52:13.374Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="有趣代码注释">
+<meta name="twitter:description" content="佛祖保佑12345678910111213141516171819202122232425262728293031/*                   _ooOoo_                  o8888888o                  88&quot; . &quot;88                  (| -_- |)                  O\  =  /O">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 有趣代码注释 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              有趣代码注释
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-07-12T11:26:56+08:00" content="2016-07-12">
+            2016-07-12
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/其他/" itemprop="url" rel="index">
+                  <span itemprop="name">其他</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="佛祖保佑"><a href="#佛祖保佑" class="headerlink" title="佛祖保佑"></a>佛祖保佑</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                   _ooOoo_</div><div class="line">                  o8888888o</div><div class="line">                  88" . "88</div><div class="line">                  (| -_- |)</div><div class="line">                  O\  =  /O</div><div class="line">               ____/`---'\____</div><div class="line">             .'  \\|     |//  `.</div><div class="line">            /  \\|||  :  |||//  \</div><div class="line">           /  _||||| -:- |||||-  \</div><div class="line">           |   | \\\  -  /// |   |</div><div class="line">           | \_|  ''\---/''  |   |</div><div class="line">           \  .-\__  `-`  ___/-. /</div><div class="line">         ___`. .'  /--.--\  `. . __</div><div class="line">      ."" '&lt;  `.___\_&lt;|&gt;_/___.'  &gt;'"".</div><div class="line">     | | :  `- \`.;`\ _ /`;.`/ - ` : | |</div><div class="line">     \  \ `-.   \_ __\ /__ _/   .-` /  /</div><div class="line">======`-.____`-.___\_____/___.-`____.-'======</div><div class="line">                   `=---='</div><div class="line">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</div><div class="line">         佛祖保佑       永无BUG</div><div class="line">*/</div><div class="line"><span class="comment">//          佛曰:  </span></div><div class="line"><span class="comment">//                  写字楼里写字间，写字间里程序员；  </span></div><div class="line"><span class="comment">//                  程序人员写程序，又拿程序换酒钱。  </span></div><div class="line"><span class="comment">//                  酒醒只在网上坐，酒醉还来网下眠；  </span></div><div class="line"><span class="comment">//                  酒醉酒醒日复日，网上网下年复年。  </span></div><div class="line"><span class="comment">//                  但愿老死电脑间，不愿鞠躬老板前；  </span></div><div class="line"><span class="comment">//                  奔驰宝马贵者趣，公交自行程序员。  </span></div><div class="line"><span class="comment">//                  别人笑我忒疯癫，我笑自己命太贱；  </span></div><div class="line"><span class="comment">//                  不见满街漂亮妹，哪个归得程序员？</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="神兽草泥马"><a href="#神兽草泥马" class="headerlink" title="神兽草泥马"></a>神兽草泥马</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">*</div><div class="line">*          ┌─┐       ┌─┐</div><div class="line">*       ┌──┘ ┴───────┘ ┴──┐</div><div class="line">*       │                 │</div><div class="line">*       │       ───       │</div><div class="line">*       │  ─┬┘       └┬─  │</div><div class="line">*       │                 │</div><div class="line">*       │       ─┴─       │</div><div class="line">*       │                 │</div><div class="line">*       └───┐         ┌───┘</div><div class="line">*           │         │</div><div class="line">*           │         │</div><div class="line">*           │         │</div><div class="line">*           │         └──────────────┐</div><div class="line">*           │                        │</div><div class="line">*           │                        ├─┐</div><div class="line">*           │                        ┌─┘</div><div class="line">*           │                        │</div><div class="line">*           └─┐  ┐  ┌───────┬──┐  ┌──┘</div><div class="line">*             │ ─┤ ─┤       │ ─┤ ─┤</div><div class="line">*             └──┴──┘       └──┴──┘</div><div class="line">*                 神兽保佑</div><div class="line">*                 代码无BUG!</div><div class="line">*/</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *   ┏┓　　　┏┓</div><div class="line"> * ┏┛┻━━━┛┻┓</div><div class="line"> * ┃　　　　　　　┃</div><div class="line"> * ┃　　　━　　　┃</div><div class="line"> * ┃　┳┛　┗┳　┃</div><div class="line"> * ┃　　　　　　　┃</div><div class="line"> * ┃　　　┻　　　┃</div><div class="line"> * ┃　　　　　　　┃</div><div class="line"> * ┗━┓　　　┏━┛</div><div class="line"> *    ┃　　　┃   </div><div class="line"> *    ┃　　　┃   </div><div class="line"> *    ┃　　　┗━━━┓</div><div class="line"> *    ┃　　　　　　　┣┓</div><div class="line"> *    ┃　　　　　　　┏┛</div><div class="line"> *    ┗┓┓┏━┳┓┏┛</div><div class="line"> *      ┃┫┫　┃┫┫</div><div class="line"> *      ┗┻┛　┗┻┛</div><div class="line"> *        神兽保佑 </div><div class="line"> *        代码无BUG! </div><div class="line"> */</div></pre></td></tr></table></figure>
+<h3 id="胜利手势"><a href="#胜利手势" class="headerlink" title="胜利手势"></a>胜利手势</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//                      d*##$.</span></div><div class="line"><span class="comment">// zP"""""$e.           $"    $o</span></div><div class="line"><span class="comment">//4$       '$          $"      $</span></div><div class="line"><span class="comment">//'$        '$        J$       $F</span></div><div class="line"><span class="comment">// 'b        $k       $&gt;       $</span></div><div class="line"><span class="comment">//  $k        $r     J$       d$</span></div><div class="line"><span class="comment">//  '$         $     $"       $~</span></div><div class="line"><span class="comment">//   '$        "$   '$E       $</span></div><div class="line"><span class="comment">//    $         $L   $"      $F ...</span></div><div class="line"><span class="comment">//     $.       4B   $      $$$*"""*b</span></div><div class="line"><span class="comment">//     '$        $.  $$     $$      $F</span></div><div class="line"><span class="comment">//      "$       R$  $F     $"      $</span></div><div class="line"><span class="comment">//       $k      ?$ u*     dF      .$</span></div><div class="line"><span class="comment">//       ^$.      $$"     z$      u$$$$e</span></div><div class="line"><span class="comment">//        #$b             $E.dW@e$"    ?$</span></div><div class="line"><span class="comment">//         #$           .o$$# d$$$$c    ?F</span></div><div class="line"><span class="comment">//          $      .d$$#" . zo$&gt;   #$r .uF</span></div><div class="line"><span class="comment">//          $L .u$*"      $&amp;$$$k   .$$d$$F</span></div><div class="line"><span class="comment">//           $$"            ""^"$$$P"$P9$</span></div><div class="line"><span class="comment">//          JP              .o$$$$u:$P $$</span></div><div class="line"><span class="comment">//          $          ..ue$"      ""  $"</span></div><div class="line"><span class="comment">//         d$          $F              $</span></div><div class="line"><span class="comment">//         $$     ....udE             4B</span></div><div class="line"><span class="comment">//          #$    """"` $r            @$</span></div><div class="line"><span class="comment">//           ^$L        '$            $F</span></div><div class="line"><span class="comment">//             RN        4N           $</span></div><div class="line"><span class="comment">//              *$b                  d$</span></div><div class="line"><span class="comment">//               $$k                 $F</span></div><div class="line"><span class="comment">//               $$b                $F</span></div><div class="line"><span class="comment">//                 $""               $F</span></div><div class="line"><span class="comment">//                 '$                $</span></div><div class="line"><span class="comment">//                  $L               $</span></div><div class="line"><span class="comment">//                  '$               $</span></div><div class="line"><span class="comment">//                   $               $</span></div></pre></td></tr></table></figure>
+<h3 id="围棋棋盘"><a href="#围棋棋盘" class="headerlink" title="围棋棋盘"></a>围棋棋盘</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//                             _______________________________________  </span></div><div class="line"><span class="comment">//                            /  ___________________________________  \</span></div><div class="line"><span class="comment">//     _--""""--_            /  /_/_/_/_/_|_|_|_|_|_|_|_|_|_\_\_\_\_\  \</span></div><div class="line"><span class="comment">//    /          \          /  /_/_/_/_J__L_L_L_|_|_|_J_J_J__L_\_\_\_\  \</span></div><div class="line"><span class="comment">//   /\          /\        /  /_/_/_J__L_J__L_L_|_|_|_J_J__L_J__L_\_\_\  \</span></div><div class="line"><span class="comment">//   L ""-____-"" J       /  /_/_J__L_J__L_J_J__L_|_J__L_L_J__L_J__L_\_\  \</span></div><div class="line"><span class="comment">//   \            /      /  /_/__L_/__L_J__L_J__L_|_J__L_J__L_J__\_J__\_\  \</span></div><div class="line"><span class="comment">//    \_        _/      /  /_J__/_J__/__L_J__|__L_|_J__|__L_J__\__L_\__L_\  \</span></div><div class="line"><span class="comment">//  _--"""""--_"       /  /  F /  F J  J  |  F J  |  F J  |  F  F J  \ J  \  \</span></div><div class="line"><span class="comment">// /           \      /  /--/-J--/--L--|--L-J--J--|--L--L-J--|--J--\--L-\--\  \</span></div><div class="line"><span class="comment">///\           /\    /  /__/__L_J__J___L_J__J__|__|__|__L__L_J___L__L_J__\__\  \</span></div><div class="line"><span class="comment">//L ""-_____-"" J   /  /  /  /  F  F  J  J  |  |  |  |  |  F  F  J  J  \  \  \  \</span></div><div class="line"><span class="comment">//\             /  /  /--/--/--/--J---L--|--|--|--o--|--|--|--J---L--\--\--\--\  \</span></div><div class="line"><span class="comment">// \_         _/  /  /__/__J__J___L__J___L__L__L__|__J__J__J___L__J___L__L__\__\  \</span></div><div class="line"><span class="comment">//   "--___--"   /  /  /   F  F  J   F  J  J   F  |  J   F  F  J   F  J  J   \  \  \</span></div><div class="line"><span class="comment">//              /  /--/---/--J---L--J---L--|--J---|---L--|--J---L--J---L--\---\--\  \</span></div><div class="line"><span class="comment">//             /  /__J___/___L__/___L__J___L__J___|___L__J___L__J___\__J___\___L__\  \</span></div><div class="line"><span class="comment">//            /  /   F  J   /  J   J   |  J   J   |   F   F  |   F   F  \   F  J   \  \</span></div><div class="line"><span class="comment">//           /  /---/---L--J---L---L---L--|---|---|---|---|--J---J---J---L--J---\---\  \</span></div><div class="line"><span class="comment">//          /  /___/___/___L__J___J___J___|___|___|___|___|___L___L___L__J___\___\___\  \</span></div><div class="line"><span class="comment">//         /  /   /   /   /   F   F   F   F   F   |   J   J   J   J   J   \   \   \   \  \</span></div><div class="line"><span class="comment">//        /  /___/___J___J___J___J___J____L___L___|___J___J____L___L___L___L___L___\___\  \</span></div><div class="line"><span class="comment">//       /  /   /    F   F   F   |   |   J    F   |   J    F   |   |   J   J   J    \   \  \</span></div><div class="line"><span class="comment">//      /  /___J____/___/___J____L___L___|___J____|____L___|___J___J____L___\___\____L___\  \</span></div><div class="line"><span class="comment">//     /  /    F   /   J    F   J   J    |   J    |    F   |    F   F   J    F   \   J    \  \</span></div><div class="line"><span class="comment">//    /  /____/___J____L___/____L___|____L___|____|____|___J____|___J____\___J____L___\____\  \</span></div><div class="line"><span class="comment">//   /  /    /    F   /   J    J    F   J    F    |    J    F   J    F    F   \   J    \    \  \</span></div><div class="line"><span class="comment">//  /  /____/____/___J____L____|____L___J____L____|____J____L___J____|____J____L___\____\____\  \</span></div><div class="line"><span class="comment">// /                                                                                             \</span></div><div class="line"><span class="comment">///_______________________________________________________________________________________________\</span></div><div class="line"><span class="comment">//|                                                                                               |</span></div><div class="line"><span class="comment">//| hs                                                                                            |</span></div><div class="line"><span class="comment">//|_______________________________________________________________________________________________|</span></div></pre></td></tr></table></figure>
+<h3 id="书本"><a href="#书本" class="headerlink" title="书本"></a>书本</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//                .-~~~~~~~~~-._       _.-~~~~~~~~~-.</span></div><div class="line"><span class="comment">//            __.'              ~.   .~              `.__</span></div><div class="line"><span class="comment">//          .'//                  \./                  \\`.</span></div><div class="line"><span class="comment">//        .'//                     |                     \\`.</span></div><div class="line"><span class="comment">//      .'// .-~"""""""~~~~-._     |     _,-~~~~"""""""~-. \\`.</span></div><div class="line"><span class="comment">//    .'//.-"                 `-.  |  .-'                 "-.\\`.</span></div><div class="line"><span class="comment">//  .'//______.============-..   \ | /   ..-============.______\\`.</span></div><div class="line"><span class="comment">//.'______________________________\|/______________________________`.</span></div></pre></td></tr></table></figure>
+<h3 id="微软金典图标"><a href="#微软金典图标" class="headerlink" title="微软金典图标"></a>微软金典图标</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                       __</div><div class="line">                  ,-~¨^  ^¨-,           _,</div><div class="line">                 /          / ;^-._...,¨/</div><div class="line">                /          / /         /</div><div class="line">               /          / /         /</div><div class="line">              /          / /         /</div><div class="line">             /,.-:''-,_ / /         /</div><div class="line">             _,.-:--._ ^ ^:-._ __../</div><div class="line">           /^         / /¨:.._¨__.;</div><div class="line">          /          / /      ^  /</div><div class="line">         /          / /         /</div><div class="line">        /          / /         /</div><div class="line">       /_,.--:^-._/ /         /</div><div class="line">      ^            ^¨¨-.___.:^  (R) - G33K</div><div class="line">     </div><div class="line">      */</div></pre></td></tr></table></figure>
+<h3 id="Google"><a href="#Google" class="headerlink" title="Google"></a>Google</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">          ___                _</div><div class="line">         / __|___  ___  __ _| |___</div><div class="line">        | (_ / _ \/ _ \/ _` |   -_)</div><div class="line">         \___\___/\___/\__, |_\___|</div><div class="line">                       |___/</div><div class="line">         </div><div class="line">        */</div></pre></td></tr></table></figure>
+<h3 id="奥运五环"><a href="#奥运五环" class="headerlink" title="奥运五环"></a>奥运五环</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">             _.-"""""-._         _.-"""""-._         _.-"""""-._</div><div class="line">          ,'           `.     ,'           `.     ,'           `.</div><div class="line">         /               \   /               \   /               \</div><div class="line">        |                 | |                 | |                 |</div><div class="line">       |                   |                   |                   |</div><div class="line">       |                   |                   |                   |</div><div class="line">        |             _.-"|"|"-._         _.-"|"|"-._             |</div><div class="line">         \          ,'   /   \   `.     ,'   /   \   `.          /</div><div class="line">          `.       /   ,'     `.   \   /   ,'     `.   \       ,'</div><div class="line">            `-..__|..-'         `-..|_|..-'         `-..|__..-'</div><div class="line">                 |                   |                   |</div><div class="line">                 |                   |                   |</div><div class="line">                  |                 | |                 |</div><div class="line">                   \               /   \               /</div><div class="line">                    `.           ,'     `.           ,'</div><div class="line">                      `-..___..-'         `-..___..-'</div><div class="line"></div><div class="line">        */</div></pre></td></tr></table></figure>
+<h3 id="七龙珠比克"><a href="#七龙珠比克" class="headerlink" title="七龙珠比克"></a>七龙珠比克</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                      _.---..._</div><div class="line">                  ./^         ^-._</div><div class="line">                ./^C===.         ^\.   /\</div><div class="line">               .|'     \\        _ ^|.^.|</div><div class="line">          ___.--'_     ( )  .      ./ /||</div><div class="line">         /.---^T\      ,     |     / /|||</div><div class="line">        C'   ._`|  ._ /  __,-/    / /-,||</div><div class="line">             \ \/    ;  /O  / _    |) )|,</div><div class="line">              i \./^O\./_,-^/^    ,;-^,'</div><div class="line">               \ |`--/ ..-^^      |_-^</div><div class="line">                `|  \^-           /|:</div><div class="line">                 i.  .--         / '|.</div><div class="line">                  i   =='       /'  |\._</div><div class="line">                _./`._        //    |.  ^-ooo.._</div><div class="line">         _.oo../'  |  ^-.__./X/   . `|    |#######b</div><div class="line">        d####     |'      ^^^^   /   |    _\#######</div><div class="line">        #####b ^^^^^^^^--. ...--^--^^^^^^^_.d######</div><div class="line">        ######b._         Y            _.d#########</div><div class="line">        ##########b._     |        _.d#############</div><div class="line"></div><div class="line">                                       "Piccolo" no. 2</div><div class="line">                                          (from Dragonball Z)</div><div class="line">                                               --- Steven J. Simmons</div><div class="line">        */</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                             /^_.-^  _  --^=_</div><div class="line">                          ./'-^__    _&gt;=\^^==^-.</div><div class="line">                          |'/^^_/  /^    \ \.^\\\/\</div><div class="line">                         ,|/| '  /'  _____\ `\|.^.|</div><div class="line">                         |'/   /_--^^ .   ^^-./ /||</div><div class="line">                         |/,--^  ,     |     / /||'</div><div class="line">                       ._|/   \ /  __,-/    / /-,||</div><div class="line">                       \ '/    ;  /O  / _    |) )|,</div><div class="line">                        i \./^O\./_,-^/^    ,;-^,'</div><div class="line">                         \ |`--/ ..-^^      |_-^</div><div class="line">                          `|  \^-_,/^Y\      | ^^\</div><div class="line">                          _i.  \".--V_/     /| \. ^\._____...--.&gt;^^^^^^-------...._</div><div class="line">                         /  i   ^--^^     /'|' |\. |./'        |                  ;</div><div class="line">       ___...----/^^^^---|.  `._\  /^   /' |'_/' \ `|         |'               ,/'</div><div class="line">                |'        \   _|^-.__./'__.^^\     .|        ,|            _.-^</div><div class="line">                `\       ,|`_./^^-----^^._    ` ./ /        /^        _.-^^/</div><div class="line">                         |'  ^                  /-^                ./^    /</div><div class="line">       \                 `\_     __.-&lt;       _,/                 ./'     |'</div><div class="line">        `\.        `i       ^^--/._____...--^            .      ./       |.</div><div class="line">          `|        |                                   /       /        `|</div><div class="line"></div><div class="line"></div><div class="line">                                       "Piccolo"</div><div class="line">                                          (from Dragonball Z)</div><div class="line">                                               --- Steven J. Simmons         </div><div class="line">       */</div></pre></td></tr></table></figure>
+<h3 id="七龙珠孙悟空"><a href="#七龙珠孙悟空" class="headerlink" title="七龙珠孙悟空"></a>七龙珠孙悟空</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                           _</div><div class="line">                           \"-._ _.--"~~"--._</div><div class="line">                            \   "            ^.    ___</div><div class="line">                            /                  \.-~_.-~</div><div class="line">                     .-----'     /\/"\ /~-._      /</div><div class="line">                    /  __      _/\-.__\L_.-/\     "-.</div><div class="line">                   /.-"  \    ( ` \_o&gt;"&lt;o_/  \  .--._\</div><div class="line">                  /'      \    \:     "     :/_/     "`</div><div class="line">                          /  /\ "\    ~    /~"</div><div class="line">                          \ I  \/]"-._ _.-"[</div><div class="line">                       ___ \|___/ ./    l   \___   ___</div><div class="line">                  .--v~   "v` ( `-.__   __.-' ) ~v"   ~v--.</div><div class="line">               .-&#123;   |     :   \_    "~"    _/   :     |   &#125;-.</div><div class="line">              /   \  |           ~-.,___,.-~           |  /   \</div><div class="line">             ]     \ |                                 | /     [</div><div class="line">             /\     \|     :                     :     |/     /\</div><div class="line">            /  ^._  _K.___,^                     ^.___,K_  _.^  \</div><div class="line">           /   /  "~/  "\                           /"  \~"  \   \</div><div class="line">          /   /    /     \ _          :          _ /     \    \   \</div><div class="line">        .^--./    /       Y___________l___________Y       \    \.--^.</div><div class="line">        [    \   /        |        [/    ]        |        \   /    ]</div><div class="line">        |     "v"         l________[____/]________j  -Row   &#125;r"     /</div><div class="line">        &#125;------t          /                       \       /`-.     /</div><div class="line">        |      |         Y                         Y     /    "-._/</div><div class="line">        &#125;-----v'         |         :               |     7-.     /</div><div class="line">        |   |_|          |         l               |    / . "-._/</div><div class="line">        l  .[_]          :          \              :  r[]/_.  /</div><div class="line">         \_____]                     "--.             "-.____/</div><div class="line"></div><div class="line">                                            "Dragonball Z"</div><div class="line">                                                        ---Row</div><div class="line">         </div><div class="line">        */</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                               MMMMM</div><div class="line">                                 MMMMMM</div><div class="line">                                   MMMMMMM</div><div class="line">                                    MMMMMMMM     .</div><div class="line">                                     MMMMMMMMM</div><div class="line">                                     HMMMMMMMMMM</div><div class="line">                                      MMMMMMMMMMMM  M</div><div class="line">                                      MMMMMMMMMMMMM  M</div><div class="line">                                       MMMMMMMMMMMMM  M</div><div class="line">                                       MMMMMMMMMMMMM:</div><div class="line">                                       oMMMMMMMMMMMMMM</div><div class="line">             .MMMMMMMMMMMMMMo           MMMMMMMMMMMMMMM M</div><div class="line">       MMMMMMMMMMMMMMMMMMMMMMMMMMM      MMMMMMMMMMMMMMMM</div><div class="line">         MMMMMMMMMMMMMMMMMMMMMMMMMMMM.  oMMMMMMMMMMMMMMM.M</div><div class="line">           MMMMMMMMMMMMMMMMMMMMMMMMMMMM  MMMMMMMMMMMMMMMM</div><div class="line">             MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</div><div class="line">               oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</div><div class="line">                 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</div><div class="line">                   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM:                     H</div><div class="line">                    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM                  .         MMM</div><div class="line">                     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM              M       MMMMMM</div><div class="line">                      .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM          M   MMMMMMMMMM</div><div class="line">               MM.      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM       M MMMMMMMMMMMM</div><div class="line">                   MM    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM    .MMMMMMMMMMMMMM</div><div class="line">                     MM  MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</div><div class="line">                       MM MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</div><div class="line">              .MMMMMMMMM MMMMMMMMMMMMMMMMMMMMMMMM.MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</div><div class="line">                 HMMMMMMMMMMMMMMMMMMMMM.MMMMMMMMM.MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</div><div class="line">                    MMMMMMMMMMMMMMM MMM.oMMMMMMM..MMMMMMMMM:MMMMMMMMMMMMMMMMMMMMMMM</div><div class="line">                      MMMMMMMMMMMMMM MM..MMMMMMM...MMMMMMM. MMMMMMMMMMMMMMMMMMMMM</div><div class="line">                        MMMMMMMMMMMMMMM ..MMMMMM...MMMMMM ..MMMMMMMMMMMMMMMMMMM</div><div class="line">                         MMMMMMM:M.MMM.M.. MMMMM M..MMMMM...MMMMMMMMMMMMMMMMMM  MMM</div><div class="line">                           MMMM. .M..MM.M...MMMMMM..MMMMM.. MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM .</div><div class="line">                            MMMM..M....M.....:MMM .MMMMMM..MMMMMMM...MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</div><div class="line">                             MMM.M.. ...M......MM.MMMMM.......MHM.M  .MMMMMMMMMMMMMMMMMMMMMMMMM</div><div class="line">                        MMMMMMMM..MM. . MMM.....MMMMMM.M.....M ..MM..M MMMMMMMMMMMMMMMMMMM</div><div class="line">                           .MMMMMHMM. ..MMMM. MMM............o..... . .MMMMMMMMMMMMMMM</div><div class="line">                              MMM. M... .........................M..:.MMMMMMMMMMMM</div><div class="line">                                oMMM............ .................M.M.MMMMMMMMM</div><div class="line">                                   .....MM........................ . MMMMMM</div><div class="line">                                  M.....M.....................o.MM.MMMMMMMM.</div><div class="line">                                   M........................M.. ...MMMMMMMMMMMMMo</div><div class="line">                                     :....MMM..............MMM..oMMMMMMM</div><div class="line">                                      M...MMM.............MMMMMMM</div><div class="line">                                         .............:MMMMMMMM</div><div class="line">                                         M..... MMM.....M</div><div class="line">                                         M M.............</div><div class="line">                                         ................M</div><div class="line">                                      ooM.................MM  MoMMMMMoooM</div><div class="line">                                 MMoooM......................MoooooooH..oMM</div><div class="line">                             MHooooMoM.....................MMooooooM........M</div><div class="line">                           oooooooMoooM......... o........MoooooooM............</div><div class="line">                           Mooooooooooo.......M.........Moooooooo:..............M</div><div class="line">                          MooMoooooooooM...M........:Mooooooooooo:..............M</div><div class="line">                         M..oooooooooooo .........Mooooooooooooooo..............M</div><div class="line">                        M...Mooo:oooooooo.M....ooooooooooooooooooo..M...........M</div><div class="line">                         ...oooooMoooooooM..Mooooooooooooo:oooooooM.M...........M.</div><div class="line">                        M...ooooooMoo:ooooMoooooooooooooHoooooooooH:M. ...........:</div><div class="line">                        M..MoooooooMoooooooooooooooooo:ooooooMooooMoM..............M</div><div class="line">                        M..ooooooooooMooooooooooooooHoooooooMooHooooM...............M</div><div class="line">                        ...ooooooooooooooooooo:MooooooooooooooMoMoooM................</div><div class="line">                       M...oooooooooooooooooooooooooooooooooooooMooMM................M</div><div class="line">                       ...MooooooooooooooooooooooooooooooooooooooooMo ................</div><div class="line">                       ...MooooooooooooooooooooooooooooooooooooooooM M................M</div><div class="line">                      M...ooooooooooooooooooooooooooooooooooooooooM   ................M</div><div class="line">                      ...MoooooooooooooooooooooooooooooooooooooooMM   .:...............</div><div class="line">                      .....MooooooooooooooooooooooooooooooooooooMoo       .............M</div><div class="line">                      M...... ooooooooooooooooooooooooooooooooooooM       M..............M</div><div class="line">                      M........MooooMMM MM MM  MMMMMMMMMooooooooM         M...............M</div><div class="line">                      .........HM     M:  MM :MMMMMM          M           M...............</div><div class="line">                     M..........M     M   MoM M                           M................M</div><div class="line">                     M.........:M  MoH  M M M MooooHoooMM.   M             M...............M</div><div class="line">                     M..........Moooo MMooM    oooooMooooooooM              M..............H</div><div class="line">                     M.........MooooM  Mooo  : ooooooMooooMoooM              M........ . .o.M</div><div class="line">                     H..  .....ooooo   oooo  M MooooooooooooooM               M... MMMMMMMMMMM</div><div class="line">                     MMMMMMMMMMooooM M oooo  .  ooooooMooooooooM              .MMMMMMMMMMMMMMM</div><div class="line">                     MMMMMMMMMMooooH : ooooH    oooooooooooooooo               MMMMMMMMMMMMMMM</div><div class="line">                     MMMMMMMMMMoooo    ooooM    Moooooooooooooooo              .MMMMMMMMMMMMMMM</div><div class="line">                     MMMMMMMMMMoooo    ooooM    MooooooooooooooooM              MMMMMMMMMMMMMMM</div><div class="line">                     MMMMMMMMMMoooM    ooooM     ooooooooooooooooo               MMMMMMMMMMM:M</div><div class="line">                     MMMMMMMMMMoooM   MooooM     oooooooooooMoooooo               MH...........</div><div class="line">                      . ......Mooo.   MooooM     oooooooooooooooooo              M............M</div><div class="line">                     M.M......oooo    MooooM     Moooooooooooooooooo:           .........M.....</div><div class="line">                     M.M.....Moooo    MooooM      ooooooooooooooooooM            .M............</div><div class="line">                     .......MooooH    MooooM      oooooooooMoooooooooo          M..o...M..o....M</div><div class="line">                     .o....HMooooM    MooooH      MooooooooMooooooooooM          .:M...M.......M</div><div class="line">                    M..M.....MoooM    :oooo:    .MooooooooHooMoooooooooM         M M... ..oM.M</div><div class="line">                     M...M.:.Mooo. MMMMooooo   oooooooooooMoooooooooooooM          ....M. M</div><div class="line">                      M:M..o.Moooooooooooooo MooooooooooooooMooooooooooooM          .Mo</div><div class="line">                             MooooooooooooooMooooooooooooMoMoooooooooooooo</div><div class="line">                             Mooooooooooooooo:ooooooooooooooooooooooooooooo</div><div class="line">                             ooooooooooooooooMooooooooooMoooooooooooooooooo</div><div class="line">                             ooooooooooooooooMoooooooooooMooooooooooooooooHo</div><div class="line">                             ooMooooooooooooooMoooooooooooooooooooooooooooMoM</div><div class="line">                            MooMoooooooooooooo.ooooooooooooooooooooooooooo:oM</div><div class="line">                            MoooooooooooooooooooooooooooooooooooooooooooooooM</div><div class="line">                            MoooMooooooooooooooMooooooooooooooooooooooooooooo.</div><div class="line">                            MoooMooooooooooooooMoooooooooooooooooooooooooMooooM</div><div class="line">                            MooooooooooooooooooMoooooooooooooooooooooooooMoooooM</div><div class="line">                            MooooMoooooooooooooMoooooooooooooooooooooooooMoHooooM</div><div class="line">                            ooooooMooooooooooooooooooooooooooooooooooooooooMoMoooM</div><div class="line">                           MooooooooooooooooooooMooooooooooooooooooooooooooMoooooH:</div><div class="line">                           MoooooooMooooooooooooMoooooooooooooooooooooooooooooHoooM</div><div class="line">                           MooooooooMoooooooooooMoooooooooooooooooooooooooMoooMooooM</div><div class="line">                           Moooooooooooooooooooooooooooooooooooooooooooooo.oooMooooo</div><div class="line">                           MoooooooooooooooooooooooooooooooooooooooooooooMoooooooooM</div><div class="line">                            MooooooooooooooooooooMoooooooooooooooooooooooooooooooooM</div><div class="line">                             MooooooooooooooooooooMHooooooooooooooooooooMoooo:ooooo</div><div class="line">                              MMooooooooooooooooooMoMHoooooooooooooooooooooooMooooo</div><div class="line">                               MMoooooooooooooooMMooo MMooooooooooooooooooooooooooM</div><div class="line">                               MMMoooooooooooooMooooo  oooooooooooooooooooooMooooo</div><div class="line">                               MooMMoooooooooMoooMMoM  ooooHooooooooooooooooMooooM</div><div class="line">                               MooooMooooooMooooMoooM  MoooooMoooooooooooooMooooo</div><div class="line">                               ooooooMMooooooooMooooM  MoooooooooMooooooooooooooM</div><div class="line">                               HooooooMoooooooMooooM    HoooooooHooMooooooooooooo</div><div class="line">                                oooMoooooooooHoooM         MoooooooooMoooooooooM</div><div class="line">                                 HooooooooooooHM             MooooooooMMoooooooM</div><div class="line">                                  MMMMMMMMMMMMMM                Moooooo:MooooHMM</div><div class="line">                                   MMMMMMM: ...                  MMMMMMMMMMMMMM</div><div class="line">                                  M............M                  MMMMMMMMM ....</div><div class="line">                                  M.MM..........                  M.............M</div><div class="line">                               M ..............MM                 M..............</div><div class="line">                            MMMMM............MMMM                 ..MMMMMMMM ....M</div><div class="line">                          MMMMMMMMMMMMMMMMMMMMMMMM               MMMMMMMMMMMMM...M</div><div class="line">                       .MMMMMMMMMMMMMMMMMMMMMMMMMM               MMMMMMMMMMMMMMMMMM</div><div class="line">                       MMMMMMMMMMMMMMMMMMMMMMMMM                MMMMMMMMMMMMMMMMMMM</div><div class="line">                       :MMMMMMMMMMMMMMMMMMH                     MMMMMMMMMMMMMMMMMMM</div><div class="line">                          By EBEN Jérôme                        MMMMMMMMMMMMMMMMMM</div><div class="line">                                                                MMMMMMMMMMMMMMM</div><div class="line">                                                                 HMMMMMM</div><div class="line">        </div><div class="line">       */</div></pre></td></tr></table></figure>
+<h3 id="皮卡丘"><a href="#皮卡丘" class="headerlink" title="皮卡丘"></a>皮卡丘</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">       quu..__</div><div class="line">        $$$b  `---.__</div><div class="line">         "$$b        `--.                          ___.---uuudP</div><div class="line">          `$$b           `.__.------.__     __.---'      $$$$"              .</div><div class="line">            "$b          -'            `-.-'            $$$"              .'|</div><div class="line">              ".                                       d$"             _.'  |</div><div class="line">                `.   /                              ..."             .'     |</div><div class="line">                  `./                           ..::-'            _.'       |</div><div class="line">                   /                         .:::-'            .-'         .'</div><div class="line">                  :                          ::''\          _.'            |</div><div class="line">                 .' .-.             .-.           `.      .'               |</div><div class="line">                 : /'$$|           .@"$\           `.   .'              _.-'</div><div class="line">                .'|$u$$|          |$$,$$|           |  &lt;            _.-'</div><div class="line">                | `:$$:'          :$$$$$:           `.  `.       .-'</div><div class="line">                :                  `"--'             |    `-.     \</div><div class="line">               :##.       ==             .###.       `.      `.    `\</div><div class="line">               |##:                      :###:        |        &gt;     &gt;</div><div class="line">               |#'     `..'`..'          `###'        x:      /     /</div><div class="line">                \                                   xXX|     /    ./</div><div class="line">                 \                                xXXX'|    /   ./</div><div class="line">                 /`-.                                  `.  /   /</div><div class="line">                :    `-  ...........,                   | /  .'</div><div class="line">                |         ``:::::::'       .            |&lt;    `.</div><div class="line">                |             ```          |           x| \ `.:``.</div><div class="line">                |                         .'    /'   xXX|  `:`M`M':.</div><div class="line">                |    |                    ;    /:' xXXX'|  -'MMMMM:'</div><div class="line">                `.  .'                   :    /:'       |-'MMMM.-'</div><div class="line">                 |  |                   .'   /'        .'MMM.-'</div><div class="line">                 `'`'                   :  ,'          |MMM&lt;</div><div class="line">                   |                     `'            |tbap\</div><div class="line">                    \                                  :MM.-'</div><div class="line">                     \                 |              .''</div><div class="line">                      \.               `.            /</div><div class="line">                       /     .:::::::.. :           /</div><div class="line">                      |     .:::::::::::`.         /</div><div class="line">                      |   .:::------------\       /</div><div class="line">                     /   .''               &gt;::'  /</div><div class="line">                     `',:                 :    .'</div><div class="line">                                          `:.:'</div><div class="line"></div><div class="line">        </div><div class="line">       */</div></pre></td></tr></table></figure>
+<h3 id="电脑图像"><a href="#电脑图像" class="headerlink" title="电脑图像"></a>电脑图像</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                    ,----------------,              ,---------,</div><div class="line">               ,-----------------------,          ,"        ,"|</div><div class="line">             ,"                      ,"|        ,"        ,"  |</div><div class="line">            +-----------------------+  |      ,"        ,"    |</div><div class="line">            |  .-----------------.  |  |     +---------+      |</div><div class="line">            |  |                 |  |  |     | -==----'|      |</div><div class="line">            |  |  I LOVE DOS!    |  |  |     |         |      |</div><div class="line">            |  |  Bad command or |  |  |/----|`---=    |      |</div><div class="line">            |  |  C:\&gt;_          |  |  |   ,/|==== ooo |      ;</div><div class="line">            |  |                 |  |  |  // |(((( [33]|    ,"</div><div class="line">            |  `-----------------'  |," .;'| |((((     |  ,"</div><div class="line">            +-----------------------+  ;;  | |         |,"</div><div class="line">               /_)______________(_/  //'   | +---------+</div><div class="line">          ___________________________/___  `,</div><div class="line">         /  oooooooooooooooo  .o.  oooo /,   \,"-----------</div><div class="line">        / ==ooooooooooooooo==.o.  ooo= //   ,`\--&#123;)B     ,"</div><div class="line">       /_==__==========__==_ooo__ooo=_/'   /___________,"</div><div class="line">        </div><div class="line">       */</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                                   _________</div><div class="line">                                  /         /.</div><div class="line">           .-------------.       /_________/ |</div><div class="line">          /             / |      |         | |</div><div class="line">         /+============+\ |      | |====|  | |</div><div class="line">         ||C:\&gt;        || |      |         | |</div><div class="line">         ||            || |      | |====|  | |</div><div class="line">         ||            || |      |   ___   | |</div><div class="line">         ||            || |      |  |166|  | |</div><div class="line">         ||            ||/@@@    |   ---   | |</div><div class="line">         \+============+/    @   |_________|./.</div><div class="line">                            @          ..  ....'</div><div class="line">         ..................@     __.'.'  ''</div><div class="line">        /oooooooooooooooo//     ///</div><div class="line">       /................//     /_/</div><div class="line">       ------------------</div><div class="line">       */</div></pre></td></tr></table></figure>
+<h3 id="龙"><a href="#龙" class="headerlink" title="龙"></a>龙</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">        11111111111111111111111111111111111111001111111111111111111111111</div><div class="line">        11111111111111111111111111111111111100011111111111111111111111111</div><div class="line">        11111111111111111111111111111111100001111111111111111111111111111</div><div class="line">        11111111111111111111111111111110000111111111111111111111111111111</div><div class="line">        11111111111111111111111111111000000111111111111111111111111111111</div><div class="line">        11111111111111111111111111100000011110001100000000000000011111111</div><div class="line">        11111111111111111100000000000000000000000000000000011111111111111</div><div class="line">        11111111111111110111000000000000000000000000000011111111111111111</div><div class="line">        11111111111111111111111000000000000000000000000000000000111111111</div><div class="line">        11111111111111111110000000000000000000000000000000111111111111111</div><div class="line">        11111111111111111100011100000000000000000000000000000111111111111</div><div class="line">        11111111111111100000110000000000011000000000000000000011111111111</div><div class="line">        11111111111111000000000000000100111100000000000001100000111111111</div><div class="line">        11111111110000000000000000001110111110000000000000111000011111111</div><div class="line">        11111111000000000000000000011111111100000000000000011110001111111</div><div class="line">        11111110000000011111111111111111111100000000000000001111100111111</div><div class="line">        11111111000001111111111111111111110000000000000000001111111111111</div><div class="line">        11111111110111111111111111111100000000000000000000000111111111111</div><div class="line">        11111111111111110000000000000000000000000000000000000111111111111</div><div class="line">        11111111111111111100000000000000000000000000001100000111111111111</div><div class="line">        11111111111111000000000000000000000000000000111100000111111111111</div><div class="line">        11111111111000000000000000000000000000000001111110000111111111111</div><div class="line">        11111111100000000000000000000000000000001111111110000111111111111</div><div class="line">        11111110000000000000000000000000000000111111111110000111111111111</div><div class="line">        11111100000000000000000001110000001111111111111110001111111111111</div><div class="line">        11111000000000000000011111111111111111111111111110011111111111111</div><div class="line">        11110000000000000001111111111111111100111111111111111111111111111</div><div class="line">        11100000000000000011111111111111111111100001111111111111111111111</div><div class="line">        11100000000001000111111111111111111111111000001111111111111111111</div><div class="line">        11000000000001100111111111111111111111111110000000111111111111111</div><div class="line">        11000000000000111011111111111100011111000011100000001111111111111</div><div class="line">        11000000000000011111111111111111000111110000000000000011111111111</div><div class="line">        11000000000000000011111111111111000000000000000000000000111111111</div><div class="line">        11001000000000000000001111111110000000000000000000000000001111111</div><div class="line">        11100110000000000001111111110000000000000000111000000000000111111</div><div class="line">        11110110000000000000000000000000000000000111111111110000000011111</div><div class="line">        11111110000000000000000000000000000000001111111111111100000001111</div><div class="line">        11111110000010000000000000000001100000000111011111111110000001111</div><div class="line">        11111111000111110000000000000111110000000000111111111110110000111</div><div class="line">        11111110001111111100010000000001111100000111111111111111110000111</div><div class="line">        11111110001111111111111110000000111111100000000111111111111000111</div><div class="line">        11111111001111111111111111111000000111111111111111111111111100011</div><div class="line">        11111111101111111111111111111110000111111111111111111111111001111</div><div class="line">        11111111111111111111111111111110001111111111111111111111100111111</div><div class="line">        11111111111111111111111111111111001111111111111111111111001111111</div><div class="line">        11111111111111111111111111111111100111111111111111111111111111111</div><div class="line">        11111111111111111111111111111111110111111111111111111111111111111</div><div class="line"></div><div class="line"></div><div class="line">        */</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                                                    __----~~~~~~~~~~~------___</div><div class="line">                                         .  .   ~~//====......          __--~ ~~</div><div class="line">                         -.            \_|//     |||\\  ~~~~~~::::... /~</div><div class="line">                      ___-==_       _-~o~  \/    |||  \\            _/~~-</div><div class="line">              __---~~~.==~||\=_    -_--~/_-~|-   |\\   \\        _/~</div><div class="line">          _-~~     .=~    |  \\-_    '-~7  /-   /  ||    \      /</div><div class="line">        .~       .~       |   \\ -_    /  /-   /   ||      \   /</div><div class="line">       /  ____  /         |     \\ ~-_/  /|- _/   .||       \ /</div><div class="line">       |~~    ~~|--~~~~--_ \     ~==-/   | \~--===~~        .\</div><div class="line">                '         ~-|      /|    |-~\~~       __--~~</div><div class="line">                            |-~~-_/ |    |   ~\_   _-~            /\</div><div class="line">                                 /  \     \__   \/~                \__</div><div class="line">                             _--~ _/ | .-~~____--~-/                  ~~==.</div><div class="line">                            ((-&gt;/~   '.|||' -_|    ~~-/ ,              . _||</div><div class="line">                                       -_     ~\      ~~---l__i__i__i--~~_/</div><div class="line">                                       _-~-__   ~)  \--______________--~~</div><div class="line">                                     //.-~~~-~_--~- |-------~~~~~~~~</div><div class="line">                                            //.-~~~--\</div><div class="line"></div><div class="line">        </div><div class="line">       */</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//                       )      (</span></div><div class="line"><span class="comment">//                  /+++=))    ((=+++\</span></div><div class="line"><span class="comment">//             /++++++++//      \\+++++++++\</span></div><div class="line"><span class="comment">//          /++++++++++//(  /\  )\\++++++++++\</span></div><div class="line"><span class="comment">//        /+++++++++++//  \\^^//  \\+++++++++++\</span></div><div class="line"><span class="comment">//     _/++++++++++++//  &#123;&#123;@::@&#125;&#125;  \\++++++++++++\_</span></div><div class="line"><span class="comment">//    /+++++++++++++((     &#123;\/&#125;     ))+++++++++++++\</span></div><div class="line"><span class="comment">//   /+++++++++++++++\\    &lt;**&gt;    //+++++++++++++++\</span></div><div class="line"><span class="comment">//  /+++++++++++++++++\\  / VV \  //+++++++++++++++++\</span></div><div class="line"><span class="comment">// /+++++++++++++++++++\\/******\//+++++++++++++++++++\</span></div><div class="line"><span class="comment">//|+/|++++++++++/\++++++(***/\***)++++++/\++++++++++|\+\</span></div><div class="line"><span class="comment">//|/ |+/\+/\+/\/  \+/\++\**|**|**/++/\+/  \/\+/\+/\+| \|</span></div><div class="line"><span class="comment">//v  |/  V  V  V   V  \+\|*|**|*|/+/  V   v  V  V  \|  v</span></div><div class="line"><span class="comment">//   v                 /*|*|**|*|*\...              v</span></div><div class="line"><span class="comment">//                    (**|*|**|*|**). .</span></div><div class="line"><span class="comment">//                   __\*|*|**|*|*/__. .</span></div><div class="line"><span class="comment">//                  (vvv(VVV)(VVV)vvv). .</span></div><div class="line"><span class="comment">//                      ............../ /</span></div><div class="line"><span class="comment">//                     / ............../</span></div><div class="line"><span class="comment">//                     ((</span></div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                 ___====-_  _-====___</div><div class="line">           _--^^^#####//      \\#####^^^--_</div><div class="line">        _-^##########// (    ) \\##########^-_</div><div class="line">       -############//  |\^^/|  \\############-</div><div class="line">     _/############//   (@::@)   \\############\_</div><div class="line">    /#############((     \\//     ))#############\</div><div class="line">   -###############\\    (oo)    //###############-</div><div class="line">  -#################\\  / VV \  //#################-</div><div class="line"> -###################\\/      \//###################-</div><div class="line">_#/|##########/\######(   /\   )######/\##########|\#_</div><div class="line">|/ |#/\#/\#/\/  \#/\##\  |  |  /##/\#/  \/\#/\#/\#| \|</div><div class="line">`  |/  V  V  `   V  \#\| |  | |/#/  V   '  V  V  \|  '</div><div class="line">   `   `  `      `   / | |  | | \   '      '  '   '</div><div class="line">                    (  | |  | |  )</div><div class="line">                   __\ | |  | | /__</div><div class="line">                  (vvv(VVV)(VVV)vvv)</div><div class="line">                  </div><div class="line">*/</div></pre></td></tr></table></figure>
+<p><a href="http://shiyousan.com/post/635479912728885400" target="_blank" rel="external">参考博客</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/代码注释/" rel="tag">#代码注释</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/15/Java内存区域与内存溢出/" rel="prev">Java内存区域与内存溢出</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/24/markdown使用技巧/" rel="next">markdown使用技巧</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#佛祖保佑"><span class="nav-number">1.</span> <span class="nav-text">佛祖保佑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#神兽草泥马"><span class="nav-number">2.</span> <span class="nav-text">神兽草泥马</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#胜利手势"><span class="nav-number">3.</span> <span class="nav-text">胜利手势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#围棋棋盘"><span class="nav-number">4.</span> <span class="nav-text">围棋棋盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#书本"><span class="nav-number">5.</span> <span class="nav-text">书本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微软金典图标"><span class="nav-number">6.</span> <span class="nav-text">微软金典图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Google"><span class="nav-number">7.</span> <span class="nav-text">Google</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#奥运五环"><span class="nav-number">8.</span> <span class="nav-text">奥运五环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七龙珠比克"><span class="nav-number">9.</span> <span class="nav-text">七龙珠比克</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七龙珠孙悟空"><span class="nav-number">10.</span> <span class="nav-text">七龙珠孙悟空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#皮卡丘"><span class="nav-number">11.</span> <span class="nav-text">皮卡丘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电脑图像"><span class="nav-number">12.</span> <span class="nav-text">电脑图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#龙"><span class="nav-number">13.</span> <span class="nav-text">龙</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

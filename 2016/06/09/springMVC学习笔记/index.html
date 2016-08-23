@@ -1,0 +1,1230 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="springMVC," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="SpringMVCSpringMVC 使用@RequestMapping 注解为控制器指定可以处理哪些URL请求在控制器的类定义及方法定义处都可标注@RequestMapping类定义处： 提供初步的请求映射信息，相对于WEB应用的根目录方法处：提供进一步的细分映射信息。相对于类定义处的URL。若类定义处未标注@RequestMapping，则方法标记的URL相对于WEB应用的根目录Dispatc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springMVC学习笔记">
+<meta property="og:url" content="http://yoursite.com/2016/06/09/springMVC学习笔记/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="SpringMVCSpringMVC 使用@RequestMapping 注解为控制器指定可以处理哪些URL请求在控制器的类定义及方法定义处都可标注@RequestMapping类定义处： 提供初步的请求映射信息，相对于WEB应用的根目录方法处：提供进一步的细分映射信息。相对于类定义处的URL。若类定义处未标注@RequestMapping，则方法标记的URL相对于WEB应用的根目录Dispatc">
+<meta property="og:image" content="http://yoursite.com/${path }">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-6-5/85130786.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-6-5/57507735.jpg">
+<meta property="og:updated_time" content="2016-08-21T09:17:43.424Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="springMVC学习笔记">
+<meta name="twitter:description" content="SpringMVCSpringMVC 使用@RequestMapping 注解为控制器指定可以处理哪些URL请求在控制器的类定义及方法定义处都可标注@RequestMapping类定义处： 提供初步的请求映射信息，相对于WEB应用的根目录方法处：提供进一步的细分映射信息。相对于类定义处的URL。若类定义处未标注@RequestMapping，则方法标记的URL相对于WEB应用的根目录Dispatc">
+<meta name="twitter:image" content="http://yoursite.com/${path }">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> springMVC学习笔记 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              springMVC学习笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-06-09T22:31:05+08:00" content="2016-06-09">
+            2016-06-09
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/" itemprop="url" rel="index">
+                  <span itemprop="name">Java</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/JavaEE框架/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaEE框架</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><p>SpringMVC 使用@RequestMapping 注解为控制器指定可以处理哪些URL请求<br>在控制器的类定义及方法定义处都可标注<br>@RequestMapping<br>类定义处： 提供初步的请求映射信息，相对于WEB应用的根目录<br>方法处：提供进一步的细分映射信息。相对于类定义处的URL。若类定义处未标注@RequestMapping，则方法标记的URL相对于WEB应用的根目录<br>DispatcherServlet 截获请求后，就通过控制器上@RequestMapping 提供的映射信息确定请求所对应的处理方法</p>
+<p>eg<br>    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"><br>        <property name="prefix" value="/WEB-INF/views/"></property><br>        <property name="suffix" value=".jsp"></property><br>    </bean></p>
+<p><a href="springmvc/testRequestMapping">test requestMapping </a></p>
+<p>// 类定义处标记的@RequestMapping限定了处理器可以处理所有URI为 /spring的请求，它相对于WEB容器部署的根路径<br>@RequestMapping(“/springmvc”)<br>@Controller<br>public class SpringMVCTest {<br>    private static final String SUCCESS = “success”;<br>    // 处理器类可以定义多个处理方法，处理来自 /springmvc的请求<br>    @RequestMapping(“/testRequestMapping”)<br>    public String testRequestMapping(){<br>        System.out.println(“testRequest…”);<br>        return SUCCESS;<br>    }<br>}</p>
+<pre><code>&lt;a href=&quot;springmvc/testRequestMethod&quot;&gt;test requestMethod &lt;/a&gt;
+
+&lt;br&gt;
+&lt;a href=&quot;springmvc/testParamsAndHeaders?username=atguigu&amp;age=10&quot;&gt;test ParamsAndHeaders &lt;/a&gt;
+&lt;br&gt;
+
+&lt;a href=&quot;springmvc/test/mnxyv/abc&quot;&gt;test AntPath &lt;/a&gt;
+&lt;br&gt;
+
+&lt;a href=&quot;springmvc/testParamsAndHeaders?username=atguigu&amp;age=10&quot;&gt;test ParamsAndHeaders &lt;/a&gt;
+&lt;br&gt;
+
+&lt;form action=&quot;springmvc/testRequestMethod&quot; method=&quot;post&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;&gt;
+&lt;/form&gt;
+&lt;br&gt;
+&lt;a href=&quot;springmvc/testRequestMapping&quot;&gt;test requestMapping &lt;/a&gt;
+&lt;br&gt;
+&lt;a href=&quot;helloworld&quot;&gt;HelloWorld&lt;/a&gt;
+</code></pre><p>@Controller<br>public class HelloWorld {<br>    /**</p>
+<pre><code> * 1. 使用 @RequestMapping 注解来映射请求的url
+ * 2. 返回值会通过视图解析器解析为实际的物理视图
+ * 对于InternalResourceViewResolver视图解析器，做如下解析
+ * prefix+returnVal+suffix 这样的方式得到实际的物理视图
+ */
+@RequestMapping(&quot;/helloworld&quot;)
+public String hello() {
+    System.out.println(&quot;hello world&quot;);
+    return &quot;success&quot;;
+}
+</code></pre><h2 id=""><a href="#" class="headerlink" title="}"></a>}</h2><p>RequestMapping 除了可以使用请求URL映射请求外，还可以使用请求方法，请求参数及请求头映射请求<br>RequestMapping 的value,method,params及headers分别表示请求URL，请求方法、请求参数及请求头的映射条件，他们之间是与的关系，联合使用多个条件可以让请求映射更加精确<br>params和headers支持简单的表达式：<br>param1: 表示请求必须包含名为param1的请求参数<br>!param1: 表示请求不能包含名为param1的请求参数<br>param1!=value1: 表示请求必须包含名为param1的请求参数，值不能为value1<br>{“param1=value”,”param2”} : 表示必须包含param1和param2，且param1的参数值必须为value</p>
+<p>@RequestMapping(“/springmvc”)<br>@Controller<br>public class SpringMVCTest {<br>    private static final String SUCCESS = “success”;<br>    // 指定接收POST的请求，页面可以设置为form表单<br>    @RequestMapping(value=”/testRequestMethod”,method=RequestMethod.POST)<br>    public String testRequestMethod(){<br>        System.out.println(“testRequestMethod…”);<br>        return SUCCESS;<br>    }<br>    // 必须包含username属性和age属性，且age不能为1，否则不予接收<br>    @RequestMapping(value=”testParamsAndHeaders”,params={“username”,”age!=1”})<br>    public String testParams(){<br>        System.out.println(“testParamsAndHeaders…”);<br>        return SUCCESS;<br>    }<br>    // 支持匹配符<br>    // ? 匹配文件名中的一个字符<br>    // <em> 匹配文件名中的任意字符<br>    // ** 匹配多层路径<br>    // 还支持Ant风格的URL<br>    @RequestMapping(“/test/</em>/abc”)<br>    public String testRequestMapping(){<br>        System.out.println(“testRequest…”);<br>        return SUCCESS;<br>    }<br>}</p>
+<p>@PathVariable 映射URL绑定的占位符<br>带占位符的URL是SpringMVC向REST目标挺进发展具有里程碑的意义<br>通过@PathVariable 可以将URL中占位符参数绑定到控制器处理方法的入参中；URL 中的{xxx}占位符可以通过@PathVariable(“xxx”)绑定到操作方法的入参中<br>eg : <a href="springmvc/testPathVariable/1">test requestMapping </a></p>
+<p>// @PathVariable 可以映射URL中的占位符到目标方法的参数中 - REST风格<br>    @RequestMapping(“/testPathVariable/{id}”)<br>    public String testPathVariable(@PathVariable(“id”) Integer id){<br>        System.out.println(“testPathVariable “+id);<br>        return SUCCESS;<br>    }</p>
+<p>REST Representational State Transfer 资源表现层状态转化<br>具体的说就是HTTP协议里面，GET 用来获取资源，POST 用来新建资源，PUT 用来更新资源，DELETE 用来删除资源</p>
+<p>form表单只支持GET与POST请求，Spring 使用 HiddenHttpMethodFilter 把这些请求转换为标准的http方法，使得支持GET,POST,PUT 与DELETE请求<br>把 HiddenHttpMethodFilter 配置到web.xml中，可以把post请求转为delete或post请求</p>
+<ol>
+<li>配置HiddenHttpMethodFilter</li>
+<li>发送post请求时，携带一个name=”_method”的隐藏域，值为delete或put</li>
+</ol>
+<p>Rest 风格</p>
+<form action="springmvc/testRest/1" method="post"><br>    <input type="hidden" name="_method" value="PUT"><br>    <input type="submit" value="PUT"><br></form>
+
+<p><br></p>
+<form action="springmvc/testRest/1" method="post"><br>    <input type="hidden" name="_method" value="Delete"><br>    <input type="submit" value="test delete"><br></form><br><br><br><br>@RequestMapping(value=”/testRest/{id}”, method=RequestMethod.PUT)<br>    public String testRestPut(@PathVariable Integer id){<br>        System.out.println(“Put: “+id);<br>        return SUCCESS;<br>    }<br><br>    @RequestMapping(value=”/testRest/{id}”, method=RequestMethod.DELETE)<br>    public String testRestDelete(@PathVariable Integer id){<br>        System.out.println(“Delete: “+id);<br>        return SUCCESS;<br>    }<br><br>web.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;filter&gt;</div><div class="line">  	&lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;</div><div class="line">  	// 配置HiddenHttpMethodFilter 可以把POST请求转换为DELETE或POST请求</div><div class="line">  	&lt;filter-class&gt;org.springframework.web.filter.HiddenHttpMethodFilter&lt;/filter-class&gt;</div><div class="line">  &lt;/filter&gt;</div><div class="line">  &lt;filter-mapping&gt;</div><div class="line">  	&lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;</div><div class="line">  	&lt;url-pattern&gt;&apos;/*&apos;&lt;/url-pattern&gt;</div><div class="line">  &lt;/filter-mapping&gt;</div><div class="line"></div><div class="line">  &lt;servlet&gt;</div><div class="line">    &lt;servlet-name&gt;springDispatcherServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</div><div class="line">    &lt;init-param&gt;</div><div class="line">      &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</div><div class="line">      &lt;param-value&gt;classpath:springmvc.xml&lt;/param-value&gt;</div><div class="line">    &lt;/init-param&gt;</div><div class="line">    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</div><div class="line">  &lt;/servlet&gt;</div><div class="line">  &lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;springDispatcherServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;/&lt;/url-pattern&gt;</div><div class="line">  &lt;/servlet-mapping&gt;</div></pre></td></tr></table></figure><br><br>在springMVC中得到id,使用 @PathVariable 注解<br><br>Spring MVC 通过分析处理方法的签名，将HTTP请求信息绑定到处理方法的相应入参中。<br>必要时可以对方法及方法入参标注相应的注解(@PathVariable,@RequestParam,@RequestHeader 等)，Spring MVC 框架会将HTTP请求的信息绑定到相应的方法入参中，并根据方法的返回值类型做出相应的后续处理<br><br>eg:<br><a href="springmvc/testRequestParam?username=haha&age=10">Test RequestParam</a><br>/<em>*
+ </em> [testRequestParam description]<br> <em> @RequestParam 映射请求参数
+ </em>  value 值即请求参数的参数名<br> <em>  required 该参数是否必须，默认为true
+ </em>   defaultValue 请求参数的默认值<br> */<br>@RequestMapping(value=”/testRequestParam”)<br>    public String testRequestParam(@RequestParam(value=”username”) String un,<br>            // (value=”age”, required=false, defaultValue=”0”) int age)<br>            @RequestParam(value=”age”, required=false) Integer age){   // 若某个值不是必须的，可以使用required=false注解<br>        System.out.println(“username =　“ + un + “; age = “+age);<br>        return SUCCESS;<br>    }<br>——————<br><a href="springmvc/testRequestHeader">Test RequestHeader</a><br><br>@RequestMapping(“/testRequestHeader”)<br>    public String testRequestHeader(@RequestHeader(value=”Accept-Language”) String al){<br>        System.out.println(“testRequestHeader,Accept-Language : “+al);<br>        return SUCCESS;<br>    }<br><br>———————-<br>使用 @CookieValue 取得Cookie值，映射一个Cookie值，属性同@RequestParam<br>@RequestMapping(“/testCookievalue”)<br>    public String testCookieValue(@CookieValue(“JSESSIONID”) String sessionId){<br>        System.out.println(“testCookieValue:sessionId “+sessionId);<br>        return SUCCESS;<br>    }<br><br>使用POJO对象绑定请求参数值<br>SpringMVC 会按请求参数名和POJO属性名进行自动匹配，自动为该对象填充属性值，支持级联属性，如dept.deptId, dept.address.tel 等<br><br><form action="springmvc/testPojo" method="post"><br>        username:<input type="text" name="username"><br>        <br><br>        password:<input type="password" name="password"><br>        <br><br>        email:<input type="text" name="email"><br>        <br><br>        age:<input type="text" name="age"><br>        <br><br>        city:<input type="text" name="address.city"><br>        <br><br>        province:<input type="text" name="address.province"><br>        <br><br><br>        <input type="submit" value="submit"><br>    </form>
+
+<p>public class User {<br>    private String username;<br>    private String password;<br>    private String email;<br>    private int age;<br>    private Address address;<br>    getter…setter …<br>}<br>@RequestMapping(“/testPojo”)<br>    public String testPojo(User user){<br>        System.out.println(“testPojo “+user);<br>        return SUCCESS;<br>    }</p>
+<p>MVC 的Handler方法可以接受哪些ServletAPI类型的参数<br>HttpServletRequest HttpServletResponse HttpSession java.security.Principal Locale InputStream OutputStream Reader Writer</p>
+<p>Spring MVC 提供了一下几种途径输出模型数据：<br>ModelAndView：处理方法返回值类型为ModelAndView时，方法体即可通过该对象添加模型数据<br>Map 及 Model:入参为 org.springframework.ui.Model 、 org.springframework.ui.ModelMap 或 java.util.Map 时，处理方法返回时，Map 中的数据会自动添加到模型中<br>@SessionAttributes:将模型中的某个属性暂存到HttpSession中，以便多个请求之间可以共享这个属性<br>@ModelAttribute:方法入参标注该注解后，入参的对象就会放到数据模型中</p>
+<p>控制器处理方法的返回值如果为ModelAndView，则其既包含视图信息，也包含模型数据信息<br>添加模型数据：<br>ModelAndView addObject(String attributeName,Object attributeValue)<br>ModelAndView addAllObject(Map<string,?> modelMap)<br>设置视图：<br>void setView(View view)<br>void setViewName(String viewName)</string,?></p>
+<p>/**</p>
+<ul>
+<li>目标方法的返回值可以是ModelAndView类型</li>
+<li>其中可以包含视图和模型信息</li>
+<li>Spring MVC 会把ModelAndView的model中数据放入到request域对象中</li>
+<li>@return [description]<br>*/<br>@RequestMapping(“/testModelAndView”)<br> public ModelAndView testModelAndView(){<pre><code>String viewName = SUCCESS;
+ModelAndView modelAndView = new ModelAndView(viewName);
+modelAndView.addObject(&quot;time&quot;,new Date());
+return modelAndView;
+</code></pre> }</li>
+</ul>
+<body><br>    <h4>Success Page</h4><br>    time: ${requestScope.time}<br></body>
+
+<hr>
+<p>@RequestMapping(“/testMap”)<br>    public String testMap(Map<string,object> map){<br>        map.put(“name”,Arrays.asList(“tom”,”jerry”,”Mike”));<br>        return SUCCESS;<br>    }</string,object></p>
+<p>Name: ${requestScope.name } 取得map模型数据</p>
+<hr>
+<p>若希望在多个请求之间公用某个模型属性数据，可以在控制器上标注一个 @SessionAttributes，Spring MVC 将在模型中对应的属性暂存到 HttpSession 中的数据会自动添加到模型中<br>@SessionAttributes 除了可以通过属性名指定需要放到会话中的属性外（使用value属性值），还可以通过模型属性的对象类型指定哪些模型属性需要放到会话中（使用types属性值）。<strong> 注意：该注解只能放在类的上面不能放在方法上面 </strong><br>@SessionAttributes(type=User.class) 会将隐含模型中所有类型为User.class的属性添加到会话中<br>@SessionAttributes(value={“user1”,”user2”})<br>@SessionAttributes(types={User.class,Dept.class})<br>@SessionAttributes(value={“user1”,”user2”},types={Dept.class})</p>
+<p>在已有基础上添加 @SessionAttributes({“user”})<br>@RequestMapping(“testSessionAttributes”)<br>    public String testSessionAttributes(Map<string,object> map){<br>        User user = new User(“Tom”, “123456”, “tom@gmail.com”, 16);<br>        map.put(“user”, user);<br>        return SUCCESS;<br>    }</string,object></p>
+<p>requestUser : ${requestScope.user }<br>sessionUser:${sessionScope.user }</p>
+<p>若注解改为  @SessionAttributes(value={“user”},types=String.class)  则<br>@RequestMapping(“testSessionAttributes”)<br>    public String testSessionAttributes(Map<string,object> map){<br>        User user = new User(“Tom”, “123456”, “tom@gmail.com”, 16);<br>        map.put(“user”, user);<br>        map.put(“school”,”atguigu”);<br>        return SUCCESS;<br>    }<br>    也会把school放入到request和session中</string,object></p>
+<p>ModelAttribute<br>    &lt;!–</p>
+<pre><code>    1. 原始数据  1,Tom,123456,tom@atguigu.com,12
+    2. 密码不能修改
+    3. 表单回显，模拟操作直接在表单填写对应的属性值
+ --&gt;
+&lt;form action=&quot;springmvc/testModelAttribute&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=1&gt;
+    username:&lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;Tom&quot;&gt;
+    &lt;br&gt;
+    email:&lt;input type=&quot;text&quot; name=&quot;email&quot; value=&quot;tom@atguigu.com&quot;&gt;
+    &lt;br&gt;
+    age:&lt;input type=&quot;text&quot; name=&quot;age&quot; value=&quot;12&quot;&gt;
+    &lt;br&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;&gt;
+&lt;/form&gt;
+
+/*
+ * 有 @ModelAttribute标记的方法，会在每个目标方法执行之前被SpringMVC调用
+ */
+@ModelAttribute
+public void getUser(@RequestParam(value=&quot;id&quot;,required=false) Integer id,
+        Map&lt;String,Object&gt; map){
+    if(id!=null){
+        User user = new User(1,&quot;Tom&quot;,&quot;1256&quot;,&quot;tom@atguigu.com&quot;,12);
+        System.out.println(&quot; 从数据库获取一个对象 &quot;+user);
+        map.put(&quot;user&quot;,user);
+    }
+}
+/*
+ * 1. 执行@ModelAttribute注解修饰的方法，从数据库中取出对象，把对象放入到了Map中，键为 user
+ * 2. SpringMVC 从Map中取出User对象，并把表单的请求参数赋给该User对象的对应属性
+ * 3. SpringMVC 把上述对象传入目标方法的参数
+ * 注意： 在ModelAttribute修饰的方法中，放入到Map时的键需要和目标方法入参类型的第一个字母小写的字符串一致，即必须是 user
+ */
+@RequestMapping(&quot;/testModelAttribute&quot;)
+public String testModelAttribute(User user){
+    System.out.println(&quot;modify &quot;+user);
+    return SUCCESS;
+}
+</code></pre><p>可以用@ModelAttribute 注释方法参数或方法。带有@ModelAttribute 注解的方法会将其要输入的或创建的参数对象添加到Model对象中（若方法没有显示添加）<br>SpringMVC 确定目标方法POJO类型入参的过程</p>
+<ol>
+<li>确定一个key<br>1)若目标方法的POJO类型的参数木有使用@ModelAttribute 作为修饰，则key为POJO类型第一个字母的小写<br>2)若使用了@ModelAttribute 来修饰，则key为@ModelAttribute 注解的value属性值</li>
+<li>在implicitModel 中查找key对应的对象，若存在，则作为入参传入<br>若在@ModelAttribute 标记的方法中在Map中保存过，则key和1确定的key一致，则会获取到<br>3.若implicitModel中不存在key对应的对象，则检查当前的Handler是否使用@SessionAttribute 注解修饰，若使用了该注解，且@SessionAttributes 注解的value属性值中包含了key，则会从HttpSession中来获取key所对应的value值，若存在则直接传入到目标方法的入参中，若不存在则将抛异常</li>
+<li>若Handler没有标记@SessionAttributes 注解或@SessionAttributes 注解的value值不包含key，则会通过反射来创建POJO类型的参数，传入为目标方法的参数</li>
+<li>SpringMVC 会把key和POJO类型的对象保存在impliciModel中，进而会保存到request中</li>
+</ol>
+<p>SpringMVC 视图解析流程分析<br>请求处理方法完成后，最终赶回一个ModelAndView对象，对于那些返回String,View 或ModelMap等类型的处理方法，Spring MVC 也会在内部将他们装配成一个ModelAndView对象，包含了逻辑名和模型对象的视图<br>Spring MVC 借助视图解析器（ViewResolver）得到最终的视图对象，最终的视图可以是JSP，也可能是Excel、JFreeChart 等各种表现形式的视图<br>视图的作用是渲染模型数据，将模型的数据以某种形式呈现给客户<br>为了实现视图模型和具体实现技术的解耦，Spring 在org.springframework.web.servlet 包中定义了一个高度抽象的View接口<br>视图对象由视图解析器负责实例化，由于视图是无状态的，所有他们不会有线程安全的问题</p>
+<p>InternalResourceViewResolver JSP 是最常见的视图技术，可以使用InternalResourceViewResolver作为视图解析器<br>若项目中使用了JSTL，则SpringMVC会自动把视图</p>
+<p><mvc:view-controller path="/success" view-name="success"></mvc:view-controller></p>
+<p><mvc:annotation-driven></mvc:annotation-driven></p>
+<p>若希望使用Excel展示数据列表，仅需要扩展SpringMVC提供的AbstractExcelView或AbstractJExcel View 即可。实现buildExcelDocument()方法，在方法中使用模型数据构建Excel文档就可以了<br>视图对象需要配置IOC容器中的一个bean，使用BeanNameViewResolver作为视图解析器即可<br>若希望直接在浏览器中直接下载Excel文档，则可以设置响应头 Content-Disposition 的值为attachment;filename=xxx.xls</p>
+<p>自定义视图<br>配置xml<br><!-- 扫描包 --><br>    <context:component-scan base-package="com.atguigu.springmvc"></context:component-scan></p>
+<pre><code>&lt;!-- 配置视图解析器，如何把handler方法返回值解析为实际的物理视图 --&gt;
+&lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+    &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/views/&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+
+&lt;!-- 配置BeanNameViewResolver视图解析器;使用视图的名字来解析视图 --&gt;
+&lt;!-- 通过order属性定义视图的优先级，order值越小视图解析器优先级越高。
+InternalResourceViewResolver 优先级数值最大，所有优先级最低--&gt;
+&lt;bean class=&quot;org.springframework.web.servlet.view.BeanNameViewResolver&quot;&gt;
+    &lt;property name=&quot;order&quot; value=&quot;100&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><p>@RequestMapping(“/testView”)<br>    public String testView(){<br>        System.out.println(“test view”);<br>        return “helloView”;<br>    }</p>
+<p>@Component<br>public class HelloView implements View{</p>
+<pre><code>@Override
+public String getContentType() {
+    return &quot;text/html&quot;;
+}
+
+@Override
+public void render(Map&lt;String, ?&gt; arg0, HttpServletRequest request,
+        HttpServletResponse response) throws Exception {
+    response.getWriter().print(&quot;hello view time:&quot;+new Date());
+}
+</code></pre><p>}</p>
+<p>重定向<br>@RequestMapping(“/testRedirect”)<br>    public String testRedirect(){<br>        System.out.println(“testRedirect”);<br>        return “redirect:/index.jsp”;  // 重定向到根目录的页面，<br>    }<br>重定向和Flash属性<br>转发比重定向快，因为重定向经过客户端，而转发没有。但是，有时采用重定向更好，若需要重定向到一个外部网站，则无法使用转发<br>使用重定向的一个不方便的地方是：无法轻松的传值给目标页面，而采用转发，则可以简单的将属性添加到model中。Spring 3 版本通过Flash属性提供了一种供重定向传值的方法<br>要使用Flash属性，必须在Spring MVC 配置文件中有一个<annotation-driver> 元素，然后还必须在方法参数里面添加一个新的参数u类型<br>org.springframework.web.servlet.mvc.support.RedirectAttributes<br>@RequestMapping(value=”product-save”,method=RequestMethod.POST)<br>public String saveProduct(ProductForm productForm, RedirectAttributes redirectAttributes){<br>    redirectAttributes.addFlashAttribute(“message”,”The product was successfully added”);<br>    return “redict:/product_view” + product.getId();<br>}</annotation-driver></p>
+<h3 id="tomcat默认就是不允许PUT和DELETE的"><a href="#tomcat默认就是不允许PUT和DELETE的" class="headerlink" title="tomcat默认就是不允许PUT和DELETE的"></a>tomcat默认就是不允许PUT和DELETE的</h3><p>如何配置Tomcat支持HTTP Delete和Put 方法<br>在tomcat web.xml文件中配置org.apache.catalina.servlets.DefaultServlet的</p>
+<p><init-param><br>    <param-name>readonly</param-name><br>    <param-value>false</param-value><br></init-param><br>readonly参数默认是true，即不允许delete和put操作，所以通过XMLHttpRequest对象的put或者delete方法访问就会报告http 403错误。为REST服务起见，应该设置该属性为false。</p>
+<p>Jstl 学习<br>页面请求：　<a href="emps">List All Employees</a><br>Handler 处理<br>@RequestMapping(“/emps”)<br>    public String list(Map<string, object=""> map){<br>        // 把结果放入到employees这个map中，返回<br>        map.put(“employees”, employeeDao.getAll());<br>        return “list”;<br>    }<br>list.jsp<br><br> 我是分割线<br><br>    <c:if test="${empty requestScope.employees }"><br>        没有任何员工信息<br>    </c:if><br>    <c:if test="${!empty requestScope.employees }"><br>        <table border="1" cellpadding="10" cellspacing="1"><br>            <tr><br>                <th>ID</th><br>                <th>LastName</th><br>                <th>Email</th><br>                <th>Gender</th><br>                <th>Department</th><br>                <th>Edit</th><br>                <th>Delete</th><br>            </tr><br>            <c:foreach items="${requestScope.employees }" var="emp"><br>                <tr><br>                    <td>${emp.id }</td><br>                    <td>${emp.lastName }</td><br>                    <td>${emp.email }</td><br>                    <td>${emp.gender==0?’Female’ : ‘Male’ }</td><br>                    <td>${emp.department.departmentName }</td><br>                    <td><a href="">Edit</a></td><br>                    <td><a href="">Delete</a></td><br>                </tr><br>            </c:foreach><br>        </table><br>    </c:if></string,></p>
+<p>可以在spring MVC 中配置 <mvc:default-servlet-handler> 可以解决静态资源文件找不到的问题</mvc:default-servlet-handler></p>
+<p>xml配置文件可以通过一份主配置文件，其它文件导入</p>
+<p>应用MVC，可以在Controller类中调用后端业务逻辑，通常，需要若干封装了后端复杂逻辑的Service类，在Service类中，可以实例化一个DAO类来访问数据库。在Spring MVC 中，Service 对象可以自动被注入到Controller对象中，而DAO对象可以自动被注入到Service对象中。<br>&lt;%@ taglib prefix=”form” uri=”<a href="http://www.springframework.org/tags/form" target="_blank" rel="external">http://www.springframework.org/tags/form</a>“ %&gt;<br>&lt;%@ taglib prefix=”c” uri=”<a href="http://java.sun.com/jsp/jstl/core" target="_blank" rel="external">http://java.sun.com/jsp/jstl/core</a>“ %&gt;</p>
+<p><c:if test="${requestScope.errors !=null}"><br>    <p id="errors"><br>    Errors(s)!<br>    <ul><br>    <c:foreach var="errors" items="${requestScope.errors}"><br>        <li>${error}</li><br>    </c:foreach><br>    </ul><br>    </p><br></c:if></p>
+<p>一般的， @RequestMapping(“/custom”) 和 @RequestMapping(value=”/custom”) 一样，如果有超过一个属性时，必须写入value属性名称<br>method属性用来指示该方法处理哪些HTTP方法 eg: RequestMethod.PUT</p>
+<p>import org.apache.commons.logging.Log ;<br>import org.apache.commons.logging.LogFactory;<br>private static final Log logger = LogFactory.getLog(Product.class)<br>logger.info(“save product”);</p>
+<hr>
+<h3 id="编写转换器-amp-amp-验证器"><a href="#编写转换器-amp-amp-验证器" class="headerlink" title="编写转换器 &amp;&amp; 验证器"></a>编写转换器 &amp;&amp; 验证器</h3><p>一. 转换器</p>
+<ol>
+<li>实现Converter<s,t> 接口，S 输入，T输出；<br> eg: 编写StringToDateConverter</s,t></li>
+<li><p>注册转换器</p>
+ <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean"><br>     <property name="converters"><br>         <list><br>             <bean class="com.yuchuan.controller.StringToDateConverter"><br>                 <constructor-arg type="java.lang.String" value="MM-dd-yyyy"></constructor-arg><br>             </bean><br>         </list><br>     </property><br> </bean>
+
+ <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven></li>
+<li>编写控制类调用<br> @RequestMapping(value=”employee_save”)<br> public String saveEmployee(@ModelAttribute Employee employee,<pre><code>    BindingResult bindingResult,Model model){
+if(bindingResult.hasErrors()){
+    FieldError fieldError = bindingResult.getFieldError();
+    logger.info(&quot;Code:&quot;+fieldError.getCode()+&quot;,field:&quot;+fieldError.getField());
+    return &quot;EmployeeForm&quot;;
+}
+logger.info(&quot;employeeDeatails&quot;);
+model.addAttribute(&quot;employee&quot;,employee);
+return &quot;EmployeeDetails&quot;;
+</code></pre> }<br>每个需要校验的Bean后面紧跟一个BindingResult，SpringMVC框架会将校验结果保存在它里面，通过hasErrors方法可以<br>判断是否有校验错误；最后，当返回到原页面以后，SpringMVC框架还会将所有校验错误信息保存在上下文中，供页面上取得<br>校验错误，Spring提供了一套JSP自定义标签。</li>
+</ol>
+<p>注意引入css文件 <style type="text/css">@import url(“<c:url value="/css/main.css"/>“);</style><br>不经过springmvc默认拦截器<br>    <mvc:annotation-driven><br>    <mvc:resources mapping="/css/**" location="/css/"><br>    <mvc:resources mapping="/*.html" location="/"></mvc:resources></mvc:resources></mvc:annotation-driven></p>
+<p>二、 验证器</p>
+<ol>
+<li>编写ProductValidator，实现Validator接口</li>
+<li>xml文件 <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"><br>     <property name="basename" value="/WEB-INF/resource/messages"></property><br> </bean></li>
+<li>编写Controller<br>@RequestMapping(“/product_save”)<br> public String saveProduct(@ModelAttribute Product product,<pre><code>    BindingResult bindingResult,Model model){
+ProductValidator productValidator = new ProductValidator();
+productValidator.validate(product, bindingResult);
+if(bindingResult.hasErrors()){
+    FieldError fieldError = bindingResult.getFieldError();
+    logger.info(&quot;Code:&quot;+fieldError.getCode()+&quot;,field:&quot;+fieldError.getField());
+    return &quot;ProductForm&quot;;
+}
+model.addAttribute(&quot;product&quot;,product);
+return &quot;ProductDetails&quot;;
+</code></pre> }</li>
+</ol>
+<p>JSTL<br>遍历对象</p>
+<p><c:foreach items="${books}" var="book"><br>    <tr><br>        <td>${book.category.name}</td><br>        <td>${book.title}</td><br>        <td>${book.isbn}</td><br>        <td>${book.author}</td><br>    </tr><br></c:foreach></p>
+<p>遍历 HashMap<string,string></string,string></p>
+<p><c:foreach items="${requestScope.capitals }" var="map"><br>        <tr><br>            <td>${map.key }</td><br>            <td>${map.value }</td><br>        </tr><br>    </c:foreach></p>
+<p>遍历 HashMap<string,string[]></string,string[]></p>
+<p><c:foreach items="${requestScope.bigCities}" var="mapItem"><br>    <tr><br>        <td>${mapItem.key}</td><br>        <td><br>            <c:foreach items="${mapItem.value}" var="city" varstatus="status"><br>                ${city}<c:if test="${!status.last}">,</c:if><br>            </c:foreach><br>        </td><br>    </tr><br>    </c:foreach></p>
+<p>遍历以特殊符号分割的字符串<br>    <c:fortokens items="Ab,Ba,BC" delims="," var="item"><br>                <c:out value="${item}"></c:out><br>    </c:fortokens></p>
+<p><fmt:formatnumber value="12" type="number"></fmt:formatnumber></p>
+<p><fmt:formatnumber value="12" type="number" minintegerdigits="3"></fmt:formatnumber></p>
+<p><fmt:formatnumber value="123434" pattern=".000"></fmt:formatnumber></p>
+<p><fmt:formatnumber value="12" type="currency"></fmt:formatnumber></p>
+<p><fmt:formatnumber value="0.12" type="percent"></fmt:formatnumber></p>
+<p><fmt:formatnumber value="0.125" type="percent" minfractiondigits="2"></fmt:formatnumber></p>
+<p>使用上传文件（使用commons-fileupload和commons-io）<br>@RequestMapping(value = “/product_save”)<br>    public String saveProduct(HttpServletRequest servletRequest,<br>            @ModelAttribute Product product, BindingResult bindingResult,<br>            Model model) {</p>
+<pre><code>    List&lt;MultipartFile&gt; files = product.getImages();
+
+    List&lt;String&gt; fileNames = new ArrayList&lt;String&gt;();
+    File imageFile = null;
+    if (null != files &amp;&amp; files.size() &gt; 0) {
+        for (MultipartFile multipartFile : files) {
+
+            String fileName = multipartFile.getOriginalFilename();
+            fileNames.add(fileName);
+
+            imageFile = new File(servletRequest.getServletContext()
+                    .getRealPath(&quot;/image&quot;), fileName);
+            logger.info(&quot;path is :&quot; + imageFile);
+            try {
+                multipartFile.transferTo(imageFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // save product here
+    model.addAttribute(&quot;product&quot;, product);
+    model.addAttribute(&quot;path&quot;,imageFile);
+    return &quot;ProductDetails&quot;;
+}
+</code></pre><p>JSP</p>
+<p><c:foreach items="${product.images}" var="image"><br>            <li>${image.originalFilename}<br>            <img src="${path }"><br>            </li><br>        </c:foreach><br>配置</p>
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"><br>        <property name="maxUploadSize" value="2000000"><br>    </property></bean>
+
+
+<p>Servlet 注意线程安全性。Servlet 实例会被一个应用程序中的所有用户共享，因此不建议使用类级变量，除非它们是只读的，或者是java.util.concurrent.atomic 包的成员<br>将项目打包成war文件复制放在Tomcat的webapps目录下，当开始启动Tomcat时，Tomcat 就会自动解压这个war文件，部署成war文件所有Servlet容器中都适用</p>
+<p>ServletRequest 方法<br>public int getContentLength()<br>public String getContentType()<br>public Stirng getProtocol()<br>public String getParameter(Stirng name)<br>还可以使用getParameterNames/getParameterMap/getParameterValues 获取表单域名、值及查询字符串。</p>
+<p>ServletResponse<br>在调用Servlet的Service方法前，Servlet 容器首先创建一个ServletResponse，并将它作为第二个参数传给Service方法。ServletResponse 隐藏了向浏览器发送响应的复杂过程 。在ServletResponse中定义的方法之一是getWritter方法，它返回了一个可以向客户端发送文本的PrintWriter.还有一个方法可以用来向浏览器发送输出，getOutputStream,但这个方法是用于发送二进制数据，因此大部分情况下使用的是getWriter,而不是getOutputStream.<br>ServletConfig<br>当Servlet容器初始化Servlet时，Servlet 容器会给Servlet的init方法传入一个ServletConfig.ServletConfig 封装可以通过@Webservlet 或者部署描述符（web.xml）传给Servlet配置信息。这样传入的每一个条信息就叫一个初始参数。一个初始参数有key和value两个元件。<br>为了从servlet内部获取到初始参数的值，要在Servlet容器传给Servlet的init方法的ServletConfig中调用getInitParameter方法。<br>String getInitParameter(String name) 此外，getInitParameterNames方法则是返回所有参数名称的一个Enumeration。<br>除了getInitParameter和getInitParameterNames，ServletConfig 还提供了 getServletContext 方法。<br>@WebServlet(name=”MyServlet”,<br>    urlPatterns={“/my”},<br>    initParams={<br>            @WebInitParam(name=”admin”,value=”Harry”),<br>            @WebInitParam(name=”email”,value=”admin@example.com”)<br>    })<br>public class MyServlet implements Servlet{<br>    public void service(ServletRequest request, ServletResponse response){<br>        String admin = servletConfig.getInitParameter(“admin”);<br>        String email = servletConfig.getInitParameter(“email”);<br>    }<br>}</p>
+<p>ServletContext<br>可以共享从应用程序中的所有资料处访问到的信息 ，并且可以动态注册web对象，前者将对象保存在ServletContext中的一个内部Map中<br>Object getAttribute(String name)<br>java.util.Enumeration<stirng> getAttributeNames()<br>void setAttribute(String name,Object object)<br>void remove Attribute(String name)</stirng></p>
+<p>GenericServlet<br>public void service(ServletRequest paramServletRequest, ServletResponse paramServletResponse)<br>            throws ServletException, IOException {<br>        ServletConfig servletConfig = getServletConfig();<br>        String admin = servletConfig.getInitParameter(“admin”);<br>        paramServletResponse.setContentType(“text/html”);<br>        PrintWriter writer = paramServletResponse.getWriter();<br>        writer.println(“<html><head></head>“<br>                +”<body>Hello From “ + admin<br>                +”</body></html>“);<br>    }</p>
+<p>HttpServlet<br>查阅HttpServlet 中service方法源码，该方法会检验用来发送请求的HTTP方法（通过调用request.getMethod）并调用以下方法之一：doGet/doPost/doHead/doPut/doDelete/doTrace/doOptions。这七种方法每一种方法都表示一个HTTP方法<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-6-5/85130786.jpg" alt="javax.servlet主要类型"><br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-6-5/57507735.jpg" alt="javax.servlet.http主要类型"></p>
+<p>Servlet 上的WebServlet标注如果如果同时也在部署描述符中进行声明，那么它将不起作用。但是，在有部署描述符的应用程序中，却不在部署描述符中标注的Servlet时，则仍然有效。这意味着，可以标注Servlet，并在同一个应用程序的部署描述符中声明这些Servlet<br>Filter 配置eg:</p>
+<p><filter><br>    <filter-name>Logging Filter</filter-name><br>    <filter-class>com.yuchuan.LoggingFilter</filter-class><br></filter></p>
+<p><filter-mapping><br>    <filter-name>Logging Filter</filter-name><br>    <url-pattern>MyServlet</url-pattern><br></filter-mapping></p>
+<p>Listener 用来注册一个监听器，子元素listener-class包含监听器类的全路径名</p>
+<listener><br>    <listener-class>com.yuchuan.ApplicationListener</listener-class><br></listener>
+
+<p>servlet-mapping<br>映射一个Servlet到/first</p>
+<p><servlet><br>    <servlet-name>FirstServlet</servlet-name><br>    <servlet-class>com.yuchuan.FirstServlet</servlet-class><br></servlet></p>
+<p><servlet-mapping><br>    <servlet-name>FirstServlet</servlet-name><br>    <url-pattern>/first</url-pattern><br></servlet-mapping></p>
+<p>session-config 元素定义了javax.servlet.http.HttpSession 实例的参数，此元素可以包含session-timeout cookie-config或 tracking-mode<br>session-timeout 指定会话时间超时间隔（分钟），必须为整数。如果该值为零或负数，则会话永不超时<br>cookie-config 定义了跟踪会话创建的cookie的配置<br>tracking-mode  定义了跟踪会话模式，有效值是 Cookie URL 或 SSl<br>eg: 表示应用的HttpSession对象在不活动12min后失效。<br>     <session-config><br>          <session-timeout>12</session-timeout><br>     </session-config></p>
+<p>xsi:schemaLocation 属性制定了模式文档的位置，以便可以进行验证。</p>
+<p>@RequestMapping(value=”/url”)<br>public String myMethod(){<br>    session.addAttribute(key,value);<br>}<br>Spring MVC 中可以在请求处理方法中出现的参数类型包括：<br>javax.servlet.ServletRequest 或 javax.servlet.http.HttpServletRequest<br>javax.servlet.ServletResponse 或 javax.servlet.http.HttpServletResponse<br>javax.servlet.HttpSession<br>org.springframework.web.context.request.WebRequest<br>java.util.Locale<br>java.io.InputStream 或  java.io.Reader<br>java.io.OutputStream 或 java.io.Writer<br>java.security.Principal<br>HttpEntity&lt;?&gt;<br>java.util.Map / org.springframework.ui.Model<br>org.springframework.web.servlet.mvc.support.RedirectAttributes<br>org.springframework.validation.Errors<br>org.springframework.validation.BindingResult<br>org.springframework.web.bind.support.SessionStatus<br>org.springframework.web.util.UriComponentsBuilder<br>带@PathVariable, @MatrixVariable 注解的对象<br>@RequestParam @RequestHeader @RequestBody @RequestPart<br>注意： org.springframework.ui.Model 类型，这不是一个Servlet API 类型，而是一个包含Map的Spring MVC 类型。每次调用请求处理方法时，Spring MVC 都创建Model对象并将其Map注入到各种对象<br>请求处理方法可以返回如下类型的对象：<br>ModelAndView<br>Model<br>Map 包含模型的属性<br>View<br>代表逻辑视图名的String<br>提供对Servlet的访问，以响应Http头部和内容 HttpEntity 或 ResponseEntity 对象<br>Callable<br>DeferredResult<br>其他任意类型，Spring 将其视作输出给View的对象模型</p>
+<p><mvc:annotation-driven></mvc:annotation-driven></p>
+<p><mvc:resources mapping="/css/**" location="/css/"></mvc:resources></p>
+<p><mvc:resources mapping="/*.html" location="/"></mvc:resources></p>
+<p><annotation-driven> 元素做的事情包括注册用于支持基于注解的控制器的请求处理方法的bean对象。<resource> 元素则只是Spring MVC 哪些静态资源需要单独处理（不通过dispatcher servlet）<br>第一个确保在CSS目录下的所有文件可见，第二个允许显示所有的.html文件<br>注意： 如果没有 <annotation-driven> <resources>元素会阻止任意控制器被调用，若不需要使用resources,则不需要<annotation-driven>元素</annotation-driven></resources></annotation-driven></resource></annotation-driven></p>
+<p>无论是否会使用Model，Spring MVC 都会在每一个请求处理方法被调用时创建一个Model实例，用于增加需要显示在视图中的属性。例如通过<br>model.addAttribute(“product”,product) 来添加实例 。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/springMVC/" rel="tag">#springMVC</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/09/常见的网络攻击原理分析/" rel="prev">常见的网络攻击原理分析</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/09/spring笔记2/" rel="next">spring笔记2</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC"><span class="nav-number">1.</span> <span class="nav-text">SpringMVC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text">}</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">0.1.</span> <span class="nav-text">Success Page</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tomcat默认就是不允许PUT和DELETE的"><span class="nav-number">1.</span> <span class="nav-text">tomcat默认就是不允许PUT和DELETE的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写转换器-amp-amp-验证器"><span class="nav-number">2.</span> <span class="nav-text">编写转换器 && 验证器</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

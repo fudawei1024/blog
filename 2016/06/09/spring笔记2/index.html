@@ -1,0 +1,1429 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="spring," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="Spring_note.java
+ApplicationContext 主要实现类：
+
+ClassPathXmlApplicationContext
+FileSystemApplicationContext属性可以指定类型&amp;lt;constructor-arg value=&amp;quot;Audi&amp;quot; type=&amp;quot;java.lang.String&amp;quot;&amp;gt;&amp;lt;/cons">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring笔记2">
+<meta property="og:url" content="http://yoursite.com/2016/06/09/spring笔记2/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="Spring_note.java
+ApplicationContext 主要实现类：
+
+ClassPathXmlApplicationContext
+FileSystemApplicationContext属性可以指定类型&amp;lt;constructor-arg value=&amp;quot;Audi&amp;quot; type=&amp;quot;java.lang.String&amp;quot;&amp;gt;&amp;lt;/cons">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-17/8333499.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-17/71841689.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-17/89899451.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-18/14319610.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-19/31932448.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-19/90018731.jpg">
+<meta property="og:updated_time" content="2016-08-21T09:17:29.324Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring笔记2">
+<meta name="twitter:description" content="Spring_note.java
+ApplicationContext 主要实现类：
+
+ClassPathXmlApplicationContext
+FileSystemApplicationContext属性可以指定类型&amp;lt;constructor-arg value=&amp;quot;Audi&amp;quot; type=&amp;quot;java.lang.String&amp;quot;&amp;gt;&amp;lt;/cons">
+<meta name="twitter:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-17/8333499.jpg">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> spring笔记2 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              spring笔记2
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-06-09T22:30:56+08:00" content="2016-06-09">
+            2016-06-09
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/" itemprop="url" rel="index">
+                  <span itemprop="name">Java</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/JavaEE框架/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaEE框架</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>Spring_note.java<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-17/8333499.jpg" alt="第一阶段"><br><br><br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-17/71841689.jpg" alt="第二阶段"><br><br><br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-17/89899451.jpg" alt="第三阶段"></p>
+<p>ApplicationContext 主要实现类：</p>
+<ol>
+<li>ClassPathXmlApplicationContext</li>
+<li>FileSystemApplicationContext<br>属性可以指定类型<br><bean id="car" class="com.Po.Car"><pre><code>&lt;constructor-arg value=&quot;Audi&quot; type=&quot;java.lang.String&quot;&gt;&lt;/constructor-arg&gt;
+&lt;constructor-arg value=&quot;Shagnhai&quot; type=&quot;java.lang.String&quot;&gt;&lt;/constructor-arg&gt;
+&lt;constructor-arg value=&quot;240&quot; type=&quot;int&quot;&gt;&lt;/constructor-arg&gt;
+</code></pre></bean><br>若属性过多，可以指定type类型或index属性来声明<br>属性字符值有特殊字符 ，使用CDATA设置  <value>&lt;![CDATA[^shanghai&gt;]]&gt;</value></li>
+</ol>
+<p>通过p的命名空间为bean的属性赋值，需要先导入P命名空间，相对于传统的配置方式更加简洁</p>
+<bean id="person" class="com.Po.Person" p:name="Queen" p:car-ref="car" p:address-ref="address"><br>自动装配 （根据名字自动装配）<br><bean id="person" class="com.Po.Person" p:name="Queen" autowire="byName"><br>byName根据bean的名字和当前bean的setter风格的属性名进行自动装配<br><br>bean配置之间的继承<br><bean id="address" class="com.Po.Address" p:city="beijing" p:street="Wudaokou"></bean><br><bean id="address2" p:street="Dazhongsi" parent="address"></bean><br>子bean从父bean继承配置，可以覆盖配置<br>可以把需要被继承的bean  加上属性  abstract=”true” ,就只能被其他bean继承，不能被实例化<br><br>bean之间的依赖关系<br>depends-on=”car” IOC容器初始化的时候没有这个实例则报错，若有多个，通过逗号分隔<br><br>PropertyPlaceholderConfigurer<br><br>db.properties<br>user = root<br>password = root<br>driverClass = com.mysql.jdbc.Driver<br>jdbcUrl = jdbc:mysql://127.0.0.1:3306/test<br><br>spring.xml<br><context:property-placeholder location="classpath:db.properties"><br><br>    <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource"><br>        <property name="user" value="${user}"></property><br>        <property name="password" value="${password}"></property><br>        <property name="driverClass" value="${driverClass}"></property><br>        <property name="jdbcUrl" value="${jdbcUrl}"></property><br>    </bean>
+
+
+<p>Spring<br>spring 调用无参构造器，使用set方法<br>通过反射的方式在IOC容器中创建Bean，所有类必须含有无参构造器<br>使用构造器注入属性值可以指定参数的位置和参数的类型，以区分重载的构造器</p>
+<bean id="car2" class="com.atguigu.spring.beans.Car"><br>        <constructor-arg value="Baoma" type="java.lang.String"></constructor-arg><br>        <constructor-arg value="Shanghai" type="java.lang.String"></constructor-arg><br>        <constructor-arg value="240000" type="int"></constructor-arg><br></bean>
+
+<p>字面值： 可用字符串表示的值，可以通过value属性或者value子节点<br>若要包含特殊字符，使用 <value>&lt;![CDATA[<shanghai^]]></shanghai^]]></value></p>
+<p>自动装配Bean，在<bean>的autowire属性里指定自动装配的模式<br>byType  byName   根据类型和名称自动装配<br>赋值为null    <constructor-arg><null></null></constructor-arg></bean></p>
+<bean id="person3" class="com.atguigu.spring.beans.collection.Person"><br>         <property name="name" value="Mike"></property><br>         <property name="age" value="27"></property><br>         <property name="car"><br>             <list><br>                 <ref bean="car"><br>             </ref></list><br>         </property><br></bean><br>使用map<br><map><br>    <entry key="AA" value-ref="car"></entry><br>    <entry></entry><br></map><br>通过p命名空间为bean的属性赋值，需要先导入P命名空间<br>        加入 xmlns:p=”<a href="http://www.springframework.org/schema/p" target="_blank" rel="external">http://www.springframework.org/schema/p</a>“<br><bean id="person5" class="com.atguigu.spring.beans.collection.Person" p:age="30" p:name="Queen" p:car-ref="car"></bean>
+
+<p>autowire=”byName” 根据名字自动装配<br>autowire=”byType” 根据bean的类型和当前bean的属性的类型进行自动装配，若IOC容器有1个以上的相同类型，无法装配<br>autowire 缺点 1.只希望装配个别属性时，不够灵活  2） 要么根据名称装配，要么根据类型装配，不够灵活</p>
+<p>parent指定继承哪个配置   eg: parent = “address” ,子bean从父bean继承属性值，也可以覆盖继承的属性值<br>抽象bean  ，abstract=”brue” 其他bean继承它<br>eg <bean id="address" p:city="Beijing" abstract="true"></bean><br>子Bean定义可以从父Bean继承实现类、构造器参数、属性值等配置信息。可以增加新的配置信息，覆盖父类配置信息<br>子Bean无法从父Bean继承如下属性：depends-on/autowire/singleton/scope/lazy-init，这些属性将总是从子Bean定义中获得，或采用默认值</p>
+<p>若某一个bean的class属性没有被指定，则必须是一个抽象bean<br>并不是bean里面所有的属性都会被继承，比如 abstract autowire不会被继承<br>前置依赖的bean会在本bean之前创建好  depends-on=”car”<br>scope=”singleton”  创建容器的时候创建bean<br>scope=”Prototype”  默认不创建，每次请求时都创建一个新的bean<br>scope=”session”  or  “request”  对应web</p>
+<p>PropertyPlaceholderConfigure 的BeanFactory 后置处理器允许用户将Bean配置的部分内容外移到配置文件中</p>
+<p><context:property-placeholder location="classpath:db.properties"><br>    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"><br>        <property name="user" value="${user}"></property><br>        <property name="password" value="${password}"></property><br>        <property name="driverClass" value="${driverClass}"></property><br>        <property name="jdbcUrl" value="${jdbcUrl}"></property><br></bean></context:property-placeholder></p>
+<p>db.properties<br>user=root<br>password=root<br>driverClass=com.mysql.jdbc.Driver<br>jdbcUrl=jdbc:mysql://localhost:3306/test<br>测试：<br>DataSource dataSource = (DataSource) ctx.getBean(“datasource”);<br>        System.out.println(dataSource.getConnection());</p>
+<p>spring使用#{…}作为定界符，所有在大框号的字符都将被认为是SpEL<br>SpEL 为bean的属性进行动态赋值提供了便利<br>字面量的表示：<br>整数  <property name="count" value="#{5}"><br>小数  <property name="frequency" value="#{89.7}"><br>boolean <property name="enabled" value="#{false}"><br>String可以使用单引号或者双引号作为字符串的定界符号</property></property></property></p>
+<p><property name="name" value="#{'Chunk'}"> 或 <property name="name" value="#{"Chunk"}"></property></property></p>
+<p>算数运算符</p>
+<p><property name="one" value="#{counter.total+42}"></property></p>
+<p><property name="one" value="#{2 * T(java.lang.Math).PI * circle.radius}"><br>加号还可以作字符串连接</property></p>
+<p><constructor-arg value="#{performer.firstName + ' ' + performer.lastname"><br>比较运算符</constructor-arg></p>
+<p><property name="one" value="#{counter.total==100}"></property></p>
+<p><property name="two" value="#{counter.total le 1000}"><br>逻辑运算符</property></p>
+<p><property name="large" value="#{shape.king=='circle' and shape.perimeter gt 10000}"></property></p>
+<p><property name="outOfStock" value="#{!product.available}"></property></p>
+<p><property name="outofStock" value="#{not product.available}"><br>if-else 运算</property></p>
+<p><constructor-arg value="{songSelector.selectSong()=='Jingle one' ? 'Jing two':'Jing bells"><br>正则表达式</constructor-arg></p>
+<constructor-arg value="#{admin.email matches '[a-zA-Z0-9]'} ">
+
+
+<p>调用静态方法或静态属性：通过T()调用一个类的静态方法，它将返回一个Class Object ，然后再调用相应的方法或属性</p>
+<p><property name="initValue" value="#{T(java.lang.Math).PI}"></property><br>SpEL表达式case<br>    <bean id="address" class="com.Po.Address"><br>        <property name="city" value="#{'beijing'}"></property><br>        <property name="street" value="WuDaoKou"></property><br>    </bean></p>
+<pre><code>&lt;bean id=&quot;car&quot; class=&quot;com.Po.Car&quot;&gt;
+    &lt;property name=&quot;brade&quot; value=&quot;Audi&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;price&quot; value=&quot;50000&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;tyrePerimter&quot; value=&quot;#{T(java.lang.Math).PI*2}&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;person&quot; class=&quot;com.Po.Person&quot;&gt;
+    &lt;property name=&quot;car&quot; value=&quot;#{car}&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;address&quot; value=&quot;#{address}&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;name&quot; value=&quot;#{car.brade}&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><p>声明注入实例前后要执行的方法</p>
+<bean id="car" class="com.Po.Car" init-method="initExe" destroy-method="stopExe"><br><br>        <property name="brade" value="Audi"></property><br>        <property name="price" value="#{2000}"></property><br>        <property name="tyrePerimter" value="#{2*T(java.lang.Math).PI}"></property><br></bean><br>或者 后置处理器<br><beans><br><bean id="car" class="com.Po.Car"><br><br>        <property name="brade" value="Audi"></property><br>        <property name="price" value="#{2000}"></property><br>        <property name="tyrePerimter" value="#{2*T(java.lang.Math).PI}"></property><br>    </bean>
+
+<bean class="com.Po.MyBeanPostProcessor"><br></bean>
+
+<p>MyBeanPostProcessor 该类实现BeanPostProcessor接口<br>public class MyBeanPostProcessor implements BeanPostProcessor{</p>
+<pre><code>@Override
+public Object postProcessAfterInitialization(Object bean, String beanName)
+        throws BeansException {
+    System.out.println(&quot;postProcessAfterInitialization &quot; + bean+&quot;, &quot;+beanName );
+    return bean;
+}
+
+@Override
+public Object postProcessBeforeInitialization(Object bean, String beanName)
+        throws BeansException {
+    System.out.println(&quot;postProcessBeforeInitialization &quot; + bean+&quot;, &quot;+beanName );
+    return bean;
+}
+</code></pre><p>}<br>可以在以上两个方法中修改返回的bean，甚至返回一个新的bean</p>
+<p>静态工厂方法<br>public class StaticCarFactory {<br>    private static Map<string,car> cars = new HashMap<string, car="">();<br>    static{<br>        cars.put(“audi”, new Car(“audi”,30000));<br>        cars.put(“ford”, new Car(“ford”,40000));<br>    }</string,></string,car></p>
+<pre><code>public static Car getCar(String name){
+    return cars.get(name);
+}
+</code></pre><p>}<br>通过静态工厂方法来配置bean，注意不是配置静态工厂方法实例，而是配置bean实例<br>class属性：指向静态工厂方法的全类名<br>factory-method:指向静态工厂方法的名字<br>constructor-arg: 如果工厂方法需要传入参数u，使用constructor-arg 传参</p>
+<bean id="car1" class="com.Po.StaticCarFactory" factory-method="getCar"><br>        <constructor-arg value="audi"></constructor-arg><br></bean>
+
+<p>实例工厂方法<br>先需要创建工厂本身，在调用工厂的方法<br>public class InstanceCarFactory {<br>    private Map<string, car=""> cars = null;</string,></p>
+<pre><code>public InstanceCarFactory() {
+    cars = new HashMap&lt;String, Car&gt;();
+    cars.put(&quot;audi&quot;, new Car(&quot;audi&quot;, 30000));
+    cars.put(&quot;ford&quot;, new Car(&quot;ford&quot;, 30000));
+}
+
+public Car getCar(String brand) {
+    return cars.get(brand);
+}
+</code></pre><p>}</p>
+<bean id="carFactory" class="com.Po.InstanceCarFactory"></bean>
+
+<bean id="car2" factory-bean="carFactory" factory-method="getCar"><br>    <constructor-arg value="ford"></constructor-arg><br></bean>
+
+<p>通过FactoryBean返回bean的实例，class:指向FactoryBean的全类名，property：配置FactoryBean的属性<br>但实际返回的实例FactoryBean的getObejct()方法返回的实例。</p>
+<bean id="car2" class="com.Po.CarFactoryBean"><br>        <property name="brand" value="AUdi"></property><br></bean>
+
+
+<p>public class CarFactoryBean implements FactoryBean<car>{</car></p>
+<pre><code>private String brand;
+public void setBrand(String brand){
+    this.brand = brand;
+}
+
+@Override
+public Car getObject() throws Exception {
+    return new Car(&quot;BMW&quot;,500000);
+}
+
+@Override
+public Class&lt;?&gt; getObjectType() {
+    return Car.class;
+}
+
+@Override
+public boolean isSingleton() {
+    return true;
+}
+</code></pre><p>}<br>配置说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">静态工厂配置</div><div class="line">public class BeingFactory &#123;</div><div class="line">	public static Being getBeing(String arg)&#123;</div><div class="line">		if(arg.equalsIgnoreCase(&quot;dog&quot;))&#123;</div><div class="line">			return new Dog();</div><div class="line">		&#125;else</div><div class="line">			return new Cat();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">&lt;bean id=&quot;dog&quot; class=&quot;com.yuchuan.BeingFactory&quot;</div><div class="line">	factory-method=&quot;getBeing&quot;&gt;</div><div class="line">	&lt;!-- constructor-arg 元素用于为静态工厂方法指定参数--&gt;</div><div class="line">	&lt;constructor-arg value=&quot;dog&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">	&lt;!-- property 元素驱动spring执行setter方法 --&gt;</div><div class="line">	&lt;property name=&quot;msg&quot; value=&quot;i am dog&quot;&gt;&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line">&lt;bean id=&quot;cat&quot; class=&quot;com.yuchuan.BeingFactory&quot;</div><div class="line">	factory-method=&quot;getBeing&quot;&gt;</div><div class="line">	&lt;constructor-arg value=&quot;cat&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">	&lt;property name=&quot;msg&quot; value=&quot;i am cat&quot;&gt;&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line">实例工厂配置</div><div class="line">public class PersonFactory &#123;</div><div class="line">	public IPerson getPerson(String ethnic)&#123;</div><div class="line">		if(ethnic.equalsIgnoreCase(&quot;chin&quot;))&#123;</div><div class="line">			return new Japanese();</div><div class="line">		&#125;else</div><div class="line">			return new American();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;bean id=&quot;PersonFactory&quot; class=&quot;com.yuchuan.PersonFactory&quot;&gt;&lt;/bean&gt;</div><div class="line">&lt;bean id=&quot;american&quot; factory-bean=&quot;PersonFactory&quot;</div><div class="line">	factory-method=&quot;getPerson&quot;&gt;</div><div class="line">	&lt;constructor-arg value=&quot;chin&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line">&lt;bean id=&quot;japanese&quot; factory-bean=&quot;PersonFactory&quot;</div><div class="line">	factory-method=&quot;getPerson&quot;&gt;</div><div class="line">	&lt;constructor-arg value=&quot;chin2&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>基于注解的方式</p>
+<p><context:component-scan>  扫描多个包可以使用逗号分隔<br>@Service<br>@Controller<br>@Respository</context:component-scan></p>
+<!-- 可以通过resource-patter指定扫描的资源 -->
+<pre><code>&lt;context:component-scan base-package=&quot;com.atguigu.spring.beans.annotation&quot;
+    resource-pattern=&quot;respository/.class&quot;&gt;&lt;/context:component-scan&gt;
+</code></pre><p>context:exclude-filter  根据表达式排除指定包的类</p>
+<p><context:component-scan base-package="com.atguigu.spring.beans.annotation"><br>        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"><br>    </context:exclude-filter></context:component-scan></p>
+<p>context:include-filter 根据表达式只扫描指定包的类，注意要和 use-default-filters=”false” 一起使用</p>
+<p><context:component-scan base-package="com.atguigu.spring.beans.annotation" use-default-filters="false"><br>        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"><br>    </context:include-filter></context:component-scan></p>
+<p>不包含某个接口和所有实现该接口的类</p>
+<p><context:component-scan base-package="com.atguigu.spring.beans.annotation"><br>        <context:exclude-filter type="assignable" expression="com.atguigu.spring.beans.annotation.respository.UserRespository"><br>    </context:exclude-filter></context:component-scan></p>
+<p>只包含实现了某个接口</p>
+<p><context:component-scan base-package="com.atguigu.spring.beans.annotation" use-default-filters="false"><br>        <context:include-filter type="assignable" expression="com.atguigu.spring.beans.annotation.respository.UserRespository"><br>    </context:include-filter></context:component-scan></p>
+<p><context:component-scan> 元素还会自动注册AutowiredAnnotationBeanPostProcessor实例，该实例可以自动装配具有@Autowired 和 @Resource<br>@Inject 注解的属性</context:component-scan></p>
+<p>@Autowired 注解自动装配具有兼容类型的单个Bean属性<br>构造器，普通字段(及时非public)，一切具有参数的方法都可以应用 @Autowired 注解<br>默认情况下，所有使用@Autowired 注解的属性都需要被设置，当Spring找不到匹配的Bean装配属性时，会抛出异常，若某一属性允许不被设置，可以设置@Autowired 注解的required属性为false   eg: @Autowired(required=false),找不到这个实例不会报错，而是为该实例为null</p>
+<p>@Autowired 也可以应用在数据类型上，此时Spring会把所有匹配的Bean进行自动装配<br>@Autowired 也可以应用在集合上，此时Spring读取该集合的类型信息，自动装配所有与之兼容的Bean<br>@Autowired 用在Map 上，若该Map的键值为String，那么Spring将自动装配与之Map值类型兼容的Bean，此时Bean的名称作为键，bean本身作为值</p>
+<p>若指定包含某个实现了接口的类<br>可以<br>@Autowired<br>@Qualifier(“userRepository”) 指定名字</p>
+<p>泛型依赖注入<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-18/14319610.jpg" alt=""><br>public class BaseRepository<t> {</t></p>
+<p>}<br>public class BaseService<t>{<br>    @Autowired<br>    protected BaseRepository<t> repository;</t></t></p>
+<pre><code>public void add(){
+    System.out.println(&quot;add...&quot;);
+    System.out.println(repository);
+}
+</code></pre><p>}</p>
+<p>@Repository<br>public class UserRepository extends BaseRepository<user>{</user></p>
+<p>}</p>
+<p>@Service<br>public class UserService extends BaseService<user>{</user></p>
+<p>}</p>
+<p>public class User{</p>
+<p>}</p>
+<p>父类之间建立了联系，子类继承了这种联系，还使用了User具体类型代替泛型 T</p>
+<p>动态代理实现AOP<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-19/31932448.jpg" alt=""></p>
+<p>public class ArithmeticCalculatorImpl implements ArithmeticCalculator{</p>
+<pre><code>@Override
+public int add(int i, int j) {
+    int result = i+j;
+    return result;
+}
+
+@Override
+public int sub(int i, int j) {
+    int result = i-j;
+    return result;
+}
+</code></pre><p>}</p>
+<p>public class ArithmeticCalculatorLoggingProxy {<br>    // 要代理的对象<br>    private ArithmeticCalculator target;</p>
+<pre><code>public ArithmeticCalculatorLoggingProxy(ArithmeticCalculator target) {
+    this.target = target;
+}
+
+public ArithmeticCalculator getLoggingProxy(){
+    ArithmeticCalculator proxy = null;
+    // 代理对象由哪一个类加载器负责加载
+    ClassLoader loader = target.getClass().getClassLoader();
+    // 代理对象的类型，其中有哪些方法
+    Class[] interfaces = new Class[]{ArithmeticCalculator.class};
+    // 当调用代理对象其中的方法时，该执行的代码
+    InvocationHandler h = new InvocationHandler() {
+        /**
+         * @proxy： 正在返回的那个代理对象，一般情况下，在invoke方法都不使用该对象
+         * method：正在被调用的方法
+         * args : 调用方法时传入的参数
+         */
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args)
+                throws Throwable {
+            String methodName = method.getName();
+            System.out.println(&quot;The methodName&quot;+methodName+&quot; begins with&quot; + Arrays.asList(args));
+            Object result=method.invoke(target, args);
+            System.out.println(&quot;method &quot; + methodName +&quot; ends with &quot;+result);
+            return result;
+        }
+    };
+    proxy = (ArithmeticCalculator) Proxy.newProxyInstance(loader, interfaces, h);
+
+    return proxy;
+}
+</code></pre><p>}</p>
+<p>public class MainTest {<br>    public static void main(String[] args) {</p>
+<pre><code>    ArithmeticCalculator target = new ArithmeticCalculatorImpl();
+    ArithmeticCalculator proxy = new ArithmeticCalculatorLoggingProxy(target).getLoggingProxy();
+
+
+    int result = proxy.sub(2, 1);
+    System.out.println(&quot;--&gt;&quot;+result);
+
+    result = proxy.add(1, 2);
+    System.out.println(&quot;--&gt;&quot; + result);
+
+}
+</code></pre><p>}</p>
+<p>输出<br>The methodNamesub begins with[2, 1]<br>method sub ends with 1<br>–&gt;1<br>The methodNameadd begins with[1, 2]<br>method add ends with 3<br>–&gt;3</p>
+<p>AOP 的主要编程对象是切面，而切面模块化横切关注点<br>在应用AOP编程时，仍然需要定义公共功能，但可以明确的定义这个功能在哪里，以什么方式应用，并且不必修改受影响的类，这样一来横切关注点就被模块化到特殊对象里<br>AOP好处：<br>每个事物逻辑位于一个位置，代码不分散，便于维护和升级<br>业务模块更简洁，只包含核心业务代码</p>
+<p>切面：横切关注点模块化的对象<br>连接点：程序执行的某个特定位置<br>切点： 每个类都拥有多个连接点，连接点是程序类客观存在的事务。AOP 通过切点定位到特定的连接点，类比：连接点相当于数据库中的记录，切点相当于查询条件。切点和连接点不是一对一，一个切点匹配多个连接点，切点通过org.springframework.aop.Pointcut 接口进行描述，它使用类和方法作为连接点的查询条件</p>
+<p>AspectJ: java社区里最完整最流行的AOP框架<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-19/90018731.jpg" alt=""></p>
+<p>@Component(value=”arithm”)<br>public class ArithmeticCalculatorImpl implements ArithmeticCalculator{</p>
+<pre><code>@Override
+public int add(int i, int j) {
+    return i+j;
+}
+
+@Override
+public int sub(int i, int j) {
+    return i-j;
+}
+</code></pre><p>}</p>
+<p>// 把这个类声明为一个切面，放入IOC容器中，再声明为一个切面<br>@Aspect<br>@Component<br>public class LoggingAspect {<br>    // 声明该方法是一个前置通知 ：在目标方法开始之前执行<br>    @Before(“execution(public int com.atguigu.aspect.ArithmeticCalculatorImpl.add(int, int))”)<br>    public void beforeMethod(JoinPoint joinPoint){<br>        String methodName = joinPoint.getSignature().getName();<br>        List<object> args = Arrays.asList(joinPoint.getArgs());<br>        System.out.println(“the method “ + methodName + “ begins with args “+args);<br>    }<br>}</object></p>
+<p><context:component-scan base-package="com.atguigu.aspect"></context:component-scan><br>    <!-- 使用AspectJ注解 自动为匹配的类生成代理对象 --><br>    <aop:aspectj-autoproxy></aop:aspectj-autoproxy></p>
+<ol>
+<li>切面首先是一个IOC的bean，加入@Component 注解</li>
+<li>切面 @Aspect 注解</li>
+<li><aop:aspectj-autoproxy></aop:aspectj-autoproxy></li>
+</ol>
+<p>在类中声明通知</p>
+<ol>
+<li>声明一个方法</li>
+<li>在方法前加入@Before 注解</li>
+</ol>
+<p>可以在通知里声明一个类型为JoinPoint的参数，就能访问链接细节，如方法名称和参数值</p>
+<p>后置通知使在连接点完成之后执行的，即连接点返回结果或者抛出异常的时候<br>在后置通知中还不能访问目标方法执行的结果（可以在返回通知里面访问结果）<br>@After(“execution(<em> com.atguigu.aspect.</em>.*(int,int))”)<br>    public void afterMethod(JoinPoint joinPoint){<br>        String methodName = joinPoint.getSignature().getName();<br>        System.out.println(“the method “+methodName+” ends “);<br>    }</p>
+<p>// 把这个类声明为一个切面，放入IOC容器中，再声明为一个切面<br>@Aspect<br>@Component<br>public class LoggingAspect {<br>    // 声明该方法是一个前置通知 ：在目标方法开始之前执行<br>    //前置通知<br>    @Before(“execution(<em> com.atguigu.aspect.</em>.<em>(int, int))”)<br>    public void beforeMethod(JoinPoint joinPoint){<br>        String methodName = joinPoint.getSignature().getName();<br>        List<object> args = Arrays.asList(joinPoint.getArgs());<br>        System.out.println(“the method “ + methodName + “ begins with args “+args);<br>    }<br>    // 后置通知<br>    @After(“execution(</object></em> com.atguigu.aspect.<em>.</em>(int,int))”)<br>    public void afterMethod(JoinPoint joinPoint){<br>        String methodName = joinPoint.getSignature().getName();<br>        System.out.println(“the method “+methodName+” ends “);<br>    }<br>    /**</p>
+<pre><code> * 方法正常结束执行的代码
+ * 返回通知使可以访问到方法的返回值的
+ * @param joinPoint
+ * @param result
+ */
+@AfterReturning(value=&quot;execution(* com.atguigu.aspect.*.*(int,int))&quot;,
+            returning=&quot;result&quot;)
+public void afterReturning(JoinPoint joinPoint, Object result){
+    String methodName = joinPoint.getSignature().getName();
+    System.out.println(&quot;the methodName &quot;+methodName+&quot; ends with &quot;+result);
+}
+/**
+ * 在目标方法出现异常时执行
+ * @param joinPoint
+ * @param ex
+ */
+@AfterThrowing(value=&quot;execution(* com.atguigu.aspect.*.*(int,int))&quot;,
+            throwing=&quot;ex&quot;)
+public void afterThrowing(JoinPoint joinPoint, Exception ex){
+    String methodName = joinPoint.getSignature().getName();
+
+}
+</code></pre><p>}</p>
+<p>环绕通知<br>@Aspect<br>@Component<br>public class LoggingAspect {</p>
+<pre><code>/**
+ * 环绕通知需要携带ProceedingJoinPoint 类型的参数
+ * 类似于动态代理的全过程；ProceedingJoinPoint类型的参数可以决定是否执行目标方法
+ * 且环绕通知必须有返回值，返回值即目标方法的返回值
+ * @param pjd
+ * @throws Throwable
+ */
+@Around(value=&quot;execution(* com.atguigu.aspect.*.*(int,int))&quot;)
+public Object aroundMethod(ProceedingJoinPoint pjd) throws Throwable{
+    Object result = null;
+    String methodName = pjd.getSignature().getName();
+    try {
+        // 前置通知
+        System.out.println(&quot;the method &quot;+methodName + &quot; begins with &quot;+Arrays.asList(pjd.getArgs()));
+        // 方法执行
+        result = pjd.proceed();
+        // 后置通知
+        System.out.println(&quot;the method &quot;+methodName+&quot; ends with &quot;+result);
+    } catch (Exception e) {
+         // 异常通知
+    }
+    // 后置通知
+    System.out.println(&quot;ends &quot;);
+    return result;
+}
+</code></pre><p>}</p>
+<p>指定切面的优先级，值越小优先级越高，添加注解<br>@Order(2)<br>@Aspect<br>@Component</p>
+<p>BeanPostProcessor 处理所有bean 接口 ，可以在其中选择过滤哪些bean</p>
+<p>静态工厂方法和实例工厂方法  还可以通过  factory-bean 返回实例</p>
+<bean id="car1" class="com.aiguigu.spring.beans.factory.StaticFactory" factory-method="getCar"><br>    <constructor-arg value="audi"></constructor-arg><br>    </bean>
+
+<bean id="carFactory" class="com.aiguigu.spring.beans.factory.InstanceCarFactory"></bean><br>    <bean id="car2" factory-bean="carFactory" factory-method="getCar"><br>        <constructor-arg value="ford"></constructor-arg><br>    </bean>
+
+<p>factory-bean 返回实例<br>实现 FactoryBean 接口，通过 FactoryBean 来配置Bean的实例，class指向FactoryBean的全类名，property配置FactoryBean<br>的属性，但实际返回的实例是 FactoryBean的getObject() 方法返回的实例。</p>
+<p>@Component  标识一个受Spring管理的组件<br>@Respository   持久层组件<br>@Service    服务层组件，业务层<br>@Controller   表现层组件</p>
+<p><context:component-scan base-package=""> 扫描当前包及其子包下的类<br>resource-pattern=”repository/*.class”  设置只扫描符合条件的类</context:component-scan></p>
+<p><component-scan>可以包含若干 exclude-filter include-filter</component-scan></p>
+<p><context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"><br>注意若要使用 <context:include-filter>  则 <context:component-scan> 配置  <use-default-filters="false"></use-default-filters="false"></context:component-scan></context:include-filter></context:exclude-filter></p>
+<p>@Autowired<br>@Qualifier(“userRepositoryImpl”) 指定名称</p>
+<p>Spring AOP</p>
+<ol>
+<li>jar包   sopalliance    aspectj.weaver    aop-4.0       aspects-4.0</li>
+<li>加入命名空间  aop context  bean<br>3.基于注解的方式   xml中加入  <aop:aspectj-autoproxy><br>把横切关注点的代码抽象到切面的类中，加入@Componet、@Aspect 注解，在方法前加 @Before<br>@Aspect<br>@Component<br>public class LoggingAspect {<br> @Before(“execution(<em> com.atguigu.spring.aop.impl.</em>.*(..))”)<br> public void beforeMethod(JoinPoint joinPoint) {<pre><code>String methodName = joinPoint.getSignature().getName();
+List&lt;Object&gt; args = Arrays.asList(joinPoint.getArgs());
+System.out.println(&quot;The method begins &quot; +args);
+</code></pre> }<br>}<br>可以在通知方法中声明一个类型为JoinPoint的参数，就能访问链接细节，如方法名称和参数值<br>@Before 前置通知<br>后置通知中不论执行成功与否，都会打印出来<br>返回通知可以访问到执行方法的执行结果<br>@AfterReturning(value=””,returning=”result”)<br>public void afterReturning(JoinPoint joinPoint,Object result){<br> String methodName = joinPoint.getSignature().getName();<br> System.out.println(methodName+” “ +result);<br>}<br>异常通知，在方法出现异常时，捕获到异常<br>@AfterThrowing(value=””,throwing=”ex”)<br>public void afterThrowing(JoinPoint joinPoint,Exception ex){</aop:aspectj-autoproxy></li>
+</ol>
+<p>}<br>环绕通知需要携带ProceedingJoinPoint类型的参数，类似于动态代理的全过程，环绕通知必须有返回值，返回值即为目标方法<br>的返回值<br>@Around(“”)<br>public void aroundMethod(ProceedingJoinPoint pjd){<br>    String methodName = pjd.getSignature().getName();<br>    System.out.println(pjd.getArgs());<br>    Object result = pjd.proceed()<br>}<br>指定切面的优先级，值越小优先级越高，添加注解 @Order(1)<br>定义一个方法，用于声明切入点表达式，一般的，该方法不需要添加其他的代码<br>使用@Pointcut 声明切入点表达式<br>@Pointcut(“execution(<em> com.atguigu.spring.aop.impl.</em>.<em>(..))”)<br>    public void declareJoinPoint() {}<br>引用之 @Before(“declareJoinPoint()”)，如果不在一个类，添加类名，类似，不在一个包，添加包名<br>eg:<br>@Pointcut(“execution(</em> com.atguigu.aspect.<em>.</em>(int, int))”)<br>    public void declareJoinPointExpression(){}</p>
+<p>@Before(“declareJoinPointExpression()”)<br>    public void beforeMethod(JoinPoint joinPoint) {<br>        String methodName = joinPoint.getSignature().getName();<br>        List<object> args = Arrays.asList(joinPoint.getArgs());<br>        System.out.println(“the method “ + methodName + “ begins with args “</object></p>
+<pre><code>            + args);
+}
+</code></pre><p>如果切点跟引用点不在同一个包里面，需要加上包名<br>eg: @Before(“com.atguigu.spring.aop.LoggingAspect.declareJoinPointExpression()”)</p>
+<p>配置的方式配置AOP<br>        <bean id="arithmeticCalculator" class="com.atguigu.spring.aop.impl.ArithmeticCalculatorImpl"></bean><br>        <bean id="loggingAspect" class="com.atguigu.spring.aop.impl.LoggingAspect"></bean><br>        <bean id="validationAspect" class="com.atguigu.spring.aop.impl.ValidationAspect"></bean></p>
+<pre><code>&lt;aop:config&gt;
+    &lt;aop:pointcut expression=&quot;execution(* com.atguigu.spring.aop.impl.*.*(..))&quot; id=&quot;pointcut&quot;/&gt;
+    &lt;aop:aspect ref=&quot;loggingAspect&quot;&gt;
+        &lt;aop:before method=&quot;beforeMethod&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
+        &lt;aop:before method=&quot;afterMethod&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
+    &lt;/aop:aspect&gt;
+    &lt;aop:aspect ref=&quot;validationAspect&quot;&gt;
+        &lt;aop:before method=&quot;validateArgs&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;
+</code></pre><p>db.properties<br><!-- 导入资源文件--></p>
+<p><context:property-placeholder location="classpath:db.properties"><br><!-- 配置C3p0数据源--><br>    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"><br>        <property name="user" value="${jdbc.user}"></property><br>        <property name="password" value="${jdbc.password}"></property><br>        <property name="driverClass" value="${jdbc.driverClass}"></property><br>        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property><br>        <property name="initialPoolSize" value="${jdbc.initPoolSize}"></property><br>        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property><br>    </bean></context:property-placeholder></p>
+<p>使用jdbcTemplate</p>
+<p><context:property-placeholder location="classpath:db.properties"><br>    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"><br>        <property name="user" value="${jdbc.user}"></property><br>        <property name="password" value="${jdbc.password}"></property><br>        <property name="driverClass" value="${jdbc.driverClass}"></property><br>        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property><br>        <property name="initialPoolSize" value="${jdbc.initPoolSize}"></property><br>        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property><br>    </bean></context:property-placeholder></p>
+<pre><code>&lt;bean id=&quot;jdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot;&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;  // jdbcTemplate需要数据源
+&lt;/bean&gt;
+
+&lt;bean id=&quot;namedParameterJdbcTemplate&quot;
+    class=&quot;org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate&quot;&gt;
+    &lt;constructor-arg ref= &quot;dataSource&quot;&gt;&lt;/constructor-arg&gt;
+&lt;/bean&gt;
+</code></pre><p>public class JDBCTest {<br>    ClassPathXmlApplicationContext ctx =null;<br>    JdbcTemplate jdbcTemplate = null;<br>    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;</p>
+<pre><code>{
+    ctx = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+    jdbcTemplate = (JdbcTemplate) ctx.getBean(&quot;jdbcTemplate&quot;);
+    namedParameterJdbcTemplate = (NamedParameterJdbcTemplate) ctx.getBean(&quot;namedParameterJdbcTemplate&quot;);
+}
+
+@Test
+public void test() throws SQLException {
+    DataSource dataSource = (DataSource) ctx.getBean(&quot;dataSource&quot;);
+    System.out.println(dataSource.getConnection());
+}
+
+@Test
+public void testUpdate(){
+    String sql = &quot;update course set cname=? where tnum=?&quot;;
+    jdbcTemplate.update(sql,&quot;French&quot;,&quot;01&quot;);
+}
+
+@Test
+public void testBatchUpdate(){
+    String sql = &quot;insert into course values(?,?,?)&quot;;
+    List&lt;Object[]&gt; batchArgs = new ArrayList&lt;&gt;();
+    batchArgs.add(new Object[]{&quot;08&quot;,&quot;Chinese&quot;,&quot;02&quot;});
+    batchArgs.add(new Object[]{&quot;05&quot;,&quot;French&quot;,&quot;05&quot;});
+    batchArgs.add(new Object[]{&quot;06&quot;,&quot;hello&quot;,&quot;03&quot;});
+    batchArgs.add(new Object[]{&quot;090&quot;,&quot;English&quot;,&quot;02&quot;});
+    jdbcTemplate.batchUpdate(sql, batchArgs);
+}
+/**
+ * 从数据库获取一条记录，实际得到一个对象
+ *  BeanPropertyRowMapper&lt;Employee&gt;(Class&lt;Employee&gt; mappedClass)
+ *  不是调用 queryForObject(String sql, Class&lt;Employee&gt; requiredType, Object... args)
+ *  而是调用  queryForObject(String sql, RowMapper&lt;Employee&gt; rowMapper, Object... args)
+ *  1. 其中RowMapper指定如何去映射结果集的行，常用的实现类为BeanPropertyRowMapper
+ *  2. 使用SQL中列的别名完成列名和类的属性名的映射
+ *  3. 不支持级联属性，不是ORM
+ */
+@Test
+public void testQueryForObject(){
+    String sql = &quot;select id,lastname,email from employees where id=?&quot;;
+    RowMapper&lt;Employee&gt; rowMapper = new BeanPropertyRowMapper&lt;Employee&gt;(Employee.class);
+    Employee employee = jdbcTemplate.queryForObject(sql, rowMapper, 1);
+    System.out.println(employee);
+}
+/**
+ * 查询结果为集合
+ */
+@Test
+public void testQueryForList(){
+    String sql = &quot;select id,lastName,email from employees where id &gt; ?&quot;;
+    RowMapper&lt;Employee&gt; rowMapper = new BeanPropertyRowMapper&lt;Employee&gt;(Employee.class);
+    List&lt;Employee&gt; employees = jdbcTemplate.query(sql, rowMapper,1);
+    for (Employee employee : employees) {
+        System.out.println(employee);
+    }
+}
+
+/**
+ * 获取单个列的值或统计查询
+ */
+@Test
+public void testQueryForObjectColunmn(){
+    String sql = &quot;select count(id) from employees&quot;;
+    long count = jdbcTemplate.queryForObject(sql, Long.class);
+    System.out.println(count);
+}
+/**
+ * 具名参数 ，可以为参数起名字
+ * 1
+ */
+@Test
+public void testNamedParameterJdbcTemplate(){
+    String sql = &quot;insert into employees values(:id,:lastname,:email)&quot;;
+    Map&lt;String,Object&gt; paramMap = new HashMap&lt;&gt;();
+    paramMap.put(&quot;id&quot;,99);
+    paramMap.put(&quot;lastname&quot;,&quot;hello&quot;);
+    paramMap.put(&quot;email&quot;,&quot;yu@163.com&quot;);
+    namedParameterJdbcTemplate.update(sql, paramMap);
+}
+
+@Test
+public void testNamedParameterJdbcTemplate2(){
+    // values里面的字段名称跟实体类字段一致（大小写）
+    String sql = &quot;insert into employees values(:id,:lastName,:email)&quot;;
+    Employee employee = new Employee();
+    employee.setLastName(&quot;xyz&quot;);
+    employee.setEmail(&quot;yu@163.com&quot;);
+    employee.setId(96);
+    BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(employee);
+    namedParameterJdbcTemplate.update(sql, paramSource);
+}
+</code></pre><p>}</p>
+<p>spring的声明式事务</p>
+<ol>
+<li><!-- 配置事务管理器 -->
+<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><br>  <property name="dataSource" ref="dataSource"></property><br></bean>
+</li>
+<li><!-- 启用事务注解 -->
+<tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven></li>
+<li><p>对应的方法上添加@Transactional注解<br> @Transactional<br> @Override<br> public void purchase(String userName, String isbn) {</p>
+<pre><code>// 1. 获取书的单价
+int price  = bookShopDao.findBookPriceByIsbn(isbn);
+// 2. 更新书的库存
+bookShopDao.updateBookStock(isbn);
+// 3. 更新用户余额
+bookShopDao.updateUserAccount(userName, price);
+</code></pre><p> }</p>
+</li>
+</ol>
+<p>Spring 支持的事务传播行为<br>REQUIRED  如果有事务在运行，当前的方法在这个事务内运行，否则就启动一个新的事务，并在自己的事务内运行。买两本书不够，买一本够，两本都买不了<br>REQUIRED_NEW  当前的方法必须启动新事务，并在它自己的事务内运行，如果有事务正在运行，应该将它挂起。买两本书不够，买一本够，可以买一本<br>使用 propagetion指定事务的传播行为<br>eg: @Transactional(propagation=Propagation.REQUIRED) // 事务的默认行为</p>
+<p>事务的隔离级别<br>isolation=Isolation.READ_COMMITTED 读已提交<br>默认情况下，Spring 的声明式事务对所有的运行时异常进行回滚<br>使用 readOnly指定事务是否只读，表示这个事务只读取数据不更新数据，有利于数据库引擎优化事务<br>使用timeout指定强制回滚之前事务可以占用的时间</p>
+</beans></constructor-arg></context:property-placeholder></bean></bean></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring/" rel="tag">#spring</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/09/springMVC学习笔记/" rel="prev">springMVC学习笔记</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/09/spring笔记/" rel="next">spring笔记</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

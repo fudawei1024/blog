@@ -1,0 +1,1027 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="面试," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="布尔类型的默认初始值是falsemain方法是静态的，不能访问一个非静态的变量main函数不能调用静态方法是指不能通过this调用非静态方法需要读比较大的文本文件 new BufferedReader(new InputStreamReader(new FileInputStream(“file.txt”)))如何实现java的序列化？实现Serializable接口，要想创建序列化对象，先创建一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java面试基础">
+<meta property="og:url" content="http://yoursite.com/2016/03/02/java面试基础/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="布尔类型的默认初始值是falsemain方法是静态的，不能访问一个非静态的变量main函数不能调用静态方法是指不能通过this调用非静态方法需要读比较大的文本文件 new BufferedReader(new InputStreamReader(new FileInputStream(“file.txt”)))如何实现java的序列化？实现Serializable接口，要想创建序列化对象，先创建一">
+<meta property="og:updated_time" content="2016-08-21T09:21:45.730Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java面试基础">
+<meta name="twitter:description" content="布尔类型的默认初始值是falsemain方法是静态的，不能访问一个非静态的变量main函数不能调用静态方法是指不能通过this调用非静态方法需要读比较大的文本文件 new BufferedReader(new InputStreamReader(new FileInputStream(“file.txt”)))如何实现java的序列化？实现Serializable接口，要想创建序列化对象，先创建一">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> java面试基础 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              java面试基础
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-03-02T22:15:53+08:00" content="2016-03-02">
+            2016-03-02
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/" itemprop="url" rel="index">
+                  <span itemprop="name">Java</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/java面试/" itemprop="url" rel="index">
+                  <span itemprop="name">java面试</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>布尔类型的默认初始值是false<br>main方法是静态的，不能访问一个非静态的变量<br>main函数不能调用静态方法是指不能通过this调用非静态方法<br>需要读比较大的文本文件 new BufferedReader(new InputStreamReader(new FileInputStream(“file.txt”)))<br>如何实现java的序列化？<br>实现Serializable接口，要想创建序列化对象，先创建一个OutputStream，然后把它嵌进ObjectOutputStream，用writeObject()<br>方法把对象写入OutputStream。读的时候需要把InputStream嵌到OjbectInputStream中，然后再调用readObject()方法。不过<br>这样读出来的只是一个Object的reference，使用之前，强制转换类型。<br>调用System类中的静态gc()方法可以运行垃圾收集器，但这样并不能保证立即回收指定对象</p>
+<h3 id="查看jar包源码"><a href="#查看jar包源码" class="headerlink" title="查看jar包源码"></a>查看jar包源码</h3><p>添加jar包源码<br>建立libs-src ,复制volley-source.jar<br>在libs目录中，新建 volley.jar.properties文件<br>添加 src=..\libs-src\volley-sources.jar，重启项目<br>判断一块内存空间是否符合垃圾收集器标准是：</p>
+<ol>
+<li>给对象赋予了控制null，以后再也没掉用过</li>
+<li>给对象赋予了新值，即重新分配了内存空间<h3 id="Object-基类方法包含"><a href="#Object-基类方法包含" class="headerlink" title="Object 基类方法包含"></a>Object 基类方法包含</h3>clone()  创建并返回对象的一个副本<br>equals()  notify()  notifyAll()   wait()  toString()<br>finalize()   当垃圾回收器确定不存在对该对象的更多引用时，由对象的垃圾回收器调用此方法<br>hashCode()   返回该对象的哈希值</li>
+</ol>
+<h3 id="不通过构造函数能创建对象吗？"><a href="#不通过构造函数能创建对象吗？" class="headerlink" title="不通过构造函数能创建对象吗？"></a>不通过构造函数能创建对象吗？</h3><p>1.用new语句创建<br>2.运用反射，调用java.lang.Class 或者  java.lang.reflect.ConStruct 类的newInstance()实例方法<br>3.调用对象的clone() 方法<br>4.运用反序列手段，调用java.io.ObjectInputStream 对象的readObject() 方法<br>重点题目 P100<br>Collection(List Set Queue)   Map(HashMap  HashTable  TreeMap )</p>
+<h3 id="遍历HashMap的两种方式"><a href="#遍历HashMap的两种方式" class="headerlink" title="遍历HashMap的两种方式"></a>遍历HashMap的两种方式</h3><p>第一种:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">　　Map map = new HashMap();</div><div class="line">　　Iterator iter = map.entrySet().iterator();</div><div class="line">　　while (iter.hasNext()) &#123;</div><div class="line">　　    Map.Entry entry = iter.next();</div><div class="line">System.out.println(entry.getKey()+&quot; &quot;+entry.getValue());</div><div class="line">　　&#125;</div></pre></td></tr></table></figure></p>
+<p>第二种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for(Map.Entry&lt;String, String&gt; entry : map.entrySet()) &#123;</div><div class="line">		System.out.println(entry.getKey()+&quot; &quot;+entry.getValue());</div><div class="line">			&#125;</div></pre></td></tr></table></figure></p>
+<p>如果只是遍历key而无需value，可以直接用  for(String key : map.keySet()){ … }<br>URL是一种具体的URI，它不仅唯一标识资源，而且还提供了定位该资源的信息。<br>URI是一种语义上的抽象概念，可以是绝对的，也可以是相对的，而URL则必须提供足够的信息来定位</p>
+<h3 id="HashMap-和-HashTable-区别-？"><a href="#HashMap-和-HashTable-区别-？" class="headerlink" title="HashMap 和 HashTable 区别 ？"></a>HashMap 和 HashTable 区别 ？</h3><p>HashMap 线程不安全的，允许一个null键和多个null值<br>HashTable 线程安全的，不允许null键和null值，比HashMap慢，因为它是同步的。<br>HashMap 把Hashtable的contains()方法替换为了 containsValue()和containsKey()</p>
+<p>构造函数是没有返回值的。<br>当创建一个子类的时候，会调用父类的构造方法<br>什么是多态 ？</p>
+<h3 id="重载和重写有什么不同？"><a href="#重载和重写有什么不同？" class="headerlink" title="重载和重写有什么不同？"></a>重载和重写有什么不同？</h3><p>具有不同参数列表（参数的类型、个数、顺序不同）的同名函数，程序胡根据不同的参数列来确定具体调用那个函数，这种机制<br>叫做重载，重载不关心函数的返回值类型。覆盖是指派生类中存在重新定义的函数，其函数名、参数列、返回值类型必须同父类<br>中对应被覆盖的的函数严格一致，但派生类对象调用子类中该同名方式时会自动调用子类中的覆盖版本。<br>子类的构造函数如果引用super，必须把super放在函数的首位<br>this关键字使用在一个成员函数的内部，指向当前对象，当前对象指的是调用当前正在执行方法的那个对象。super关键字是直接<br>指向超类的构造函数，用来引用超类中的变量和方法。</p>
+<h3 id="什么是Java虚拟机？"><a href="#什么是Java虚拟机？" class="headerlink" title="什么是Java虚拟机？"></a>什么是Java虚拟机？</h3><p>Java 虚拟机是一个可以执行Java字节码的虚拟机进程。Java 源文件被编译成能被Java虚拟机执行的字节码文件。<br>Java 虚拟机知道底层硬件平台的指令长度和其他特性。<br>static 关键字是什么意思？Java中是否可以覆盖(override)一个private或者是static的方法？<br> static 关键字表明一个成员变量或者是成员方法可以在没有所属的类的实例变量的情况下被访问。<br>Java 中static方法不能被覆盖，因为方法覆盖是基于运行时动态绑定的，而static方法是编译时静态绑定的。static方法跟类<br>的任何实例都不相关<br>java的8种数据类型 byte short  boolean char  int long float double</p>
+<h3 id="有哪几种存储结构？"><a href="#有哪几种存储结构？" class="headerlink" title="有哪几种存储结构？"></a>有哪几种存储结构？</h3><p>1.随机存取。可以任意存取任意一个元素<br>2.顺序存取。只能从前到后逐个访问，比如链表结构<br>3.索引存取。索引存取是为某个关键字建立索引表，从所有的表中得到地址，在直接访问<br>4.散列存取。建立散列表，根据key计算出存储位置，相当于一种索引</p>
+<p>有1千万条有重复的短信，用五分钟时间找出重复出现最多的10条短信。<br>方法1：</p>
+<p>方法2：</p>
+<p>方法3：</p>
+<p>百度或淘宝搜索时，出现搜索建议，采用什么数据结构实现？<br>字典树，是一种噶洗漱的变种，一种用于快速检索的多叉树结构。用于统计和排序大量的字符串，经常被搜索引擎用于文本词频<br>统计。核心思想是空间换时间。利用该字符串的公共前缀来降低查询时间的开销以达到提高效率的目的。</p>
+<p>排序：<br>在待排序的文件中，若存在多个关键字相同的记录，经过排序后，这些具有相同关键字的记录之间的相对次序保持不变，该排序<br>方法是稳定的；若具有相同关键字的记录之间的相对次序发生变化，则称这种排序方法是不稳定的。<br>排序时不涉及数据的内外存交换，称之为内部排序；反之，排序过程要进行数据的内外存交换，称之为外部排序。</p>
+<p>冒泡排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public static void bublbleSort(int[] source) &#123;</div><div class="line">		for(int i = source.length-1;i &gt; 0;i --) &#123;</div><div class="line">			for(int j = 0; j &lt; i; j ++) &#123;</div><div class="line">				if(source[j] &gt; source[j+1]) &#123;</div><div class="line">					swap(source,j,j+1);</div><div class="line">				&#125;</div><div class="line"></div><div class="line">			&#125;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<p>选择排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public static void selectSort(int[] source) &#123;</div><div class="line">		for(int i = 0;i&lt;source.length;i++) &#123;</div><div class="line">			for(int j = i+1;j&lt;source.length;j++) &#123;</div><div class="line">				if(source[i] &gt; source[j]) &#123;</div><div class="line">					swap(source, j, i);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>插入排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public static void insertSort(int[] source) &#123;</div><div class="line">		for(int i = 0;i&lt;source.length;i++) &#123;</div><div class="line">			for(int j =i;(j&gt;0 &amp;&amp; source[j] &lt; source[j-1]);j--) &#123;</div><div class="line">					swap(source, j, j-1);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>快速排序</p>
+<p>String s = “a”+”b”+”c”+”d”+”e”  产生了一个对象，因为赋值符号右边的字母都是常量，对于常量，编译时就直接存储他们<br>的字面值，而不是他们的引用。在编译时就把他们连接的结果提取出来变成了”abcde”<br>new String(“jinder”) 实际创建了2个对象，一个是”jinder”通过””双引号创建的，另一个是通过new创建的，只不过他们创建<br>的时期不同，一个是编译期，一个是运行期。<br>运行期调用String类型的intern()方法可以向StringPool中动态添加对象</p>
+<p>简述 synchronized 和 java.util.concurrent.locks.Lock 的异同？<br>Lock 能完成synchronized所实现的所有功能。主要不同点是，Lock 有比synchronized更精确的线程语义和更好的性能。synchronized<br>会自动释放锁，而Lock一定要求程序员手工释放，并且必须在finally从句中释放。</p>
+<p>只要当前JVM实例尚存在任何一个非守护线程没有结束，守护线程就全部工作;只有当最后一个非守护线程结束时，守护线程随着JVM一同<br>结束任务。守护线程最典型的应用就是GC。</p>
+<h3 id="存储过程和函数的区别是什么？"><a href="#存储过程和函数的区别是什么？" class="headerlink" title="存储过程和函数的区别是什么？"></a>存储过程和函数的区别是什么？</h3><p>存储过程是用户定义的一系列SQL语句的集合，设计特定表或其他对象的任务，用户可以调用存储过程，而函数通常是数据库已经定义的<br>方法，它接受参数并返回某种类型的值，而且不涉及特定用户表。<br>游标作用是什么？怎样判断游标到了最后？<br>游标用来定位结果集中的行，通过判断@@FETCH_STATUS，可以判断游标是否到了最后，通常此变量不等于0表示出错或者到了最后。<br>行级触发器在所影响的每一行触发一次。</p>
+<h3 id="数据库查询优化"><a href="#数据库查询优化" class="headerlink" title="数据库查询优化"></a>数据库查询优化</h3><p>执行数据库查询时，如果要查询的数据有很多，假设1000万，用什么办法可以提高查询效率？在数据库方面或java代码方面优化 ？<br>1.在数据库方面<br>建立索引   分区（MySQL，比如按时间分区）   尽量使用固定长度的字段    限制字段长度<br>2.在数据库 I/O 方面<br>增加缓冲区    如果涉及表的级联，不同的表存储在不同的磁盘上，以增加IO速度<br>3.在SQL方面<br>优化sql语句，减少比较次数     限制返回的条目数（MySQL 里面用limit）<br>4.在java方面<br>对于反复查询使用的查询，使用PreparedStatement 减少查询次数</p>
+<p>unique 约束能够约束一列保证该列值唯一，但允许有空值</p>
+<h3 id="NAT技术"><a href="#NAT技术" class="headerlink" title="NAT技术"></a>NAT技术</h3><p>NAT 技术（网络地址转换）是一种将一个IP地址域映射到另一个IP地址域的技术，从而为终端主机提供透明路由。NAT 包括静态网络地址<br>转换、动态网络地址转换、端口映射等。NAT 常用语私有地址域与工友地址的转换，解决IP地址匮乏的问题、在防火墙上实现了NAT以后<br>可以隐藏受保护网络的内部拓扑结构，在一定程度上提高网络的安全性。</p>
+<h3 id="IP-地址分配"><a href="#IP-地址分配" class="headerlink" title="IP 地址分配"></a>IP 地址分配</h3><p>A 类地址 １-127      0<br>B 类地址 128 - 191   10<br>C 类地址 192-223     110<br>FTP 是有连接的服务，必须基于TCP协议</p>
+<h3 id="TCP-的三次握手"><a href="#TCP-的三次握手" class="headerlink" title="TCP 的三次握手"></a>TCP 的三次握手</h3><p>第一次握手：建立连接时，客户端发送SYN包到服务器，并进入SYN_SEND状态，等待服务器确认。<br>第二次握手：服务器收到SYN包，必须确认客户的SYN（ack=j+1），同时自己也发送一个SYN包（SYN=k），即SYN+ACK包，此时服务器<br>进入SYN_RECV状态。<br>第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送确认宝ACK（ack=k+1）,此包发送完毕，客户端和服务器进入ESTABLISHED<br>状态，完成三次握手。<br>完成三次握手后，客户端和服务器开始传送数据。<br>未连接队列：在三次握手协议中，服务器维护一个未连接队列，该队列未每个客户端的SYN包开设一个条目，该条目表明服务器已收到SYN<br>包，并向客户发出确认，正在等待客户的确认包。这些条目所标识的连接在服务器处于SYN_RECV状态，当服务器收到客户端的确认包，<br>删除该条目，服务器进入ESTABLISHED状态。</p>
+<h3 id="ping命令基于什么协议？"><a href="#ping命令基于什么协议？" class="headerlink" title="ping命令基于什么协议？"></a>ping命令基于什么协议？</h3><p>ICMP Internet 控制消息协议是TCP/IP 协议族的一个自协议，用于在IP主机、路由器之间传递控制消息，控制消息是指网路通不通，<br>主机是否可达，路由是否可用等网络本身的消息。ping命令向指定的IP地址发送一定长度的数据包，按照约定，若指定的IP存在的话，<br>会返回同样大小的数据包，若在特定的时间没有返回，超时，则认为IP不存在。</p>
+<p>子网掩码是用来判断任意两台计算机的IP地址是否属于同一子网络的根据。两台计算机各自的IP地址域子网掩码进行AND运算之后，<br>如果得出的结果是相同的额，则说明两台计算机是处于同一个子网络的，可以进行直接的通信。</p>
+<h3 id="什么是迭代器-Iterator-？"><a href="#什么是迭代器-Iterator-？" class="headerlink" title="什么是迭代器(Iterator)？"></a>什么是迭代器(Iterator)？</h3><p>Iterator 接口提供了很多对集合元素进行迭代的方法。每一个集合类都包含了可以返回迭代器实例的迭代方法。迭代器可以在迭代的<br>过程中删除底层集合的元素,但是不可以直接调用集合的remove(Object Obj)删除，可以通过迭代器的remove()方法删除。<br>如何确保N个线程可以访问N个资源同时又不导致死锁？<br>指定获取锁的顺序，并强制线程按照指定的顺序获取锁。</p>
+<h3 id="在监视器-Monitor-内部，是如何做线程同步的？"><a href="#在监视器-Monitor-内部，是如何做线程同步的？" class="headerlink" title="在监视器(Monitor)内部，是如何做线程同步的？"></a>在监视器(Monitor)内部，是如何做线程同步的？</h3><p>监视器和锁在Java虚拟机中是一块使用的。监视器监视一块同步代码块，确保一次只有一个线程执行同步代码块。每一个监视器都和一个<br>对象引用相关联。线程在获取锁之前不允许执行同步代码。</p>
+<h3 id="同步方法和同步代码块的区别？"><a href="#同步方法和同步代码块的区别？" class="headerlink" title="同步方法和同步代码块的区别？"></a>同步方法和同步代码块的区别？</h3><p>同步方法默认用this或者当前类class对象作为锁；<br>同步代码块可以选择以什么来加锁，比同步方法要更细颗粒度，我们可以选择只同步会发生同步问题的部分代码而不是整个方法；</p>
+<p>应用程序可以使用Executor框架来创建线程池 (创建线程的方式还有 继承Thread类，实现Runnable接口 )</p>
+<h3 id="重载和重写"><a href="#重载和重写" class="headerlink" title="重载和重写"></a>重载和重写</h3><p>重载发生在同一个类里面，多个方法名相同但是形参列表不同的情况，返回类型可以相同也可以不同。<br>重写发生在父类子类里面，子类重新定义了父类方法，方法重写（覆盖）必须有相同的方法名、形参列表和返回类型。</p>
+<h3 id="接口和抽象类的区别是什么？"><a href="#接口和抽象类的区别是什么？" class="headerlink" title="接口和抽象类的区别是什么？"></a>接口和抽象类的区别是什么？</h3><p>Java 提供和支持创建抽象类和接口。它们的实现有共同点，不同点在于：<br>接口中所有的方法隐含的都是抽象的。而抽象类则可以同时包含抽象和非抽象的方法。<br>类可以实现很多个接口，但是只能继承一个抽象类<br>类可以不实现抽象类和接口声明的所有方法，当然，在这种情况下，类也必须得声明成是抽象的。<br>抽象类可以在不提供接口方法实现的情况下实现接口。<br>Java 接口中声明的变量默认都是final的。抽象类可以包含非final的变量。<br>Java 接口中的成员函数默认是public的。抽象类的成员函数可以是private，protected或者是public。<br>接口是绝对抽象的，不可以被实例化。抽象类也不可以被实例化，但是，如果它包含main方法的话是可以被调用的。<br>也可以参考JDK8中抽象类和接口的区别</p>
+<h3 id="HashMap和Hashtable区别？"><a href="#HashMap和Hashtable区别？" class="headerlink" title="HashMap和Hashtable区别？"></a>HashMap和Hashtable区别？</h3><p>HashMap和Hashtable都实现了Map接口，因此很多特性非常相似。但是，他们有以下不同点：<br>HashMap允许键和值是null，而Hashtable不允许键或者值是null。<br>Hashtable是同步的，而HashMap不是。因此，HashMap更适合于单线程环境，而Hashtable适合于多线程环境。</p>
+<h3 id="Java中的HashMap的工作原理？"><a href="#Java中的HashMap的工作原理？" class="headerlink" title="Java中的HashMap的工作原理？"></a>Java中的HashMap的工作原理？</h3><p>Java中的HashMap是以键值对(key-value)的形式存储元素的。HashMap需要一个hash函数，它使用hashCode()和equals()方法来向集合<br>/从集合添加和检索元素。当调用put()方法的时候，HashMap会计算key的hash值，然后把键值对存储在集合中合适的索引上。如果key<br>已经存在了，value会被更新成新值;若计算出来的索引位置相同，形成Entry链。</p>
+<p>快速失败(fail-fast)和安全失败(fail-safe)的区别是什么？<br>Iterator的安全失败是基于对底层集合做拷贝，因此，它不受源集合上修改的影响。java.util包下面的所有的集合类都是快速失败的，<br>而java.util.concurrent包下面的所有的类都是安全失败的。快速失败的迭代器会抛出ConcurrentModificationException异常，而安全<br>失败的迭代器永远不会抛出这样的异常。</p>
+<h3 id="ArrayList和LinkedList区别？"><a href="#ArrayList和LinkedList区别？" class="headerlink" title="ArrayList和LinkedList区别？"></a>ArrayList和LinkedList区别？</h3><p>ArrayList和LinkedList都实现了List接口，他们有以下的不同点：<br>ArrayList是基于索引的数据接口，它的底层是数组。它可以以O(1)时间复杂度对元素进行随机访问。与此对应，LinkedList是以元素列表的形式存储它的数据，每一个元素都和它的前一个和后一个元素链接在一起，在这种情况下，查找某个元素的时间复杂度是O(n)。<br>相对于ArrayList，LinkedList的插入，添加，删除操作速度更快，因为当元素被添加到集合任意位置的时候，不需要像数组那样重新计算大小或者是更新索引。<br>LinkedList比ArrayList更占内存，因为LinkedList为每一个节点存储了两个引用，一个指向前一个元素，一个指向下一个元素。</p>
+<h3 id="Array和ArrayList区别？"><a href="#Array和ArrayList区别？" class="headerlink" title="Array和ArrayList区别？"></a>Array和ArrayList区别？</h3><p>Array可以包含基本类型和对象类型，ArrayList只能包含对象类型。<br>Array大小是固定的，ArrayList的大小是动态变化的。<br>ArrayList提供了更多的方法和特性，比如：addAll()，removeAll()，iterator()等等。</p>
+<h3 id="Iterator和ListIterator的区别？"><a href="#Iterator和ListIterator的区别？" class="headerlink" title="Iterator和ListIterator的区别？"></a>Iterator和ListIterator的区别？</h3><p>Iterator可用来遍历Set和List集合，但是ListIterator只能用来遍历List。<br>Iterator对集合只能是前向遍历，ListIterator既可以前向也可以后向。<br>ListIterator实现了Iterator接口，并包含其他的功能，比如：增加元素，替换元素，获取前一个和后一个元素的索引</p>
+<h3 id="Comparable和Comparator接口"><a href="#Comparable和Comparator接口" class="headerlink" title="Comparable和Comparator接口"></a>Comparable和Comparator接口</h3><p>Java提供了只包含一个compareTo()方法的Comparable接口。这个方法可以个给两个对象排序。<br>Java提供了包含compare()和equals()两个方法的Comparator接口。compare()方法用来给两个输入参数排序。</p>
+<h3 id="Java优先级队列-Priority-Queue-？"><a href="#Java优先级队列-Priority-Queue-？" class="headerlink" title="Java优先级队列(Priority Queue)？"></a>Java优先级队列(Priority Queue)？</h3><p>PriorityQueue是一个基于优先级堆的无界队列，它的元素是按照自然顺序(natural order)排序的。在创建的时候，我们可以给它提供<br>一个负责给元素排序的比较器。PriorityQueue不允许null值，因为他们没有自然顺序，或者说他们没有任何的相关联的比较器。最后，<br>riorityQueue不是线程安全的，入队和出队的时间复杂度是O(log(n))。</p>
+<p>什么时候使用CallableStatement？用来准备CallableStatement的方法是什么？<br>CallableStatement用来执行存储过程。存储过程是由数据库存储和提供的。存储过程可以接受输入参数，也可以有返回结果。非常鼓励<br>用存储过程，因为它提供了安全性和模块化。准备一个CallableStatement的方法是：CallableStament.prepareCall();</p>
+<p>PreparedStatement比Statement有什么优势？<br>PreparedStatements是预编译的，因此，性能会更好。同时，不同的查询参数值，PreparedStatement可以重用。</p>
+<h3 id="URL编码和URL解码？"><a href="#URL编码和URL解码？" class="headerlink" title="URL编码和URL解码？"></a>URL编码和URL解码？</h3><p>URL编码是负责把URL里面的空格和其他的特殊字符替换成对应的十六进制表示，反之就是解码。</p>
+<h3 id="doGet-方法和doPost-方法区别？"><a href="#doGet-方法和doPost-方法区别？" class="headerlink" title="doGet()方法和doPost()方法区别？"></a>doGet()方法和doPost()方法区别？</h3><p>doGet: GET 方法会把键值对追加在请求的URL后面。因为URL对字符数目有限制， 限制了用在客户端请求的参数值的数目。并且请求中<br>的参数值是可见的 ，不够安全。<br>doPOST：POST方法通过把请求参数值放在请求体中来克服GET方法的限制，因此，可以发送的参数的数目是没有限制的。<br>最后，通过POST请求传递的敏感信息对外部客户端是不可见的。</p>
+<h3 id="解释下Servlet的生命周期。"><a href="#解释下Servlet的生命周期。" class="headerlink" title="解释下Servlet的生命周期。"></a>解释下Servlet的生命周期。</h3><p>对每一个客户端的请求，Servlet引擎 载入Servlet，调用它的init()方法，完成Servlet的初始化。然后，Servlet 对象通过为每一个<br>请求单独调用service()方法来处理所有随后来自客户端的请求，最后，调用Servlet的destroy()方法把Servlet卸载掉。</p>
+<h3 id="什么是Servlet？"><a href="#什么是Servlet？" class="headerlink" title="什么是Servlet？"></a>什么是Servlet？</h3><p>Servlet 是用来处理客户端请求并产生动态网页内容的Java类。Servlet 主要是用来处理或者是存储HTML表单提交的数据，产生动态内容</p>
+<h3 id="什么是反射？"><a href="#什么是反射？" class="headerlink" title="什么是反射？"></a>什么是反射？</h3><p>Java 程序可以加载一个运行时才得知名称的 class，获悉其完整构造（但不包括methods定义），并生成其对象实体、<br>或对其fields设值、或唤起其methods。</p>
+<h3 id="匿名内部类的变量必须final修饰？"><a href="#匿名内部类的变量必须final修饰？" class="headerlink" title="匿名内部类的变量必须final修饰？"></a>匿名内部类的变量必须final修饰？</h3><p>首先内部类的生命周期是成员级别的，而局部变量的生命周期是在方法体之类，当mRun方法执行，new<br>的线程运行，新线程里面会睡一秒。主线程会继续执行，mRun执行完毕，name属性生命周期结束，Java就是为了杜绝这种错误，严格要求<br>内部类中方位局部变量，必须使用final关键字修饰。局部变量被final修饰之后，此时会在内存中保有一份局部变得的复制品，当内部类<br>访问的时候其实访问的是这个复制品。</p>
+<h3 id="小知识"><a href="#小知识" class="headerlink" title="小知识"></a>小知识</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">public void test() &#123;</div><div class="line">	Integer a = new Integer(1000) ; int b = 1000;</div><div class="line">	Integer c = new Integer(10); Integer d = new Integer(10);</div><div class="line">	System.out.println(a == b);    //true   自动拆箱为int</div><div class="line">	System.out.println(c == d);    //false</div><div class="line">&#125;</div><div class="line">//Integer.java valueOf 方法中把-128-127 缓存了下来。官方解释是小的数字使用的频率比较高， 为了优化性能，把这之间的数缓存了下来</div><div class="line">@Test</div><div class="line">public void testInteger()&#123;</div><div class="line">	Integer a = 1000,b=1000;</div><div class="line">	Integer c = 100,d=100;</div><div class="line">	System.out.println(a==b);   //false  new出来的</div><div class="line">	System.out.println(c==d);   //true   缓存中的</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>[reference] <a href="http://www.imooc.com/article/2964" target="_blank" rel="external">http://www.imooc.com/article/2964</a></p>
+<h3 id="调用三种方式"><a href="#调用三种方式" class="headerlink" title="调用三种方式"></a>调用三种方式</h3><p>模块之间都存在一定的调用关系，从调用方式上看，可以分为三类同步调用、异步调用和回调。同步调用是一种阻塞式调用，异步调用是一种<br>类似消息或事件的机制解决了同步阻塞的问题，回调是一种双向的调用模式，也就是说，被调用的接口被调用时也会调用对方的接口，例如A<br>要调用B,B在执行完又要调用A。<br>public interface FileNameFilter{<br>    boolean accept(File dir,String name);<br>}</p>
+<h3 id="标记接口"><a href="#标记接口" class="headerlink" title="标记接口"></a>标记接口</h3><p>如果实现接口的类是抽象类，那么就没必要实现该接口的方法。<br>一个接口能继承另一个接口，这和类之间的继承比较相似。也就是说实现某一个接口之后，可能要实现的方法不是直接接口定义的方法，<br>可能是该接口继承于另外一个接口的方法。<br>没有任何方法的接口被称为标记接口。标记接口主要用于以下两种目的：<br>1.建立一个公共的父接口<br>2.向一个类添加数据类型</p>
+<h3 id="SQL三范式"><a href="#SQL三范式" class="headerlink" title="SQL三范式"></a>SQL三范式</h3><p>SQL语言支持关系数据库的三级模式结构，其中，视图对应外模式，基本表对应模式，存储文件对应内模式。<br>通过分解，可以将一个低一级别的关系模式转换成若干个高一级范式的关系模式，这种过程叫做规范化。<br>eg: FIRST(Sno,Sname,Status,City,Pno,Qty)<br>依赖关系： F={ Sno-&gt; Sname,Sno-&gt;Status,Status-&gt;City,(Sno,Pno)-&gt;Qty}</p>
+<ul>
+<li>1NF(第一范式)<br>定义：若关系模式R的每一个分量是不可再分的数据项，则关系模式R属于第一范式<br>FIRST属于第一范式，但1NF存在4个问题：<br>冗余度大，每个Sno,Sname,Status,City 要与其供应的零件的种类一样多<br>引起修改操作的不一致性<br>插入异常，若某个供应者某些信息没有提供(比如没有Pno)则不能进行插入操作</li>
+<li>2NF(第二范式)<br>定义：若关系模式R属于1NF,且每一个非主属性完全依赖于码，则关系模式R属于2NF<br>也就是说，当1NF消除了非主属性对码的部分函数依赖，则成为2NF<br>将FIRST分解为 FIRST1(Sno,Sname,Status,City) 和 FIRST2(Sno,Pno,Qty) 分解后，FIRST1 的 非主属性 Sname,Status,City 完全依赖<br>于码 Sno,FIRST2的非主属性 Qty 完全依赖于码 Sno,Pno,所以属于2NF</li>
+<li>3NF(第三范式)<br>若关系模式中不存在这样的码X，属性组Y以及非主属性Z，使得X-&gt;Y,Y-Z成立，则关系模式R属于3NF<br>即当2NF消除了非主属性对码的传递函数依赖，则成为3NF<br>分解为 FIRST1(Sno,Sname,Status)  FIRST2(Status,City)   FIRST3(Sno,Pno,Qty)<br>3NF的模式肯定是2NF,产生冗余和异常的两个重要原因是部分依赖和传递依赖，因为3NF模式中不存在非主属性对码的部分函数依赖和<br>传递函数依赖，所以具有较高的性能，通常变换为3NF或更高级别的凡是，这种变化过程成为“关系模式的规范化处理”<h3 id="Webservice"><a href="#Webservice" class="headerlink" title="Webservice"></a>Webservice</h3>W  ebService是一种跨编程语言和跨操作系统平台的远程调用技术。<br>远程调用，就是一台计算机a上的一个程序可以调用到另外一台计算机b上的一个对象的方法，譬如，银联提供给商场的pos刷卡系统，<br>商场的POS机转账调用的转账方法的代码其实是跑在银行服务器上。再比如，amazon，天气预报系统，淘宝网，校内网，百度等把自己的<br>系统服务以webservice服务的形式暴露出来，让第三方网站和程序可以调用这些服务功能，这样扩展了自己系统的市场占有率，就是<br>所谓的SOA应用。<br> WebService是建立可互操作的分布式应用程序的新平台，是一个平台，是一套标准。它定义了应用程序如何在Web上实现互操作性<br>Web service平台必须提供一种标准来描述Web service，让客户可以得到足够的信息来调用这个Web service<br>XML+XSD,SOAP和WSDL就是构成WebService平台的三大技术。<br>WebService采用HTTP协议传输数据，采用XML格式封装数据（即XML中说明调用远程服务对象的哪个方法，传递的参数是什么，以及服务<br>对象的返回结果是什么）。XML是WebService平台中表示数据的格式。<br>SOAP协议 = HTTP协议 + XML数据格式<br>WSDL(Web Services Description Language)就是这样一个基于XML的语言，用于描述Web Service及其函数、参数和返回值。<br>它是WebService客户端和服务器端都能理解的标准格式。<h3 id="Java-String-split-用法"><a href="#Java-String-split-用法" class="headerlink" title="Java String.split()用法"></a>Java String.split()用法</h3>String.split(“\.”) //用 . 分割字符串<br>acount=?and uu =? or n=?”,把三个都分隔出来可以用String.split(“and|or”); //分割多个</li>
+</ul>
+<p>需要在程序中存储许多字符串常量，所以就想到了枚举</p>
+<h3 id="获取用户IP"><a href="#获取用户IP" class="headerlink" title="获取用户IP"></a>获取用户IP</h3><p>public static String getIpAddr(HttpServletRequest request) {<br>        String ip = request.getHeader(“x-forwarded-for”);<br>        if (ip == null || ip.length() == 0 || “unknown”.equalsIgnoreCase(ip)) {<br>            ip = request.getHeader(“Proxy-Client-IP”);<br>        }<br>        if (ip == null || ip.length() == 0 || “unknown”.equalsIgnoreCase(ip)) {<br>            ip = request.getHeader(“WL-Proxy-Client-IP”);<br>        }<br>        if (ip == null || ip.length() == 0 || “unknown”.equalsIgnoreCase(ip)) {<br>            ip = request.getRemoteAddr();<br>        }<br>        return ip;<br>    }</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag">#面试</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/03/多线程学习笔记/" rel="prev">多线程学习笔记</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/17/markdown语法/" rel="next">markdown语法</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看jar包源码"><span class="nav-number">1.</span> <span class="nav-text">查看jar包源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-基类方法包含"><span class="nav-number">2.</span> <span class="nav-text">Object 基类方法包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不通过构造函数能创建对象吗？"><span class="nav-number">3.</span> <span class="nav-text">不通过构造函数能创建对象吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历HashMap的两种方式"><span class="nav-number">4.</span> <span class="nav-text">遍历HashMap的两种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-和-HashTable-区别-？"><span class="nav-number">5.</span> <span class="nav-text">HashMap 和 HashTable 区别 ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重载和重写有什么不同？"><span class="nav-number">6.</span> <span class="nav-text">重载和重写有什么不同？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Java虚拟机？"><span class="nav-number">7.</span> <span class="nav-text">什么是Java虚拟机？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有哪几种存储结构？"><span class="nav-number">8.</span> <span class="nav-text">有哪几种存储结构？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储过程和函数的区别是什么？"><span class="nav-number">9.</span> <span class="nav-text">存储过程和函数的区别是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库查询优化"><span class="nav-number">10.</span> <span class="nav-text">数据库查询优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NAT技术"><span class="nav-number">11.</span> <span class="nav-text">NAT技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-地址分配"><span class="nav-number">12.</span> <span class="nav-text">IP 地址分配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-的三次握手"><span class="nav-number">13.</span> <span class="nav-text">TCP 的三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping命令基于什么协议？"><span class="nav-number">14.</span> <span class="nav-text">ping命令基于什么协议？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是迭代器-Iterator-？"><span class="nav-number">15.</span> <span class="nav-text">什么是迭代器(Iterator)？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在监视器-Monitor-内部，是如何做线程同步的？"><span class="nav-number">16.</span> <span class="nav-text">在监视器(Monitor)内部，是如何做线程同步的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步方法和同步代码块的区别？"><span class="nav-number">17.</span> <span class="nav-text">同步方法和同步代码块的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重载和重写"><span class="nav-number">18.</span> <span class="nav-text">重载和重写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口和抽象类的区别是什么？"><span class="nav-number">19.</span> <span class="nav-text">接口和抽象类的区别是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap和Hashtable区别？"><span class="nav-number">20.</span> <span class="nav-text">HashMap和Hashtable区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的HashMap的工作原理？"><span class="nav-number">21.</span> <span class="nav-text">Java中的HashMap的工作原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList和LinkedList区别？"><span class="nav-number">22.</span> <span class="nav-text">ArrayList和LinkedList区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array和ArrayList区别？"><span class="nav-number">23.</span> <span class="nav-text">Array和ArrayList区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterator和ListIterator的区别？"><span class="nav-number">24.</span> <span class="nav-text">Iterator和ListIterator的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparable和Comparator接口"><span class="nav-number">25.</span> <span class="nav-text">Comparable和Comparator接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java优先级队列-Priority-Queue-？"><span class="nav-number">26.</span> <span class="nav-text">Java优先级队列(Priority Queue)？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL编码和URL解码？"><span class="nav-number">27.</span> <span class="nav-text">URL编码和URL解码？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#doGet-方法和doPost-方法区别？"><span class="nav-number">28.</span> <span class="nav-text">doGet()方法和doPost()方法区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释下Servlet的生命周期。"><span class="nav-number">29.</span> <span class="nav-text">解释下Servlet的生命周期。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Servlet？"><span class="nav-number">30.</span> <span class="nav-text">什么是Servlet？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是反射？"><span class="nav-number">31.</span> <span class="nav-text">什么是反射？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类的变量必须final修饰？"><span class="nav-number">32.</span> <span class="nav-text">匿名内部类的变量必须final修饰？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小知识"><span class="nav-number">33.</span> <span class="nav-text">小知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用三种方式"><span class="nav-number">34.</span> <span class="nav-text">调用三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标记接口"><span class="nav-number">35.</span> <span class="nav-text">标记接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL三范式"><span class="nav-number">36.</span> <span class="nav-text">SQL三范式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Webservice"><span class="nav-number">37.</span> <span class="nav-text">Webservice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-String-split-用法"><span class="nav-number">38.</span> <span class="nav-text">Java String.split()用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取用户IP"><span class="nav-number">39.</span> <span class="nav-text">获取用户IP</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

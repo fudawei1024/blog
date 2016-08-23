@@ -1,0 +1,1001 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="java习惯用法实现equals()123456789101112131415class Person &amp;#123;  String name;  int birthYear;  byte[] raw;  public boolean equals(Object obj) &amp;#123;    if (!obj instanceof Person)      return false;    Per">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java习惯用法">
+<meta property="og:url" content="http://yoursite.com/2015/09/08/java习惯用法/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="java习惯用法实现equals()123456789101112131415class Person &amp;#123;  String name;  int birthYear;  byte[] raw;  public boolean equals(Object obj) &amp;#123;    if (!obj instanceof Person)      return false;    Per">
+<meta property="og:updated_time" content="2016-08-21T09:22:35.163Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java习惯用法">
+<meta name="twitter:description" content="java习惯用法实现equals()123456789101112131415class Person &amp;#123;  String name;  int birthYear;  byte[] raw;  public boolean equals(Object obj) &amp;#123;    if (!obj instanceof Person)      return false;    Per">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> java习惯用法 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              java习惯用法
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-08T22:46:59+08:00" content="2015-09-08">
+            2015-09-08
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/" itemprop="url" rel="index">
+                  <span itemprop="name">Java</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/Java基础/" itemprop="url" rel="index">
+                  <span itemprop="name">Java基础</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="java习惯用法"><a href="#java习惯用法" class="headerlink" title="java习惯用法"></a>java习惯用法</h2><h3 id="实现equals"><a href="#实现equals" class="headerlink" title="实现equals()"></a>实现equals()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Person &#123;</div><div class="line">  String name;</div><div class="line">  int birthYear;</div><div class="line">  byte[] raw;</div><div class="line">  public boolean equals(Object obj) &#123;</div><div class="line"></div><div class="line">    if (!obj instanceof Person)</div><div class="line">      return false;</div><div class="line">    Person other = (Person)obj;</div><div class="line">    return name.equals(other.name)</div><div class="line">        &amp;&amp; birthYear == other.birthYear</div><div class="line">        &amp;&amp; Arrays.equals(raw, other.raw);</div><div class="line">  &#125;</div><div class="line">  public int hashCode() &#123; ... &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>参数必须是Object类型，不能是外围类。</p>
+<p>foo.equals(null) 必须返回false，不能抛NullPointerException。（注意，null instanceof 任意类 总是返回false，<br>因此上面的代码可以运行。）</p>
+<p>基本类型域（比如，int）的比较使用 == ，基本类型数组域的比较使用Arrays.equals()。</p>
+<p>覆盖equals()时，记得要相应地覆盖 hashCode()，与 equals() 保持一致。</p>
+<h3 id="实现hashCode"><a href="#实现hashCode" class="headerlink" title="实现hashCode()"></a>实现hashCode()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Person &#123;</div><div class="line">  String a;</div><div class="line">  Object b;</div><div class="line">  byte c;</div><div class="line">  int[] d;</div><div class="line"></div><div class="line">  public int hashCode() &#123;</div><div class="line">    return a.hashCode() + b.hashCode() + c + Arrays.hashCode(d);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  public boolean equals(Object o) &#123; ... &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当x和y两个对象具有x.equals(y) == true ，你必须要确保x.hashCode() == y.hashCode()。<br>根据逆反命题，如果x.hashCode() != y.hashCode()，那么x.equals(y) == false 必定成立。<br>你不需要保证，当x.equals(y) == false时，x.hashCode() != y.hashCode()。但是，如果你可以尽可能地使它成立的话，这会提高哈希表的性能。</p>
+<h3 id="实现compareTo"><a href="#实现compareTo" class="headerlink" title="实现compareTo()"></a>实现compareTo()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Person implements Comparable&lt;Person&gt; &#123;</div><div class="line">  String firstName;</div><div class="line">  String lastName;</div><div class="line">  int birthdate;</div><div class="line"></div><div class="line">  // Compare by firstName, break ties by lastName, finally break ties by birthdate</div><div class="line">  public int compareTo(Person other) &#123;</div><div class="line">    if (firstName.compareTo(other.firstName) != 0)</div><div class="line">      return firstName.compareTo(other.firstName);</div><div class="line">    else if (lastName.compareTo(other.lastName) != 0)</div><div class="line">      return lastName.compareTo(other.lastName);</div><div class="line">    else if (birthdate &lt; other.birthdate)</div><div class="line">      return -1;</div><div class="line">    else if (birthdate &gt; other.birthdate)</div><div class="line">      return 1;</div><div class="line">    else</div><div class="line">      return 0;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="实现clone"><a href="#实现clone" class="headerlink" title="实现clone()"></a>实现clone()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Values implements Cloneable &#123;</div><div class="line">  String abc;</div><div class="line">  double foo;</div><div class="line">  int[] bars;</div><div class="line">  Date hired;</div><div class="line"></div><div class="line">  public Values clone() &#123;</div><div class="line">    try &#123;</div><div class="line">      Values result = (Values)super.clone();</div><div class="line">      result.bars = result.bars.clone();</div><div class="line">      result.hired = result.hired.clone();</div><div class="line">      return result;</div><div class="line">    &#125; catch (CloneNotSupportedException e) &#123;  // Impossible</div><div class="line">      throw new AssertionError(e);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用 super.clone() 让Object类负责创建新的对象。<br>基本类型域都已经被正确地复制了。同样，我们不需要去克隆String和BigInteger等不可变类型。<br>手动对所有的非基本类型域（对象和数组）进行深度复制（deep copy）。<br>实现了Cloneable的类，clone()方法永远不要抛CloneNotSupportedException。因此，<br>需要捕获这个异常并忽略它，或者使用不受检异常（unchecked exception）包装它。</p>
+<h3 id="使用StringBuilder或StringBuffer"><a href="#使用StringBuilder或StringBuffer" class="headerlink" title="使用StringBuilder或StringBuffer"></a>使用StringBuilder或StringBuffer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// join([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]) -&gt; &quot;a and b and c&quot;</div><div class="line">String join(List&lt;String&gt; strs) &#123;</div><div class="line">  StringBuilder sb = new StringBuilder();</div><div class="line">  boolean first = true;</div><div class="line">  for (String s : strs) &#123;</div><div class="line">    if (first) </div><div class="line">    	first = false;</div><div class="line">    else </div><div class="line">    	sb.append(&quot; and &quot;);</div><div class="line">    sb.append(s);</div><div class="line">  &#125;</div><div class="line">  return sb.toString();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>不要像这样使用重复的字符串连接：s += item ，因为它的时间效率是O(n^2)。<br>使用StringBuilder或者StringBuffer时，可以使用append()方法添加文本和使用toString()方法去获取连接起来的整个文本。<br>优先使用StringBuilder，因为它更快。StringBuffer的所有方法都是同步的，而你通常不需要同步的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Random rand = new Random();</div><div class="line">System.out.println(rand.nextInt(6)+1);</div></pre></td></tr></table></figure>
+<h3 id="使用Iterator-remove"><a href="#使用Iterator-remove" class="headerlink" title="使用Iterator.remove()"></a>使用Iterator.remove()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">void filter(List&lt;String&gt; list) &#123;</div><div class="line">  for (Iterator&lt;String&gt; iter = list.iterator(); iter.hasNext(); ) &#123;</div><div class="line">    String item = iter.next();</div><div class="line">    if (...)</div><div class="line">      iter.remove();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="字符串反转-逆序"><a href="#字符串反转-逆序" class="headerlink" title="字符串反转(逆序)"></a>字符串反转(逆序)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public static String reverse(String s)&#123;</div><div class="line">		return new StringBuilder(s).reverse().toString();</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h3 id="启动线程"><a href="#启动线程" class="headerlink" title="启动线程"></a>启动线程</h3><p>1)继承Thread类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class MyThread extends Thread&#123;</div><div class="line">	public void run()&#123;   ...   &#125;</div><div class="line">&#125;</div><div class="line">new MyThread.start();</div><div class="line">2) 实现Runnable接口</div><div class="line">class MyRunnable implements Runnable&#123;</div><div class="line">	public void run()&#123;   ...   &#125;</div><div class="line">&#125;</div><div class="line">new Thread(new MyRunnable()).start()</div></pre></td></tr></table></figure>
+<p>不要直接调用run()方法。总是调用Thread.start()方法，这个方法会创建一条新的线程并使新建的线程调用run()。</p>
+<p>如果try之前的语句运行失败并且抛出异常，那么finally语句块就不会执行<br>如果try语句块里面的语句抛出异常，那么程序的运行就会跳到finally语句块里执行尽可能多的语句，然后跳出这个方法（</p>
+<h3 id="从输入流里读取字节数据"><a href="#从输入流里读取字节数据" class="headerlink" title="从输入流里读取字节数据"></a>从输入流里读取字节数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">InputStream in = (...);</div><div class="line">try &#123;</div><div class="line">  while (true) &#123;</div><div class="line">    int b = in.read();</div><div class="line">    if (b == -1)</div><div class="line">      break;</div><div class="line">    (... process b ...)</div><div class="line">  &#125;</div><div class="line">&#125; finally &#123;</div><div class="line">  in.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>read()方法要么返回下一次从流里读取的字节数（0到255，包括0和255），要么在达到流的末端时返回-1。</p>
+<h3 id="从输入流里读取块数据"><a href="#从输入流里读取块数据" class="headerlink" title="从输入流里读取块数据"></a>从输入流里读取块数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">InputStream in = (...);</div><div class="line">try &#123;</div><div class="line">  byte[] buf = new byte[100];</div><div class="line">  while (true) &#123;</div><div class="line">    int n = in.read(buf);</div><div class="line">    if (n == -1)</div><div class="line">      break;</div><div class="line">    (... process buf with offset=0 and length=n ...)</div><div class="line">  &#125;</div><div class="line">&#125; finally &#123;</div><div class="line">  in.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>要记住的是，read()方法不一定会填满整个buf，所以你必须在处理逻辑中考虑返回的长度。</p>
+<h3 id="从文件里读取文本"><a href="#从文件里读取文本" class="headerlink" title="从文件里读取文本"></a>从文件里读取文本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">BufferedReader in = new BufferedReader(</div><div class="line">    new InputStreamReader(new FileInputStream(...), &quot;UTF-8&quot;));</div><div class="line">try &#123;</div><div class="line">  while (true) &#123;</div><div class="line">    String line = in.readLine();</div><div class="line">    if (line == null)</div><div class="line">      break;</div><div class="line">    (... process line ...)</div><div class="line">  &#125;</div><div class="line">&#125; finally &#123;</div><div class="line">  in.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>BufferedReader对象的创建显得很冗长。这是因为Java把字节和字符当成两个不同的概念来看待（这与C语言不同）。<br>你可以使用任何类型的InputStream来代替FileInputStream，比如socket。<br>当达到流的末端时，BufferedReader.readLine()会返回null。<br>要一次读取一个字符，使用Reader.read()方法。<br>你可以使用其他的字符编码而不使用UTF-8，但最好不要这样做。</p>
+<h3 id="向文件里写文本"><a href="#向文件里写文本" class="headerlink" title="向文件里写文本"></a>向文件里写文本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">PrintWriter out = new PrintWriter(</div><div class="line">    new OutputStreamWriter(new FileOutputStream(...), &quot;UTF-8&quot;));</div><div class="line">try &#123;</div><div class="line">  out.print(&quot;Hello &quot;);</div><div class="line">  out.print(42);</div><div class="line">  out.println(&quot; world!&quot;);</div><div class="line">&#125; finally &#123;</div><div class="line">  out.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Printwriter对象的创建显得很冗长。这是因为Java把字节和字符当成两个不同的概念来看待（这与C语言不同）。<br>就像System.out，你可以使用print()和println()打印多种类型的值。<br>你可以使用其他的字符编码而不使用UTF-8，但最好不要这样做。</p>
+<h3 id="预防性检测（Defensive-checking）数值"><a href="#预防性检测（Defensive-checking）数值" class="headerlink" title="预防性检测（Defensive checking）数值"></a>预防性检测（Defensive checking）数值</h3><p>预防性检测对象<br>预防性检测数组索引<br>预防性检测数组区间</p>
+<h3 id="填充数组元素"><a href="#填充数组元素" class="headerlink" title="填充数组元素"></a>填充数组元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">byte[] a =new byte[10];</div><div class="line">		Arrays.fill(a,(byte)123);</div><div class="line">		for (byte b : a) &#123;</div><div class="line">			System.out.println(b);</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<h3 id="把4个字节包装（packing）成一个int"><a href="#把4个字节包装（packing）成一个int" class="headerlink" title="把4个字节包装（packing）成一个int"></a>把4个字节包装（packing）成一个int</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">int packBigEndian(byte[] b) &#123;</div><div class="line">  return (b[0] &amp; 0xFF) &lt;&lt; 24</div><div class="line">       | (b[1] &amp; 0xFF) &lt;&lt; 16</div><div class="line">       | (b[2] &amp; 0xFF) &lt;&lt;  8</div><div class="line">       | (b[3] &amp; 0xFF) &lt;&lt;  0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int packLittleEndian(byte[] b) &#123;</div><div class="line">  return (b[0] &amp; 0xFF) &lt;&lt;  0</div><div class="line">       | (b[1] &amp; 0xFF) &lt;&lt;  8</div><div class="line">       | (b[2] &amp; 0xFF) &lt;&lt; 16</div><div class="line">       | (b[3] &amp; 0xFF) &lt;&lt; 24;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="把int分解（Unpacking）成4个字节"><a href="#把int分解（Unpacking）成4个字节" class="headerlink" title="把int分解（Unpacking）成4个字节"></a>把int分解（Unpacking）成4个字节</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">byte[] unpackBigEndian(int x) &#123;</div><div class="line">  return new byte[] &#123;</div><div class="line">    (byte)(x &gt;&gt;&gt; 24),</div><div class="line">    (byte)(x &gt;&gt;&gt; 16),</div><div class="line">    (byte)(x &gt;&gt;&gt;  8),</div><div class="line">    (byte)(x &gt;&gt;&gt;  0)</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">byte[] unpackLittleEndian(int x) &#123;</div><div class="line">  return new byte[] &#123;</div><div class="line">    (byte)(x &gt;&gt;&gt;  0),</div><div class="line">    (byte)(x &gt;&gt;&gt;  8),</div><div class="line">    (byte)(x &gt;&gt;&gt; 16),</div><div class="line">    (byte)(x &gt;&gt;&gt; 24)</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>总是使用无符号右移操作符（&gt;&gt;&gt;）对位进行包装（packing），不要使用算术右移操作符（&gt;&gt;）。</p>
+<p>eg<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public class RightDef&#123;</div><div class="line">  int num1 = num2+2;</div><div class="line">  static int num2 = 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>static 修饰的变量属于类，类变量会随着类初始化得到初始化，因此num2的初始化时机总是处于num1的初始化时机之前</p>
+<p>使用 static 修饰的变量是类变量，没有使用 static 修饰的是实例变量<br>在同一个JVM中，每个类只对应一个Class对象，但每个类可以创建多个Java对象<br>同一个JVM内的类变量只需一块内存空间，但是该类每创建一次实例，就需要为实例变量分配内存空间<br>每个类初始化完成之后，系统都会为该类创建一个对应的Class实例，程序可以通过反射来获取某个类对应的Class实例。<br>eg: 要获取person类的Class实例。通过 Person.class 或者 Class.forName(“Person”);</p>
+<p>通过实例来访问某个类变量的时候，底层依然会转换为通过类访问类变量。</p>
+<h3 id="实例变量的初始化时机："><a href="#实例变量的初始化时机：" class="headerlink" title="实例变量的初始化时机："></a>实例变量的初始化时机：</h3><p>1）定义实例变量时指定初始值<br>2）非静态初始化块中对实例变量指定初始值<br>3）构造器中对实例变量指定初始值<br>1和2先于3执行，1,2的顺序与他们在源程序中的排列顺序相同<br>eg:</p>
+<p>public Cat(String name,int age){ … }<br>{weight=2.0}<br>double weight = 2.3</p>
+<p>每次执行之后weight都是 2.3，因为非静态代码块在前面，先执行</p>
+<h3 id="类变量的初始化时机："><a href="#类变量的初始化时机：" class="headerlink" title="类变量的初始化时机："></a>类变量的初始化时机：</h3><p>1）定义类变量时指定初始值<br>2）静态初始化块中对类变量指定初始值<br>这两种方式的执行顺序与他们在源程序中的排列顺序相同</p>
+<p>final 可修饰变量，被final修饰的变量被赋值后不能重新赋值<br>final 可修饰方法，被final修饰的方法不能被重写<br>final 可修饰类  ，被final修饰的类不能派生子类</p>
+<h3 id="Java-Eclipse无法查看源代码"><a href="#Java-Eclipse无法查看源代码" class="headerlink" title="Java Eclipse无法查看源代码"></a>Java Eclipse无法查看源代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1.点 “window“-&gt; “Preferences”-&gt; “Java” -&gt; “Installed JRES”</div><div class="line">2.此时&quot;Installed JRES&quot;右边是列表窗格，列出了系统中的JRE 环境，选择你的JRE，然后点边上的“Edit...“</div><div class="line">3.选中rt.jar文件的这一项：“C:\Java\jdk1.5.0_04\jre\lib\rt.jar” 点 左边的“+”号展开它（JDK实际安装路径以你的为准）</div><div class="line">4.展开后，可以看到“Source Attachment:(none)”，点这一项，点右边的按钮“Source Attachment...“，选择你的JDK目录下的 “src.zip”文件</div><div class="line">5.一路点“ok”结束。</div></pre></td></tr></table></figure>
+<p>sublime text3<br>多处选择相同的词：Ctrl+D，回退选择Ctrl+U默认设置<br>逐词移动：Ctrl+左右键默认设置<br>显示类和方法提纲：Ctrl+R默认设置，可以很容易知道一个类中都有哪些方法。<br>显示n个窗口：alt+shift+1，或者2,3…显示n个窗口<br>格式化代码：alt+shift+f自己设置的，选择代码后按此快捷键可以格式化代码。修改 reindent<br>折叠代码：ctrl+shift+[自己设置的，可以折叠方法里面的代码  修改fold_by_level</p>
+<p>（1）：“在Java里面参数传递都是按值传递”这句话的意思是：按值传递是传递的值的拷贝，按引用传递其实传递的是引用的地址值，所以统称按值传递。<br>（2）：在Java里面只有基本类型和按照下面这种定义方式的String是按值传递，其它的都是按引用传递。就是直接使用双引号定义字符串方式：String str = “Java私塾”;</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/15/java面试题/" rel="prev">java面试题</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/06/海量数据处理/" rel="next">海量数据处理</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java习惯用法"><span class="nav-number">1.</span> <span class="nav-text">java习惯用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现equals"><span class="nav-number">1.1.</span> <span class="nav-text">实现equals()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现hashCode"><span class="nav-number">1.2.</span> <span class="nav-text">实现hashCode()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现compareTo"><span class="nav-number">1.3.</span> <span class="nav-text">实现compareTo()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现clone"><span class="nav-number">1.4.</span> <span class="nav-text">实现clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用StringBuilder或StringBuffer"><span class="nav-number">1.5.</span> <span class="nav-text">使用StringBuilder或StringBuffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Iterator-remove"><span class="nav-number">1.6.</span> <span class="nav-text">使用Iterator.remove()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串反转-逆序"><span class="nav-number">1.7.</span> <span class="nav-text">字符串反转(逆序)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动线程"><span class="nav-number">1.8.</span> <span class="nav-text">启动线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从输入流里读取字节数据"><span class="nav-number">1.9.</span> <span class="nav-text">从输入流里读取字节数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从输入流里读取块数据"><span class="nav-number">1.10.</span> <span class="nav-text">从输入流里读取块数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从文件里读取文本"><span class="nav-number">1.11.</span> <span class="nav-text">从文件里读取文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向文件里写文本"><span class="nav-number">1.12.</span> <span class="nav-text">向文件里写文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预防性检测（Defensive-checking）数值"><span class="nav-number">1.13.</span> <span class="nav-text">预防性检测（Defensive checking）数值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填充数组元素"><span class="nav-number">1.14.</span> <span class="nav-text">填充数组元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把4个字节包装（packing）成一个int"><span class="nav-number">1.15.</span> <span class="nav-text">把4个字节包装（packing）成一个int</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把int分解（Unpacking）成4个字节"><span class="nav-number">1.16.</span> <span class="nav-text">把int分解（Unpacking）成4个字节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例变量的初始化时机："><span class="nav-number">1.17.</span> <span class="nav-text">实例变量的初始化时机：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类变量的初始化时机："><span class="nav-number">1.18.</span> <span class="nav-text">类变量的初始化时机：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-Eclipse无法查看源代码"><span class="nav-number">1.19.</span> <span class="nav-text">Java Eclipse无法查看源代码</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

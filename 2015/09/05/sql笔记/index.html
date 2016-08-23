@@ -1,0 +1,1030 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="sql,优化," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="sql学习sql学习查询每个月倒数第2天入职的员工的信息123SELECT last_name,hire_date FROM employees WHERE hire_date = LAST_DAY(hire_date) -1
+查询隔行数据row_number() over(order by sno) n wher n % 2 =1```1234#### 将空值转换为有效值 ```select s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql笔记">
+<meta property="og:url" content="http://yoursite.com/2015/09/05/sql笔记/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="sql学习sql学习查询每个月倒数第2天入职的员工的信息123SELECT last_name,hire_date FROM employees WHERE hire_date = LAST_DAY(hire_date) -1
+查询隔行数据row_number() over(order by sno) n wher n % 2 =1```1234#### 将空值转换为有效值 ```select s">
+<meta property="og:updated_time" content="2016-08-21T09:24:29.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sql笔记">
+<meta name="twitter:description" content="sql学习sql学习查询每个月倒数第2天入职的员工的信息123SELECT last_name,hire_date FROM employees WHERE hire_date = LAST_DAY(hire_date) -1
+查询隔行数据row_number() over(order by sno) n wher n % 2 =1```1234#### 将空值转换为有效值 ```select s">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> sql笔记 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              sql笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-05T20:39:59+08:00" content="2015-09-05">
+            2015-09-05
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/数据库/" itemprop="url" rel="index">
+                  <span itemprop="name">数据库</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="sql学习"><a href="#sql学习" class="headerlink" title="sql学习"></a>sql学习</h2><h3 id="sql学习-1"><a href="#sql学习-1" class="headerlink" title="sql学习"></a>sql学习</h3><h4 id="查询每个月倒数第2天入职的员工的信息"><a href="#查询每个月倒数第2天入职的员工的信息" class="headerlink" title="查询每个月倒数第2天入职的员工的信息"></a>查询每个月倒数第2天入职的员工的信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT last_name,hire_date </div><div class="line">FROM employees </div><div class="line">WHERE hire_date = LAST_DAY(hire_date) -1</div></pre></td></tr></table></figure>
+<h4 id="查询隔行数据"><a href="#查询隔行数据" class="headerlink" title="查询隔行数据"></a>查询隔行数据</h4><figure class="highlight plain"><figcaption><span>row_number() over(order by sno) n wher n % 2 =1```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 将空值转换为有效值 </div><div class="line"></div><div class="line">```select sno,bookname,author,isnull(book,&apos;无&apos;) as book from tb_space</div></pre></td></tr></table></figure>
+<h4 id="第N行数据"><a href="#第N行数据" class="headerlink" title="第N行数据"></a>第N行数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from (select top n from tb_space )aa</div><div class="line">where not exist (select * from (select top n-1 from tb_space)bb </div><div class="line">where aa.sno = bb.sno )</div></pre></td></tr></table></figure>
+<h4 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h4><p>right(xh,len(xh)-1) 从右边开始取指定个数的字符<br>left(xh,len(xh)-1) 从左边开始去指定个数的字符<br>substring(expresion,start,length) 子串<br>select * from tb_space order by 2,3 按照第2列，第3列排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">case...when</div><div class="line">select(</div><div class="line">case job</div><div class="line">when &apos;会计&apos; then salary*1.5;</div><div class="line">when &apos;秘书&apos; then salary*2.0;</div><div class="line">end as new_salary</div><div class="line">) order by new_salary</div></pre></td></tr></table></figure></p>
+<h4 id="对重复的内容不作统计"><a href="#对重复的内容不作统计" class="headerlink" title="对重复的内容不作统计"></a>对重复的内容不作统计</h4><p>select count(distinct duty) as duty<br>不包括最大最小值计算平均值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select avg(salary)</div><div class="line">from tb_space where salary not in (</div><div class="line">	(select min(salary) as minSalary from tb_treatment)</div><div class="line">	union </div><div class="line">	(selct max(salary) as maxSalary from tb_treatment)</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<h3 id="语法特点："><a href="#语法特点：" class="headerlink" title="语法特点："></a>语法特点：</h3><p>1.没有“ ”，字符串使用‘ ’包含<br>2.没有逻辑相等，赋值和逻辑相等都是=<br>3.类型不再是最严格的。任何数据都可以包含在‘ ’以内<br>4.没有bool值的概念，但是在视图中可以输入true/false<br>5.它也有关系运算符：&gt; &lt; &gt;= &lt;= = &lt;&gt; != ,它返回一个bool值<br>6.它也有逻辑运算符： ！(not) &amp;&amp;(and) ||(or)<br>7.它不区别大小写<br>数据库完整性（Database Integrity）是指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。</p>
+<h3 id="事务的四个特点ACID"><a href="#事务的四个特点ACID" class="headerlink" title="事务的四个特点ACID:"></a>事务的四个特点ACID:</h3><p>A:原子性：事务必须是原子工作单元；对于其数据修改，要么全都执行，要么全都不执行。它是一个整体，不能再拆分<br>C：一致性：事务在完成时，必须使所有的数据都保持一致状态。。某种程度的一致<br>I:隔离性：事务中隔离，每一个事务是单独的请求将单独的处理，与其它事务没有关系，互不影响<br>D：持久性：如果事务一旦提交，就对数据的修改永久保留</p>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>存储过程为标准SQL增加了如下功能：<br>条件执行、循环控制结构、命名变量、命名过程、语句块（调用存储过程让DBMS执行一系列SQL语句）</p>
+<h3 id="存储过程的优点"><a href="#存储过程的优点" class="headerlink" title="存储过程的优点"></a>存储过程的优点</h3><p>1）封装  只需要了解过程调用的输入输出就可以安全的使用数据库，防止用户跳过完整性检查<br>2）改善性能  调用存储过程时，DBMS可快速的执行存储过程中的语句，可直接转到语句的执行，无需分析，确认，优化和生成执行计划，这些步骤实现已经完成<br>3）减少网络流量<br>4）减少工作量 编译存储过程之后，许多用户和应用程序都可执行相同的语句序列，而不必重新输入和重新向DBMS提交，当执行需要许多SQL语句或是复杂逻辑的语句时，执行已经调试并测试通过的SQL语句批处理，减少了引入程序错误的风险<br>5）安全性 系统管理员可向单独的用户授予对数据库对象的最小访问权限</p>
+<h3 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h3><p>SELECT CONCAT(Cname,Tnum) FROM course WHERE Cnum=03</p>
+<h4 id="left-截取指定字符串的指定个数字符"><a href="#left-截取指定字符串的指定个数字符" class="headerlink" title="left 截取指定字符串的指定个数字符"></a>left 截取指定字符串的指定个数字符</h4><p>SELECT LEFT(Cname,5) FROM course WHERE Cnum=01<br>SELECT RIGHT(Cname,5) FROM course WHERE Cnum=01</p>
+<h4 id="charIndex"><a href="#charIndex" class="headerlink" title="charIndex()"></a>charIndex()</h4><p>SELECT LOCATE(‘ne’,cname) FROM course WHERE cnum=01<br>SELECT SUBSTRING(Cname,1,3) FROM course</p>
+<h3 id="delete-和-truncate"><a href="#delete-和-truncate" class="headerlink" title="delete 和 truncate"></a>delete 和 truncate</h3><p>delete from Teacher where Age&lt;20<br>–特点:<br>–1.删除是一条一条进行删除的<br>–2.每一条记录的删除都需要将操作写入到日志文件中<br>–3.标识列不会从种子值重新计算,以从上次最后一条标识列值往下计算<br>–4.这种删除可以触发delete触发器</p>
+<p>–truncate table 表名 –没有条件，它是一次性删除所有数据<br>–特点：<br>–1.一次性删除所有数据，没有条件，那么日志文件只以最小化的数据写入<br>–2.它可以使用标识列从种子值重新计算<br>–3.它不能触发delete触发器<br>truncate table teacher</p>
+<p>update Teacher set Salary=Salary+500 where ClassId=4 and Age&gt;20<br>–sign:正数==1  负数 ==-1  0=0<br>select SIGN(-100)</p>
+<p>mysql不存在top关键词，使用limit<br>SELECT <em> FROM course WHERE cnum=(SELECT  cnum FROM sc ORDER BY cnum DESC LIMIT 0,1)<br>–使用top分页<br>select top 5 </em> from Student where StudentNo not in(select top 5 studentno from Student)</p>
+<p>视图就是一张虚拟表，可以像使用子查询做为结果集一样使用视图<br>触发器:执行一个可以改变表数据的操作（增加删除和修改），会自动触发另外一系列（类似于存储过程中的模块）的操作。</p>
+<p>SQL语法顺序是：<br>SELECT[DISTINCT]<br>FROM<br>WHERE<br>GROUP BY<br>HAVING<br>UNION<br>ORDER BY<br>执行顺序为：<br>FROM<br>WHERE<br>GROUP BY<br>HAVING<br>SELECT<br>DISTINCT<br>UNION<br>ORDER BY<br>The first thing that happens is loading data from the disk into memory, in order to operate on such data.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">WITH a AS (</div><div class="line">  SELECT first_name, last_name, current_date - date_of_birth age</div><div class="line">  FROM author</div><div class="line">)</div><div class="line">SELECT *</div><div class="line">FROM a</div><div class="line">WHERE age &gt; 10000</div></pre></td></tr></table></figure></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>SELECT 语句有很多特殊的规则，至少你应该熟悉以下几条<br>你仅能够使用那些能通过表引用而得来的字段<br>如果你有 GROUP BY 语句，你只能够使用 GROUP BY 语句后面的字段或者聚合函数<br>当你的语句中没有 GROUP BY 的时候，可以使用开窗函数代替聚合函数<br>当你的语句中没有 GROUP BY 的时候，你不能同时使用聚合函数和其它函数<br>有一些方法可以将普通函数封装在聚合函数中</p>
+<h3 id="sybase常用SQL"><a href="#sybase常用SQL" class="headerlink" title="sybase常用SQL"></a>sybase常用SQL</h3><p>FROM后的子查询，要定义别名才可使用<br>IQ中若采用 FULL JOIN 连接则不能使用 WHERE 条件，否则FULL JOIN将失效，要筛选条件则用子查询先过滤记录后再FULL JOIN<br>根据SELECT 语句建立[临时]表的方法（ORACLE的CREATE TABLE）为 SELECT ..[*] INTO [‘#’]table_name FROM ..<br>其中如果在table_name加前缀’#’，则为会话级临时表，否则为实体表；<br>存储过程隐式游标语法：<br>FOR A AS B CURSOR FOR SELECT … FROM …<br>DO….<br>END FOR;<br>需要注意的时，这边的A 和 B 在 过程语句中都不能引用，所以为避免过程语句其他字段名与FOR SELECT 语句的字段名称重复，<br>FOR SELECT 语句的字段最好都定义别名区分<br>因Sybase为列存储模式，在执行上INSERT语句会比UPDATE语句慢，尤其表数据越多INSERT效率就越慢；所以在ETL时建议多用UPDATE而不是INSERT<br>空字符串’’在Sybase中也是个字符而不是null值，这点要注意</p>
+<h3 id="转换函数："><a href="#转换函数：" class="headerlink" title="转换函数："></a>转换函数：</h3><p>CONVERT(datetype,exp[,format-style])<br>CAST(exp AS data-type)</p>
+<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><p>DAY(date_exp):返回日期天值，DAYS(date_exp,int):返回日期date_exp加int后的日期；MONTH与MONTHS、YEAR与YEARS同理；<br>DATE(exp):将表达式转换为日期，并删除任何小时、分钟或秒；兼容性：IQ<br>DATEPART(date-part,date-exp): 返回日期分量的对应值(整数)<br>GETDATE():返回系统时间<br>DATENAME(datepart,date_expr):以字符串形式返回date_expr指定部分的值,转换成合适的名字<br>DATEDIFF(datepart,date_expr1,date_expr2):返回date_expr2-date_expr1,通过指定的datepart度量<br>DATEADD（date-part,num-exp,date-exp）:返回按指定date-part分量加num-exp值后生成的date-exp值；</p>
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p>CEIL(num-exp)：返回大于或等于指定表达式的最小整数；兼容性：IQ&amp;ASE<br>FLOOR(numeric_expr):返回小于或等于指定值的最大整数<br>ABS(num-exp):返回数值表达式的绝对值；兼容性：IQ&amp;ASE<br>TRUNCNUM(1231.1251,2)：截取数值；不四舍五入<br>ROUND(numeric_expr,int_expr)：把数值表达式圆整到int_expr指定的精度<br>RAND([int_expr])：返回0-1之间的随机浮点数，可指定基值<br>SIGN(int_expr)：返回正+1，零0或负-1<br>SQRT(float_expr)：返回指定值的平方根<br>PI()：返回常数3.1415926<br>POWER(numeric_expr,power)：返回numeric_expr的值给power的幂<br>EXP(float_expr)：给出指定值的指数值</p>
+<h3 id="常用DDL语句"><a href="#常用DDL语句" class="headerlink" title="常用DDL语句"></a>常用DDL语句</h3><p>1.删除列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE table_name DELETE column_name</div></pre></td></tr></table></figure></p>
+<p>2.增加列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE table_name ADD (column_name DATA_TYPE [NOT] NULL)</div></pre></td></tr></table></figure></p>
+<p>3.修改列的空与非空<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE table_name MODIFY column_name [NOT] NULL</div></pre></td></tr></table></figure></p>
+<p>4.修改列名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE table_name RENAME old_column_name TO new_column_name</div></pre></td></tr></table></figure></p>
+<p>5.快速建立临时表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * INTO [#]table_name FROM .....</div></pre></td></tr></table></figure></p>
+<p>6、修改表名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE old_table_name RENAME new_table_name</div></pre></td></tr></table></figure></p>
+<p>7.增加主键约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE tb_name ADD CONSTRAINT pk_name PRIMARY KEY(col_name,..)</div></pre></td></tr></table></figure></p>
+<p>8.删除主键约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE tb_name DROP CONSTRAINT pk_name</div></pre></td></tr></table></figure></p>
+<p>9.建立自增长字段，与Oracle的SEQUENCE类似<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE TMP_001 (RES_ID INTEGER IDENTITY NOT NULL)</div></pre></td></tr></table></figure></p>
+<p>10.添加表注释<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">COMMENT ON TABLE table_name IS &apos;....&apos;</div></pre></td></tr></table></figure></p>
+<p>11.创建索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE INDEX index_name ON table_name(column_name)</div></pre></td></tr></table></figure></p>
+<h3 id="mysql笔记"><a href="#mysql笔记" class="headerlink" title="mysql笔记"></a>mysql笔记</h3><p>USE test<br>CREATE TABLE users(id int(4) primary key,name varchar(15),password varchar(15))<br>ALTER TABLE users ADD email VARCHAR(20) ,MODIFY NAME VARCHAR(15)usersusers<br>重命名 RENAME TABLE USERS TO USER<br>DROP TABLE USERS</p>
+<p>select[distinct][concat(col 1,”:”,col 2) as col] selection_list<br>from 表名<br>group by grouping_columns<br>order by sorting_columns<br>having secondary_constraint<br>limit count </p>
+<h4 id="等同连接"><a href="#等同连接" class="headerlink" title="等同连接"></a>等同连接</h4><p>SELECT tb_mrbook.id,tb_mrbook.bookname,author,price<br>FROM tb_mrbook,tb_bookinfo<br>WHERE tb_mrbook.bookname = tb_bookinfo.bookname<br>AND tb_bookinfo.bookname=”mysql”</p>
+<p>SELECT * FROM tb_bookinfo WHERE bookname LIKE ‘%m%’</p>
+<p>SELECT * FROM tb_mrbook ORDER BY id DESC LIMIT 3</p>
+<h4 id="聚合函数（NULL值被忽略）"><a href="#聚合函数（NULL值被忽略）" class="headerlink" title="聚合函数（NULL值被忽略）"></a>聚合函数（NULL值被忽略）</h4><p>SELECT COUNT(*) FROM tb_bookinfo<br>select sum(price) from tb_bookinfo where price &lt;30.0<br>select AVG(price) from tb_bookinfo<br>select MAX(price) from tb_bookinfo</p>
+<h4 id="左外连接"><a href="#左外连接" class="headerlink" title="左外连接"></a>左外连接</h4><p>SELECT section,tb_login.user,books FROM tb_login LEFT JOIN tb_books ON tb_login.user=tb_books.user<br>右外连接<br>RIGHT JOIN<br>内连接</p>
+<h4 id="子查询："><a href="#子查询：" class="headerlink" title="子查询："></a>子查询：</h4><p>IN 关键字<br>SELECT * FROM tb_login WHERE USER IN(SELECT USER FROM tb_books)   对应 NOT IN<br>带比较运算符的子运算符<br>SELECT id,books,ROW FROM tb_books WHERE ROW&gt;=(SELECT ROW FROM tb_row WHERE id=1)<br>ANY<br>select books,row from tb_books where row<any(select row="" from="" tb_row)="" all="" select="" books,row="" tb_book="" where="">=ALL(select row from tb_row)</any(select></p>
+<p>合并查询结果 UNION 合并查询结果并去除重复结果，UNION ALL 不会去除重复<br>SELECT USER FROM tb_login<br>UNION<br>SELECT USER FROM tb_books</p>
+<p>SELECT * FROM tb_login tt WHERE tt.id=1  起别名<br>SELECT  section AS sss,NAME AS nnn FROM tb_login  为字段取别名</p>
+<h4 id="使用正则表达式查询"><a href="#使用正则表达式查询" class="headerlink" title="使用正则表达式查询"></a>使用正则表达式查询</h4><p> SELECT <em> FROM tb_books WHERE USER REGEXP ‘[m|l]’<br>SELECT </em> FROM tb_books WHERE USER REGEXP ‘a<em>c’   ===&gt; Aric  Eric  Jack  Lucy  abc12   </em>表示出现0,1，多次<br>SELECT <em> FROM tb_books WHERE USER REGEXP ‘a</em>c’   ===&gt; Jack    + 表示出现1次，多次</p>
+<h4 id="MYSQL函数"><a href="#MYSQL函数" class="headerlink" title="MYSQL函数"></a>MYSQL函数</h4><p>1)数学函数<br>2)字符串函数<br>3)日期和时间函数<br>4)条件判断函数<br>5)系统信息函数<br>6)加密函数<br>7)格式化函数和锁函数</p>
+<h4 id="MySQL索引"><a href="#MySQL索引" class="headerlink" title="MySQL索引"></a>MySQL索引</h4><p>当用户通过索引查询数据库中的数据时，不需要遍历所有数据库中的所有数据，大幅度提<br>高了查询效率<br>一次编写多次调用–MySQL存储过程<br>名称不区分大小写</p>
+<h3 id="web安全"><a href="#web安全" class="headerlink" title="web安全"></a>web安全</h3><p>所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串<br>最终达到欺骗服务器执行恶意的SQL命令。<br>将（恶意）的SQL命令注入到后台数据库引擎执行，<br>它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库<br>主要原因是 程序没有细致的过滤用户输入的数据，使得非法数据侵入系统</p>
+<p>SQL注入分为平台层注入和代码层注入，前者由于不安全的数据库配置所致，后者由于程序员对输入为进行细致的过滤，执行了非法的数据查询<br>在某些表单中，用户输入的内容直接用来构造动态sql命令，或者作为存储过程的输入参数，这些表单特别容易受到sql注入的攻击</p>
+<h4 id="防止sql注入："><a href="#防止sql注入：" class="headerlink" title="防止sql注入："></a>防止sql注入：</h4><p>对用户的输入进行校验，可以通过正则表达式，或限制长度，对单引号和双-进行转换等<br>不使用动态拼装sql，可以使用参数化的sql或者直接使用存储过程进行数据查询存取<br>不要使用管理员的权限数据库连接，为每个应用使用单独的权限有限的数据库连接<br>不要把机密信息比如密码明文存放，加密或者hash掉密码和敏感信息<br>异常信息给出尽可能少的提示，最好使用自定义的错误信息对原始错误信息进行包装<br>使用专业检测sql注入漏洞的工具平台扫描检测</p>
+<p>强制产生错误 使用特殊字符来进行sql注入<br>通过正则表达校验用户输入<br>通过参数化存储过程进行数据查询存取<br>参数化SQL语句 数值以参数化的形式提供<br>XMLHttpRequest能够产生异步后台请求<br>同源策略，它是由Netscape提出的一个著名的安全策略。<br>现在所有支持JavaScript 的浏览器都会使用这个策略。<br>所谓同源是指，域名，协议，端口相同。<br>当一个浏览器的两个tab页中分别打开来 百度和谷歌的页面当浏览器的百度tab页执行一个脚本的时候会检查这个脚本是属于哪个页面的，即检查是否同源，只有和百度同源的脚本才会被执行。</p>
+<p>同源策略防止javascript读取不相关的域中的内容，当它并没有限制javascript创建指向其他域的元素的能力，能够从src或href属性自动获取<br>内容的任何元素都有利于黑客攻击。</p>
+<p>专业核弹头翻新,改装,潜艇抛光,喷漆.回收二手航母,大修核反应堆,拆洗导弹发动机、清洗航母油槽、航天飞机保养换三滤.高空作业擦洗卫星表面除尘.星球设计，全球海洋保养及维护，南极冰川修复,地球形状改造及时空改变颠倒业务，并批发歼10，F22 F35 B2轰炸机，各类氢/核弹头。量大从优！有正规发票</p>
+<h2 id="sql学习-2"><a href="#sql学习-2" class="headerlink" title="sql学习"></a>sql学习</h2><h3 id="基本sql"><a href="#基本sql" class="headerlink" title="基本sql"></a>基本sql</h3><h4 id="查询每个月倒数第2天入职的员工的信息-1"><a href="#查询每个月倒数第2天入职的员工的信息-1" class="headerlink" title="查询每个月倒数第2天入职的员工的信息"></a>查询每个月倒数第2天入职的员工的信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT last_name,hire_date </div><div class="line">FROM employees </div><div class="line">WHERE hire_date = LAST_DAY(hire_date) -1</div></pre></td></tr></table></figure>
+<h4 id="查询隔行数据-1"><a href="#查询隔行数据-1" class="headerlink" title="查询隔行数据"></a>查询隔行数据</h4><figure class="highlight plain"><figcaption><span>row_number() over(order by sno) n wher n % 2 =1```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 将空值转换为有效值 </div><div class="line"></div><div class="line">```select sno,bookname,author,isnull(book,&apos;无&apos;) as book from tb_space</div></pre></td></tr></table></figure>
+<h4 id="第N行数据-1"><a href="#第N行数据-1" class="headerlink" title="第N行数据"></a>第N行数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from (select top n from tb_space )aa</div><div class="line">where not exist (select * from (select top n-1 from tb_space)bb </div><div class="line">where aa.sno = bb.sno )</div></pre></td></tr></table></figure>
+<h4 id="字符函数-1"><a href="#字符函数-1" class="headerlink" title="字符函数"></a>字符函数</h4><p>right(xh,len(xh)-1) 从右边开始取指定个数的字符<br>left(xh,len(xh)-1) 从左边开始去指定个数的字符<br>substring(expresion,start,length) 子串<br>select * from tb_space order by 2,3 按照第2列，第3列排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">case...when</div><div class="line">select(</div><div class="line">case job</div><div class="line">when &apos;会计&apos; then salary*1.5;</div><div class="line">when &apos;秘书&apos; then salary*2.0;</div><div class="line">end as new_salary</div><div class="line">) order by new_salary</div></pre></td></tr></table></figure></p>
+<h4 id="对重复的内容不作统计-1"><a href="#对重复的内容不作统计-1" class="headerlink" title="对重复的内容不作统计"></a>对重复的内容不作统计</h4><p>select count(distinct duty) as duty<br>不包括最大最小值计算平均值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select avg(salary)</div><div class="line">from tb_space where salary not in (</div><div class="line">    (select min(salary) as minSalary from tb_treatment)</div><div class="line">    union </div><div class="line">    (selct max(salary) as maxSalary from tb_treatment)</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<h3 id="多列子查询"><a href="#多列子查询" class="headerlink" title="多列子查询"></a>多列子查询</h3><h4 id="成对比较的多列子查询"><a href="#成对比较的多列子查询" class="headerlink" title="成对比较的多列子查询"></a>成对比较的多列子查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">SELECT NAME,salary ,department </div><div class="line">FROM employee </div><div class="line">WHERE (salary,department) IN (</div><div class="line">     SELECT MAX(salary),department</div><div class="line">     FROM employee</div><div class="line">     GROUP BY department</div><div class="line">)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">SELECT NAME,salary ,department </div><div class="line">FROM employee </div><div class="line">WHERE salary IN (</div><div class="line">     SELECT MAX(salary)</div><div class="line">     FROM employee</div><div class="line">     GROUP BY department</div><div class="line">) AND department IN (</div><div class="line">SELECT DISTINCT department </div><div class="line">    FROM employee</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>接口是 实体把自己提供给外界的一种抽象化说明，用以由内部操作分离出外部沟通方法，使其能被修改内部而不影响外界其他<br>实体与其交互的方式</p>
+<h4 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h4><p>则对于任意的序号为i的结点有：(1)如i=1，则序号为i的结点是根结点，无双亲结点，如i&gt;1，则序号为i的结点的双亲结点序号<br>为i/2;（2）如2<em>i&gt;n,则序号为i的结点无左孩子，如2</em>i&lt;=n,则序号为i的结点的左孩子结点序号为2<em>i；(3)如2</em>i+1&gt;n，则序号为<br>i的结点无右孩子，如2<em>i+1&lt;=n,则序号为i的结点的右孩子结点序号为2</em>i+1;<br>二叉树含有n个节点，则二叉链表含有2n个指针域，分支数比节点数少1 ，所以 2n-(n-1) = n+1 个空的链域</p>
+<p>spring IOC控制反转，控制权交出去，使用容器创建并维护对象<br>AOP面向切面编程<br>DI(dependency injection) 依赖注入  –》 设值注入  构造注入</p>
+<p>java在处理基本数据类型（例如int ,char,double）时，都是采用按值传递的方式执行，除此之外的其它类型都是按引用传递的方式执行。<br>对象除了在函数调用时时引用传递，在使用“=”赋值时也是采用引用传递。</p>
+<h4 id="webservice小记"><a href="#webservice小记" class="headerlink" title="webservice小记"></a>webservice小记</h4><p>WebService是一种跨编程语言和跨操作系统平台的远程调用技术。<br>Object方法：<br>getClass() hashCode()  equals(Object)  clone()  toString()  notify()   notifyAll()<br>wait(long) wait(long,int) wait()  finalize()<br>通过使用Web Service,我们可以将应用程序转换为网络应用程序，从而使本地的应用程序可以向全世界发布信息或提供某种服务</p>
+<p>1.高内聚，低耦合，模块和程序的高度独立性<br>2.所有的设备都可以像文件一样地操作<br>3.“命令的相互支持性”，命令们通过一个管道或是重定向，可以互相联系在一起</p>
+<p>抽象类和接口的区别<br>值类型和引用类型的区别<br>存储过程和函数的区别</p>
+<p>表中有A B C三列,用SQL语句实现：当A列大于B列时选择A列否则选择B列，当B列大于C列时选择B列否则选择C列。<br>select (case when a&gt;b then a else b end ),<br>(case when b&gt;c then b esle c end)<br>from table_name</p>
+<h4 id="一个日期判断的sql语句？"><a href="#一个日期判断的sql语句？" class="headerlink" title="一个日期判断的sql语句？"></a>一个日期判断的sql语句？</h4><p>请取出tb_send表中日期(SendTime字段)为当天的所有记录?<br>select * from tb where datediff(dd,SendTime,getdate())=0</p>
+<h4 id="case…when"><a href="#case…when" class="headerlink" title="case…when"></a>case…when</h4><p>大于或等于80表示优秀，大于或等于60表示及格，小于60分表示不及格。<br>select<br>(case when 语文&gt;=80 then ‘优秀’<br>        when 语文&gt;=60 then ‘及格’<br>else ‘不及格’) as 语文,<br>(case when 数学&gt;=80 then ‘优秀’<br>        when 数学&gt;=60 then ‘及格’<br>else ‘不及格’) as 数学,<br>(case when 英语&gt;=80 then ‘优秀’<br>        when 英语&gt;=60 then ‘及格’<br>else ‘不及格’) as 英语,<br>from table</p>
+<p>查询中用到的关键词主要包含六个，并且他们的顺序依次为<br>select–from–where–group by–having–order by -&gt;distinct -&gt;top </p>
+<p>1.not and or一起出现时候，not &gt; and &gt; or 优先级顺序</p>
+<ol>
+<li>使用表达式生成新列<br>eg:<br>SELECT 10 AS NAME<br>UNION ALL<br>SELECT 20<br>UNION ALL<br>SELECT  30<br>UNION ALL<br>SELECT 40</li>
+</ol>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><h2 id="Java可以通过JNI调用本地的C-C-代码，本地的C-C-的代码也可以调用java代码。JNI-是本地编程接口，Java和C-C-互相通过的接口。Java通过C-C-使用本地的代码的一个关键性原因在于C-C-代码的高效性。"><a href="#Java可以通过JNI调用本地的C-C-代码，本地的C-C-的代码也可以调用java代码。JNI-是本地编程接口，Java和C-C-互相通过的接口。Java通过C-C-使用本地的代码的一个关键性原因在于C-C-代码的高效性。" class="headerlink" title="Java可以通过JNI调用本地的C/C++代码，本地的C/C++的代码也可以调用java代码。JNI 是本地编程接口，Java和C/C++互相通过的接口。Java通过C/C++使用本地的代码的一个关键性原因在于C/C++代码的高效性。"></a>Java可以通过JNI调用本地的C/C++代码，本地的C/C++的代码也可以调用java代码。JNI 是本地编程接口，Java和C/C++互相通过的接口。Java通过C/C++使用本地的代码的一个关键性原因在于C/C++代码的高效性。</h2><h4 id="重构代码"><a href="#重构代码" class="headerlink" title="重构代码"></a>重构代码</h4><p>public bool IsAdult(int age)<br>{<br>    var isAdult = age &gt; 18;<br>    return isAdult;</p>
+<h2 id=""><a href="#" class="headerlink" title="}"></a>}</h2><p>参数过多<br>public void RegisterUser(string userName, string password, string email, string phone)<br>{ … }<br>重构后<br>public void RegisterUser(User user)</p>
+<h2 id="…"><a href="#…" class="headerlink" title="{ … }"></a>{ … }</h2><p>public void RegisterUser(User user, bool sendEmail)<br>{ … }<br>布尔参数在告诉方法不止做一件事，违反了Do one thing<br>重构后：<br>public void RegisterUser(User user)<br>{ … }<br>public void SendEmail(User user)</p>
+<h2 id="…-1"><a href="#…-1" class="headerlink" title="{ … }"></a>{ … }</h2><h4 id="字符串常量池"><a href="#字符串常量池" class="headerlink" title="字符串常量池"></a>字符串常量池</h4><p>String s1 = “Hello”;<br>String s2 = “Hello”; S1=S2=S3<br>String s3 = “Hel” + “lo”;  S1=S3 S3虽然是拼接的，但拼接的都是已知的字符串，编译器优化<br>String s4 = “Hel” + new String(“lo”);  S1!=S3<br>String s5 = new String(“Hello”);   S1和S5是否相等<br>String s6 = s5.intern(); S1=S6 intern()将字符串添加到常量池中<br>String s7 = “H”;<br>String s8 = “ello”;<br>String s9 = s7 + s8; S1!=S9 S7和S8拼接之后在堆中，被S9引用，地址和S1不一样</p>
+<h4 id="异或运算及应用"><a href="#异或运算及应用" class="headerlink" title="异或运算及应用"></a>异或运算及应用</h4><p>0^a=a<br>a^a=0<br>a^b^c=a^c^b<br>找出数组中只出现了一次的数（除了一个数只出现一次外，其他数都是出现两次）<br>升级版：数组中只出现1次的两个数字(百度面试题)。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" rel="tag">#sql</a>
+          
+            <a href="/tags/优化/" rel="tag">#优化</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/06/大数据（一）/" rel="prev">大数据（一）</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/05/linux进阶/" rel="next">linux进阶</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sql学习"><span class="nav-number">1.</span> <span class="nav-text">sql学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sql学习-1"><span class="nav-number">1.1.</span> <span class="nav-text">sql学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询每个月倒数第2天入职的员工的信息"><span class="nav-number">1.1.1.</span> <span class="nav-text">查询每个月倒数第2天入职的员工的信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询隔行数据"><span class="nav-number">1.1.2.</span> <span class="nav-text">查询隔行数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第N行数据"><span class="nav-number">1.1.3.</span> <span class="nav-text">第N行数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符函数"><span class="nav-number">1.1.4.</span> <span class="nav-text">字符函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对重复的内容不作统计"><span class="nav-number">1.1.5.</span> <span class="nav-text">对重复的内容不作统计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法特点："><span class="nav-number">1.2.</span> <span class="nav-text">语法特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务的四个特点ACID"><span class="nav-number">1.3.</span> <span class="nav-text">事务的四个特点ACID:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能"><span class="nav-number">1.4.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储过程的优点"><span class="nav-number">1.5.</span> <span class="nav-text">存储过程的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接字符串"><span class="nav-number">1.6.</span> <span class="nav-text">连接字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#left-截取指定字符串的指定个数字符"><span class="nav-number">1.6.1.</span> <span class="nav-text">left 截取指定字符串的指定个数字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#charIndex"><span class="nav-number">1.6.2.</span> <span class="nav-text">charIndex()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-和-truncate"><span class="nav-number">1.7.</span> <span class="nav-text">delete 和 truncate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.8.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sybase常用SQL"><span class="nav-number">1.9.</span> <span class="nav-text">sybase常用SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换函数："><span class="nav-number">1.10.</span> <span class="nav-text">转换函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期函数"><span class="nav-number">1.11.</span> <span class="nav-text">日期函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学函数"><span class="nav-number">1.12.</span> <span class="nav-text">数学函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用DDL语句"><span class="nav-number">1.13.</span> <span class="nav-text">常用DDL语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql笔记"><span class="nav-number">1.14.</span> <span class="nav-text">mysql笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#等同连接"><span class="nav-number">1.14.1.</span> <span class="nav-text">等同连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聚合函数（NULL值被忽略）"><span class="nav-number">1.14.2.</span> <span class="nav-text">聚合函数（NULL值被忽略）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#左外连接"><span class="nav-number">1.14.3.</span> <span class="nav-text">左外连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子查询："><span class="nav-number">1.14.4.</span> <span class="nav-text">子查询：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用正则表达式查询"><span class="nav-number">1.14.5.</span> <span class="nav-text">使用正则表达式查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MYSQL函数"><span class="nav-number">1.14.6.</span> <span class="nav-text">MYSQL函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL索引"><span class="nav-number">1.14.7.</span> <span class="nav-text">MySQL索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web安全"><span class="nav-number">1.15.</span> <span class="nav-text">web安全</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#防止sql注入："><span class="nav-number">1.15.1.</span> <span class="nav-text">防止sql注入：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql学习-2"><span class="nav-number">2.</span> <span class="nav-text">sql学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本sql"><span class="nav-number">2.1.</span> <span class="nav-text">基本sql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询每个月倒数第2天入职的员工的信息-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">查询每个月倒数第2天入职的员工的信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询隔行数据-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">查询隔行数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第N行数据-1"><span class="nav-number">2.1.3.</span> <span class="nav-text">第N行数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符函数-1"><span class="nav-number">2.1.4.</span> <span class="nav-text">字符函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对重复的内容不作统计-1"><span class="nav-number">2.1.5.</span> <span class="nav-text">对重复的内容不作统计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多列子查询"><span class="nav-number">2.2.</span> <span class="nav-text">多列子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#成对比较的多列子查询"><span class="nav-number">2.2.1.</span> <span class="nav-text">成对比较的多列子查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二叉树"><span class="nav-number">2.2.2.</span> <span class="nav-text">二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webservice小记"><span class="nav-number">2.2.3.</span> <span class="nav-text">webservice小记</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一个日期判断的sql语句？"><span class="nav-number">2.2.4.</span> <span class="nav-text">一个日期判断的sql语句？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case…when"><span class="nav-number">2.2.5.</span> <span class="nav-text">case…when</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-number">2.2.6.</span> <span class="nav-text">java</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java可以通过JNI调用本地的C-C-代码，本地的C-C-的代码也可以调用java代码。JNI-是本地编程接口，Java和C-C-互相通过的接口。Java通过C-C-使用本地的代码的一个关键性原因在于C-C-代码的高效性。"><span class="nav-number">3.</span> <span class="nav-text">Java可以通过JNI调用本地的C/C++代码，本地的C/C++的代码也可以调用java代码。JNI 是本地编程接口，Java和C/C++互相通过的接口。Java通过C/C++使用本地的代码的一个关键性原因在于C/C++代码的高效性。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重构代码"><span class="nav-number">3.0.1.</span> <span class="nav-text">重构代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.</span> <span class="nav-text">}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#…"><span class="nav-number">5.</span> <span class="nav-text">{ … }</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#…-1"><span class="nav-number">6.</span> <span class="nav-text">{ … }</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串常量池"><span class="nav-number">6.0.1.</span> <span class="nav-text">字符串常量池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异或运算及应用"><span class="nav-number">6.0.2.</span> <span class="nav-text">异或运算及应用</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

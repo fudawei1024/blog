@@ -1,0 +1,991 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="sql,sybase," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="Sybase_sql语法特点1.没有“ ”，字符串使用‘ ’包含2.没有逻辑相等，赋值和逻辑相等都是=3.类型不再是最严格的。任何数据都可以包含在‘ ’以内4.没有bool值的概念，但是在视图中可以输入true/false5.它也有关系运算符：&amp;gt; &amp;lt; &amp;gt;= &amp;lt;= = &amp;lt;&amp;gt; != ,它返回一个bool值6.它也有逻辑运算符： ！(not) &amp;amp;&amp;amp;(a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sybase学习小记">
+<meta property="og:url" content="http://yoursite.com/2015/09/15/sybase学习小记/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="Sybase_sql语法特点1.没有“ ”，字符串使用‘ ’包含2.没有逻辑相等，赋值和逻辑相等都是=3.类型不再是最严格的。任何数据都可以包含在‘ ’以内4.没有bool值的概念，但是在视图中可以输入true/false5.它也有关系运算符：&amp;gt; &amp;lt; &amp;gt;= &amp;lt;= = &amp;lt;&amp;gt; != ,它返回一个bool值6.它也有逻辑运算符： ！(not) &amp;amp;&amp;amp;(a">
+<meta property="og:updated_time" content="2016-08-21T09:24:39.524Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sybase学习小记">
+<meta name="twitter:description" content="Sybase_sql语法特点1.没有“ ”，字符串使用‘ ’包含2.没有逻辑相等，赋值和逻辑相等都是=3.类型不再是最严格的。任何数据都可以包含在‘ ’以内4.没有bool值的概念，但是在视图中可以输入true/false5.它也有关系运算符：&amp;gt; &amp;lt; &amp;gt;= &amp;lt;= = &amp;lt;&amp;gt; != ,它返回一个bool值6.它也有逻辑运算符： ！(not) &amp;amp;&amp;amp;(a">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> sybase学习小记 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              sybase学习小记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-15T22:19:53+08:00" content="2015-09-15">
+            2015-09-15
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/数据库/" itemprop="url" rel="index">
+                  <span itemprop="name">数据库</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="Sybase-sql"><a href="#Sybase-sql" class="headerlink" title="Sybase_sql"></a>Sybase_sql</h2><h3 id="语法特点"><a href="#语法特点" class="headerlink" title="语法特点"></a>语法特点</h3><p>1.没有“ ”，字符串使用‘ ’包含<br>2.没有逻辑相等，赋值和逻辑相等都是=<br>3.类型不再是最严格的。任何数据都可以包含在‘ ’以内<br>4.没有bool值的概念，但是在视图中可以输入true/false<br>5.它也有关系运算符：&gt; &lt; &gt;= &lt;= = &lt;&gt; != ,它返回一个bool值<br>6.它也有逻辑运算符： ！(not) &amp;&amp;(and) ||(or)<br>7.它不区别大小写<br>8.数据库完整性（Database Integrity）是指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。</p>
+<h3 id="事务的四个特点ACID"><a href="#事务的四个特点ACID" class="headerlink" title="事务的四个特点ACID"></a>事务的四个特点ACID</h3><p>A:原子性：事务必须是原子工作单元；对于其数据修改，要么全都执行，要么全都不执行。它是一个整体，不能再拆分<br>C：一致性：事务在完成时，必须使所有的数据都保持一致状态<br>I:隔离性：事务中隔离，每一个事务是单独的请求将单独的处理，与其它事务没有关系，互不影响<br>D：持久性：如果事务一旦提交，就对数据的修改永久保留</p>
+<h3 id="存储过程功能"><a href="#存储过程功能" class="headerlink" title="存储过程功能"></a>存储过程功能</h3><p>存储过程为标准SQL增加了如下功能：<br>条件执行、循环控制结构、命名变量、命名过程、语句块（调用存储过程让DBMS执行一系列SQL语句）</p>
+<h3 id="存储过程优点"><a href="#存储过程优点" class="headerlink" title="存储过程优点"></a>存储过程优点</h3><p>1）封装  只需要了解过程调用的输入输出就可以安全的使用数据库，防止用户跳过完整性检查<br>2）改善性能  调用存储过程时，DBMS可快速的执行存储过程中的语句，可直接转到语句的执行，无需分析，确认，优化和生成执行计划，这些步骤在预编译已经完成<br>3）减少网络流量，降低网络负载<br>4）标准组件化编程，极大的提高了程序的可移植性<br>5）安全性 系统管理员可向单独的用户授予对数据库对象的最小访问权限</p>
+<h3 id="数据库索引"><a href="#数据库索引" class="headerlink" title="数据库索引"></a>数据库索引</h3><h3 id="索引优点-缺点"><a href="#索引优点-缺点" class="headerlink" title="索引优点/缺点"></a>索引优点/缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>1.创建系统唯一性索引，可以保证每一行数据的唯一性<br>2.提高数据检索速度<br>3.加快表与表之间的连接，特别是具有主键外键关系的表之间<br>4.在针对order by 和 group by子句进行数据检索时，可以减少分组和排序的时间<br>5.查询优化器提高系统性能</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>1.创建索引和维护索引要耗费时间<br>2.索引需要占用物理空间<br>3.当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护</p>
+<p>###索引的类型</p>
+<blockquote>
+<ul>
+<li>聚集索引：数据表的物理顺序与索引顺序相同</li>
+<li>非聚集索引：数据表的物理顺序与索引顺序不同</li>
+</ul>
+</blockquote>
+<h3 id="存储过程-VS-函数"><a href="#存储过程-VS-函数" class="headerlink" title="存储过程 VS 函数"></a>存储过程 VS 函数</h3><p>1.存储过程需要使用execute单独执行，而函数可以随处调用<br>2.用户自定义函数不能修改表中的数据，但是存储过程可以</p>
+<h3 id="存储过程的执行过程"><a href="#存储过程的执行过程" class="headerlink" title="存储过程的执行过程"></a>存储过程的执行过程</h3><p>1.语法分析阶段，保证语法的正确性<br>2.解析阶段，检查该存储过程引用的对象名称是否存在<br>3.分析存储过程和生成存储过程执行计划的过程<br>4.执行阶段，执行主流在高速缓冲存储区的过程执行计划</p>
+<blockquote>
+<ul>
+<li>注意,当存储过程引用的基础表发生结构变化时，该存储过程的执行计划将会自动优化。但是如果在表中添加了索引或者更改了索引列中<br>的数据之后，该执行计划不会自动优化，这时候应该重新编译存储过程，更新原有的执行计划。</li>
+</ul>
+</blockquote>
+<h3 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h3><p>SELECT CONCAT(Cname,Tnum) FROM course WHERE Cnum=03</p>
+<h4 id="left-截取指定字符串的指定个数字符"><a href="#left-截取指定字符串的指定个数字符" class="headerlink" title="left 截取指定字符串的指定个数字符"></a>left 截取指定字符串的指定个数字符</h4><p>SELECT LEFT(Cname,5) FROM course WHERE Cnum=01<br>SELECT RIGHT(Cname,5) FROM course WHERE Cnum=01</p>
+<h4 id="charIndex"><a href="#charIndex" class="headerlink" title="charIndex()"></a>charIndex()</h4><p>SELECT LOCATE(‘ne’,cname) FROM course WHERE cnum=01<br>SELECT SUBSTRING(Cname,1,3) FROM course</p>
+<h3 id="delete-和-truncate"><a href="#delete-和-truncate" class="headerlink" title="delete 和 truncate"></a>delete 和 truncate</h3><p>delete from Teacher where Age&lt;20<br>–特点:<br>–1.删除是一条一条进行删除的<br>–2.每一条记录的删除都需要将操作写入到日志文件中<br>–3.标识列不会从种子值重新计算,以从上次最后一条标识列值往下计算<br>–4.这种删除可以触发delete触发器</p>
+<p>–truncate table 表名 –没有条件，它是一次性删除所有数据<br>–特点：<br>–1.一次性删除所有数据，没有条件，那么日志文件只以最小化的数据写入<br>–2.它可以使用标识列从种子值重新计算<br>–3.它不能触发delete触发器<br>truncate table teacher</p>
+<p>update Teacher set Salary=Salary+500 where ClassId=4 and Age&gt;20<br>–sign:正数==1  负数 ==-1  0=0<br>select SIGN(-100)</p>
+<p>mysql不存在top关键词，使用limit<br>SELECT <em> FROM course WHERE cnum=(SELECT  cnum FROM sc ORDER BY cnum DESC LIMIT 0,1)<br>–使用top分页<br>select top 5 </em> from Student where StudentNo not in(select top 5 studentno from Student)</p>
+<p>视图就是一张虚拟表，可以像使用子查询做为结果集一样使用视图<br>触发器:执行一个可以改变表数据的操作（增加删除和修改），会自动触发另外一系列（类似于存储过程中的模块）的操作。</p>
+<p>SQL语法顺序是：<br>SELECT[DISTINCT]<br>FROM<br>WHERE<br>GROUP BY<br>HAVING<br>UNION<br>ORDER BY<br>执行顺序为：<br>FROM<br>WHERE<br>GROUP BY<br>HAVING<br>SELECT<br>DISTINCT<br>UNION<br>ORDER BY<br>The first thing that happens is loading data from the disk into memory, in order to operate on such data.<br>WITH a AS (<br>  SELECT first_name, last_name, current_date - date_of_birth age<br>  FROM author<br>)<br>SELECT *<br>FROM a<br>WHERE age &gt; 10000</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>SELECT 语句有很多特殊的规则，至少你应该熟悉以下几条<br>你仅能够使用那些能通过表引用而得来的字段<br>如果你有 GROUP BY 语句，你只能够使用 GROUP BY 语句后面的字段或者聚合函数<br>当你的语句中没有 GROUP BY 的时候，可以使用开窗函数代替聚合函数<br>当你的语句中没有 GROUP BY 的时候，你不能同时使用聚合函数和其它函数<br>有一些方法可以将普通函数封装在聚合函数中<br>存储过程要返回IQ系统错误信息 SQLCODE || ERRORMSG(*) ：(两者都为EXCEPTION后第一条SQL语句才有效果)<br>IQ中若采用 FULL JOIN 连接则不能使用 WHERE 条件，否则FULL JOIN将失效，要筛选条件则用子查询先过滤记录后再FULL JOIN；</p>
+<h3 id="sybase常用SQL"><a href="#sybase常用SQL" class="headerlink" title="sybase常用SQL"></a>sybase常用SQL</h3><p>FROM后的子查询，要定义别名才可使用<br>IQ中若采用 FULL JOIN 连接则不能使用 WHERE 条件，否则FULL JOIN将失效，要筛选条件则用子查询先过滤记录后再FULL JOIN<br>根据SELECT 语句建立[临时]表的方法（ORACLE的CREATE TABLE）为 SELECT ..[*] INTO [‘#’]table_name FROM ..<br>其中如果在table_name加前缀’#’，则为会话级临时表，否则为实体表；<br>存储过程隐式游标语法：<br>FOR A AS B CURSOR FOR SELECT … FROM …<br>DO….<br>END FOR;<br>需要注意的时，这边的A 和 B 在 过程语句中都不能引用，所以为避免过程语句其他字段名与FOR SELECT 语句的字段名称重复，<br>FOR SELECT 语句的字段最好都定义别名区分<br>因Sybase为列存储模式，在执行上INSERT语句会比UPDATE语句慢，尤其表数据越多INSERT效率就越慢；所以在ETL时建议多用UPDATE而不是INSERT<br>空字符串’’在Sybase中也是个字符而不是null值，这点要注意<br>默认值和规则：Transact-SQL 提供维护实体完整性（确保为要求值得的每一列都提供值）和域完整性（确保列中的每个值都属于该列的合法值集合）的关键字</p>
+<h3 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h3><p>CONVERT(datetype,exp[,format-style])<br>CAST(exp AS data-type)</p>
+<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><p>DAY(date_exp):返回日期天值，DAYS(date_exp,int):返回日期date_exp加int后的日期；MONTH与MONTHS、YEAR与YEARS同理；<br>DATE(exp):将表达式转换为日期，并删除任何小时、分钟或秒；兼容性：IQ<br>DATEPART(date-part,date-exp): 返回日期分量的对应值(整数)<br>GETDATE():返回系统时间<br>DATENAME(datepart,date_expr):以字符串形式返回date_expr指定部分的值,转换成合适的名字<br>DATEDIFF(datepart,date_expr1,date_expr2):返回date_expr2-date_expr1,通过指定的datepart度量<br>DATEADD（date-part,num-exp,date-exp）:返回按指定date-part分量加num-exp值后生成的date-exp值；</p>
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p>CEIL(num-exp)：返回大于或等于指定表达式的最小整数；兼容性：IQ&amp;ASE<br>FLOOR(numeric_expr):返回小于或等于指定值的最大整数<br>ABS(num-exp):返回数值表达式的绝对值；兼容性：IQ&amp;ASE<br>TRUNCNUM(1231.1251,2)：截取数值；不四舍五入<br>ROUND(numeric_expr,int_expr)：把数值表达式圆整到int_expr指定的精度<br>RAND([int_expr])：返回0-1之间的随机浮点数，可指定基值<br>SIGN(int_expr)：返回正+1，零0或负-1<br>SQRT(float_expr)：返回指定值的平方根<br>PI()：返回常数3.1415926<br>POWER(numeric_expr,power)：返回numeric_expr的值给power的幂<br>EXP(float_expr)：给出指定值的指数值</p>
+<h3 id="常用DDL语句"><a href="#常用DDL语句" class="headerlink" title="常用DDL语句"></a>常用DDL语句</h3><p>1.删除列<br>ALTER TABLE table_name DELETE column_name<br>2.增加列<br>ALTER TABLE table_name ADD (column_name DATA_TYPE [NOT] NULL)<br>3.修改列的空与非空<br>ALTER TABLE table_name MODIFY column_name [NOT] NULL<br>4.修改列名<br>ALTER TABLE table_name RENAME old_column_name TO new_column_name<br>5.快速建立临时表<br>SELECT * INTO [#]table_name FROM …..<br>6、修改表名ALTER TABLE old_table_name RENAME new_table_name<br>7.增加主键约束<br>ALTER TABLE tb_name ADD CONSTRAINT pk_name PRIMARY KEY(col_name,..)<br>8.删除主键约束<br>ALTER TABLE tb_name DROP CONSTRAINT pk_name<br>9.建立自增长字段，与Oracle的SEQUENCE类似<br>CREATE TABLE TMP_001 (RES_ID INTEGER IDENTITY NOT NULL)<br>10.添加表注释<br>COMMENT ON TABLE table_name IS ‘….’<br>11.创建索引<br>CREATE INDEX index_name ON table_name(column_name)</p>
+<h3 id="SQL优化"><a href="#SQL优化" class="headerlink" title="SQL优化"></a>SQL优化</h3><p>常见瓶颈：<br>绝大多数瓶颈在于I/O子系统<br>若CPU很高，90%以上是因为索引不当<br>发生swap时，可能因为内存分配太小或过大<br>iowait太高时，想办法从索引角度入手优化，以及提高I/O设备性能，增加内存，减少排序，减少SELECT一次性读取数据量。<br>常见优化策略：<br>瞬间并发很高，采用thread pool<br>频繁order by\group by，索引入手<br>适当调整内存，不要太大或太小。一般ibp设置为50% ~ 70%为宜<br>iowait高，加内存，提高iops，减少数据读写。</p>
+<p>SQL优化<br>多用简单SQL<br>少用子查询和复杂查询<br>少用复杂join，注意join驱动表是否最优<br>where不使用函数，避免无法使用索引<br>注意类型隐式转换<br>事务快速提交，但不要频繁反复提交</p>
+<h3 id="查看执行计划"><a href="#查看执行计划" class="headerlink" title="查看执行计划"></a>查看执行计划</h3><p>查看语句的执行计划<br>set showplan on<br>set noexec on<br>go<br>select …….<br>go<br>set showplan off<br>set noexec off<br>go</p>
+<p>查看存储过程执行计划：<br>set showplan on<br>go</p>
+<p>exec sp_name<br>go<br>set showplan off<br>go</p>
+<p>dbcc traceon(3604)是把dbcc的结果输出到屏幕上。<br>dbcc sqltext(spid)是看指定的sybase进程的操作语句。<br>查看其查询计划，可以用sp_showplan spid,null,null,null</p>
+<h3 id="sybase系统函数"><a href="#sybase系统函数" class="headerlink" title="sybase系统函数"></a>sybase系统函数</h3><p>sp_iqtablesize ‘T1_table’  查看表的大小空间<br>select tablewidth(‘ConditionStyle’)   查看表的行宽<br>sp_iqcolumn  ‘ConditionData’  查看表中每一列的信息<br>select * from sp_table_size_statics();   此存储过程会输出所有用户表的大小</p>
+<h3 id="bat启动"><a href="#bat启动" class="headerlink" title="bat启动"></a>bat启动</h3><p>dbisql -c “uid=netmax;pwd=SOPinUETZ” -host 10.89.160.6 -port 3000 -oneerror continue   -&gt; bat启动</p>
+<p>###sql基础用法<br>drop table if exists tableA;</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" rel="tag">#sql</a>
+          
+            <a href="/tags/sybase/" rel="tag">#sybase</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/15/java集合/" rel="prev">java集合</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/15/java面试题/" rel="next">java面试题</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sybase-sql"><span class="nav-number">1.</span> <span class="nav-text">Sybase_sql</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法特点"><span class="nav-number">1.1.</span> <span class="nav-text">语法特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务的四个特点ACID"><span class="nav-number">1.2.</span> <span class="nav-text">事务的四个特点ACID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储过程功能"><span class="nav-number">1.3.</span> <span class="nav-text">存储过程功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储过程优点"><span class="nav-number">1.4.</span> <span class="nav-text">存储过程优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库索引"><span class="nav-number">1.5.</span> <span class="nav-text">数据库索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引优点-缺点"><span class="nav-number">1.6.</span> <span class="nav-text">索引优点/缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.6.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">1.6.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储过程-VS-函数"><span class="nav-number">1.7.</span> <span class="nav-text">存储过程 VS 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储过程的执行过程"><span class="nav-number">1.8.</span> <span class="nav-text">存储过程的执行过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接字符串"><span class="nav-number">1.9.</span> <span class="nav-text">连接字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#left-截取指定字符串的指定个数字符"><span class="nav-number">1.9.1.</span> <span class="nav-text">left 截取指定字符串的指定个数字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#charIndex"><span class="nav-number">1.9.2.</span> <span class="nav-text">charIndex()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-和-truncate"><span class="nav-number">1.10.</span> <span class="nav-text">delete 和 truncate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.11.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sybase常用SQL"><span class="nav-number">1.12.</span> <span class="nav-text">sybase常用SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换函数"><span class="nav-number">1.13.</span> <span class="nav-text">转换函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期函数"><span class="nav-number">1.14.</span> <span class="nav-text">日期函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学函数"><span class="nav-number">1.15.</span> <span class="nav-text">数学函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用DDL语句"><span class="nav-number">1.16.</span> <span class="nav-text">常用DDL语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL优化"><span class="nav-number">1.17.</span> <span class="nav-text">SQL优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看执行计划"><span class="nav-number">1.18.</span> <span class="nav-text">查看执行计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sybase系统函数"><span class="nav-number">1.19.</span> <span class="nav-text">sybase系统函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bat启动"><span class="nav-number">1.20.</span> <span class="nav-text">bat启动</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

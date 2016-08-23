@@ -1,0 +1,1063 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="mysql," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="Linux平台安装Mysql失败是因为/etc/my.cnf 的设置是系统的错误路径，可以将$MySQL_HOME/support_files/目录下面的配置文件复制到/etc/my.cnf
+ 1cp ./support_files/my_medium.cnf  /etc/my.cnf
+
+myslq忘记登录密码
+1mysqladmin -u root -p password &amp;quot;newp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql学习笔记">
+<meta property="og:url" content="http://yoursite.com/2016/05/12/mysql学习笔记/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="Linux平台安装Mysql失败是因为/etc/my.cnf 的设置是系统的错误路径，可以将$MySQL_HOME/support_files/目录下面的配置文件复制到/etc/my.cnf
+ 1cp ./support_files/my_medium.cnf  /etc/my.cnf
+
+myslq忘记登录密码
+1mysqladmin -u root -p password &amp;quot;newp">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-10/38631395.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-10/69687340.jpg">
+<meta property="og:updated_time" content="2016-08-21T08:39:18.121Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql学习笔记">
+<meta name="twitter:description" content="Linux平台安装Mysql失败是因为/etc/my.cnf 的设置是系统的错误路径，可以将$MySQL_HOME/support_files/目录下面的配置文件复制到/etc/my.cnf
+ 1cp ./support_files/my_medium.cnf  /etc/my.cnf
+
+myslq忘记登录密码
+1mysqladmin -u root -p password &amp;quot;newp">
+<meta name="twitter:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-10/38631395.jpg">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> mysql学习笔记 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              mysql学习笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-05-12T15:34:19+08:00" content="2016-05-12">
+            2016-05-12
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/数据库/" itemprop="url" rel="index">
+                  <span itemprop="name">数据库</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><ol>
+<li><p>Linux平台安装Mysql失败是因为/etc/my.cnf 的设置是系统的错误路径，可以将$MySQL_HOME/support_files/目录下面的配置文件复制到/etc/my.cnf</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp ./support_files/my_medium.cnf  /etc/my.cnf</div></pre></td></tr></table></figure>
+</li>
+<li><p>myslq忘记登录密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqladmin -u root -p password &quot;newpwd&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>mysql丢失密码</p>
+<ul>
+<li><p>windows平台</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">net stop mysql</div><div class="line">mysqld --skip-grant-tables</div><div class="line">打开另一个命令行窗口</div><div class="line">mysql -u root</div><div class="line">update mysql.user set password=password(&apos;newpwd&apos;) where user=&apos;root&apos;</div><div class="line">		and host=&apos;localhost&apos;</div><div class="line">加载权限表</div><div class="line">flush privileges;</div></pre></td></tr></table></figure>
+</li>
+<li><p>linux平台</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysqld_safe --skip-grant-tables user=mysql</div><div class="line">mysql -u root</div><div class="line">update mysql.user set password=password(&apos;newpwd&apos;) where user=&apos;root&apos;</div><div class="line">		and host=&apos;localhost&apos;</div><div class="line">加载权限表</div><div class="line">flush privileges;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<p>4.InnoDB 和 MyISAM区别<br>InnoDB 支持事务安全，行锁；空间使用比较高，内存使用高，批量插入速度低<br>MyISAM不支持事务安全，表锁；空间使用比较低，内存使用低，批量插入速度高</p>
+<ul>
+<li><p>使用mysqldump备份数据库中的某个表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysqldump -uroot -p chuan test &gt; C:/aa.sql</div><div class="line">备份数据库chuan中的test数据表</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用mysqldump备份多个数据库中的表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysqldump -uroot -p --databases chuan mysql &gt; C:/aa.sql</div><div class="line">备份数据库chuan 和数据库mysql</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 还原数据库</div></pre></td></tr></table></figure></p>
+<p>mysql -uroot -p [dbname] &lt; file.sql<br>指明数据库名称和sql文件位置<br>或者<br>use dbname<br>source file.sql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">常用</div><div class="line">SHOW ENGINES</div><div class="line">SHOW VARIABLES LIKE &apos;have%&apos;</div><div class="line">ALTER TABLE account ENGINE=INNODB</div><div class="line">DESC  account</div><div class="line"></div><div class="line">USE mysql</div><div class="line">SELECT HOST,USER,PASSWORD FROM USER</div><div class="line"></div><div class="line">SELECT MD5(&apos;root&apos;)</div><div class="line"></div><div class="line">### 数据导入导出</div></pre></td></tr></table></figure></p>
+<p>SELECT * FROM test INTO OUTFILE “C:/dd.txt”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; 注意： 在windows上默认换行符号为&quot;\r\n&quot;,而命令默认换行符为&quot;\n&quot;,改为</div></pre></td></tr></table></figure></p>
+<p>SELECT * FROM test INTO OUTFILE “C:/dc.txt”  LINES TERMINATED BY ‘\r\n’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 使用select命令生成文本文件</div></pre></td></tr></table></figure></p>
+<p>SELECT * FROM test INTO OUTFILE “C:/test.txt”<br>FIELDS<br>TERMINATED BY ‘,’     – 设置字段之间的分割符<br>ENCLOSED BY ‘\”‘      – 设置字段的包围符号<br>ESCAPED BY ‘\’’       – 设置如何写入或读取特殊字符，默认为“\”<br>LINES TERMINATED BY ‘\r\n’   – 设置每行结尾的字符，默认为”\n”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 使用mysqldump命令同时生成sql文件和文本文件</div></pre></td></tr></table></figure></p>
+<p>mysqldump -T C:/soft chuan test -uroot -p<br>–fields-terminated-by=,<br>–fields-optionally-enclosed-by=\”<br>–fields-escaped-by=?<br>–lines-terminated-by=\r\n<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">输出 ==&gt;</div></pre></td></tr></table></figure></p>
+<p>“1”,”one”<br>“2”,”two”<br>“3”,”three”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 使用load命令导入文本文件</div></pre></td></tr></table></figure></p>
+<p>LOAD DATA INFILE ‘C:/soft/test.txt’ INTO TABLE chuan.test<br>FIELDS<br>TERMINATED BY ‘,’<br>ENCLOSED BY ‘\”‘<br>ESCAPED BY ‘\’’<br>LINES TERMINATED BY ‘\r\n’<br>```</p>
+<p>MySQL 的高级特性</p>
+<ol>
+<li>查询缓存<br>SET SESSION QUERY_CACHE_TYPE=  ON;   ##开启缓存功能<br>SET SESSION QUERY_CACHE_TYPE = OFF<br>SELECT @@QUERY_CACHE_TYPE AS result  ## 查看是否开启缓存功能</li>
+</ol>
+<p>SHOW VARIABLES LIKE ‘have_query_cache’   ## 查看缓存大小<br>SELECT @@global.query_cache_size     ## 为0 表示缓存内存大小为0，查询缓存功能不起作用，默认为0</p>
+<p>SET @@global.query_cache_size = 1000000  ## 将缓存大小设为1MB<br>COMMIT;</p>
+<p>SELECT @@global.query_cache_limit;   ## 查看缓存的上限</p>
+<p>SHOW VARIABLES LIKE ‘%query_cache%’   ## 查看缓存的相关参数情况<br>各变量如下：<br>have_query_cache    YES    设置是否支持查询缓存区<br>query_cache_limit    1000000   可以缓存的最大结果集<br>query_cache_min_res_unit    4096   用来设置分配内存块的最小体积，单位 字节<br>query_cache_size      0    设置查询缓存使用的总内存字节数，必须是1024字节的倍数<br>query_cache_type     ON    设置是否启用查询缓存。OFF 不进行缓存；ON 表示出了SQL_NO_CACHE的查询以外，缓存所有结果；DEMAND 仅缓存SQL_CACHE<br>query_cache_wlock_invalidate     OFF  设置是否允许在其他连接处于lock状态时，使用缓存结果，默认OFF</p>
+<p>SHOW STATUS LIKE ‘Qcache_hits’  查看缓存命中次数<br>增加一条记录，跟该表相关的查询缓存会被清空，然后重新查询，命中次数不发生变化，说明本次查询没有直接从缓存中取到数据</p>
+<p>可以修改 /etc/my.cnf 配置文件<br>[mysqld]<br>query_cache_size = 1000000<br>query_cache_limit = 2000000</p>
+<p>show  variables like ‘Qcache%’<br>Qcache_queries_in_cache   在缓存中已注册的查询数目<br>Qcache_inserts       被加入到缓存中的查询数目<br>Qcache_hits      缓存采样数的数目<br>Qcache_lowmem_pruns     因为缺少内存而被从缓存中删除的查询数目<br>Qcache_not_cached      没有被缓存的查询数目<br>Qcache_free_memory     查询缓存的空闲内存总数<br>Qcache_free_blocks     查询缓存的空闲内存块总数<br>Qcache_total_blocks   查询缓存中的块的总数目<br>如果空闲内存块总是总内存块的一半左右，表示存在严重的内部碎片，通常使用flush query cache命令整理碎片，然后 采用reset query cache清理查询缓存<br>如果碎片很少，但是缓存命中率低，说明设置的缓存内存空间小，服务器频繁删除旧的查询缓存，腾出空间，保证新的查询缓存，参数Qcache_lowmem_prunes增加，如果此值增长过快，可能 1.如果存在大量空闲块，则是因为碎片的存在引起的   2. 空闲内存较少，可以适当增加缓存大小。</p>
+<p>分区表<br>SHOW VARIABLES LIKE ‘%partition%’  查看是否支持分区</p>
+<ol>
+<li>range分区<br>CREATE TABLE emp(<br> empNo VARCHAR(20) NOT NULL,<br> empName VARCHAR(20),<br> deptNo INT,<br> birthdate DATE,<br> salary INT<br>)<br>PARTITION BY RANGE(salary)<br>(<br> PARTITION p1 VALUES LESS THAN(1000),<br> PARTITION p2 VALUES LESS THAN(2000),<br> PARTITION p3 VALUES LESS THAN(3000)<br>)<br>INSERT INTO emp VALUES(1000,’kobe’,12,’1888-08-08’,1500);<br>INSERT INTO emp VALUES(1000,’kobe’,12,’1888-08-08’,3500);<br>第二条插入失败，因为分区找不到符合条件的表让其插入 。<br>改为如下：<br>CREATE TABLE emp(<br> empNo VARCHAR(20) NOT NULL,<br> empName VARCHAR(20),<br> deptNo INT,<br> birthdate DATE,<br> salary INT<br>)<br>PARTITION BY RANGE(salary)<br>(<br> PARTITION p1 VALUES LESS THAN(1000),<br> PARTITION p2 VALUES LESS THAN(2000),<br> PARTITION p3 VALUES LESS THAN(3000),<br> PARTITION p4 VALUES LESS THAN(4000)     //也可以使用表达式   eg: less than maxValue<br>)<br>INSERT INTO emp VALUES(1000,’kobe’,12,’1888-08-08’,1500);<br>INSERT INTO emp VALUES(1000,’kobe’,12,’1888-08-08’,3500);<br>插入成功<br>range分区常常使用在以下几种情况：</li>
+<li>如果要删除某个时间段的数据，只需要删除分区即可。alter table emp drop partion p0 的效率高于 delete from emp where 子句</li>
+<li>如果使用包含日期或者时间的列可以考虑使用Range分区</li>
+<li><p>经常行运行直接依赖于分割表的列的查询。比如where year(birth) = 1999 group by empno 此时mysql数据库可以很迅速的确定只有分区P2需要扫描</p>
+</li>
+<li><p>LIST分区<br>list分区类似range分区，区别在于，list分区中每个分区的定义和选择是基于某列的值从属于一个集合，而range分区是从属于一个连续区间值的集合<br>PARTITION BY LIST(deptNo)<br>(<br>PARTITION p1 VALUES IN (10,20),<br>PARTITION p2 VALUES IN (30),<br>PARTITION p3 VALUES IN (40)<br>)<br>INSERT INTO emp VALUES(1000,’kobe’,10,’1888-08-08’,1500);<br>INSERT INTO emp VALUES(1000,’kobe’,30,’1888-08-08’,3500);<br>插入数据的部门编号不在分区值列表中时，那么执行失败<br>INSERT INTO emp VALUES(1000,’kobe’,15,’1888-08-08’,3500);</p>
+</li>
+<li><p>HASH分区<br>用户索要做的就是基于将要被哈希的列值指定一个列值或表达式，以及指定被分区的表将要被分割的分区数量<br>CREATE TABLE emp(<br>empNo VARCHAR(20) NOT NULL,<br>empName VARCHAR(20),<br>deptNo INT,<br>birthdate DATE,<br>salary INT<br>)<br>PARTITION BY HASH(YEAR(birthdate)) PARTITIONS  4</p>
+</li>
+<li><p>线性HASH分区</p>
+</li>
+<li>KEY分区<br>partition by key(birthdate) partitions 4</li>
+<li>复合分区<br>复合分区是分区表中每个分区的再次分割，子分区既可以使用HASH分区，也可以使用KEY分区<br>CREATE TABLE emp(<br> empNo VARCHAR(20) NOT NULL,<br> empName VARCHAR(20),<br> deptNo INT,<br> birthdate DATE,<br> salary INT<br>)<br>PARTITION BY RANGE(salary)<br>SUBPARTITION BY HASH(YEAR(birthdate))<br>SUBPARTITIONS 3<br>(<br> PARTITION p1 VALUES LESS THAN(2000),<br> PARTITION p2 VALUES LESS THAN(5000)<br>)</li>
+</ol>
+<p>SQL性能优化<br>case 1:<br>CREATE TABLE emp(<br>    id INTEGER PRIMARY KEY AUTO_INCREMENT,<br>    deptNo INTEGER,<br>    col3 INTEGER,<br>    col4 INTEGER<br>)<br>INSERT INTO emp VALUES(1,1,2,3);<br>INSERT INTO emp VALUES(2,3,4,5);<br>INSERT INTO emp VALUES(3,4,5,6);</p>
+<p>EXPLAIN SELECT id FROM emp WHERE deptno=2 AND col3 &gt; 1 ORDER BY col4 DESC<br>ALTER TABLE emp ADD INDEX index_1(deptno,col3,col4)<br>// 因为按照BTree索引的原理，先排序deptno,如果遇到相同的deptno就会进行对col3进行排序<br>// 如果遇到相同的col3就会对 col4排序<br>DROP INDEX index_1 ON emp<br>ALTER TABLE emp ADD INDEX index_1(deptno,col4)</p>
+<p>case 2: 多表查询优化的例子<br>CREATE TABLE table1(<br>    id INTEGER PRIMARY KEY,<br>    tid INTEGER NOT NULL<br>);<br>CREATE TABLE table2(<br>    id INTEGER PRIMARY KEY     AUTO_INCREMENT,<br>    tid INTEGER NOT NULL<br>);<br>INSERT INTO table1 VALUES(1,1);<br>INSERT INTO table1 VALUES(2,2);<br>INSERT INTO table1 VALUES(3,3);<br>INSERT INTO table1 VALUES(4,4);</p>
+<p>INSERT INTO table2 VALUES(1,5);<br>INSERT INTO table2 VALUES(2,6);<br>INSERT INTO table2 VALUES(3,7);<br>INSERT INTO table2 VALUES(4,8);<br>优化前：第二张表检索4行数据，且extra没有使用索引<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-10/38631395.jpg" alt=""><br>添加索引 alter table table2 add index(tid)<br>优化后:第二张表检索1行数据，且extra使用索引<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-10/69687340.jpg" alt=""></p>
+<p>利用Profiling分析查询语句<br>set profiling = 1 开启profiling<br>show profiles<br>show profile for query 8;<br>show profile cpu for query 8;<br>show profile block io for query 8;</p>
+<ul>
+<li>索引<br>使用like关键词，只有”%”不在第一个位置，索引才会起作用<br>使用多列索引的查询语句，只有查询语句使用了索引的第一个字段时，索引才会被使用<br>使用OR关键词前后两个条件中的列都是索引时，查询中才使用索引，否则不使用索引。</li>
+<li>优化Insert语句<ol>
+<li>一次性插入多值<br>eg: insert into books values(1,’book’),(2,’book2’),(3,’book3’)</li>
+<li>通常可以锁定表以加速插入数据<br>lock tables test write; insert …; unlock tables;<br>如果不加锁定表，每一次执行insert语句完成后，索引缓冲区都会被写到磁盘上，而加入锁定后索引缓冲区仅被写到磁盘上1次</li>
+</ol>
+</li>
+<li>优化Order By<br>建立索引，使用索引字段order by</li>
+<li>优化group by<br>使用order by null 的group by语句减少了文件排序的步骤</li>
+<li>优化嵌套查询<br>使用连接查询不需要建立临时表，其速度比子查询要快。</li>
+<li>优化数据库结构<ol>
+<li>将字段很多的表分解成多个表，可以按照重要性和使用频率分开</li>
+<li>增加中间表，把需要经常联合查询的数据插入到中间表中。类似于视图</li>
+<li>增加冗余字段</li>
+</ol>
+</li>
+</ul>
+<p>彻底删除mysql<br>yum remove mysql mysql-server mysql-libs compat-mysql51<br>rm -rf /var/lib/mysql<br>rm /etc/my.cnf<br>查看是否还有mysql软件：<br>rpm -qa|grep mysql<br>有的话继续删除</p>
+<p>MySQL源码安装</p>
+<ol>
+<li>首先下载mysql-5.5.24.tar.gz 和 cmake-2.8.4.tar.gz 两个源文件</li>
+<li>安装MySQL源文件包是采用cmake安装的，首先安装cmake</li>
+<li>tar -zxvf cmake-2.8.4.tar.gz , cd cmake-2.8.4</li>
+<li>./configure -&gt; make -&gt; make install</li>
+<li>mkdir -p /usr/local/mysql    mkdir -p /usr/local/mysql/data</li>
+<li>tar zxvf mysql-5.5.24.tar.gz</li>
+<li>cmake -DCMAKE_INSTALL_PREFIX=/usr/loca/mysql -DMYSQL_DATADIR=/usr/loca/mysql/data -DDEFAULT_CHARSET=utf8<br>-DDEFAULT_COLLATION=utf8_general_ci   -DEXTRA_CHARSET=all</li>
+<li>make -&gt; make install</li>
+<li>cp ./support_files/my-medium.cnf /etc/my.cnf</li>
+<li>./scripts/mysql_install_db –user=mysql</li>
+<li>vim .bash_profile<br>PATH=$PATH:$HOME/bin:/usr/local/mysql/bin:/usr/local/mysql/lib<br>source .bash_profile</li>
+<li>echo $PATH 检查路径是否生效</li>
+<li>./bin/mysqld_safe –user=mysql &amp; 启动mysql服务</li>
+</ol>
+<p>安装apache服务器<br>./configure –prefix=/usr/local/apache<br>make<br>make install<br>然后  cd /usr/local/apache/bin    ./apachectl -t 检查配置文件语法是否正确<br>vim /etc/profile 添加环境变量   source  profile  使之生效<br>apachetl start  启动服务</p>
+<p>Sysstat软件包集成如下工具<br><a href="http://sebastien.godard.pagesperso-orange.fr/" target="_blank" rel="external">http://sebastien.godard.pagesperso-orange.fr/</a><br>iostat 提供CPU和使用率及硬盘吞吐效率的数据<br>mpstat 提供单个处理器或多个处理器相关数据<br>sar  负责收集、报告并存储系统活跃的信息<br>sar1  负责收集并存储每天系统动态信息到一个二进制的文件中<br>sar2  负责把每天的系统活跃信息写入总结性的报告中<br>sadc  系统动态数据收集工具，收集的数据被写入一个二进制的文件中<br>sadf  显示被sar工具通过多种格式收集的数据</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/12/python学习笔记/" rel="prev">python学习笔记</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/04/云计算与大数据/" rel="next">大数据</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

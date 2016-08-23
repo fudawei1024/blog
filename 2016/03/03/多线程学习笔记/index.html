@@ -1,0 +1,1060 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="多线程," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="查询CPU核数和线程数grep ‘processor’ /proc/cpuinfo | sort -u | wc -lgrep ‘core id’ /proc/cpuinfo | sort -u | wc -l
+线程组和线程池的区别线程组是为了方便线程的管理，线程池是为了管理线程的生命周期，复用线程，减少创建、销毁线程的开销。守护线程，可以简单理解为后台运行线程，进程结束，守护线程自然而然就会结束">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多线程学习笔记">
+<meta property="og:url" content="http://yoursite.com/2016/03/03/多线程学习笔记/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="查询CPU核数和线程数grep ‘processor’ /proc/cpuinfo | sort -u | wc -lgrep ‘core id’ /proc/cpuinfo | sort -u | wc -l
+线程组和线程池的区别线程组是为了方便线程的管理，线程池是为了管理线程的生命周期，复用线程，减少创建、销毁线程的开销。守护线程，可以简单理解为后台运行线程，进程结束，守护线程自然而然就会结束">
+<meta property="og:updated_time" content="2016-08-21T09:25:31.660Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多线程学习笔记">
+<meta name="twitter:description" content="查询CPU核数和线程数grep ‘processor’ /proc/cpuinfo | sort -u | wc -lgrep ‘core id’ /proc/cpuinfo | sort -u | wc -l
+线程组和线程池的区别线程组是为了方便线程的管理，线程池是为了管理线程的生命周期，复用线程，减少创建、销毁线程的开销。守护线程，可以简单理解为后台运行线程，进程结束，守护线程自然而然就会结束">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 多线程学习笔记 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              多线程学习笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-03-03T22:14:22+08:00" content="2016-03-03">
+            2016-03-03
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/" itemprop="url" rel="index">
+                  <span itemprop="name">Java</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/Java基础/" itemprop="url" rel="index">
+                  <span itemprop="name">Java基础</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="查询CPU核数和线程数"><a href="#查询CPU核数和线程数" class="headerlink" title="查询CPU核数和线程数"></a>查询CPU核数和线程数</h3><p>grep ‘processor’ /proc/cpuinfo | sort -u | wc -l<br>grep ‘core id’ /proc/cpuinfo | sort -u | wc -l</p>
+<h3 id="线程组和线程池的区别"><a href="#线程组和线程池的区别" class="headerlink" title="线程组和线程池的区别"></a>线程组和线程池的区别</h3><p>线程组是为了方便线程的管理，线程池是为了管理线程的生命周期，复用线程，减少创建、销毁线程的开销。<br>守护线程，可以简单理解为后台运行线程，进程结束，守护线程自然而然就会结束。JVM的垃圾回收，内存管理等都是守护线程。<br>调用线程对象的setDaemon(true)则可以将其设置为守护线程<br>注意：JRE 判断程序是否执行结束的标准是所有的前台执行线程执行完毕了，而不管后台线程的状态。<br>当使用Threadlocal维护变量时，ThreadLocal 为每个使用该变量的线程提供独立的变量副本。<br>JMM(Java Memory Model) 内存管理模型<br>隐式锁的应用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public synchronized void methodA();   // 同步方法</div><div class="line">public void methodA(); synchronized(this);  // 同步代码块</div></pre></td></tr></table></figure></p>
+<h3 id="Lock-与-synchronized-区别："><a href="#Lock-与-synchronized-区别：" class="headerlink" title="Lock 与 synchronized 区别："></a>Lock 与 synchronized 区别：</h3><p>Lock 使用起来比较灵活，但是必须有释放锁的动作配合<br>Lock 必须手动释放和开启锁，而 synchronized 不需要手动释放和开启锁<br>Lock  只适用于代码块锁，而 synchronized 对象之间是互斥关系</p>
+<h3 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ConcurrentHashMap&lt;String, Integer&gt; map = new ConcurrentHashMap&lt;String,Integer&gt;();</div><div class="line">for (Map.Entry&lt;String,Integer&gt; entry : map.entrySet()) &#123;</div><div class="line">			System.out.println(entry.getKey() + &quot; = &quot; +entry.getValue());</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>Java 线程池实现了一个Java高并发的、java多线程的、可管理的统一调度器Executors是个线程的工厂类，提供了一些静态方法，生成线程池常用方法三种：</li>
+</ul>
+<ol>
+<li>newSingleThreadExecutor  创建一个单线程的线程池</li>
+<li>newFieedThreadPool 创建固定大小的线程池</li>
+<li>newCachedThreadPool 创建一个可缓存的线程池</li>
+</ol>
+<ul>
+<li>线程安全的集合类 ：<br>Set : CopyOnWriteArraySet<br>List : CopyOnWriteArrayList   Vector(synchronized方法修饰)<br>Map : Hashtable(synchronized方法修饰)   ConcurrentMap -&gt; ConcurrentHashMap</li>
+</ul>
+</blockquote>
+<h3 id="Runnable和Thread的区别"><a href="#Runnable和Thread的区别" class="headerlink" title="Runnable和Thread的区别"></a>Runnable和Thread的区别</h3><p>只要是多线程肯定永远以实现Runnable接口为主，因为实现Runnable接口相比继承Thread类有如下好处<br>1.避免单继承的局限，一个类可以实现多个接口<br>2.适合资源的共享</p>
+<p>synchronized 可以在任意对象及方法上加锁<br>虽然println() 在内部是同步的，但i–的操作是在进入println()之前发生的，所以有发生非线程安全问题的概率。<br>MyThread.java 类的构造函数是被main线程调用的，而run方法是被名为Thread-0 的线程调用的，run方法是自动调用的方法。</p>
+<p>java中有3种方法可以终止正在运行的线程：<br>1.使用退出标志，使线程正常退出，也就是当run方法完成后线程终止<br>2.使用stop方法强行终止线程，不推荐，使用它们可能产生不可预料的结果<br>3.使用interrupt方法中断线程</p>
+<p>调用interrupte() 方法仅仅是在当前线程中打了一个停止的标记。</p>
+<h3 id="interrupted-amp-amp-isInterrupted？"><a href="#interrupted-amp-amp-isInterrupted？" class="headerlink" title="interrupted &amp;&amp; isInterrupted？"></a>interrupted &amp;&amp; isInterrupted？</h3><p>1.this.interrupted() 测试当前线程是否已经是中断状态，执行后具有将状态标志清除为false功能<br>2.this.isInterrupted()  测试线程Thread对象是否已经是中断状态，但不清楚状态标识。</p>
+<p>当进程中不存在非守护线程了，则守护线程自动销毁。典型的守护线程就是垃圾回收线程。<br>只有当最后一个非守护线程结束时，守护线程才随着JVM一同结束工作。<br>调用synchronized方法一定是排队运行的; 另外，只有共享资源的读写访问才需要同步化，如果不是共享资源，那么根本没有同步的必要。</p>
+<p>当A线程调用anyObject对象调用synchronized方法修饰的X方法时，A线程就获得了X方法所在<strong>对象的锁</strong>，所以其他线程必须等A线程执行完毕才可以调用X方法，但B线程可以调用其他的非synchronized同步方法。<br>而B线程如果调用了synchronized修饰的<strong>非X方法</strong>时，必须等到A线程将X方法执行完，也就是释放对象锁之后才可以调用。</p>
+<p>synchronized锁重入（自己可以再次获取自己的内部锁）<br>当一个线程得到一个对象锁后，再次请求此对象锁时可以再次得到该对象的锁。<br>这也证明在一个synchronized方法/块的内部调用本类的其他synchronized方法时，是永远可以得到锁的。</p>
+<p>当存在父子类继承关系时，子类是完全可以通过“可重入锁”调用父类的同步方法的。<br>出现异常的锁被自动释放了。<br>同步不能继承。所以还得在子类的方法中添加synchronized关键字<br>同步synchronized是锁定当前对象的。</p>
+<p>锁非this对象具有一定的优点：如果在一个类中有很多个 synchronized 方法，这时虽然能实现同步，但会受到阻塞，影响运行效率；但如果使用同步代码块<br>锁非this对象，则 synchronized(非this)代码块中的程序与同步方法是异步的，不与其他锁this同步方法争抢this锁，可以大大提高运行效率。</p>
+<p>synchronized 关键字加到static静态方法上是给Class上锁(加锁之后若其他线程只需要对象锁也不能获取到必须等待)，而 synchronized加到非static<br>静态方法上是给对象上锁。</p>
+<p>若字符串作为锁，涉及到常量池，导致两个线程持有相同的锁，其中一个线程不能运行<br>volatile 的作用是强制从公共堆栈中取得变量的值，而不是从线程私有数据栈中取得变量的值<br>volatile 关键字增加了实例变量在多个线程之间的可见性。但缺点是不支持原子性。</p>
+<h3 id="synchronized和volatile区别"><a href="#synchronized和volatile区别" class="headerlink" title="synchronized和volatile区别"></a>synchronized和volatile区别</h3><p>1.volatile属于线程同步逇轻量级实现，性能好。只能修饰变量，synchroinzed可以修饰方法及代码块。<br>2.多线程访问volatile不会阻塞，而synchronized会发生阻塞<br>3.volatile能保证数据的可见性，但不能保证原子性；而synchronized可以保证原子性，也可以间接保证可见性，因为它会将私有内存和公共内存数据同步</p>
+<p>线程安全包含原子性和可见性两个方面，java的同步机制都是围绕这两个方面来确保线程安全的。<br>除了在i++操作时使用synchronized关键字实现同步，还可以使用 AtomicInteger 原子类进行实现（java.util.concurrent.atomic.AtomicInteger）。</p>
+<p>方法 boolean hasQueuedThread(Thread thread) 查询指定的线程是否正在等待获取此锁定<br>方法 boolean hasQueuedThreads()  查询是否有线程正在等待获取此锁定<br>方法 boolean hasWaiters(Condition condition)  查询是否有线程正在等待与此锁定有关的condition条件<br>eg： service.lock.hasQuedThread(threadA)    lock.hasWaiters(newCondition)   lock.getWaitQueueLength(newCondition)</p>
+<h3 id="线程的中断"><a href="#线程的中断" class="headerlink" title="线程的中断"></a>线程的中断</h3><p>t1想中断t2的话只需要在线程t1中将线程t2对象的中断标志设置为true,然后线程2可以选择在合适的时候处理该中断请求，甚至可以不理会该请求。</p>
+<h3 id="ThreadLocal类"><a href="#ThreadLocal类" class="headerlink" title="ThreadLocal类"></a>ThreadLocal类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public void set(T value) &#123;</div><div class="line">        Thread t = Thread.currentThread();</div><div class="line">        // 获得一个和当前线程相关的ThreadLocalMap</div><div class="line">        ThreadLocalMap map = getMap(t);</div><div class="line">        if (map != null)</div><div class="line">        	// ThreadLocalMap 是ThreadLocal类的一个静态内部类，实现了键值对的获取</div><div class="line">        	// 键是this对象指向的ThreadLocal对象</div><div class="line">            map.set(this, value);</div><div class="line">        else</div><div class="line">            createMap(t, value);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">public T get() &#123;</div><div class="line">Thread t = Thread.currentThread();</div><div class="line">ThreadLocalMap map = getMap(t);</div><div class="line">if (map != null) &#123;</div><div class="line">    ThreadLocalMap.Entry e = map.getEntry(this);</div><div class="line">    if (e != null)</div><div class="line">        return (T)e.value;</div><div class="line">&#125;</div><div class="line">return setInitialValue();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>进一步的，我们可以创建不同的ThreadLocal实例来实现多个变量在不同线程间的访问隔离，因为不同的ThreadLocal对象作为不同键，当然也可以在线程的ThreadLocalMap对象中设置不同的值了。</p>
+<blockquote>
+<p>ThreadLocal在处理线程的局部变量的时候比synchronized同步机制解决线程安全问题更简单，更方便，且结果程序拥有更高的并发性<br>注意： 使用ThreadLocal，一般都是声明在静态变量中，如果不断的创建ThreadLocal而且没有调用其remove方法，将会导致内存泄漏，特别实在高并发的web容器中。</p>
+</blockquote>
+<h3 id="线程的异常处理"><a href="#线程的异常处理" class="headerlink" title="线程的异常处理"></a>线程的异常处理</h3><p>thread.setUncaughtExceptionHandler 语句来实现逻辑的注册<br>UncaughtExceptionHandler是一个接口，异常处理对象需要实现这个接口才能处理异常<br>对于checked exception 推荐try/catch 块来处理；对于unchecked exception,注册一个实现UncaughtExceptionHandler接口对象该实例来处理。</p>
+<h3 id="CopyOnWriteArrayList"><a href="#CopyOnWriteArrayList" class="headerlink" title="CopyOnWriteArrayList"></a>CopyOnWriteArrayList</h3><p>CopyOnWriteArrayList 中的set,add,remove等方法，都使用了ReentrantLock的lock来加锁，unlock来解锁。当增加元素的时候用Arrays.copyOf()拷贝副本，在副本上增加元素，然后改变原引用指向副本。读操作不需要加锁，而写操作类实现中对其进行了加锁。因此CopyOnWriteArrayList是一个线程安全的List接口的实现，可以提供高并发读取。<br>CopyOnWrite 机制也是一种读写分离的思想<br><strong>CopyOnWrite缺点：1）内存占用问题，回收。   2）数据一致性问题，只能保证最终一致性，不能保证实时一致性</strong></p>
+<h3 id="线程阀"><a href="#线程阀" class="headerlink" title="线程阀"></a>线程阀</h3><h4 id="阻塞队列-BlockingQueue"><a href="#阻塞队列-BlockingQueue" class="headerlink" title="阻塞队列 BlockingQueue"></a>阻塞队列 BlockingQueue</h4><p>支持两个附加操作的队列，在队列为空时，获取元素的线程会等待队列变为非空；当队列满时，存储元素的线程会等待队列可用。<br>包括 DelayQueue/ArrayBlockingQueue/LinkedBlockingQueue/LinkedBlockingQueue/SynchronousQueue/PriorityBlockingQueue/LinkedBlockingDeque<br>ArrayBlockingQueue 是一个由数组支持的有界的阻塞队列。<br>LinkedBlockingQueue是基于链表的阻塞队列，对于生产者和消费者分别采用了独立的锁来控制数据同步。若构造对象的时候没有指定初始化大小，默认一个类似无限大小的容量。<br>PriorityBlockingQueue 是一个支持优先级排序的无界阻塞队列，它并不会阻塞数据生产者只会在没有可消费的数据时，阻塞数据的消费者</p>
+<p>SynchronousQueue 同步队列是一个不存储元素的阻塞队列，每一个put操作必须等待一个take操作，否则不能继续添加元素。<br>CountDownLatch同步计数器：在完成一组正在其他线程中执行的操作之前，允许一个或多个线程一直等待，用给定的计数初始化CountDownLatch，由于调用了countDown方法，所以在当前计数器到达零之前，await方法会一直受阻塞，之后，会释放所有等待的线程，await的所有后续调用都立即返回。<br>使用场景： 同时当线程都完成后触发事件事件。比如：开5个多线程去下载，当5个线程都执行完了才算下载成功。</p>
+<blockquote>
+<p>ReentrantLock、CountDownLatch、Semaphore、FutureTask、ThreadPoolExecutor都会发现有个叫Sync的静态内部类，继承自AbstractQueuedSynchronizer。AbstractQueuedSynchronizer是java.util.concurrent的核心组件之一，它为并发包中的其他synchronizers提供了一组公共的基础设施。<br>Semaphore 是一个计数信号量，信号量维护了一个许可集合，在许可可用前会阻塞每一个acquire，然后再获取该许可，每个release添加一个许可，从而可能释放一个正在阻塞的获取者。</p>
+</blockquote>
+<p>线程池任务拒绝策略： 直接丢弃任务 不用线程池线程运行  丢弃队列中最旧任务 抛出异常<br>线程池一定要在合理的单例模式下才有效。<br>在某些情况情况下，可以简单的抛弃请求，依靠更高级别的协议稍后重试请求，也可以指出服务器暂时很忙的响应来拒绝请求。</p>
+<h3 id="冒泡"><a href="#冒泡" class="headerlink" title="冒泡"></a>冒泡</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">for(int i=0;i&lt;arr.length-1;i++)&#123;</div><div class="line">			for(int j=0;j&lt;arr.length-i-1;j++)&#123;</div><div class="line">				if(compareArr(arr[j],arr[j+1]) &gt; 0)&#123;</div><div class="line">					swap(arr,j,j+1);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<h3 id="线程监控工具"><a href="#线程监控工具" class="headerlink" title="线程监控工具"></a>线程监控工具</h3><p>VisualVM 是JDK的一个集成的分析工具，监控应用程序的性能和内存占用情况、监控线程进行线程转储(Thread Dump)或堆转储(Heap Dump)<br>在线程一栏中，四种状态，其中监视(Monitor)表示线程想执行一端synchronized中的代码，但是发现其他线程正在执行，被block等待<br>有时候需要生产线程Dump进行那个时刻的线程分析，点击线程Dump即可生产Dump文件。可以在java VisualVM工具里面安装JTA插件，分析线程dump文件。正常阶段的dump文件与非正常的dump文件比较更容易分析问题。<br>使用JConsole进行应用程序性能监控<br>jmc(Oracle Java Mission Console)提供监控和分析</p>
+<h3 id="linux线程分析监控"><a href="#linux线程分析监控" class="headerlink" title="linux线程分析监控"></a>linux线程分析监控</h3><p>获取进程ID之后(top -p 8442 -H) 用jstack打印出给定的java进程ID或core file或远程调试服务的java堆栈信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jstack 8442 &gt; ./8442_dump.txt</div></pre></td></tr></table></figure></p>
+<h3 id="Eclipse-里面调试并发程序"><a href="#Eclipse-里面调试并发程序" class="headerlink" title="Eclipse 里面调试并发程序"></a>Eclipse 里面调试并发程序</h3><p>默认情况下，Eclipse调试的时候debugger找到断点，只是把有断点的线程停止，其他线程都在继续他们的运行。<br>Window-&gt;preference 把 Default suspend policy for new breakpoints 改为 Suspend VM ,这样遇到断点就会暂停所有线程的运行</p>
+<blockquote>
+<p>利用Badboy或者Jmeter进行服务器抗压能力的测试</p>
+</blockquote>
+<h3 id="内存溢出三种情况"><a href="#内存溢出三种情况" class="headerlink" title="内存溢出三种情况"></a>内存溢出三种情况</h3><ol>
+<li>堆溢出。解决：手动设置JVM Heap 的大小</li>
+<li>永久代溢出。 设置永久代大小</li>
+<li>栈溢出。优化程序，或者通过-Xss来设置每个线程的栈大小</li>
+</ol>
+<h3 id="ReentrantReadWriteLock-读写锁有两个锁，一个是读操作相关的锁，也成为共享锁-另一个是写操作相关的锁，也叫排它锁。多个Thread可以同时进行读取"><a href="#ReentrantReadWriteLock-读写锁有两个锁，一个是读操作相关的锁，也成为共享锁-另一个是写操作相关的锁，也叫排它锁。多个Thread可以同时进行读取" class="headerlink" title="ReentrantReadWriteLock 读写锁有两个锁，一个是读操作相关的锁，也成为共享锁;另一个是写操作相关的锁，也叫排它锁。多个Thread可以同时进行读取"></a>ReentrantReadWriteLock 读写锁有两个锁，一个是读操作相关的锁，也成为共享锁;另一个是写操作相关的锁，也叫排它锁。多个Thread可以同时进行读取</h3><p>操作，但是同一时刻只允许一个Thread进行写入操作。</p>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><h4 id="线程池处理流程"><a href="#线程池处理流程" class="headerlink" title="线程池处理流程"></a>线程池处理流程</h4><ol>
+<li>如果当前运行的线程少于corePoolSize,则创建新线程来执行任务（执行这一步骤需要获取全局锁）</li>
+<li>如果运行的线程等于或多于corePoolSize,则将任务加入BlockingQueue</li>
+<li>如果无法将任务加入BlockingQueue(队列已满)，则创建新的线程来处理任务u（需要获取全局锁你）</li>
+<li>如果创建新线程将使得当前运行的线程超出maximumPoolSize,任务将被拒绝。<blockquote>
+<p>在ThreadPoolExecutor完成预热之后（当前运行的线程数大于等于corePoolSize），几乎所有的execute()方法调用都是执行步骤</p>
+<h4 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h4></blockquote>
+</li>
+<li>ArrayBlockingQueue 是一个基于数组结构的有界阻塞队列，此队列按FIFO原则对元素进行排序</li>
+<li>LinkedBlockingQueue 一个基于链表结构的阻塞队列FIFO排序元素，静态工厂方法Executors.newFixedThreadPool()使用这个队列</li>
+<li>SynchronousQueue 一个不存储元素的阻塞队列，每个插入操作必须等到另一个线程调用移除操作，否则插入操作一直处于阻塞状态，静态工厂方法 Executors.newCachedThreadPool使用了这个队列</li>
+<li>PriorityBlockingQueue 一个具有优先级的无限阻塞队列<h4 id="饱和策略"><a href="#饱和策略" class="headerlink" title="饱和策略"></a>饱和策略</h4></li>
+<li>AbortPolicy 直接抛出异常</li>
+<li>CallerRunsPolicy 只用调用者所在线程来运行任务</li>
+<li>DiscardOldestPolicy 丢弃队列最近的一个任务，并执行当前任务</li>
+<li><p>DiscardPolicy 不处理，丢弃</p>
+<h4 id="execute-amp-amp-submit-区别"><a href="#execute-amp-amp-submit-区别" class="headerlink" title="execute &amp;&amp; submit 区别"></a>execute &amp;&amp; submit 区别</h4><p>execute() 方法用于提交不需要返回值的任务</p>
+<ul>
+<li><p>submit()方法用于提交需要返回值的任务 ，返回一个future对象，通过future的get()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">threadPool.execute(new Runnable()&#123;</div><div class="line">   public void run()&#123; ... &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>方法来获取返回值，get方法会阻塞当前线程一段时间后立即返回。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Future&lt;Object&gt; future = executor.submit(harrReturnValuetask);</div><div class="line">Object s = future.get();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="shutdown-amp-amp-shutdownNow-区别"><a href="#shutdown-amp-amp-shutdownNow-区别" class="headerlink" title="shutdown &amp;&amp; shutdownNow 区别"></a>shutdown &amp;&amp; shutdownNow 区别</h3><ul>
+<li>shutdownNow 首先将线程池的状态设置为STOF，然后尝试停止所有的正在执行或暂停执行的线程，并返回等待执行任务的列表</li>
+<li>shutdown 只是将线程池的状态设置为SHUTDOWN状态，然后中断所有没有正在执行的线程</li>
+</ul>
+<blockquote>
+<p>编译器优化重排序和处理器冲排序会导致多线程出现内存可见性问题<br>两个操作之间具有happens-before关系，并不意味这前一个操作必须要在后一个操作之前执行！happens-before仅仅要求前一个操作对后一个操作可见。</p>
+</blockquote>
+<h3 id="Thread-join的使用"><a href="#Thread-join的使用" class="headerlink" title="Thread.join的使用"></a>Thread.join的使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) throws InterruptedException &#123;</div><div class="line">        Thread previous = Thread.currentThread();</div><div class="line">        for(int i=0;i&lt;10;i++)&#123;</div><div class="line">            Thread t = new Thread(new TestA(previous),String.valueOf(i));</div><div class="line">            t.start();</div><div class="line">            previous = t;</div><div class="line">        &#125;</div><div class="line">        System.out.println(Thread.currentThread().getName()+&quot; terminated!&quot;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="游标的使用"><a href="#游标的使用" class="headerlink" title="游标的使用"></a>游标的使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Declare cursor CURSOR for</div><div class="line">select stuID from student</div><div class="line">open cursor</div><div class="line">fetch next from cursor</div><div class="line">while @@fetch_status =0</div><div class="line">begin</div><div class="line">if (@ID=15)</div><div class="line">	delete from student where id=@ID</div><div class="line">	fetch next from cursor into @ID</div><div class="line">end</div><div class="line">close cursor</div><div class="line">deallocate cursor</div></pre></td></tr></table></figure>
+<h3 id="TCP和UDP区别"><a href="#TCP和UDP区别" class="headerlink" title="TCP和UDP区别"></a>TCP和UDP区别</h3><p>TCP是传输控制协议，提供的面向连接、可靠的字节流服务。当客户和服务器彼此交换数据前，必须现在双方之间建立一个TCP连接，之后才能传输数据。<br>TCP提供超时重发、丢弃重复数据、校验数据、流量控制等功能，保证数据能从一端传到另一端。<br>UDP是用户数据报协议，无连接的面向数据包的传输层协议。UDP不提供可靠性，它只是把应用程序传给IP层的数据包发送出去，但是并不保证他们能到达目的地。由于UDP在传输数据前不需要建立链接，且没有超时重发机制，所以传输速度快。</p>
+<h3 id="编写Socket套接字"><a href="#编写Socket套接字" class="headerlink" title="编写Socket套接字"></a>编写Socket套接字</h3><p>调用socket()创建一个套接字，调用bind()绑定IP地址和端口，然后启动一个死循环，循环中调用accept接受链接。对于每个接受的连接，可以启动多线程<br>方式进行处理，在线程中调用send(),recv()发送和接受数据。客户端只需要调用socket()创建套接字，连接服务器，就可以发送和接受数据了。</p>
+<h3 id="SQL注入攻击"><a href="#SQL注入攻击" class="headerlink" title="SQL注入攻击"></a>SQL注入攻击</h3><p>SQL注入攻击 就是攻击者把SQL命令插入到Web表单的输入域或页面请求的查询字符串中，欺骗服务器执行恶意的SQL命令。在某些表单中，用户输入的内容<br>直接用来构造动态SQL命令，或作为存储过程的输入参数。<br>防范SQL注入攻击：替换单引号，连字符   检查用户输入的合法性    将用户登录名称密码等数据加密保存   存储过程执行所有的查询</p>
+<h3 id="数据库四范式"><a href="#数据库四范式" class="headerlink" title="数据库四范式"></a>数据库四范式</h3><p>1NF  所有属性值域中每一个值都是不可再分解的值<br>2NF  如果关系模式R为第一范式，并且R中每一个非主属性完全函数依赖于R的某个候选键<br>3NF  如果关系模式R是第二范式，且每个非主属性都不传递依赖于R的候选键<br>BCNF 如果关系模式R是第一范式，且每个属性都不传递依赖于R的候选键，那么成R为BCNF的模式</p>
+<p>死锁的4个必要条件是： 互斥 请求与保持  不剥夺条件  循环等待条件</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多线程/" rel="tag">#多线程</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/03/单例模式/" rel="prev">单例模式</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/02/java面试基础/" rel="next">java面试基础</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询CPU核数和线程数"><span class="nav-number">1.</span> <span class="nav-text">查询CPU核数和线程数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程组和线程池的区别"><span class="nav-number">2.</span> <span class="nav-text">线程组和线程池的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lock-与-synchronized-区别："><span class="nav-number">3.</span> <span class="nav-text">Lock 与 synchronized 区别：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap"><span class="nav-number">4.</span> <span class="nav-text">ConcurrentHashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runnable和Thread的区别"><span class="nav-number">5.</span> <span class="nav-text">Runnable和Thread的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interrupted-amp-amp-isInterrupted？"><span class="nav-number">6.</span> <span class="nav-text">interrupted && isInterrupted？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized和volatile区别"><span class="nav-number">7.</span> <span class="nav-text">synchronized和volatile区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的中断"><span class="nav-number">8.</span> <span class="nav-text">线程的中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal类"><span class="nav-number">9.</span> <span class="nav-text">ThreadLocal类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的异常处理"><span class="nav-number">10.</span> <span class="nav-text">线程的异常处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CopyOnWriteArrayList"><span class="nav-number">11.</span> <span class="nav-text">CopyOnWriteArrayList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程阀"><span class="nav-number">12.</span> <span class="nav-text">线程阀</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阻塞队列-BlockingQueue"><span class="nav-number">12.1.</span> <span class="nav-text">阻塞队列 BlockingQueue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡"><span class="nav-number">13.</span> <span class="nav-text">冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程监控工具"><span class="nav-number">14.</span> <span class="nav-text">线程监控工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux线程分析监控"><span class="nav-number">15.</span> <span class="nav-text">linux线程分析监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Eclipse-里面调试并发程序"><span class="nav-number">16.</span> <span class="nav-text">Eclipse 里面调试并发程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存溢出三种情况"><span class="nav-number">17.</span> <span class="nav-text">内存溢出三种情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReentrantReadWriteLock-读写锁有两个锁，一个是读操作相关的锁，也成为共享锁-另一个是写操作相关的锁，也叫排它锁。多个Thread可以同时进行读取"><span class="nav-number">18.</span> <span class="nav-text">ReentrantReadWriteLock 读写锁有两个锁，一个是读操作相关的锁，也成为共享锁;另一个是写操作相关的锁，也叫排它锁。多个Thread可以同时进行读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-number">19.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程池处理流程"><span class="nav-number">19.1.</span> <span class="nav-text">线程池处理流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任务队列"><span class="nav-number">19.2.</span> <span class="nav-text">任务队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#饱和策略"><span class="nav-number">19.3.</span> <span class="nav-text">饱和策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#execute-amp-amp-submit-区别"><span class="nav-number">19.4.</span> <span class="nav-text">execute && submit 区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shutdown-amp-amp-shutdownNow-区别"><span class="nav-number">20.</span> <span class="nav-text">shutdown && shutdownNow 区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread-join的使用"><span class="nav-number">21.</span> <span class="nav-text">Thread.join的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#游标的使用"><span class="nav-number">22.</span> <span class="nav-text">游标的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP和UDP区别"><span class="nav-number">23.</span> <span class="nav-text">TCP和UDP区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写Socket套接字"><span class="nav-number">24.</span> <span class="nav-text">编写Socket套接字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL注入攻击"><span class="nav-number">25.</span> <span class="nav-text">SQL注入攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库四范式"><span class="nav-number">26.</span> <span class="nav-text">数据库四范式</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1066 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="pycharm," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="You can try out the features described in the tips while this dialog stays open on the screen.
+pyCharm Tips -&amp;gt;Open directory -&amp;gt; Open in current window -&amp;gt; Add to currently opended projectsCtrl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习笔记">
+<meta property="og:url" content="http://yoursite.com/2016/05/12/python学习笔记/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="You can try out the features described in the tips while this dialog stays open on the screen.
+pyCharm Tips -&amp;gt;Open directory -&amp;gt; Open in current window -&amp;gt; Add to currently opended projectsCtrl">
+<meta property="og:image" content="cid:a1">
+<meta property="og:image" content="cid:a2">
+<meta property="og:image" content="cid:a3">
+<meta property="og:image" content="cid:a4">
+<meta property="og:updated_time" content="2016-08-21T09:23:59.131Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python学习笔记">
+<meta name="twitter:description" content="You can try out the features described in the tips while this dialog stays open on the screen.
+pyCharm Tips -&amp;gt;Open directory -&amp;gt; Open in current window -&amp;gt; Add to currently opended projectsCtrl">
+<meta name="twitter:image" content="cid:a1">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> python学习笔记 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              python学习笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-05-12T15:36:20+08:00" content="2016-05-12">
+            2016-05-12
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/python/" itemprop="url" rel="index">
+                  <span itemprop="name">python</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>You can try out the features described in the tips while this dialog stays open on the screen.</p>
+<p>pyCharm Tips -&gt;<br>Open directory -&gt; Open in current window -&gt; Add to currently opended projects<br>Ctrl+shitf+T 快速打开类</p>
+<p>Ctrl+空格  快速补全<br>ctrl+空格 两次，补全类名无论该类是否被引入<br>Ctrl+G find usages in the popup menu<br>ctrl+shift+空格  View | Quick Document   查看方法文档 （查看外部文档 用 Shift+F2）<br>F3    jump to declarations<br>ctrl+F3   浏览该类大致结构   Navigate  | File Structure<br>alt+shift+R     快速重命名    Refactor | Rename<br>补全的时候使用Tab<br>shift+click 或者 鼠标中键<br>alt+F1<br>ctrl+D  重复所选块<br>ctrl+p   此时，如果光标在括号中间，可以显示所需参数<br>ctrl+q   最后一次修改的地方<br>ctrl+shift+上    移动<br>alt+enter  自动导入包<br>alt+F7  查找该方法在其他地方的使用情况<br>ctrl+o  覆盖基类方法</p>
+<p>pyCharm 中安装模块两种方式：</p>
+<ol>
+<li>FIle - Settings - Project Interpreter</li>
+<li>tar.gz 包安装模块  解压 -&gt; python  setup.py install</li>
+</ol>
+<p>Question</p>
+<ol>
+<li>Non-ASCII character ‘\xe5’ in file ……<h1 id="coding-UTF-8"><a href="#coding-UTF-8" class="headerlink" title="-- coding: UTF-8 --"></a>-<em>- coding: UTF-8 -</em>-</h1>或者<br>#coding=utf-8<br>!# /usr/bin/python</li>
+</ol>
+<h3 id="python语法"><a href="#python语法" class="headerlink" title="python语法"></a>python语法</h3><ol>
+<li>python中的类采用CapWords约定，每个单词的首字母要大写，其他字母小写。</li>
+<li>类的私有属性、私有方法以两个下划线作为前缀，对象铜通过点操作符来访问类中的属性和方法。</li>
+<li>self相当于Java语言中的this关键字，表示本类</li>
+<li>方法名的首字母小写，其后每个单词的首字母要大写<br>行内注释应该至少用两个空格和语句分开，他们以#和单个空格开始</li>
+</ol>
+<p>eg:<br>class MyClass:<br>    <strong>username = ‘’<br>    password = ‘’<br>    def </strong>init<strong>(self,username,password):<br>        self.</strong>username = username<br>        self.password = password</p>
+<pre><code>def getUserName(self):
+    return self.__username + self.password
+</code></pre><p>if <strong>name</strong> == “<strong>main</strong>“:<br>    myclass = MyClass(‘hello’,’pass’)<br>    print myclass.getUserName()</p>
+<p>python中的长整型相当于java的BigInteger类型，数字后面加上“L”,范围为正负 20亿<br>以单下划线开头的(_foo)代表不能直接访问的类属性，需通过类提供的接口进行访问<br>以双下划线开头的(<strong>foo)代表类的私有成员<br>以双下划线开头和结尾(</strong>foo<strong>)代表Python中特殊方法专用的标识，例如 </strong>init__() 代表类的构造函数<br><strong> python不支持C语言中的自增和自减操作 </strong></p>
+<p>str()函数：把值转换为合理形式的字符串，以便用户理解<br>repr()函数：创建一个字符串，以合法的Python表达式形式来表示值<br>eg:<br>print repr(‘my name is max’)   ==&gt;  ‘my name is max’<br>print repr(12345L)   ==&gt;    12345L<br>print str(‘my name is max’)   ==&gt;   my name is max<br>print str(12345L)   ==&gt;    12345</p>
+<p>input()函数是把读入的用户输入数据默认为Python表达式，而raw_input()函数是把读入的数据转换为字符串。</p>
+<p>str1.decode(‘gb2312’)  表示将gb2312编码的字符串str1转换成Unicode编码<br>str2.encode(‘gb2312’)  表示将Unicode编码的字符串str2转换成gb2312编码</p>
+<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><h1 id="for循环可以迭代字典、字符串、列表、元组"><a href="#for循环可以迭代字典、字符串、列表、元组" class="headerlink" title="for循环可以迭代字典、字符串、列表、元组"></a>for循环可以迭代字典、字符串、列表、元组</h1><p>dict= {<br>    ‘one’ : ‘1’,<br>    ‘two’ : ‘2’,<br>    ‘three’ : ‘3’<br>}<br>for key in dict:<br>    print key+’:’+dict[key]<br>zifu = ‘yang’<br>for zz in zifu:<br>    print zz</p>
+<p>shuzu = [(1,2),(3,4),(5,6)]<br>for (a,b) in shuzu:<br>    print a,b</p>
+<p>for a in shuzu:<br>    print a</p>
+<p>读取文件<br>with open(“ceshi.txt”) as ff:<br>    for readline in ff:<br>        print readline<br>迭代：<br>mys = [‘one’,’two’,’three’,’four’]<br>my = iter(mys)<br>print my.next()<br>print my.next()<br>print my.next()<br>print my.next()</p>
+<p>for my in iter(mys):<br>    print my</p>
+<p>并行迭代 使用zip()或者enumerate()</p>
+<h1 id="coding-utf-8-1"><a href="#coding-utf-8-1" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>names = [‘one’,’two’,’three’,’four’]<br>ages = [22,23,34,45]<br>for name,age in zip(names,ages):<br>    print name,u’年龄是’,age</p>
+<p>关键字查询(使用enumerate并行迭代)</p>
+<h1 id="coding-utf-8-2"><a href="#coding-utf-8-2" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>zifu = raw_input(‘please the key:’)<br>list = [‘sun flower’,’red flower’,’blue flower’,’green grass’]<br>for index, lst in enumerate(list):  #index为索引<br>    if zifu in lst:<br>        print lst</p>
+<p>exec语句用来动态的创造Python代码，然后将其作为语句执行<br>eg: exec ‘print “hello world”‘<br>如果没有 <strong>init</strong>.py 文件，python不能识别对应的包。<strong>init</strong>.py文件可以为空，用于标志当前文件夹是一个包</p>
+<h1 id="参数封装为元组传递"><a href="#参数封装为元组传递" class="headerlink" title="参数封装为元组传递"></a>参数封装为元组传递</h1><p>def login(* userpwds):<br>    username = userpwds[0]<br>    password = userpwds[1]<br>    if(username == ‘admin’) and (password == ‘admin’):<br>        print ‘success’<br>    else:<br>        print ‘fail’<br>login(‘admin’,’admin’)</p>
+<h1 id="参数为字典传递"><a href="#参数为字典传递" class="headerlink" title="参数为字典传递"></a>参数为字典传递</h1><p>def login2(<strong> userpwds):<br>    keys = userpwds.keys()<br>    username = ‘’<br>    password = ‘’<br>    for key in keys:<br>        if ‘username’ == key:<br>            username = userpwds[key]<br>        if ‘password’ == key:<br>            password = userpwds[key]<br>    if(username == ‘admin’) and (password == ‘admin’):<br>        print ‘success’<br>    else:<br>        print ‘fail’<br>login2(username=’admin’, password=’admin’)<br>如果函数的参数类型既有元组(形式参数前加*)，又有字典(形式参数钱加</strong>),那么<em>必须写在*</em>的前面。</p>
+<p>返回多个参数<br>def operate(x, y, z):<br>    x = x + 5<br>    y = y + 5<br>    z = z + 5<br>    oper = [x,y,z]<br>    numbers = tuple(oper)</p>
+<pre><code># 打包到元组中
+return numbers
+</code></pre><p>x, y, z = operate(1, 2, 3)  # 解包元组<br>print x, y, z</p>
+<p>创建一个名称为myFirstModule.py的文件，即定义了一个名称为myFirstModule的模块<br>def myFun1():<br>    print ‘myFun1’</p>
+<p>def myFun2():<br>    print ‘myFun2’</p>
+<p>class MyClass:<br>    def myClassFun(self):<br>        print ‘MyClass myClassFun’<br>导入该模块</p>
+<h1 id="coding-utf-8-3"><a href="#coding-utf-8-3" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>import  myFirstModule<br>myFirstModule.myFun1()<br>myFirstModule.myFun2()<br>myclass = myFirstModule.MyClass()<br>myclass.myClassFun()</p>
+<p>python中的from … import 语句可以将模块中的类或函数导入，从而不需要使用模块名作为前缀<br>eg: from  addPerson import  Person<br>导入一个模块下的所有类和函数，可以使用   from module_name import *<br>global 引用全局变量</p>
+<p>模块内置函数</p>
+<ol>
+<li><p>apply()  把输入参数放入元组或列表传递给函数<br>def login(username, password):<br> msg = ‘’<br> if(username == ‘admin’) and (password == ‘admin’):</p>
+<pre><code>msg = &apos;success&apos;
+</code></pre><p> else:</p>
+<pre><code>msg = &apos;fail&apos;
+</code></pre><p> return msg<br>print apply(login,(‘admin’,’admin’))</p>
+</li>
+<li><p>filter()  返回符合条件的元素<br>def validate(usernames):<br> if(len(usernames) &gt; 4) and (len(usernames) &lt; 12):</p>
+<pre><code>return usernames
+</code></pre><p>print filter(validate,(‘admin’,’maxinaglin’,’mxl’,’adm’,’wangling’))</p>
+</li>
+<li><p>reduce() 实现连续处理功能<br>def operate(x, y):<br> return x*y<br>print reduce(operate,(7,8,9),0)  # 初始值为0,连乘</p>
+</li>
+<li><p>map()  可以对多个序列中的每个元素执行相同的操作<br>def add1(a):<br> return a + 1<br>def add2(a, b):<br> return a + b<br>def add3(a, b, c):<br> return a + b + c</p>
+</li>
+</ol>
+<p>a1 = [1,2,3,4,5]<br>a2 = [1,2,3,4,5]<br>a3 = [1,2,3,4,5]</p>
+<p>b = map(add1, a1)<br>print b<br>b = map(add2, a1, a2)<br>print b<br>b = map(add3, a1, a2, a3)<br>print b</p>
+<ol>
+<li>随机生成四位数并判断奇偶数<br>import random<br>allNums = []<br>for each in range(10):<br> allNums.append(random.randint(1000, 9999))<br>print u’随机从1000-9999生成的四位数’+str(allNums)<br>print u’偶数为:’+str(filter(lambda n : n%2==0, allNums))<br>print u’奇数为:’+str(filter(lambda n : n%2==1,allNums))<br>输出 ==&gt;<br>随机从1000-9999生成的四位数[1382, 7860, 5015, 6757, 7185, 2757, 1802, 8612, 2294, 8688]<br>偶数为:[1382, 7860, 1802, 8612, 2294, 8688]<br>奇数为:[5015, 6757, 7185, 2757]</li>
+</ol>
+<p>分片<br>userList = list(‘python’)<br>print userList<br>userList[2:] = list(‘rite’)<br>print userList<br>输出 ==&gt;<br>[‘p’, ‘y’, ‘t’, ‘h’, ‘o’, ‘n’]<br>[‘p’, ‘y’, ‘r’, ‘i’, ‘t’, ‘e’]</p>
+<p>numbers = [0,6]<br>numbers[1:1] = [1,2,3,4]  # 相当于插入<br>print numbers<br>输出 ==&gt;<br>[0, 1, 2, 3, 4, 6]</p>
+<p>userList = [‘001’,’002’,’003’,’004’,’005’,’006’]<br>subUser1 = userList[-3:-1]<br>subUser2 = userList[0:-2]<br>输出 ==&gt;<br>[‘004’, ‘005’]<br>[‘001’, ‘002’, ‘003’, ‘004’]</p>
+<p>userList1 = [‘001’,’002’,’003’,’004’,’005’,’006’]<br>userList2 = [‘aaa’,’bbb’]<br>userList = [userList1,userList2]<br>print userList<br>print userList[0][1]<br>print userList[1][1]<br>输出 ==&gt;<br>[[‘001’, ‘002’, ‘003’, ‘004’, ‘005’, ‘006’], [‘aaa’, ‘bbb’]]<br>002<br>bbb<br>利用for遍历<br>for i in range(len(userList)):<br>    for j in range(len(userList[i])):<br>        print userList[i][j]</p>
+<p>列表的连接<br>使用extend()或者+运算符<br>userList1.extend(userList2)   extend修改了被扩展的列表，并非真正连接两个列表返回一个全新的列表<br>userList1 = userList1 + userList2</p>
+<p>列表去重<br>checked = []<br>def fruitFun(fruitList):<br>    global  checked<br>    for e in fruitList:<br>        if e not in checked:<br>            checked.append(e)<br>fruitList = [‘apple’,’banana’,’apple’,’strawberry’,’pear’,’banana’]<br>fruitFun(fruitList)<br>print checked</p>
+<p>迭代字符串<br>zifu=’yang’<br>for zi in zifu:<br>    print zi<br>‘y’,’a’,’n’,’g’</p>
+<p>ctrl+E   最近的文件<br>双击shift   搜索<br>ctrl+shift+N  找某一个文件</p>
+<p>更新&amp;&amp;迭代<br>userDic = [(‘002’,’June’), (‘003’,’Tom’)]<br>dic_userDic = dict(userDic)<br>print dic_userDic<br>dic_userDic[‘004’] = ‘hello’<br>print dic_userDic<br>del(dic_userDic[‘002’])</p>
+<p>print dic_userDic</p>
+<p>for key in dic_userDic:<br>    print ‘userDic[%s] = ‘ % key ,dic_userDic[key]<br>for (key,value) in dic_userDic.items():<br>    print ‘userDic[%s] = ‘ %key,value<br>for key in dic_userDic.itervalues():<br>    print key<br>for (key,value) in zip(dic_userDic.iterkeys(), dic_userDic.itervalues()):<br>    print ‘userDic[%s]=’ % key,value<br>print dic_userDic.has_key(‘003’)</p>
+<p>newDIc={‘003’:’new’}<br>dic_userDic.update(newDIc)<br>print dic_userDic</p>
+<p>letter1 = [‘a’,’b’,’c’,’d’]<br>sep = ‘-‘<br>print sep.join(letter1)<br>print ‘/‘.join(letter1)<br>输出 ==&gt;<br>a-b-c-d<br>a/b/c/d</p>
+<p>内置方法<br>class Person:<br>    def <strong>init</strong>(self, name):<br>        self.name = name<br>        self.age = 11<br>    def sayHi(self):<br>        print ‘hello,my name is ‘,self.name<br>        print ‘\nage is ‘,self.age<br>p = Person(‘yuchuan’)<br>p.sayHi()<br><strong>init</strong>方法是构造函数，在程序中起到初始化对象的作用</p>
+<p>copyfile()和move()使用shutil模块</p>
+<p>凡是可以序列化的对象都可以持久化<br>python中主要使用一些模块（例如dbhash、anydbm和shelve）完成持久化操作</p>
+<p>2.<br>代码片段</p>
+<p>#coding=utf-8</p>
+<ol>
+<li><p>比较文件的不同</p>
+<h1 id="coding-UTF-8-1"><a href="#coding-UTF-8-1" class="headerlink" title="-- coding: UTF-8 --"></a>-<em>- coding: UTF-8 -</em>-</h1><p>import difflib<br>text1=”””text1:  ###定义字符串1<br>hello world<br>add String”””<br>text1_line = text1.splitlines()<br>text2=”””text2:  ###定义字符串2<br>hello<br>add string”””<br>text2_line = text2.splitlines()<br>d = difflib.Differ()<br>diff = d.compare(text1_line,text2_line)<br>print ‘\n’.join(list(diff))</p>
+<h3 id="后面三行换成如下，可以输出html美观页面"><a href="#后面三行换成如下，可以输出html美观页面" class="headerlink" title="后面三行换成如下，可以输出html美观页面"></a>后面三行换成如下，可以输出html美观页面</h3><p>d = difflib.HtmlDiff()<br>print d.make_file(text1_line,text2_line)</p>
+</li>
+<li><p>根据输入的IP或子网返回网络、掩码、广播、反向解析、子网数、IP类型等信息<br>from IPy import IP<br>ip_s = raw_input(‘Please input an IP or net-range’)<br>ips=IP(ip_s)<br>if len(ips) &gt; 1:<br> print(‘net: %s’ % ips.net())<br> print(‘netmask: %s’ % ips.netmask())<br> print(‘broadcast: %s’ % ips.broadcast())<br> print(‘reverse address: %s’ % ips.reverseName())<br> print(‘subnet: %s’ % len(ips))<br>else:<br> print(‘reverse address %s’ % ips.reverseName()[0])<br>print(‘hexadecimal: %s’ % ips.strHex())<br>print(‘binary ip: %s’ % ips.strBin())<br>print(‘iptype: %s’ % ips.iptype())</p>
+</li>
+<li><p>发送邮件</p>
+<h1 id="coding-utf-8-4"><a href="#coding-utf-8-4" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>import smtplib<br>import string<br>from smtplib import SMTP_SSL<br>HOST=”smtp.163.com”<br>SUBJECT=”Test email from Python”<br>TO=”735699812@qq.com”<br>FROM=”yuchuan512@163.com”<br>text=”Python rules them all”<br>BODY=string.join((“FROM: %s” % FROM,</p>
+<pre><code>&quot;To: %s&quot; % TO,
+&quot;SUBJECT: %s&quot; % SUBJECT,
+&quot;&quot;,text),&quot;\r\n&quot;)
+</code></pre><p>server = SMTP_SSL(HOST)<br>server.login(“yuchuan512@163.com”,”Yu**2”)<br>server.sendmail(FROM,TO,BODY)<br>server.quit()</p>
+</li>
+</ol>
+<p>3.1 邮件发送html网页</p>
+<h1 id="coding-utf-8-5"><a href="#coding-utf-8-5" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>import smtplib<br>from smtplib import SMTP_SSL<br>from email.mime.text import MIMEText<br>HOST = “smtp.163.com”<br>SUBJECT = u”流量数据报表”<br>TO = “735699812@qq.com”<br>FROM=”yuchuan512@163.com”<br>msg=MIMEText(“””<table width="800" border="0" cellspacing="0" cellpadding="4"><br>    <tr><br>        <td bgcolor="#CECFAD" height="20" style="font-size:14px">官网数据<a href=""></a></td><br>    </tr>&lt;/table”””, “html”, “utf-8”)<br>msg[‘Subject’] = SUBJECT<br>msg[‘From’] = FROM<br>msg[‘To’] = TO<br>server = SMTP_SSL(HOST)<br>server.login(“yuchuan512@163.com”, “Yu**2”)<br>server.sendmail(FROM, TO, msg.as_string())<br>server.quit()<br>3.2 发送带图片附件的邮件</table></p>
+<h1 id="coding-utf-8-6"><a href="#coding-utf-8-6" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>import smtplib<br>from email.mime.image import MIMEImage<br>from email.mime.multipart import MIMEMultipart<br>from smtplib import SMTP_SSL<br>from email.mime.text import MIMEText<br>HOST = “smtp.163.com”<br>SUBJECT = u”流量数据报表”</p>
+<p>##TO = “735699812@qq.com”<br>TO = “yuchuan512@163.com”<br>FROM=”yuchuan512@163.com”</p>
+<p>def addimg(src, imgid):<br>    fp = open(src,’rb’)<br>    msgImage = MIMEImage(fp.read())<br>    fp.close()<br>    msgImage.add_header(‘Content-ID’, imgid)<br>    return msgImage</p>
+<p>msg = MIMEMultipart(‘related’)</p>
+<p>msgText=MIMEText(“””<table width="800" border="0" cellspacing="0" cellpadding="4"><br>    <tr><br>        <td bgcolor="#CECFAD" height="20" style="font-size:14px">官网数据<a href=""></a></td><br>    </tr><br>    <tr><br>        <td><img src="cid:a1"></td><br>        <td><img src="cid:a2"></td><br>    </tr><br>    <tr><br>        <td><img src="cid:a3"></td><br>        <td><img src="cid:a4"></td><br>    </tr></table></p>
+<pre><code>&lt;/table&quot;&quot;&quot;, &quot;html&quot;, &quot;utf-8&quot;)
+</code></pre><p>msg.attach(msgText)</p>
+<p>msg.attach(addimg(“../img/a1.png”, “a1”))<br>msg.attach(addimg(“../img/a2.png”, “a2”))<br>msg.attach(addimg(“../img/a3.png”, “a3”))<br>msg.attach(addimg(“../img/a4.png”, “a4”))</p>
+<p>try:<br>    msg[‘Subject’] = SUBJECT<br>    msg[‘From’] = FROM<br>    msg[‘To’] = TO<br>    server = SMTP_SSL(HOST)<br>    server.login(“yuchuan512@163.com”, “Yu**12”)<br>    server.sendmail(FROM, TO, msg.as_string())<br>    server.quit()<br>    print ‘success’<br>except Exception,  e:<br>    print ‘失败’+str(e)</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pycharm/" rel="tag">#pycharm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/12/Guava概览/" rel="prev">Guava概览</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/12/mysql学习笔记/" rel="next">mysql学习笔记</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-UTF-8"><span class="nav-number">1.</span> <span class="nav-text">-- coding: UTF-8 --</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#python语法"><span class="nav-number">1.0.1.</span> <span class="nav-text">python语法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-utf-8"><span class="nav-number">2.</span> <span class="nav-text">-- coding:utf-8 --</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for循环可以迭代字典、字符串、列表、元组"><span class="nav-number">3.</span> <span class="nav-text">for循环可以迭代字典、字符串、列表、元组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-utf-8-1"><span class="nav-number">4.</span> <span class="nav-text">-- coding:utf-8 --</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-utf-8-2"><span class="nav-number">5.</span> <span class="nav-text">-- coding:utf-8 --</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数封装为元组传递"><span class="nav-number">6.</span> <span class="nav-text">参数封装为元组传递</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数为字典传递"><span class="nav-number">7.</span> <span class="nav-text">参数为字典传递</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-utf-8-3"><span class="nav-number">8.</span> <span class="nav-text">-- coding:utf-8 --</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-UTF-8-1"><span class="nav-number">9.</span> <span class="nav-text">-- coding: UTF-8 --</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#后面三行换成如下，可以输出html美观页面"><span class="nav-number">9.0.1.</span> <span class="nav-text">后面三行换成如下，可以输出html美观页面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-utf-8-4"><span class="nav-number">10.</span> <span class="nav-text">-- coding:utf-8 --</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-utf-8-5"><span class="nav-number">11.</span> <span class="nav-text">-- coding:utf-8 --</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-utf-8-6"><span class="nav-number">12.</span> <span class="nav-text">-- coding:utf-8 --</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

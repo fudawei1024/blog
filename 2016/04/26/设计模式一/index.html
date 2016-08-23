@@ -1,0 +1,1027 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="设计模式," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="单例模式应用：使用单例模式去读取配置文件。如果在系统运行过程中有很多都需要使用配置文件的内容，也就是说很多地方都需要创建AppConfig对象的实例，这样每一个AppConfig实例对象里面都封装着配置文件的内容，系统中会同时存在多份配置文件的内容，浪费内存资源。此时应该使用单例，系统中保存一份对象。
+单例模式特点1、某些类创建比较频繁，对于一些大型的对象，这是一笔很大的系统开销。2、省去了new">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式一">
+<meta property="og:url" content="http://yoursite.com/2016/04/26/设计模式一/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="单例模式应用：使用单例模式去读取配置文件。如果在系统运行过程中有很多都需要使用配置文件的内容，也就是说很多地方都需要创建AppConfig对象的实例，这样每一个AppConfig实例对象里面都封装着配置文件的内容，系统中会同时存在多份配置文件的内容，浪费内存资源。此时应该使用单例，系统中保存一份对象。
+单例模式特点1、某些类创建比较频繁，对于一些大型的对象，这是一笔很大的系统开销。2、省去了new">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-29/69394885.jpg">
+<meta property="og:updated_time" content="2016-08-21T08:53:17.516Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式一">
+<meta name="twitter:description" content="单例模式应用：使用单例模式去读取配置文件。如果在系统运行过程中有很多都需要使用配置文件的内容，也就是说很多地方都需要创建AppConfig对象的实例，这样每一个AppConfig实例对象里面都封装着配置文件的内容，系统中会同时存在多份配置文件的内容，浪费内存资源。此时应该使用单例，系统中保存一份对象。
+单例模式特点1、某些类创建比较频繁，对于一些大型的对象，这是一笔很大的系统开销。2、省去了new">
+<meta name="twitter:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-29/69394885.jpg">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 设计模式一 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              设计模式一
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-04-26T22:02:23+08:00" content="2016-04-26">
+            2016-04-26
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/设计模式/" itemprop="url" rel="index">
+                  <span itemprop="name">设计模式</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><p>应用：使用单例模式去读取配置文件。如果在系统运行过程中有很多都需要使用配置文件的内容，也就是说很多地方都需要创建AppConfig对象的实例，这样每一个AppConfig实例对象里面都封装着配置文件的内容，系统中会同时存在多份配置文件的内容，浪费内存资源。此时应该使用单例，系统中保存一份对象。</p>
+<h5 id="单例模式特点"><a href="#单例模式特点" class="headerlink" title="单例模式特点"></a>单例模式特点</h5><p>1、某些类创建比较频繁，对于一些大型的对象，这是一笔很大的系统开销。<br>2、省去了new操作符，降低了系统内存的使用频率，减轻GC压力。<br>3、有些类如交易所的核心交易引擎，控制着交易流程，如果该类可以创建多个的话，系统完全乱了。（比如一个军队出现了多个司令员同时指挥，肯定会乱成一团），所以只有使用单例模式，才能保证核心交易服务器独立控制整个流程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static class SingletonFactory&#123;</div><div class="line">	private static Singleton instance = new Singleton();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static Singleton getInstance()&#123;</div><div class="line">	return SingletonFactory.instance;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class SingletonReadConfig &#123;</div><div class="line">	private static SingletonReadConfig instance = null;</div><div class="line">	private SingletonReadConfig()&#123;&#125;</div><div class="line">	public static SingletonReadConfig getInstance()&#123;</div><div class="line">		if(instance == null)&#123;</div><div class="line">			synchronized (SingletonReadConfig.class) &#123;</div><div class="line">				if(instance == null)&#123;</div><div class="line">					instance = new SingletonReadConfig();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return instance;</div><div class="line">	&#125;</div><div class="line">	public void readConfig()&#123;</div><div class="line">		Properties p = new Properties();</div><div class="line">		try &#123;</div><div class="line">			p.load(new InputStreamReader(SingletonReadConfig.class.getResourceAsStream(&quot;test.properties&quot;), &quot;utf8&quot;));</div><div class="line">		&#125; catch (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		String newUrlkey = &quot;xxxx.db.url&quot;;</div><div class="line">		String newUserkey = &quot;xxxx.db.username&quot;;</div><div class="line">		String newPasswordkey = &quot;xxxx.db.password&quot;;</div><div class="line"></div><div class="line">		String url = p.getProperty(newUrlkey);</div><div class="line">		String user = p.getProperty(newUserkey);</div><div class="line">		String password = p.getProperty(newPasswordkey);</div><div class="line">		System.out.println(url+&quot;\t&quot;+user+&quot;\t&quot;+password+&quot;\t&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>静态内部类实现单例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class SingletonReadConfig &#123;</div><div class="line">	static  class SingletonHolder&#123;</div><div class="line">		private static SingletonReadConfig instance = new SingletonReadConfig();</div><div class="line">	&#125;</div><div class="line">	private SingletonReadConfig()&#123;&#125;</div><div class="line"></div><div class="line">	public static SingletonReadConfig getInstance()&#123;</div><div class="line">		return SingletonHolder.instance;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当getInstance第一次被调用时，第一次读取 SingletonHolder.instance,导致SingletonHolder类得到初始化，这个类在初始化的时候，会初始化它的静态域，从而创建SingletonReadConfig的实例，静态域只会在虚拟机装在类的时候初始化一次，并由虚拟机来保证它的线程安全性。</p>
+<p>枚举类实现单例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public enum SingletonReadConfig &#123;</div><div class="line">	instance;</div><div class="line">	public void readConfig()&#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>单例模式优点：<ol>
+<li>在内存中只有一个实例，减少了内存消耗，特别是一个对象如果要频繁的被创建、销毁时，单例优势明显</li>
+<li>当一个兑现共产生需要较多资源，读取配置、产生其他依赖对象时</li>
+<li>避免对资源的多重占用，如一个写文件动作，由于只有一个实例存在内存，避免了对同一个资源文件的同时写操作</li>
+<li>可以在系统设置全局的访问点，优化共享资源的访问，比如可以设计一个单例类，负责所有数据表的映射处理。</li>
+</ol>
+</li>
+<li>单例模式缺点：<ol>
+<li>扩展困难，若要扩展，只能修改源码，与单一职责冲突</li>
+</ol>
+</li>
+<li>使用场景<ol>
+<li>要求生成唯一序列号的环境</li>
+<li>在整个项目中需要有访问一个共享访问点或共享数据，例如web页面上的计数器，可以不用每次刷新都记录到数据库中，使用单例保持计数器的值</li>
+<li>创建一个对象需要消耗的资源过多，如要访问I/O，访问数据库等资源</li>
+<li>需要定义大量的静态常量和静态方法。当然，也可以直接声明为static方式。</li>
+</ol>
+</li>
+<li>单例适用场景<br>控制资源的使用，通过线程同步来控制资源的并发访问<br>控制实例的产生，以达到节约资源的目的<br>控制数据共享，在不建立直接关联的条件下，让多个不相关的进程或线程之间实现通信</li>
+</ul>
+<h3 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h3><p>指挥者类中可以注入一个抽象建造者类型的对象，核心在与提供一个建造方法，该方法调用了builder对象构造部件的方法，最后返回一个产品对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">// 要生产的产品</div><div class="line">public class Car &#123;</div><div class="line">	private String head;</div><div class="line">	private String body;</div><div class="line">	private String tail;</div><div class="line">&#125;</div><div class="line">// 抽象的建造者</div><div class="line">public abstract class CarBuilder &#123;</div><div class="line">	public abstract void makeHead();</div><div class="line">	public abstract void makeBody();</div><div class="line">	public abstract void makeTail();</div><div class="line">	public abstract Car getCar();</div><div class="line">&#125;</div><div class="line">// 具体建造者</div><div class="line">public class JeepBuilder extends CarBuilder &#123;</div><div class="line">	Car car = new Car();</div><div class="line">	@Override</div><div class="line">	public void makeHead() &#123;</div><div class="line">		car.setHead(&quot;head&quot;);</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public void makeBody() &#123;</div><div class="line">		car.setBody(&quot;body&quot;);</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public void makeTail() &#123;</div><div class="line">		car.setTail(&quot;tail&quot;);</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public Car getCar() &#123;</div><div class="line">		return car;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">// 指挥类</div><div class="line">public class CarDirector &#123;</div><div class="line">	public void makeCar(CarBuilder builder)&#123;</div><div class="line">		builder.makeHead();</div><div class="line">		builder.makeBody();</div><div class="line">		builder.makeTail();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">// 测试</div><div class="line">public static void main(String[] args) &#123;</div><div class="line">		CarDirector director = new CarDirector();</div><div class="line">		CarBuilder jeepBuilder = new JeepBuilder();</div><div class="line">		director.makeCar(jeepBuilder);</div><div class="line">		Car car = jeepBuilder.getCar();</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>建造者模式与工厂模式的区别：工厂模式只关心你要的是什么，不关心这个东西的具体细节是什么。而建造者关心的是这个东西的具体细节的创建。<br>note:若要返回调用链式的对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public RaceBuilder setSkin(String skinColor)&#123;</div><div class="line">	this.skinColor = skinColor;</div><div class="line">	return this; // 返回一个可以继续操作的该类对象</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>建造者模式的优点</p>
+<ol>
+<li>封装性，客户端不必知道产品内部组成的细节，不需要关心模型内部是如何实现的</li>
+<li>建造者独立，容易扩展</li>
+<li>便于控制细节和风险，建造者独立，因此可以对建造过程进行细化，而不对其他的模块产生任何影响</li>
+</ol>
+<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><p>原型模式能够将一个原型对象传给那个要发动创建的兑对象，这个要发动创建的对象通过请求原型对象拷贝自己来实现创建过程。<br>能够实现拷贝的java类必须实现一个标志接口 Cloneable，表示java类支持被复制。<br>java中的clone方法满足下列关系：</p>
+<ol>
+<li>对于任何对象，都有x.clone()!=x</li>
+<li>对于任何对象，都有x.clone.getClass()==x.getClass(),即拷贝对象与原型对象的类型一样</li>
+<li>如果对x的equals方法定义恰当，x.clone.equals(x)应该成立。</li>
+</ol>
+<p>为了获取一份对象的拷贝，可以直接利用Object类的clone方法</p>
+<ol>
+<li>在派生类中覆盖基类的clone()方法，并声明为public</li>
+<li>在派生类的clone()方法中，调用super.clone()</li>
+<li>派生类需要实现Cloneable接口<ul>
+<li>深拷贝与浅拷贝<br>浅拷贝是指背靠背对象的所有变量都含有与原来的对象相同的值，而所有的对其他对象的引用都仍然指向原来的对象。<br>深拷贝是指拷贝对象的所有变量都含有与原来的对象相同的值，除去那些引用其他对象的变量，那些引用其他对象的变量将指向被拷贝的新对象，而不再是原有的那些被引用的对象。深拷贝把重复的对象所引用的对象都拷贝了一遍。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class Thing implements Cloneable&#123;</div><div class="line">	private ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">	public Thing clone()&#123;</div><div class="line">		Thing thing = null;</div><div class="line">		try &#123;</div><div class="line">			thing = (Thing) super.clone();</div><div class="line">			// 加上这一句为深拷贝，复制链表</div><div class="line">			thing.list = (ArrayList&lt;String&gt;) this.list.clone();</div><div class="line">		&#125; catch (CloneNotSupportedException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		return thing;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<p>Object类的clone方法的原理是从内存中（具体的说是堆内存）以二进制流的方式进行拷贝，重新分配一个内存块，所以构造函数没有被执行<br>深拷贝的实现： 可以通过序列化等方式来实现深拷贝。序列化就是将对象写到流的过程，写到流中的对象是原有对象的一个拷贝，而源对象仍然存在于内存中。通过序列化实现的拷贝不仅可以复制对象本身，而且可以复制器引用的成员对象，因此通过序列化将对象写到流中，再从流里将其读出来，可以实现深拷贝。<br>注意：能够实现序列化的对象必须实现Serializable接口，否则无法进行序列化操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public YueLog deepClone() throws IOException, ClassNotFoundException&#123;</div><div class="line">		ByteArrayOutputStream bao = new ByteArrayOutputStream();</div><div class="line">		ObjectOutputStream oos = new ObjectOutputStream(bao);</div><div class="line">		oos.writeObject(this);</div><div class="line">		ByteArrayInputStream bis = new ByteArrayInputStream(bao.toByteArray());</div><div class="line">		ObjectInputStream ois = new ObjectInputStream(bis);</div><div class="line">		return (YueLog) ois.readObject();</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>原型模式的优点</p>
+<ol>
+<li>性能优良，原型模式是内存二进制流的拷贝，要比直接new一个对象性能好得多，特别是要在一个循环体内产生大量的对象时，原型模式性能更好</li>
+<li>避免构造函数约束。直接在内存中拷贝，构造函数不会被执行。<ul>
+<li>使用场景</li>
+</ul>
+</li>
+<li>资源优化场景，类初始化需要消耗非常多的资源，包括数据、硬件资源等。</li>
+<li>性能和安全要求的场景<br>通过new产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式</li>
+<li>一个对象多个修改者的场景<br>各个调用者可能都需要修改其值时考虑使用原型模式拷贝多个对象供调用者使用。</li>
+</ol>
+<h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><p>适配器的角色用于u扩展源角色，实现目标角色</p>
+<ul>
+<li><p>类的适配器模式，采用继承实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class Adaptee &#123;</div><div class="line">	public int get220V()&#123;</div><div class="line">		return 220;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public interface Target &#123;</div><div class="line">	int get110V();</div><div class="line">	int get220V();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Adapter extends Adaptee implements Target&#123;</div><div class="line">	@Override</div><div class="line">	public int get110V() &#123;</div><div class="line">		return 110;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Client &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		new Client().test();</div><div class="line">	&#125;</div><div class="line">	public void test()&#123;</div><div class="line">		Target target = new Adapter();</div><div class="line">		int v1 = target.get110V();</div><div class="line">		int v2 = target.get220V();</div><div class="line">		System.out.println(&quot;v1=&quot;+v1+&quot;,v2=&quot;+v2);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>对象适配器，采用对象组合方式<br>把“源”作为一个对象聚合到适配器类中,把“源”作为一个构造参数传入适配器，执行接口所要求的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Adapter implements Job&#123;</div><div class="line">	Person person;</div><div class="line">	public Adapter(Person person)&#123;</div><div class="line">		this.person = person;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public void speekJapanese() &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		person.speekJapanese();</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public void speekEnglish() &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		person.speekEnglish();</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public void speekFrench() &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		System.out.println(&quot;person French&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>默认适配器模式<br>当我们想实现一个接口，但又不想实现所有接口方法，而只想去实现一部分方法时，就使用默认的适配器模式。它的方式是在接口和具体实现类中添加一个抽象类，而用抽象类去实现目标接口的所有方法，而具体的类只需要覆盖其需要完成的方法即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public interface Job&#123;</div><div class="line">	public abstract void speekJapanese();</div><div class="line">	public abstract void speekEnglish();</div><div class="line">	public abstract void speekFrench();</div><div class="line">	public abstract void speekChinese();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public abstract class JobDefault implements Job&#123;</div><div class="line">	public void speekChinese()&#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	public void speekEnglish()&#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	public void speekFrench()&#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	public void speekJapanese()&#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class JobImpl extends JobDefault&#123;</div><div class="line">	public void speekChinese()&#123;</div><div class="line">		System.out.println(&quot;I can speek Chinese&quot;)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>各个设计模式之间的关系总览<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-29/69394885.jpg" alt=""></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/设计模式/" rel="tag">#设计模式</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/26/设计模式二/" rel="prev">设计模式二</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/19/大数据相关/" rel="next">大数据相关</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式"><span class="nav-number">1.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单例模式特点"><span class="nav-number">1.0.1.</span> <span class="nav-text">单例模式特点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建造者模式"><span class="nav-number">2.</span> <span class="nav-text">建造者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型模式"><span class="nav-number">3.</span> <span class="nav-text">原型模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适配器模式"><span class="nav-number">4.</span> <span class="nav-text">适配器模式</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

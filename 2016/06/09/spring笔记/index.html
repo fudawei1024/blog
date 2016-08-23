@@ -1,0 +1,1091 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="spring," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="spring构造注入public class Dog implements Animal{
+@Override
+public void eat() {
+    System.out.println(&amp;quot;dog eat&amp;quot;);
+}
+}
+public class Person {    private Dog dog;
+public Person(Dog dog) {
+    this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring笔记">
+<meta property="og:url" content="http://yoursite.com/2016/06/09/spring笔记/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="spring构造注入public class Dog implements Animal{
+@Override
+public void eat() {
+    System.out.println(&amp;quot;dog eat&amp;quot;);
+}
+}
+public class Person {    private Dog dog;
+public Person(Dog dog) {
+    this">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-12/41292963.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/33879222.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/15887480.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/51529359.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/27499441.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/18386608.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/73688262.jpg">
+<meta property="og:updated_time" content="2016-08-21T09:17:13.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring笔记">
+<meta name="twitter:description" content="spring构造注入public class Dog implements Animal{
+@Override
+public void eat() {
+    System.out.println(&amp;quot;dog eat&amp;quot;);
+}
+}
+public class Person {    private Dog dog;
+public Person(Dog dog) {
+    this">
+<meta name="twitter:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-12/41292963.jpg">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> spring笔记 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              spring笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-06-09T22:30:50+08:00" content="2016-06-09">
+            2016-06-09
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/" itemprop="url" rel="index">
+                  <span itemprop="name">Java</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/JavaEE框架/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaEE框架</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>spring构造注入<br>public class Dog implements Animal{</p>
+<pre><code>@Override
+public void eat() {
+    System.out.println(&quot;dog eat&quot;);
+}
+</code></pre><p>}</p>
+<p>public class Person {<br>    private Dog dog;</p>
+<pre><code>public Person(Dog dog) {
+    this.dog = dog;
+}
+
+public void sayEat() {
+    dog.eat();
+}
+</code></pre><p>}<br>每个<bean...> 元素默认驱动Spring调用 <strong>该类无参数的构造器</strong> 来创建实例，并将该实例作为Spring容器中的Bean</bean...></p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans><br>    <!--  <property/> 元素的name属性值决定执行哪个setter方法，
+    value（基本类型/包装类）或ref（引用类型）决定执行setter方法的传入参数 --><br>    <!-- constructor-arg 元素代表一个构造器参数，如果包含N个元素，则调用带N个参数的构造器创建对象 --><br>    <bean id="person" class="com.bean.Person"><br>        <constructor-arg ref="dog"></constructor-arg><br>    </bean><br>    <bean id="dog" class="com.bean.Dog"></bean><br></beans>
+
+<p>public class Test {<br>    public static void main(String[] args) {<br>        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(“spring.xml”);<br>        Person p = (Person) ctx.getBean(“person”);<br>        p.sayEat();<br>    }<br>}</p>
+<p>若要改为设值注入<br>spring.xml改为property方式<br><!--  <property/> 元素的name属性值决定执行哪个setter方法，
+    value（基本类型/包装类）或ref（引用类型）决定执行setter方法的传入参数 --></p>
+<p><bean id="person" class="com.bean.Person"><br>        <property name="dog" ref="dog"></property><br>    </bean><br>Person.java去掉构造方法，加set方法<br>public void setDog(Dog dog){<br>        this.dog = dog;<br>    }</p>
+<p>bean配置项<br>id class  scope   Constructor arguments    Properties   Autowiring mode<br>lazy-initialization mode   Initialization/destruction method<br>配置单例</p>
+<bean id="beanScope" class="com.scope.BeanScope" scope="singleton">
+
+<p>A对象需要调用B对象方法的情形，被Spring成为依赖。即A对象依赖B对象。<br>设值注入</p>
+<p><property name="axe" ref="axe"></property><br>构造注入</p>
+<p><constructor-arg ref="axe"></constructor-arg><br>建议采用设值注入为主，构造方法为辅的注入策略。对于依赖关系无需变化的注入，尽量采用构造注入；而其他依赖关系的注入，则考虑采用设值注入</p>
+<p><constructor-arg...> 元素可以指定index属性，用于指定该构造参数值将作为第几个构造参数值。index=”0” 表明该构造参数值将作为第一个构造参数值<br>为了更明确的指定数据类型，Spring允许为<constructor-arg...> 指定一个type属性 eg<constructor-arg value="23" type="int"><br>如果需要加载多个佩文文件来创建Spring 容器 ，则应该采用BeanFactory的子接口ApplicationContext<br>ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(“spring.xml”,”second.xml”);<br>当系统创建ApplicationContext 容器时，默认会预初始化所有的singleton Bean,包括调用构造器创建该Bean的实例，并根据<property>元素执行setter方法。<br>为了阻止Spring容器初始化容器中的single bean,可以为<bean>元素指定lazy-init=”true”,阻止容器预初始化该bean</bean></property></constructor-arg></constructor-arg...></constructor-arg...></p>
+<p>ApplicationContext的事件机制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class EmailEvent extends ApplicationEvent</div><div class="line"></div><div class="line">public class EmailNotifier implements ApplicationListener &#123;</div><div class="line">	@Override</div><div class="line">	public void onApplicationEvent(ApplicationEvent event) &#123;</div><div class="line">		if(event instanceof EmailEvent)&#123;</div><div class="line">			EmailEvent emailEvent = (EmailEvent) event;</div><div class="line">			System.out.println(&quot;receive address &quot;+emailEvent.getAddress());</div><div class="line">			System.out.println(&quot;content is  &quot;+emailEvent.getText());</div><div class="line"></div><div class="line">		&#125;else&#123;</div><div class="line">			System.out.println(&quot;other event: &quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">测试代码</div><div class="line">ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;spring.xml&quot;);</div><div class="line">		EmailEvent emailEvent = new EmailEvent(&quot;test&quot;, &quot;spring@163.com&quot;, &quot;this is a test&quot;);</div><div class="line">		ctx.publishEvent(emailEvent);</div><div class="line">输出</div><div class="line">other event:</div><div class="line">receive address spring@163.com</div><div class="line">content is  this is a test</div></pre></td></tr></table></figure></p>
+<p>让bean获取spring容器<br>private ApplicationContext ctx;<br>实现 ApplicationContextAware 接口 ，覆写 public void setApplicationContext(ApplicationContext ctx){<br>    this.ctx = ctx;<br>}<br>当spring容器创建该bean后，自动调用该方法时，它会把自身作为参数传入该方法。</p>
+<p>Bean 的基本定义和Bean别名</p>
+<beans...> 可以指定如下属性<br>default-lazy-init  指定该beans元素下配置的所有Bean默认的延迟初始化行为<br>default-merge   指定所有Bean默认的merge行为<br>default-autowire  指定所有Bean默认的自动装配行为<br>default-autowire-candidates: 指定所有Bean默认是否作为自动装配的候选Bean<br>default-init-method: 指定所有Bean默认的初始化方法<br>default-destroy-method: 所有Bean默认的回收方法<br><br><beans>元素所能指定的属性都可以在每个<bean> 子元素中指定。当二者所指定的属性不一致时，<bean>会覆盖<beans>指定的属性<br>构造注入就是通过<constructor-arg...> 驱动Spring执行有参数的构造器；设值注入就是通过<property...> 驱动Spring执行setter方法<br><br>注入集合值<br>java代码 如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Chinese &#123;</div><div class="line">	private List&lt;String&gt; schools;</div><div class="line">	private Map scores;</div><div class="line">	private Map&lt;String,Axe&gt; phaseAxes;</div><div class="line">	private Properties health;</div><div class="line">	private Set axes;</div><div class="line">	private String[] books;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>spring.xml 如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">	&lt;bean id=&quot;chinese&quot; class=&quot;com.yuchuan.Chinese&quot;&gt;</div><div class="line">		 &lt;property name=&quot;schools&quot;&gt;</div><div class="line">		 	&lt;list&gt;</div><div class="line">		 		&lt;value&gt;small&lt;/value&gt;</div><div class="line">		 		&lt;value&gt;medium&lt;/value&gt;</div><div class="line">		 		&lt;value&gt;big&lt;/value&gt;</div><div class="line">		 	&lt;/list&gt;</div><div class="line">		 &lt;/property&gt;</div><div class="line">		 &lt;property name=&quot;scores&quot;&gt;</div><div class="line">		 	&lt;map&gt;</div><div class="line">		 		&lt;entry key=&quot;math&quot; value=&quot;8&quot;&gt;&lt;/entry&gt;</div><div class="line">		 		&lt;entry key=&quot;english&quot; value=&quot;8&quot;&gt;&lt;/entry&gt;</div><div class="line">		 		&lt;entry key=&quot;chinese&quot; value=&quot;8&quot;&gt;&lt;/entry&gt;</div><div class="line">		 	&lt;/map&gt;</div><div class="line">		 &lt;/property&gt;</div><div class="line"></div><div class="line">		 &lt;property name=&quot;phaseAxes&quot;&gt;</div><div class="line">		 	&lt;map&gt;</div><div class="line">		 		&lt;entry key=&quot;origin&quot; value-ref=&quot;stoneAxe&quot;&gt;&lt;/entry&gt;</div><div class="line">		 		&lt;entry key=&quot;modern&quot; value-ref=&quot;stealAxe&quot;&gt;&lt;/entry&gt;</div><div class="line">		 	&lt;/map&gt;</div><div class="line">		 &lt;/property&gt;</div><div class="line">		 &lt;property name=&quot;health&quot;&gt;</div><div class="line">		 	&lt;props&gt;</div><div class="line">		 		&lt;prop key=&quot;AA&quot;&gt;normal&lt;/prop&gt;</div><div class="line">		 		&lt;prop key=&quot;BB&quot;&gt;175&lt;/prop&gt;</div><div class="line">		 	&lt;/props&gt;</div><div class="line">		 &lt;/property&gt;</div><div class="line">		 &lt;property name=&quot;axes&quot;&gt;</div><div class="line">		 	&lt;set&gt;</div><div class="line">		 		&lt;value&gt;普通字符串&lt;/value&gt;</div><div class="line">		 		&lt;bean class=&quot;com.yuchuan.StoneAxe&quot;&gt;&lt;/bean&gt;</div><div class="line">		 		&lt;ref bean=&quot;stoneAxe&quot;/&gt;</div><div class="line">		 		&lt;ref bean=&quot;stealAxe&quot; /&gt;</div><div class="line">		 		&lt;list&gt;</div><div class="line">		 			&lt;set&gt;</div><div class="line">		 				&lt;value type=&quot;int&quot;&gt;30&lt;/value&gt;</div><div class="line">		 			&lt;/set&gt;</div><div class="line">		 		&lt;/list&gt;</div><div class="line">		 	&lt;/set&gt;</div><div class="line"></div><div class="line">		 &lt;/property&gt;</div><div class="line">		 &lt;property name=&quot;books&quot;&gt;</div><div class="line">		 	&lt;list&gt;</div><div class="line">		 		&lt;value&gt;java&lt;/value&gt;</div><div class="line">		 		&lt;value&gt;C++&lt;/value&gt;</div><div class="line">		 		&lt;value&gt;python&lt;/value&gt;</div><div class="line">		 	&lt;/list&gt;</div><div class="line">		 &lt;/property&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">	&lt;bean id=&quot;stoneAxe&quot; class=&quot;com.yuchuan.StoneAxe&quot;&gt;&lt;/bean&gt;</div><div class="line">	&lt;bean id=&quot;stealAxe&quot; class=&quot;com.yuchuan.StoneAxe&quot;&gt;&lt;/bean&gt;</div><div class="line"></div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure><br><br>说明：<br>value 指定集合元素是基本类型或字符串类型<br>ref  集合元素是容器中的另一个bean实例<br>bean  指定集合元素是一个嵌套bean<br>list、set、map 指定集合<br>key-ref  如果map key 是容器中的另一个bean实例，则可使用该属性指定容器中其他bean的id<br>value-ref  如果map value是容器中的另一个bean实例，则可使用该属性指定容器中其他bean的id<br>数组和list用法一样<br><br>建议Spring中的bean应满足如下原则：<br>1. 尽量为每个bean实现类提供无参数的构造器<br>2. 接受构造注入的bean，则应提供对应的、带参数的构造函数<br>3. 接受设值注入的bean，则应提供对应的setter方法，并不要求提供对应的getter方法<br><br>spring提供两种方式在bean全部属性设置成功后执行特定行为：<br>1. 使用init-method属性<br>2. 实现InitializingBean 接口。覆写 afterPropertiesSet()方法<br>如果同时采用这两种方法，则先执行 InitializingBean 接口中定义的方法，然后执行init-method 方法<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">public class China implements Person, InitializingBean, BeanNameAware, ApplicationContextAware &#123;</div><div class="line">	private Axe axe;</div><div class="line"></div><div class="line">	public void setAxe(Axe axe)&#123;</div><div class="line">		System.out.println(&quot;axe setter...&quot;);</div><div class="line">		this.axe = axe;</div><div class="line">	&#125;</div><div class="line">	public China()&#123;</div><div class="line">		System.out.println(&quot;china构造方法&quot;);</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException &#123;</div><div class="line">		System.out.println(&quot;====setApplicationContext===&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void setBeanName(String name) &#123;</div><div class="line">		System.out.println(&quot;====setBeanName====&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void afterPropertiesSet() throws Exception &#123;</div><div class="line">		System.out.println(&quot;afterPropertiesSet&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void useAxe() &#123;</div><div class="line">		System.out.println(axe.chop());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void init()&#123;</div><div class="line">		System.out.println(&quot;init...&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">xml配置　　</div><div class="line">	&lt;bean id=&quot;china&quot; class=&quot;com.yuchuan.China&quot;</div><div class="line">		init-method=&quot;init&quot;&gt;</div><div class="line">		&lt;property name=&quot;axe&quot; ref=&quot;stoneAxe&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">	&lt;bean id=&quot;stoneAxe&quot; class=&quot;com.yuchuan.StoneAxe&quot;&gt;&lt;/bean&gt;</div><div class="line"></div><div class="line">输出：</div><div class="line">china构造方法</div><div class="line">axe setter...</div><div class="line">====setBeanName====</div><div class="line">====setApplicationContext===</div><div class="line">afterPropertiesSet</div><div class="line">init...</div><div class="line">axe...</div></pre></td></tr></table></figure><br><br>Spring 也提供两种方式定制Bean实例销毁之前的特定行为<br>1. 使用destroy-method方法<br>2. 实现DisposableBean接口，覆写destroy()方法<br><br>协调作用于不同步的Bean<br>当singleton作用域的Bean依赖于prototype作用域的Bean时，会产生不同步的现象<br>public abstract class Chinese {<br>    private Dog dog;<br>    public abstract Dog getDog();<br>    public void hunt(){<br>        System.out.println(“我带着” + getDog());<br>        System.out.println(getDog().run());<br>    }<br>}<br>定义了一个抽象的getDog()方法，通常情况下，程序不能调用这个抽象方法，程序也不能使用抽象类创建实例。<br>接下来需要在配置文件中为<bean...>元素添加<lookup-method...> 子元素，<lookup-method...> 子元素告诉Spring需要实现哪些抽象方法。Spring 为抽象方法提供实现体之后，这个方法就会变成具体方法，这个类就变成了具体类，接下来Spring就可以创建该Bean的实例了。<br><lookup-method...> 中的name属性 指定需要让Spring实现的方法。 bean属性 指定Spring实现该方法的返回值<br>    <bean id="chinese" class="com.yuchuan.Chinese"><br>        <lookup-method name="getDog" bean="gunDog"><br>    </lookup-method></bean><br>    <bean id="gunDog" class="com.yuchuan.Dog" scope="prototype"><br>        <property name="name" value="旺财"></property><br>    </bean><br>    指定Spring应该负责实现getDog()方法，该方法的返回值是容器中的gundog实例<br>Test<br>Chinese p = ctx.getBean(“chinese”,Chinese.class);<br>p.hunt();<br>Chinese p2 = ctx.getBean(“chinese”,Chinese.class);<br>p2.hunt();<br><br>输出：<br>我带着com.yuchuan.Dog@47c3666a<br>旺财 run<br>我带着com.yuchuan.Dog@6d78ddf4<br>旺财 run<br><br>基于XML Schema 的简化配置方式<br>使用P命名空间，C 命名空间简化配置<br><bean id="per" class="com.yuchuan.Per" p:age="29" p:axe-ref="stoneAxe"></bean><br><bean id="per2" class="com.yuchuan.Per" c:axe-ref="stoneAxe" c:age="29"></bean><br><bean id="stoneAxe" class="com.yuchuan.StoneAxe"></bean><br>以上是同时配置使用构造方法和setter方法，注意要加入无参构造方法，才能使得setter方法设置注入和构造器注入共存<br>Spring 还支持一种通过索引来配置构造器参数的方式，上面Bean也可以写为如下形式：<br><bean id="per" class="com.yuchuan.Per" c:_0-ref="stoneAxe" c:_1="29"><br><br><br><br>Bean的生命周期<br>方案一：Bean开始和销毁前执行的方法<br><bean id="beanLifeCycle" class="com.life.BeanLifeCycle" init-method="start" destroy-method="stop"><br>public class BeanLifeCycle {<br>    public void start(){<br>        System.out.println(“bean start”);<br>    }<br><br>    public void stop(){<br>        System.out.println(“bean stop”);<br>    }<br>}<br><br>方案二：实现两个接口<br>spring.xml<br><bean id="beanLifeCycle" class="com.life.BeanLifeCycle"><br><br>public class BeanLifeCycle implements InitializingBean,DisposableBean{<br><br>    @Override<br>    public void destroy() throws Exception {<br>        System.out.println(“bean destroy2”);<br>    }<br><br>    @Override<br>    public void afterPropertiesSet() throws Exception {<br>        System.out.println(“bean start2”);<br><br>    }<br>}<br><br>DI是一种IOC的实现方式<br>容器负责创建对象，组装对象之间的关系<br>获得对象的过程被反转了<br><br>spring中提供了一些以Aware结尾的接口，实现了Aware接口的bean在被初始化之后，可以获取相应资源<br>为对spring进行简单的扩展提供了方便入口<br>ApplicationContextAware : 向实现了该接口的bean提供上下文信息<br>ApplicationEventPublisherAware :<br>BeanClassLoaderAware<br>BeanFactoryAware<br>BootstrapContextAware<br>LoadTimeWeaverAware<br>BeanNameAware ：<br>MessaageSourceAware<br>NotificationPublisherAware<br>PortletConfigAware<br>PortletContextAware<br>ResourceLoaderAware<br>ServletConfigAware<br>ServletContextAware<br><br>public class MoocApplicationContext implements ApplicationContextAware{<br><br>    private ApplicationContext applicationContext;<br>    @Override<br>    public void setApplicationContext(ApplicationContext applicationContext)<br>            throws BeansException {<br>        this.applicationContext = applicationContext;<br>        System.out.println(applicationContext.getBean(“moocApplicationContext”).hashCode());<br>    }<br><br>}<br><br>public class MoocBeanName implements BeanNameAware,ApplicationContextAware{<br><br>    private String beanName;<br><br>    @Override<br>    public void setBeanName(String name) {<br>        this.beanName = name;<br>        System.out.println(name);<br><br>    }<br><br>    @Override<br>    public void setApplicationContext(ApplicationContext applicationContext)<br>            throws BeansException {<br>        System.out.println(applicationContext.getBean(beanName));<br>    }<br><br>}<br><br>@Test<br>    public void test() {<br>        System.out.println(super.getBean(“moocBeanName”));<br>    }<br>输出 ==&gt;<br>moocBeanName<br>// 得到上下文applicationContext 引用，所以两个对象一样<br>com.aware.MoocBeanName@64bb8a39<br>com.aware.MoocBeanName@64bb8a39<br><br>Resource 用法<br>public class MoocResource implements ApplicationContextAware{<br><br>    private ApplicationContext context;<br>    @Override<br>    public void setApplicationContext(ApplicationContext context)<br>            throws BeansException {<br>        this.context = context;<br>    }<br><br>    public void resource() throws IOException{<br>        Resource resource = context.getResource(“file:C:\Users\chuan\workspace\packTest\src\spring.xml”);<br>        System.out.println(resource.getFilename());<br>        System.out.println(resource.contentLength());<br><br>    }<br>}<br>测试类<br>public void test() {<br>        MoocResource resource = super.getBean(“moocResource”);<br>        try {<br>            resource.resource();<br>        } catch (IOException e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br><strong> Spring 可以自动检测类并注册Bean到ApplicationContext中 </strong><br><br>为了能够检测这些类并注册相应的Bean<br><context:component-scan base-package="org.exam"><br>component-scan包含了 annotation-config<br><br>类被自动发现并注册bean的条件是：使用@Component,@Repository,@Service，@Controller 注解或者使用@Component的自定义注解<br>可以通过过滤器修改上面的行为<br><beans><br>    <context:component-scan base-package="org.exam"><br>        <context:include-filter type="regex" expression=".*Stub.*Repository"><br>        <context:exclude-filter type="annotation" expression="org.stereotype.Repository"><br>    </context:exclude-filter></context:include-filter></context:component-scan><br></beans><br>自动查找的组件，scope是单例的<br><br>@scope(“prototype”)<br>@Repository<br>public class MovieFinderImpl implements MovieFinder(){<br><br>}<br>自定义scope，使用ScopeMetadataResolver接口并提供一个无参构造器<br><br>@Component   // 可以自定义 @Componet(“bean”) 在获取的时候使用该名称<br>public class BeanAnnotation {<br>    public void say(String arg){<br>        System.out.println(“BeanAnnotation : “+arg);<br>    }<br>}<br><br><context:component-scan base-package="com.res"></context:component-scan><br><br>BeanAnnotation bean =   super.getBean(“beanAnnotation”);  // 未指定名称，默认首字母小写<br><br>@Required 注解适用于bean属性的setter方法<br>这个注解仅仅表示，受影响的bean属性必须在配置时被填充，通过在bean定义或通过自动装配一个明确的属性值<br>@Autowired 范围更广，可以用在构造器或setter方法上<br>默认情况下，如果因找不到合适的bean将会导致autowired失败抛出异常，  @autowired(required=false)<br>每个类只能有一个构造器被标记为 required=true<br>@Autowired 的必要属性，建议使用@Required 注解<br><br>case: 使用注解 @Autowired<br>spring.xml<br><context:component-scan base-package="com.res"></context:component-scan><br><br>@Service<br>public class InjectServiceImpl implements InjectService{<br>    @Autowired<br>    private InjectDao injectDaoImpl;<br><br>    @Override<br>    public void save() {<br>        System.out.println(“service save”);<br>        injectDaoImpl.save();<br>    }<br><br>}<br><br>@Repository<br>public class InjectDaoImpl implements InjectDao{<br><br>    @Override<br>    public void save() {<br>        System.out.println(“injectDaoImpl save…”);<br>    }<br><br>}<br><br>@Test<br>    public void test() {<br>        InjectService bean =   super.getBean(“injectServiceImpl”);<br>        bean.save();<br>    }<br><br>换成设值注入<br>// @Autowired<br>    private InjectDao injectDaoImpl;<br>    @Autowired<br>    public void setInjectDaoImpl(InjectDao injectDaoImpl) {<br>        this.injectDaoImpl = injectDaoImpl;<br>    }<br><br>换成构造器注入<br>// @Autowired<br>    private InjectDao injectDaoImpl;<br>    // @Autowired<br>    public void setInjectDaoImpl(InjectDao injectDaoImpl) {<br>        this.injectDaoImpl = injectDaoImpl;<br>    }<br>    @Autowired<br>    public InjectServiceImpl(InjectDao injectDaoImpl){<br>        this.injectDaoImpl = injectDaoImpl;<br>    }<br><br>可以使用@Autowired 注解那些中所周知的解析依赖性接口，比如BeanFactory,ApplicationContext,Environment,ResourceLoader,ApplicationEventPublisher ,MessageSource<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-12/41292963.jpg" alt=""><br>@Autowired 是由 Spring BeanPostProcessor 处理的，所以不能在自己的BeanPostProcessor或BeanFactoryPostProcessor类型应用这些注解，这些类型必须通过XML或Spring的@Bean注解<br><br>@Order(value=1)  // 指定放入顺序<br>@Component<br>public class BeanImplOne implements BeanInterface {<br><br>}<br><br>@Order(value=2)<br>@Component<br>public class BeanImplTwo implements BeanInterface{<br><br>}<br><br>@Component<br>public class BeanInvoker {<br>    @Autowired<br>    private List<beaninterface> list;<br>    @Autowired<br>    private Map<string,beaninterface> map;<br><br>    public void say(){<br>        if(null != list){<br>            for (BeanInterface beanInterface : list) {<br>                System.out.println(beanInterface.getClass().getName());<br>            }<br>        }else{<br>            System.out.println(“null”);<br>        }<br><br>        if(null != map){<br>            for(Map.Entry<string,beaninterface> entry:map.entrySet()){<br>                System.out.println(entry.getValue().getClass().getName());<br>            }<br>        }<br>    }<br>}<br><br>测试<br>@Test<br>    public void test() {<br>        BeanInvoker bir = super.getBean(“beanInvoker”);<br>        bir.say();<br>    }<br><br><br>基于java容器注解<br>spring.xml<br><context:component-scan base-package="com.res"></context:component-scan><br><br>public class StringStore implements Store{<br>    public void init(){<br>        System.out.println(“this is init”);<br><br>    }<br><br>    public void stop(){<br>        System.out.println(“this is stop”);<br>    }<br>}<br><br><br>@Configuration<br>public class StoreConfig {<br><br>    @Bean(name = “store”,initMethod=”init”,destroyMethod=”stop”)<br>    public Store getStringStore(){<br>        return new StringStore();<br>    }<br>}<br><br>public class TestStore extends UnitTestBase{<br>    public TestStore(){<br>        super(“spring.xml”);<br>    }<br><br>    @Test<br>    public void test() {<br>        Store st = super.getBean(“store”);<br>        System.out.println(st.getClass().getName());<br>    }<br>}<br><br>使用@ImportResource 和 @Value 注解进行资源文件读取<br>@Configuration<br>@ImportResource(“classpath:/com/acme/properties-config.xml”)<br>public class AppConfig{<br>    @Value(“${jdbc.url}”)<br>    private String url;<br>    @Value(“${jdbc.username}”)<br>    private String username;<br>    @Value(“${jdbc.password”)<br>    private String password;<br>    @Bean<br>    public DataSource dataSource(){<br>        return new DriverManagerDataSource(url,username,password);<br>    }<br>}<br>————————————–<br>case :<br>spring.xml<br><context:component-scan base-package="com.imooc"></context:component-scan><br><br>public class MyDriverManager {<br>    public MyDriverManager(String url,String username,String password){<br>        System.out.println(“url “+url);<br>        System.out.println(“username “+username);<br>        System.out.println(“password “+password);<br>    }<br>}<br><br>– config.xml<br>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br><beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemalocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           "><br>    <context:property-placeholder location="classpath:/config.properties"><br></context:property-placeholder></beans>
+
+<p>config.properties<br>password = root<br>username = root<br>url = 127.0.0.1</p>
+<p>StoreConfig<br>@Configuration<br>@ImportResource(“classpath:config.xml”)<br>public class StoreConfig {<br>    @Value(“${url}”)<br>    private String url;</p>
+<pre><code>@Value(&quot;${username}&quot;)
+private String username;
+
+@Value(&quot;${password}&quot;)
+private String password;
+
+@Bean(name=&quot;mydriver&quot;)
+public MyDriverManager myDriverManager(){
+    return new MyDriverManager(url, username, password);
+}
+</code></pre><p>}</p>
+<p>public class TestStore extends UnitTestBase{<br>    public TestStore(){<br>        super(“spring.xml”);<br>    }</p>
+<pre><code>@Test
+public void test() {
+    MyDriverManager mydriver = super.getBean(&quot;mydriver&quot;);
+    System.out.println(mydriver.getClass().getName());
+}
+</code></pre><p>}</p>
+<hr>
+<p>Bean 的作用于包括 singleton,prototype,request,session,global session<br>配置@Scope</p>
+<pre><code>@Bean(name=&quot;store&quot;)
+@Scope(value=&quot;prototype&quot;)
+public Store getStringStore(){
+    return new StringStore();
+}
+</code></pre><hr>
+<p>基于泛型的自动装配<br>public interface Store<t> {</t></p>
+<p>}</p>
+<p>public class IntegerStore implements Store<integer>{<br>    // 此类实现泛型接口<br>}</integer></p>
+<p>public class StringStore implements Store<string>{<br>    // 此类实现泛型接口<br>}</string></p>
+<p>@Configuration<br>public class StoreConfig {<br>    // 自动装配，s1对应  return new StringStore()<br>    // 自动装配，S2对应  return new IntegerStore()<br>    @Autowired<br>    private Store<string> s1;<br>    @Autowired<br>    private Store<integer> s2;</integer></string></p>
+<pre><code>@Bean
+public StringStore getStringStore(){
+    return new StringStore();
+}
+
+@Bean
+public IntegerStore getIntegerStore(){
+    return new IntegerStore();
+}
+// 此处返回不能为StirngStore或者IntegerStore,因为会造成冲突，
+// 使得自动装配不能正确识别s1和s2
+@Bean(name=&quot;stringStoreTest&quot;)
+public Store stringStoreTest(){
+    System.out.println(&quot;s1 &quot;+s1.getClass().getName());
+    System.out.println(&quot;s2 &quot;+s2.getClass().getName());
+    return new StringStore();
+}
+</code></pre><p>}</p>
+<p>AOP : Aspect Oriented Programming 面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术<br>主要功能是：日志记录、性能统计、安全控制、事务处理、异常处理<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/33879222.jpg" alt="AOP相关概念"><br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/15887480.jpg" alt=""></p>
+<p>提供了声明式的企业服务，特别是EJB的替代服务的声明<br>允许用户定制自己的方面，以完成OOP与AOP的互补使用<br>Spring AOP 侧重于提供一种AOP实现和Spring IOC 容器之间的整合，用于帮助企业应用中的常见问题<br>Spring AOP 默认使用标准的JavaSE动态代理作为AOP代理，这使得任何接口都可以被代理<br>Spring AOP 中可以使用CGLIB代理</p>
+<p>Spring 所有的切面和通知器都必须放在一个<aop:config>内（可以配置包含多个<aop:config>元素）每一个<aop:config>可以包含pointcut,advisor和aspect元素（必须按照这个顺序进行声明）</aop:config></aop:config></aop:config></p>
+<p><aop:config> 风格大量使用了Spring的自动代理机制<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/51529359.jpg" alt=""><br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/27499441.jpg" alt=""><br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/18386608.jpg" alt=""><br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-13/73688262.jpg" alt=""></aop:config></p>
+<p>[Maven]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;dependencies&gt;</div><div class="line">    &lt;dependency&gt;</div><div class="line">      &lt;groupId&gt;junit&lt;/groupId&gt;</div><div class="line">      &lt;artifactId&gt;junit&lt;/artifactId&gt;</div><div class="line">      &lt;version&gt;4.11&lt;/version&gt;</div><div class="line">      &lt;scope&gt;test&lt;/scope&gt;</div><div class="line">    &lt;/dependency&gt;</div><div class="line">    &lt;dependency&gt;</div><div class="line">    	&lt;groupId&gt;javax.servlet&lt;/groupId&gt;</div><div class="line">    	&lt;artifactId&gt;servlet-api&lt;/artifactId&gt;</div><div class="line">    	&lt;version&gt;3.0-alpha-1&lt;/version&gt;</div><div class="line">    &lt;/dependency&gt;</div><div class="line">  &lt;/dependencies&gt;</div></pre></td></tr></table></figure></p>
+<p>Bean 后处理器会在Bean实例创建成功之后，对Bean实例进一步的增强处理<br>Spring 容器负责把各Bean创建出来，Bean 后处理器可以依次对每个Bean进行某种修改、增强，从而可以对容器中的Bean集中增加某种功能<br>@Component @Controller @Service @Repository</p>
+<p>指定Bean的作用域<br>@Scope(“prototype”)<br>@Component<br>public class SteelAxe{ }</p>
+<p>使用@Resource 配置依赖，与<property...> 元素的ref属性有相同的效果<br>@Component<br>public class Chinese{<br>    private Axe axe;<br>    @Resource(name=”stoneAxe”)<br>    public void setAxe(Axe axe){<br>        this.axe = axe;<br>    }<br>}<br>@Resource 不仅可以修饰setter方法，还可以修饰变量<br>@Resource(name=”stoneAxe”)<br>private Axe axe</property...></p>
+<p>Spring 3.0 新增 @DependsOn({“steelAxe”,”abc”})  初始化之前，会强制初始化steelAxe,abc两个Bean<br>@Lazy(true) 指定当Spring容器初始化时，不会预初始化之</p>
+<p>当使用@Autowired 标注setter方法时，默认采用byType自动装配策略<br>Spring4.0 @Autowired 可以根据泛型进行自动装配</p>
+</string,beaninterface></string,beaninterface></beaninterface></context:component-scan></bean></bean></bean></lookup-method...></lookup-method...></lookup-method...></bean...></property...></constructor-arg...></beans></bean></bean></beans></beans...></bean></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring/" rel="tag">#spring</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/09/spring笔记2/" rel="prev">spring笔记2</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/09/shadowSocks安装/" rel="next">shadowSocks安装</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

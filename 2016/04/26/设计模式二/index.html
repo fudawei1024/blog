@@ -1,0 +1,994 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="未有知而不行者。之二不行，只是未知" />
+
+
+
+  <meta name="keywords" content="设计模式," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="建造者模式建造模式是将复杂的内部创建封装在内部，对于外部调用的人来说，只需要传入建造者和建造工具，对于内部是如何建造成成品的，调用者无需关心。在Java的应用中JavaMail使用到了该模式。
+原型模式1234567891011121314151617/* 浅复制 */public Object clone() throws CloneNotSupportedException &amp;#123;	Pr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式二">
+<meta property="og:url" content="http://yoursite.com/2016/04/26/设计模式二/index.html">
+<meta property="og:site_name" content="冰鸟">
+<meta property="og:description" content="建造者模式建造模式是将复杂的内部创建封装在内部，对于外部调用的人来说，只需要传入建造者和建造工具，对于内部是如何建造成成品的，调用者无需关心。在Java的应用中JavaMail使用到了该模式。
+原型模式1234567891011121314151617/* 浅复制 */public Object clone() throws CloneNotSupportedException &amp;#123;	Pr">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/21783106.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/52927626-640.webp">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/25514382-640.webp">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/25514382-640.webp">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/70870796-640.webp">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/95852650.jpg">
+<meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/65731774.jpg">
+<meta property="og:updated_time" content="2016-08-21T08:59:33.635Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式二">
+<meta name="twitter:description" content="建造者模式建造模式是将复杂的内部创建封装在内部，对于外部调用的人来说，只需要传入建造者和建造工具，对于内部是如何建造成成品的，调用者无需关心。在Java的应用中JavaMail使用到了该模式。
+原型模式1234567891011121314151617/* 浅复制 */public Object clone() throws CloneNotSupportedException &amp;#123;	Pr">
+<meta name="twitter:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/21783106.jpg">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 设计模式二 | 冰鸟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">冰鸟-博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              设计模式二
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-04-26T22:06:40+08:00" content="2016-04-26">
+            2016-04-26
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/设计模式/" itemprop="url" rel="index">
+                  <span itemprop="name">设计模式</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h3><p>建造模式是将复杂的内部创建封装在内部，对于外部调用的人来说，只需要传入建造者和建造工具，对于内部是如何建造成成品的，调用者无需关心。<br>在Java的应用中JavaMail使用到了该模式。<br><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/21783106.jpg" alt="建造者模式"></p>
+<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/* 浅复制 */</div><div class="line">public Object clone() throws CloneNotSupportedException &#123;</div><div class="line">	Prototype proto = (Prototype) super.clone();</div><div class="line">	return proto;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 深复制 */</div><div class="line">public Object deepClone() throws IOException, ClassNotFoundException &#123;</div><div class="line">	/* 写入当前对象的二进制流 */</div><div class="line">	ByteArrayOutputStream bos = new ByteArrayOutputStream();</div><div class="line">	ObjectOutputStream oos = new ObjectOutputStream(bos);</div><div class="line">	oos.writeObject(this);</div><div class="line">	/* 读出二进制流产生的新对象 */</div><div class="line">	ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());</div><div class="line">	ObjectInputStream ois = new ObjectInputStream(bis);</div><div class="line">	return ois.readObject();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><p><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/52927626-640.webp" alt="类的适配器模式"><br>核心思想就是：有一个Source类，拥有一个方法，待适配，目标接口时Targetable，通过Adapter类，将Source的功能扩展到Targetable里<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Source &#123;</div><div class="line">	public void method1()&#123;</div><div class="line">		System.out.println(&quot;method1&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public interface Targetable &#123;</div><div class="line">	public void method1();</div><div class="line">	public void method2();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Adapter extends Source implements Targetable&#123;</div><div class="line">	@Override</div><div class="line">	public void method2() &#123;</div><div class="line">		System.out.println(&quot;method2&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class AdapterTest &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Targetable target = new Adapter();</div><div class="line">		target.method1();</div><div class="line">		target.method2();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/25514382-640.webp" alt="对象的适配器模式"><br>基本思路和类的适配器模式相同，只是将Adapter类作修改，这次不继承Source类，而是持有Source类的实例，以达到解决兼容性的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class Wrapper implements Targetable &#123;</div><div class="line">	private Source source;</div><div class="line">	public Wrapper(Source source)&#123;</div><div class="line">	super();</div><div class="line">	this.source = source;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void method2() &#123;</div><div class="line">		System.out.println(&quot;this is the targetable method!&quot;);</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public void method1() &#123;</div><div class="line">		source.method1();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/25514382-640.webp" alt="接口的适配器模式"><br>接口的适配器是这样的：有时我们写的一个接口中有多个抽象方法，当我们写该接口的实现类时，必须实现该接口的所有方法，这明显有时比较浪费，因为并不是所有的方法都是我们需要的，有时只需要某一些，此处为了解决这个问题，我们引入了接口的适配器模式，借助于一个抽象类，该抽象类实现了该接口，实现了所有的方法，而我们不和原始的接口打交道，只和该抽象类取得联系，所以我们写一个类，继承该抽象类，重写我们需要的方法就行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">public interface Sourceable &#123;</div><div class="line">	public void method1();</div><div class="line">	public void method2();</div><div class="line">	public void method3();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public abstract class Wrapper implements Sourceable &#123;</div><div class="line">	public void method1()&#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	public void method2()&#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class SourceSub1 extends Wrapper&#123;</div><div class="line">	@Override</div><div class="line">	public void method3() &#123;</div><div class="line">		System.out.println(&quot;SourceSub1&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class SourceSub2 extends Wrapper&#123;</div><div class="line">	@Override</div><div class="line">	public void method3() &#123;</div><div class="line">		System.out.println(&quot;SourceSub3&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Sourceable source1 = new SourceSub1();</div><div class="line">		Sourceable source2 = new SourceSub2();</div><div class="line">		source1.method1();</div><div class="line">		source1.method2();</div><div class="line">		source1.method3();</div><div class="line"></div><div class="line">		source2.method1();</div><div class="line">		source2.method2();</div><div class="line">		source2.method3();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>适配器模式总结</p>
+<ul>
+<li>类的适配器模式：当希望将一个类转换成满足另一个新接口的类时，可以使用类的适配器模式，创建一个新类，继承原有的类，实现新的接口即可。</li>
+<li>对象的适配器模式：当希望将一个对象转换成满足另一个新接口的对象时，可以创建一个Wrapper类，持有原类的一个实例，在Wrapper类的方法中，调用实例的方法就行。</li>
+<li>接口的适配器模式：当不希望实现一个接口中所有的方法时，可以创建一个抽象类Wrapper，实现所有方法，我们写别的类的时候，继承抽象类即可。</li>
+</ul>
+<h3 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h3><p>装饰模式就是给一个对象增加一些新的功能，而且是动态的，要求装饰对象和被装饰对象实现同一个接口，装饰对象持有被装饰对象的实例<br>简单的装饰模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">public interface IComponent &#123;</div><div class="line">	public void operation();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class ConcreteComponent implements IComponent &#123;</div><div class="line">	@Override</div><div class="line">	public void operation() &#123;</div><div class="line">		System.out.println(&quot;开车&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Decorator implements IComponent &#123;</div><div class="line">	private IComponent component;</div><div class="line"></div><div class="line">	public Decorator(IComponent component) &#123;</div><div class="line">		this.component = component;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void operation() &#123;</div><div class="line">		component.operation();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public class ConcreteDecorator extends Decorator &#123;</div><div class="line">	public ConcreteDecorator(IComponent component) &#123;</div><div class="line">		super(component);</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public void operation() &#123;</div><div class="line">		this.addOperation();</div><div class="line">		super.operation();</div><div class="line">	&#125;</div><div class="line">	private void addOperation() &#123;</div><div class="line">		System.out.print(&quot;晚上&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		ConcreteComponent component = new ConcreteComponent();</div><div class="line">		ConcreteDecorator decorator = new ConcreteDecorator(component);</div><div class="line">		decorator.operation();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>复杂的装饰模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">public interface IComponent &#123;</div><div class="line">	void showCoffee();</div><div class="line">	double showPrice();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Coffee implements IComponent &#123;</div><div class="line">	private String name;</div><div class="line">	private double price;</div><div class="line">	public Coffee(String name,double price)&#123;</div><div class="line">		this.name = name;</div><div class="line">		this.price = price;</div><div class="line">	&#125;</div><div class="line">	...get...set</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void showCoffee() &#123;</div><div class="line">		System.out.println(&quot;的&quot;+this.getName()+&quot;咖啡&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public double showPrice() &#123;</div><div class="line">		return this.getPrice();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line">// 装饰类</div><div class="line">public class Decorator implements IComponent &#123;</div><div class="line">	private IComponent componet;</div><div class="line"></div><div class="line">	public void setComponent(IComponent component) &#123;</div><div class="line">		this.componet = component;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void showCoffee() &#123;</div><div class="line">		componet.showCoffee();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public double showPrice() &#123;</div><div class="line">		return componet.showPrice();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Milk extends Decorator&#123;</div><div class="line">	@Override</div><div class="line">	public void showCoffee() &#123;</div><div class="line">		System.out.print(&quot;加奶&quot;);</div><div class="line">		super.showCoffee();</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public double showPrice() &#123;</div><div class="line">		return 15.0+super.showPrice();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">public class Sugar extends Decorator &#123;</div><div class="line">	@Override</div><div class="line">	public void showCoffee() &#123;</div><div class="line">		System.out.print(&quot;加糖&quot;);</div><div class="line">		super.showCoffee();</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public double showPrice() &#123;</div><div class="line">		return 10+super.showPrice();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Coffee coffee = new Coffee(&quot;拿铁&quot;,55.0);</div><div class="line">		Decorator sugar = new Sugar();</div><div class="line">		Decorator milk = new Milk();</div><div class="line">		sugar.setComponent(coffee);</div><div class="line">		milk.setComponent(sugar);</div><div class="line">		milk.showCoffee();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>装饰器模式的应用场景：<br>1、需要扩展一个类的功能。<br>2、动态的为一个对象增加功能，而且还能动态撤销。（继承不能做到这一点，继承的功能是静态的，不能动态增删。）<br>缺点：产生过多相似的对象，不易排错！</p>
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p>代理持有一个真实实现类的引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public interface Sourceable &#123;</div><div class="line">    public void method();</div><div class="line">&#125;</div><div class="line">public class Source implements Sourceable &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void method() &#123;</div><div class="line">        System.out.println(&quot;the original method!&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">public class Proxy implements Sourceable &#123;</div><div class="line"></div><div class="line">    private Source source;</div><div class="line">    public Proxy()&#123;</div><div class="line">        super();</div><div class="line">        this.source = new Source();</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void method() &#123;</div><div class="line">        before();</div><div class="line">        source.method();</div><div class="line">        atfer();</div><div class="line">    &#125;</div><div class="line">    private void atfer() &#123;</div><div class="line">        System.out.println(&quot;after proxy!&quot;);</div><div class="line">    &#125;</div><div class="line">    private void before() &#123;</div><div class="line">        System.out.println(&quot;before proxy!&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h3><p><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/70870796-640.webp" alt="外观模式"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class Computer &#123;</div><div class="line">	private CPU cpu;</div><div class="line">	private Memory memory;</div><div class="line">	private Disk disk;</div><div class="line">	public Computer()&#123;</div><div class="line">		cpu = new CPU();</div><div class="line">		memory = new Memory();</div><div class="line">		disk = new Disk();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void startUp()&#123;</div><div class="line">		cpu.startUp();</div><div class="line">		memory.startUp();</div><div class="line">		disk.startUp();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void shutDown()&#123;</div><div class="line">		cpu.shutDown();</div><div class="line">		memory.shutDown();</div><div class="line">		disk.shutDown();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><p><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/95852650.jpg" alt="策略模式"></p>
+<ol>
+<li><p>加减法计算表达式-策略模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">public interface ICalculator &#123;</div><div class="line">	public int calculate(String exp);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public abstract class AbstractCalculator &#123;</div><div class="line">	public int[] split(String exp,String delimeter)&#123;</div><div class="line">		String[] arr = exp.split(delimeter);</div><div class="line">		int[] result = new int[2];</div><div class="line">		result[0] = Integer.parseInt(arr[0]);</div><div class="line">		result[1] = Integer.parseInt(arr[1]);</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Minus extends AbstractCalculator implements ICalculator&#123;</div><div class="line">	@Override</div><div class="line">	public int calculate(String exp) &#123;</div><div class="line">		int[] arr = split(exp, &quot;-&quot;);</div><div class="line">		return arr[0]-arr[1];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Plus extends AbstractCalculator implements ICalculator&#123;</div><div class="line">	@Override</div><div class="line">	public int calculate(String exp) &#123;</div><div class="line">		int[] arr = split(exp, &quot;\\+&quot;);</div><div class="line">		return arr[0]+arr[1];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Multiply extends AbstractCalculator implements ICalculator&#123;</div><div class="line">	@Override</div><div class="line">	public int calculate(String exp) &#123;</div><div class="line">		int[] arr = split(exp, &quot;\\*&quot;);</div><div class="line">		return arr[0]*arr[1];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		ICalculator cal = new Plus();</div><div class="line">		int res = cal.calculate(&quot;8+2&quot;);</div><div class="line">		System.out.println(res);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>客户打折-策略模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">public interface Strategy &#123;</div><div class="line">	public double calcPrice(double goodsPrice);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class LargeCustomerStrategy implements Strategy&#123;</div><div class="line">	@Override</div><div class="line">	public double calcPrice(double goodsPrice) &#123;</div><div class="line">		System.out.println(&quot;大客户10%&quot;);</div><div class="line">		return goodsPrice*(1-0.1);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class OldCustomerStrategy implements Strategy&#123;</div><div class="line">	@Override</div><div class="line">	public double calcPrice(double goodsPrice) &#123;</div><div class="line">		System.out.println(&quot;老客户5%&quot;);</div><div class="line">		return goodsPrice*(1-0.05);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class NormalCustomerStrategy implements Strategy&#123;</div><div class="line">	@Override</div><div class="line">	public double calcPrice(double goodsPrice) &#123;</div><div class="line">		System.out.println(&quot;新客户或普通客户没有折扣&quot;);</div><div class="line">		return goodsPrice;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Price &#123;</div><div class="line">	private Strategy strategy = null;</div><div class="line"></div><div class="line">	public Price(Strategy strategy)&#123;</div><div class="line">		this.strategy = strategy;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public double quote(double goodsPrice)&#123;</div><div class="line">		return this.strategy.calcPrice(goodsPrice);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Client &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Strategy strategy = new LargeCustomerStrategy();</div><div class="line">		Price ctx = new Price(strategy);</div><div class="line">		double quote = ctx.quote(1000);</div><div class="line">		System.out.println(&quot;报价:&quot;+quote);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>保存日志到数据库/文件-策略模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">public interface LogStrategy &#123;</div><div class="line">	public void log(String msg);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class DbLog implements LogStrategy&#123;</div><div class="line">	@Override</div><div class="line">	public void log(String msg) &#123;</div><div class="line">		if(msg!=null &amp;&amp; msg.trim().length()&gt;5)&#123;</div><div class="line">			int a = 5/0;</div><div class="line">		&#125;</div><div class="line">		System.out.println(&quot;现在把&apos;&quot;+msg+&quot;&apos;记录到数据库中&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class FileLog implements LogStrategy&#123;</div><div class="line">	@Override</div><div class="line">	public void log(String msg) &#123;</div><div class="line">		System.out.println(&quot;现在把&apos;&quot;+msg+&quot;&apos;记录到文件中&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class LogContext &#123;</div><div class="line">	public void log(String msg)&#123;</div><div class="line">		LogStrategy strategy = new DbLog();</div><div class="line">		try &#123;</div><div class="line">			strategy.log(msg);</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			strategy = new FileLog();</div><div class="line">			strategy.log(msg);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Client &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		LogContext log = new LogContext();</div><div class="line">		// 正常记录到数据库中</div><div class="line">		log.log(&quot;记录日志&quot;);</div><div class="line">		// 发生异常，此时策略切换为文件记录日志</div><div class="line">		log.log(&quot;再次记录日志&quot;);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">结果：</div><div class="line">现在把&apos;记录日志&apos;记录到数据库中</div><div class="line">现在把&apos;再次记录日志&apos;记录到文件中</div></pre></td></tr></table></figure>
+</li>
+<li><p>给某个动作前面加上一个动作-策略模式结合模板模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">public interface LogStrategy &#123;</div><div class="line">	public void log(String msg);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public abstract class LogStrategyTemplate implements LogStrategy&#123;</div><div class="line">	//给各个策略前面加上时间，可以通过结合模板模式，在父类中设定好执行顺序，由子类执行</div><div class="line">	@Override</div><div class="line">	public void log(String msg) &#123;</div><div class="line">		SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</div><div class="line">		msg = sdf.format(new Date())+&quot;内容是&quot;+msg;</div><div class="line">		doLog(msg);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	protected abstract void doLog(String msg);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">public class DbLog extends LogStrategyTemplate&#123;</div><div class="line">	@Override</div><div class="line">	protected void doLog(String msg) &#123;</div><div class="line">		if(msg!=null &amp;&amp; msg.trim().length()&gt;5)&#123;</div><div class="line">			int a = 5/0;</div><div class="line">		&#125;</div><div class="line">		System.out.println(&quot;记录到数据库中：&quot;+msg);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class FileLog extends LogStrategyTemplate&#123;</div><div class="line">	@Override</div><div class="line">	protected void doLog(String msg) &#123;</div><div class="line">		System.out.println(&quot;现在把&quot;+msg+&quot;记录到数据库中&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class LogContext &#123;</div><div class="line">	public void log(String msg)&#123;</div><div class="line">		LogStrategy strategy = new DbLog();</div><div class="line">		try &#123;</div><div class="line">			strategy.log(msg);</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			strategy = new FileLog();</div><div class="line">			strategy.log(msg);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Client &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		LogContext log = new LogContext();</div><div class="line">		log.log(&quot;记录日志&quot;);</div><div class="line">		log.log(&quot;再次记录日志&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">输出</div><div class="line">现在把2016-04-26 18:11:32内容是  记录日志  记录到数据库中</div><div class="line">现在把2016-04-26 18:11:32内容是  再次记录日志  记录到数据库中</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h3><p><img src="http://7xrkr6.com1.z0.glb.clouddn.com/16-4-26/65731774.jpg" alt="模板方式模式"><br>就是在AbstractCalculator类中定义一个主方法calculate，calculate()调用spilt()等，Plus和Minus分别继承AbstractCalculator类，通过对AbstractCalculator的调用实现对子类的调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public abstract class AbstractCalculator &#123;</div><div class="line">	public final int calculate(String exp,String delimeter)&#123;</div><div class="line">		int array[] = split(exp, delimeter);</div><div class="line">		return calculate(array[0],array[1]);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public abstract int calculate(int num1,int num2);</div><div class="line"></div><div class="line">	public int[] split(String exp,String delimeter)&#123;</div><div class="line">		String[] arr = exp.split(delimeter);</div><div class="line">		int[] result = new int[2];</div><div class="line">		result[0] = Integer.parseInt(arr[0]);</div><div class="line">		result[1] = Integer.parseInt(arr[1]);</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Plus extends AbstractCalculator&#123;</div><div class="line">	@Override</div><div class="line">	public int calculate(int num1, int num2) &#123;</div><div class="line">		return num1+num2;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		AbstractCalculator cal = new Plus();</div><div class="line">		int res = cal.calculate(&quot;8+2&quot;,&quot;\\+&quot;);</div><div class="line">		System.out.println(res);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public class Watcher implements Observer &#123;</div><div class="line">	public Watcher(Watched w) &#123;</div><div class="line">		w.addObserver(this);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void update(Observable o, Object arg) &#123;</div><div class="line">		System.out.println(((Watched)o).retriveData());</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Watched extends Observable &#123;</div><div class="line">	private String data=&quot;&quot;;</div><div class="line"></div><div class="line">	public String retriveData()&#123;</div><div class="line">		return data;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void changeData(String data)&#123;</div><div class="line">		if(!this.data.equals(data))&#123;</div><div class="line">			this.data = data;</div><div class="line">			setChanged();</div><div class="line">			notifyObservers();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Watched watched = new Watched();</div><div class="line">		Watcher watcher = new Watcher(watched);</div><div class="line">		watched.changeData(&quot;A&quot;);</div><div class="line">		watched.changeData(&quot;B&quot;);</div><div class="line">		watched.changeData(&quot;C&quot;);</div><div class="line">		watched.changeData(&quot;D&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3><p>又被称为游标模式。这种模式提供一种方法访问一个容器对象中的各个元素，而又不需要暴露该对象的内部细节。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">public interface IIterator &#123;</div><div class="line">	public Object previous();</div><div class="line">	public Object next();</div><div class="line">	public boolean hasNext();</div><div class="line">	public Object first();</div><div class="line">&#125;</div><div class="line">// 持有一个迭代器对象的引用</div><div class="line">public interface Collection &#123;</div><div class="line">	public IIterator iterator();</div><div class="line">	public Object get(int i);</div><div class="line">	public int size();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class MyCollection implements Collection&#123;</div><div class="line">	public String[] string = null;</div><div class="line">	public MyCollection(String[] str)&#123;</div><div class="line">		string = str;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public IIterator iterator() &#123;</div><div class="line">		return new MyIterator(this);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public Object get(int i) &#123;</div><div class="line">		return string[i];</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public int size() &#123;</div><div class="line">		return string.length;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class MyIterator implements IIterator&#123;</div><div class="line"></div><div class="line">	private Collection collection;</div><div class="line">	private int pos=-1;</div><div class="line"></div><div class="line">	public MyIterator(Collection collection)&#123;</div><div class="line">		this.collection = collection;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public Object previous() &#123;</div><div class="line">		if(pos&gt;0)</div><div class="line">			pos--;</div><div class="line">		return collection.get(pos);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public Object next() &#123;</div><div class="line">		if(pos&lt;collection.size()-1)</div><div class="line">			pos++;</div><div class="line">		return collection.get(pos);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public boolean hasNext() &#123;</div><div class="line">		if(pos&lt;collection.size()-1)</div><div class="line">			return true;</div><div class="line">		return false;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public Object first() &#123;</div><div class="line">		pos=0;</div><div class="line">		return collection.get(pos);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		String[] str = &#123;&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;&#125;;</div><div class="line">		Collection myCollection = new MyCollection(str);</div><div class="line">		IIterator it = myCollection.iterator();</div><div class="line">		while(it.hasNext())&#123;</div><div class="line">			System.out.println(it.next());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">// 责任链上各个对象执行的方法</div><div class="line">public interface Handler &#123;</div><div class="line">	public void operator();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public abstract class AbstractHandler &#123;</div><div class="line">	private Handler handler;</div><div class="line"></div><div class="line">	public Handler getHandler()&#123;</div><div class="line">		return handler;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setHandler(Handler handler)&#123;</div><div class="line">		this.handler = handler;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class MyHandler extends AbstractHandler implements Handler&#123;</div><div class="line">	private String name;</div><div class="line"></div><div class="line">	public MyHandler(String name)&#123;</div><div class="line">		this.name = name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void operator() &#123;</div><div class="line">		System.out.println(name+&quot; deal!&quot;);</div><div class="line">		if(getHandler()!=null)&#123;</div><div class="line">			getHandler().operator();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		// 此处只能用具体类，不能用抽象类，因为后面需要设置实现了接口的对象为下一个handler</div><div class="line">		MyHandler h1 = new MyHandler(&quot;h1&quot;);</div><div class="line">		MyHandler h2 = new MyHandler(&quot;h2&quot;);</div><div class="line">		MyHandler h3 = new MyHandler(&quot;h3&quot;);</div><div class="line"></div><div class="line">		h1.setHandler(h2);</div><div class="line">		h2.setHandler(h3);</div><div class="line">		h1.operator();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p>命令模式的目的就是达到命令的发出者和执行者之间解耦<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">public interface Command &#123;</div><div class="line">	public void execute();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class OpenCommand implements Command &#123;</div><div class="line">	private MainBoard mainBoard;</div><div class="line"></div><div class="line">	public OpenCommand(MainBoard mainBoard) &#123;</div><div class="line">		this.mainBoard = mainBoard;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void execute() &#123;</div><div class="line">		mainBoard.open();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public interface MainBoard &#123;</div><div class="line">	public void open();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class GigaMainBoard implements MainBoard &#123;</div><div class="line">	@Override</div><div class="line">	public void open() &#123;</div><div class="line">		System.out.println(&quot;华硕主板开机&quot;);</div><div class="line">		System.out.println(&quot;接通电源&quot;);</div><div class="line">		System.out.println(&quot;正常运转&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Box &#123;</div><div class="line">	private Command openCommand;</div><div class="line"></div><div class="line">	public void setOpenCommand(Command command) &#123;</div><div class="line">		this.openCommand = command;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void openButtonPressed() &#123;</div><div class="line">		openCommand.execute();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		MainBoard mainBoard = new GigaMainBoard();</div><div class="line">		Command openCommand = new OpenCommand(mainBoard);</div><div class="line">		Box box = new Box();</div><div class="line">		box.setOpenCommand(openCommand);</div><div class="line">		box.openButtonPressed();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">public abstract class Order &#123;</div><div class="line">	public abstract void sell();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class FlavorOrder extends Order&#123;</div><div class="line">	public String flavor;</div><div class="line">	public FlavorOrder(String flavor) &#123;</div><div class="line">		this.flavor = flavor;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void sell() &#123;</div><div class="line">		System.out.println(&quot;卖出&quot;+flavor+&quot;一份&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">// 枚举写出的单例，利用HashMap来实现享元模式</div><div class="line">public enum FlavorFactory &#123;</div><div class="line">	instance;</div><div class="line">	private Map&lt;String,Order&gt; flavorPool = new HashMap&lt;String,Order&gt;();</div><div class="line">	public Order getOrder(String flavor)&#123;</div><div class="line">		Order order = null;</div><div class="line">		if(flavorPool.containsKey(flavor))&#123;</div><div class="line">			order = flavorPool.get(flavor);</div><div class="line">		&#125;else&#123;</div><div class="line">			order = new FlavorOrder(flavor);</div><div class="line">			flavorPool.put(flavor, order);</div><div class="line">		&#125;</div><div class="line">		return order;</div><div class="line">	&#125;</div><div class="line">	public int getTotalSize()&#123;</div><div class="line">		return flavorPool.size();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	static ArrayList&lt;Order&gt; orders = new ArrayList&lt;Order&gt;();</div><div class="line">	public static void addOrder(String flavor) &#123;</div><div class="line">		orders.add(FlavorFactory.instance.getOrder(flavor));</div><div class="line">	&#125;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		FlavorFactory factory = FlavorFactory.instance;</div><div class="line">		addOrder(&quot;one&quot;);</div><div class="line">		addOrder(&quot;two&quot;);</div><div class="line">		addOrder(&quot;three&quot;);</div><div class="line">		addOrder(&quot;three&quot;);</div><div class="line">		addOrder(&quot;three&quot;);</div><div class="line">		addOrder(&quot;one&quot;);</div><div class="line">		addOrder(&quot;two&quot;);</div><div class="line">		addOrder(&quot;three&quot;);</div><div class="line">		addOrder(&quot;two&quot;);</div><div class="line">		addOrder(&quot;two&quot;);</div><div class="line">		for (Order order : orders) &#123;</div><div class="line">			order.sell();</div><div class="line">		&#125;</div><div class="line">		System.out.println(&quot;一共&quot; + orders.size());</div><div class="line">		System.out.println(&quot;生成&quot; + factory.instance.getTotalSize() + &quot;个对象&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h3><p>浅复制：将一个对象复制后，基本数据类型的变量都会重新创建，而引用类型，指向的还是原对象所指向的。<br>深复制：将一个对象复制后，不论是基本数据类型还有引用类型，都是重新创建的。简单来说，就是深复制进行了完全彻底的复制，而浅复制不彻底</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/设计模式/" rel="tag">#设计模式</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/29/linux必学的60个命令/" rel="prev">linux必学的60个命令</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/26/设计模式一/" rel="next">设计模式一</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">冰鸟</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fudw1987" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-da-wei-70" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://t.qq.com/fudw764923019" target="_blank">微博</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#建造者模式"><span class="nav-number">1.</span> <span class="nav-text">建造者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型模式"><span class="nav-number">2.</span> <span class="nav-text">原型模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适配器模式"><span class="nav-number">3.</span> <span class="nav-text">适配器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#装饰模式"><span class="nav-number">4.</span> <span class="nav-text">装饰模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代理模式"><span class="nav-number">5.</span> <span class="nav-text">代理模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外观模式"><span class="nav-number">6.</span> <span class="nav-text">外观模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#策略模式"><span class="nav-number">7.</span> <span class="nav-text">策略模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板方法模式"><span class="nav-number">8.</span> <span class="nav-text">模板方法模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#观察者模式"><span class="nav-number">9.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器模式"><span class="nav-number">10.</span> <span class="nav-text">迭代器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#责任链模式"><span class="nav-number">11.</span> <span class="nav-text">责任链模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令模式"><span class="nav-number">12.</span> <span class="nav-text">命令模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#享元模式"><span class="nav-number">13.</span> <span class="nav-text">享元模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中介者模式"><span class="nav-number">14.</span> <span class="nav-text">中介者模式</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冰鸟
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
