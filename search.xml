@@ -4202,6 +4202,28 @@ return numbers
     </entry>
     
     <entry>
+      <title><![CDATA[排序算法的稳定性]]></title>
+      <url>http://yoursite.com/2016/04/16/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E7%A8%B3%E5%AE%9A%E6%80%A7/</url>
+      <content type="html"><![CDATA[<p>稳定排序和不稳定排序</p>
+<blockquote>
+<p>这几天笔试了好几次了，连续碰到一个关于常见排序算法稳定性判别的问题，往往还是多选，对于我以及和我一样拿不准的同学可不是一个能轻易下结论的题目，当然如果你笔试之前已经记住了数据结构书上哪些是稳定的，哪些不是稳定的，做起来应该可以轻松搞定。本文是针对老是记不住这个或者想真正明白到底为什么是稳定或者不稳定的人准备的。<br>首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。<br>其次，说一下稳定性的好处。排序算法如果是稳定的，那么从一个键上排序，然后再从另一个键上排序，第一个键排序的结果可以为第二个键排序所用。基数排序就是这样，先按低位排序，逐次按高位排序，低位相同的元素其顺序再高位也相同时是不会改变的。另外，如果排序算法稳定，对基于比较的排序算法而言，元素交换的次数可能会少一些（个人感觉，没有证实）。</p>
+</blockquote>
+<p>回到主题，现在分析一下常见的排序算法的稳定性，每个都给出简单的理由。</p>
+<p>(1)冒泡排序</p>
+<p>冒泡排序就是把小的元素往前调或者把大的元素往后调。比较是相邻的两个元素比较，交换也发生在这两个元素之间。所以，如果两个元素相等，我想你是不会再无聊地把他们俩交换一下的；如果两个相等的元素没有相邻，那么即使通过前面的两两交换把两个相邻起来，这时候也不会交换，所以相同元素的前后顺序并没有改变，所以冒泡排序是一种稳定排序算法。</p>
+<p>(2)选择排序</p>
+<p>选择排序是给每个位置选择当前元素最小的，比如给第一个位置选择最小的，在剩余元素里面给第二个元素选择第二小的，依次类推，直到第n - 1个元素，第n个元素不用选择了，因为只剩下它一个最大的元素了。那么，在一趟选择，如果当前元素比一个元素小，而该小的元素又出现在一个和当前元素相等的元素后面，那么交换后稳定性就被破坏了。比较拗口，举个例子，序列5 8 5 2 9，我们知道第一遍选择第1个元素5会和2交换，那么原序列中2个5的相对前后顺序就被破坏了，所以选择排序不是一个稳定的排序算法。</p>
+<p>(3)插入排序<br>插入排序是在一个已经有序的小序列的基础上，一次插入一个元素。当然，刚开始这个有序的小序列只有1个元素，就是第一个元素。比较是从有序序列的末尾开始，也就是想要插入的元素和已经有序的最大者开始比起，如果比它大则直接插入在其后面，否则一直往前找直到找到它该插入的位置。如果碰见一个和插入元素相等的，那么插入元素把想插入的元素放在相等元素的后面。所以，相等元素的前后顺序没有改变，从原无序序列出去的顺序就是排好序后的顺序，所以插入排序是稳定的。</p>
+<p>(4)快速排序<br>快速排序有两个方向，左边的i下标一直往右走，当a[i] &lt;= a[center_index]，其中center_index是中枢元素的数组下标，一般取为数组第0个元素。而右边的j下标一直往左走，当a[j] &gt; a[center_index]。如果i和j都走不动了，i &lt;= j，交换a[i]和a[j],重复上面的过程，直到i &gt; j。 交换a[j]和a[center_index]，完成一趟快速排序。在中枢元素和a[j]交换的时候，很有可能把前面的元素的稳定性打乱，比如序列为5 3 3 4 3 8 9 10 11，现在中枢元素5和3（第5个元素，下标从1开始计）交换就会把元素3的稳定性打乱，所以快速排序是一个不稳定的排序算法，不稳定发生在中枢元素和a[j] 交换的时刻。</p>
+<p>(5)归并排序<br>归并排序是把序列递归地分成短序列，递归出口是短序列只有1个元素（认为直接有序）或者2个序列（1次比较和交换），然后把各个有序的段序列合并成一个有序的长序列，不断合并直到原序列全部排好序。可以发现，在1个或2个元素时，1个元素不会交换，2个元素如果大小相等也没有人故意交换，这不会破坏稳定性。那么，在短的有序序列合并的过程中，稳定是是否受到破坏？没有，合并过程中我们可以保证如果两个当前元素相等时，我们把处在前面的序列的元素保存在结果序列的前面，这样就保证了稳定性。所以，归并排序也是稳定的排序算法。</p>
+<p>(6)基数排序<br>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序，最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以其是稳定的排序算法。</p>
+<p>(7)希尔排序(shell)<br>希尔排序是按照不同步长对元素进行插入排序，当刚开始元素很无序的时候，步长最大，所以插入排序的元素个数很少，速度很快；当元素基本有序了，步长很小， 插入排序对于有序的序列效率很高。所以，希尔排序的时间复杂度会比O(n^2)好一些。由于多次插入排序，我们知道一次插入排序是稳定的，不会改变相同元素的相对顺序，但在不同的插入排序过程中，相同的元素可能在各自的插入排序中移动，最后其稳定性就会被打乱，所以shell排序是不稳定的。</p>
+<p>(8)堆排序<br>我们知道堆的结构是节点i的孩子为2 <em> i和2 </em> i + 1节点，大顶堆要求父节点大于等于其2个子节点，小顶堆要求父节点小于等于其2个子节点。在一个长为n 的序列，堆排序的过程是从第n / 2开始和其子节点共3个值选择最大（大顶堆）或者最小（小顶堆），这3个元素之间的选择当然不会破坏稳定性。但当为n / 2 - 1， n / 2 - 2， … 1这些个父节点选择元素时，就会破坏稳定性。有可能第n / 2个父节点交换把后面一个元素交换过去了，而第n / 2 - 1个父节点把后面一个相同的元素没 有交换，那么这2个相同的元素之间的稳定性就被破坏了。所以，堆排序不是稳定的排序算法。</p>
+<p>综上，得出结论: 选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，而冒泡排序、插入排序、归并排序和基数排序是稳定的排序算法<br>PS: 快[快速排序]些[希尔排序]选[选择排序]一堆[堆排序]不稳定排序</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[六大原则]]></title>
       <url>http://yoursite.com/2016/04/16/%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99/</url>
       <content type="html"><![CDATA[<h3 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h3><p>高内聚，低耦合。每一个类应该只有一个职责，对外只能提供一种功能，而引起类变化的原因应该只有一个。将不同的职责分别进行封装，不要将其组合在一个勒种，要使这个类只有一个可能会以前它变化的原因。</p>
@@ -4225,28 +4247,6 @@ return numbers
 <blockquote>
 <p>抽象类可以有构造方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public abstract class AMan &#123;</div><div class="line">	protected IPrettyGirl prettyGirl;</div><div class="line">	public AMan(IPrettyGirl prettyGirl)&#123;</div><div class="line">		this.prettyGirl = prettyGirl;</div><div class="line">	&#125;</div><div class="line">	public abstract void findGirl();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[排序算法的稳定性]]></title>
-      <url>http://yoursite.com/2016/04/16/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E7%A8%B3%E5%AE%9A%E6%80%A7/</url>
-      <content type="html"><![CDATA[<p>稳定排序和不稳定排序</p>
-<blockquote>
-<p>这几天笔试了好几次了，连续碰到一个关于常见排序算法稳定性判别的问题，往往还是多选，对于我以及和我一样拿不准的同学可不是一个能轻易下结论的题目，当然如果你笔试之前已经记住了数据结构书上哪些是稳定的，哪些不是稳定的，做起来应该可以轻松搞定。本文是针对老是记不住这个或者想真正明白到底为什么是稳定或者不稳定的人准备的。<br>首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。<br>其次，说一下稳定性的好处。排序算法如果是稳定的，那么从一个键上排序，然后再从另一个键上排序，第一个键排序的结果可以为第二个键排序所用。基数排序就是这样，先按低位排序，逐次按高位排序，低位相同的元素其顺序再高位也相同时是不会改变的。另外，如果排序算法稳定，对基于比较的排序算法而言，元素交换的次数可能会少一些（个人感觉，没有证实）。</p>
-</blockquote>
-<p>回到主题，现在分析一下常见的排序算法的稳定性，每个都给出简单的理由。</p>
-<p>(1)冒泡排序</p>
-<p>冒泡排序就是把小的元素往前调或者把大的元素往后调。比较是相邻的两个元素比较，交换也发生在这两个元素之间。所以，如果两个元素相等，我想你是不会再无聊地把他们俩交换一下的；如果两个相等的元素没有相邻，那么即使通过前面的两两交换把两个相邻起来，这时候也不会交换，所以相同元素的前后顺序并没有改变，所以冒泡排序是一种稳定排序算法。</p>
-<p>(2)选择排序</p>
-<p>选择排序是给每个位置选择当前元素最小的，比如给第一个位置选择最小的，在剩余元素里面给第二个元素选择第二小的，依次类推，直到第n - 1个元素，第n个元素不用选择了，因为只剩下它一个最大的元素了。那么，在一趟选择，如果当前元素比一个元素小，而该小的元素又出现在一个和当前元素相等的元素后面，那么交换后稳定性就被破坏了。比较拗口，举个例子，序列5 8 5 2 9，我们知道第一遍选择第1个元素5会和2交换，那么原序列中2个5的相对前后顺序就被破坏了，所以选择排序不是一个稳定的排序算法。</p>
-<p>(3)插入排序<br>插入排序是在一个已经有序的小序列的基础上，一次插入一个元素。当然，刚开始这个有序的小序列只有1个元素，就是第一个元素。比较是从有序序列的末尾开始，也就是想要插入的元素和已经有序的最大者开始比起，如果比它大则直接插入在其后面，否则一直往前找直到找到它该插入的位置。如果碰见一个和插入元素相等的，那么插入元素把想插入的元素放在相等元素的后面。所以，相等元素的前后顺序没有改变，从原无序序列出去的顺序就是排好序后的顺序，所以插入排序是稳定的。</p>
-<p>(4)快速排序<br>快速排序有两个方向，左边的i下标一直往右走，当a[i] &lt;= a[center_index]，其中center_index是中枢元素的数组下标，一般取为数组第0个元素。而右边的j下标一直往左走，当a[j] &gt; a[center_index]。如果i和j都走不动了，i &lt;= j，交换a[i]和a[j],重复上面的过程，直到i &gt; j。 交换a[j]和a[center_index]，完成一趟快速排序。在中枢元素和a[j]交换的时候，很有可能把前面的元素的稳定性打乱，比如序列为5 3 3 4 3 8 9 10 11，现在中枢元素5和3（第5个元素，下标从1开始计）交换就会把元素3的稳定性打乱，所以快速排序是一个不稳定的排序算法，不稳定发生在中枢元素和a[j] 交换的时刻。</p>
-<p>(5)归并排序<br>归并排序是把序列递归地分成短序列，递归出口是短序列只有1个元素（认为直接有序）或者2个序列（1次比较和交换），然后把各个有序的段序列合并成一个有序的长序列，不断合并直到原序列全部排好序。可以发现，在1个或2个元素时，1个元素不会交换，2个元素如果大小相等也没有人故意交换，这不会破坏稳定性。那么，在短的有序序列合并的过程中，稳定是是否受到破坏？没有，合并过程中我们可以保证如果两个当前元素相等时，我们把处在前面的序列的元素保存在结果序列的前面，这样就保证了稳定性。所以，归并排序也是稳定的排序算法。</p>
-<p>(6)基数排序<br>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序，最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以其是稳定的排序算法。</p>
-<p>(7)希尔排序(shell)<br>希尔排序是按照不同步长对元素进行插入排序，当刚开始元素很无序的时候，步长最大，所以插入排序的元素个数很少，速度很快；当元素基本有序了，步长很小， 插入排序对于有序的序列效率很高。所以，希尔排序的时间复杂度会比O(n^2)好一些。由于多次插入排序，我们知道一次插入排序是稳定的，不会改变相同元素的相对顺序，但在不同的插入排序过程中，相同的元素可能在各自的插入排序中移动，最后其稳定性就会被打乱，所以shell排序是不稳定的。</p>
-<p>(8)堆排序<br>我们知道堆的结构是节点i的孩子为2 <em> i和2 </em> i + 1节点，大顶堆要求父节点大于等于其2个子节点，小顶堆要求父节点小于等于其2个子节点。在一个长为n 的序列，堆排序的过程是从第n / 2开始和其子节点共3个值选择最大（大顶堆）或者最小（小顶堆），这3个元素之间的选择当然不会破坏稳定性。但当为n / 2 - 1， n / 2 - 2， … 1这些个父节点选择元素时，就会破坏稳定性。有可能第n / 2个父节点交换把后面一个元素交换过去了，而第n / 2 - 1个父节点把后面一个相同的元素没 有交换，那么这2个相同的元素之间的稳定性就被破坏了。所以，堆排序不是稳定的排序算法。</p>
-<p>综上，得出结论: 选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，而冒泡排序、插入排序、归并排序和基数排序是稳定的排序算法<br>PS: 快[快速排序]些[希尔排序]选[选择排序]一堆[堆排序]不稳定排序</p>
 ]]></content>
     </entry>
     
@@ -5689,6 +5689,82 @@ return numbers
     </entry>
     
     <entry>
+      <title><![CDATA[sybase学习小记]]></title>
+      <url>http://yoursite.com/2015/09/15/sybase%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<h2 id="Sybase-sql"><a href="#Sybase-sql" class="headerlink" title="Sybase_sql"></a>Sybase_sql</h2><h3 id="语法特点"><a href="#语法特点" class="headerlink" title="语法特点"></a>语法特点</h3><p>1.没有“ ”，字符串使用‘ ’包含<br>2.没有逻辑相等，赋值和逻辑相等都是=<br>3.类型不再是最严格的。任何数据都可以包含在‘ ’以内<br>4.没有bool值的概念，但是在视图中可以输入true/false<br>5.它也有关系运算符：&gt; &lt; &gt;= &lt;= = &lt;&gt; != ,它返回一个bool值<br>6.它也有逻辑运算符： ！(not) &amp;&amp;(and) ||(or)<br>7.它不区别大小写<br>8.数据库完整性（Database Integrity）是指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。</p>
+<h3 id="事务的四个特点ACID"><a href="#事务的四个特点ACID" class="headerlink" title="事务的四个特点ACID"></a>事务的四个特点ACID</h3><p>A:原子性：事务必须是原子工作单元；对于其数据修改，要么全都执行，要么全都不执行。它是一个整体，不能再拆分<br>C：一致性：事务在完成时，必须使所有的数据都保持一致状态<br>I:隔离性：事务中隔离，每一个事务是单独的请求将单独的处理，与其它事务没有关系，互不影响<br>D：持久性：如果事务一旦提交，就对数据的修改永久保留</p>
+<h3 id="存储过程功能"><a href="#存储过程功能" class="headerlink" title="存储过程功能"></a>存储过程功能</h3><p>存储过程为标准SQL增加了如下功能：<br>条件执行、循环控制结构、命名变量、命名过程、语句块（调用存储过程让DBMS执行一系列SQL语句）</p>
+<h3 id="存储过程优点"><a href="#存储过程优点" class="headerlink" title="存储过程优点"></a>存储过程优点</h3><p>1）封装  只需要了解过程调用的输入输出就可以安全的使用数据库，防止用户跳过完整性检查<br>2）改善性能  调用存储过程时，DBMS可快速的执行存储过程中的语句，可直接转到语句的执行，无需分析，确认，优化和生成执行计划，这些步骤在预编译已经完成<br>3）减少网络流量，降低网络负载<br>4）标准组件化编程，极大的提高了程序的可移植性<br>5）安全性 系统管理员可向单独的用户授予对数据库对象的最小访问权限</p>
+<h3 id="数据库索引"><a href="#数据库索引" class="headerlink" title="数据库索引"></a>数据库索引</h3><h3 id="索引优点-缺点"><a href="#索引优点-缺点" class="headerlink" title="索引优点/缺点"></a>索引优点/缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>1.创建系统唯一性索引，可以保证每一行数据的唯一性<br>2.提高数据检索速度<br>3.加快表与表之间的连接，特别是具有主键外键关系的表之间<br>4.在针对order by 和 group by子句进行数据检索时，可以减少分组和排序的时间<br>5.查询优化器提高系统性能</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>1.创建索引和维护索引要耗费时间<br>2.索引需要占用物理空间<br>3.当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护</p>
+<p>###索引的类型</p>
+<blockquote>
+<ul>
+<li>聚集索引：数据表的物理顺序与索引顺序相同</li>
+<li>非聚集索引：数据表的物理顺序与索引顺序不同</li>
+</ul>
+</blockquote>
+<h3 id="存储过程-VS-函数"><a href="#存储过程-VS-函数" class="headerlink" title="存储过程 VS 函数"></a>存储过程 VS 函数</h3><p>1.存储过程需要使用execute单独执行，而函数可以随处调用<br>2.用户自定义函数不能修改表中的数据，但是存储过程可以</p>
+<h3 id="存储过程的执行过程"><a href="#存储过程的执行过程" class="headerlink" title="存储过程的执行过程"></a>存储过程的执行过程</h3><p>1.语法分析阶段，保证语法的正确性<br>2.解析阶段，检查该存储过程引用的对象名称是否存在<br>3.分析存储过程和生成存储过程执行计划的过程<br>4.执行阶段，执行主流在高速缓冲存储区的过程执行计划</p>
+<blockquote>
+<ul>
+<li>注意,当存储过程引用的基础表发生结构变化时，该存储过程的执行计划将会自动优化。但是如果在表中添加了索引或者更改了索引列中<br>的数据之后，该执行计划不会自动优化，这时候应该重新编译存储过程，更新原有的执行计划。</li>
+</ul>
+</blockquote>
+<h3 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h3><p>SELECT CONCAT(Cname,Tnum) FROM course WHERE Cnum=03</p>
+<h4 id="left-截取指定字符串的指定个数字符"><a href="#left-截取指定字符串的指定个数字符" class="headerlink" title="left 截取指定字符串的指定个数字符"></a>left 截取指定字符串的指定个数字符</h4><p>SELECT LEFT(Cname,5) FROM course WHERE Cnum=01<br>SELECT RIGHT(Cname,5) FROM course WHERE Cnum=01</p>
+<h4 id="charIndex"><a href="#charIndex" class="headerlink" title="charIndex()"></a>charIndex()</h4><p>SELECT LOCATE(‘ne’,cname) FROM course WHERE cnum=01<br>SELECT SUBSTRING(Cname,1,3) FROM course</p>
+<h3 id="delete-和-truncate"><a href="#delete-和-truncate" class="headerlink" title="delete 和 truncate"></a>delete 和 truncate</h3><p>delete from Teacher where Age&lt;20<br>–特点:<br>–1.删除是一条一条进行删除的<br>–2.每一条记录的删除都需要将操作写入到日志文件中<br>–3.标识列不会从种子值重新计算,以从上次最后一条标识列值往下计算<br>–4.这种删除可以触发delete触发器</p>
+<p>–truncate table 表名 –没有条件，它是一次性删除所有数据<br>–特点：<br>–1.一次性删除所有数据，没有条件，那么日志文件只以最小化的数据写入<br>–2.它可以使用标识列从种子值重新计算<br>–3.它不能触发delete触发器<br>truncate table teacher</p>
+<p>update Teacher set Salary=Salary+500 where ClassId=4 and Age&gt;20<br>–sign:正数==1  负数 ==-1  0=0<br>select SIGN(-100)</p>
+<p>mysql不存在top关键词，使用limit<br>SELECT <em> FROM course WHERE cnum=(SELECT  cnum FROM sc ORDER BY cnum DESC LIMIT 0,1)<br>–使用top分页<br>select top 5 </em> from Student where StudentNo not in(select top 5 studentno from Student)</p>
+<p>视图就是一张虚拟表，可以像使用子查询做为结果集一样使用视图<br>触发器:执行一个可以改变表数据的操作（增加删除和修改），会自动触发另外一系列（类似于存储过程中的模块）的操作。</p>
+<p>SQL语法顺序是：<br>SELECT[DISTINCT]<br>FROM<br>WHERE<br>GROUP BY<br>HAVING<br>UNION<br>ORDER BY<br>执行顺序为：<br>FROM<br>WHERE<br>GROUP BY<br>HAVING<br>SELECT<br>DISTINCT<br>UNION<br>ORDER BY<br>The first thing that happens is loading data from the disk into memory, in order to operate on such data.<br>WITH a AS (<br>  SELECT first_name, last_name, current_date - date_of_birth age<br>  FROM author<br>)<br>SELECT *<br>FROM a<br>WHERE age &gt; 10000</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>SELECT 语句有很多特殊的规则，至少你应该熟悉以下几条<br>你仅能够使用那些能通过表引用而得来的字段<br>如果你有 GROUP BY 语句，你只能够使用 GROUP BY 语句后面的字段或者聚合函数<br>当你的语句中没有 GROUP BY 的时候，可以使用开窗函数代替聚合函数<br>当你的语句中没有 GROUP BY 的时候，你不能同时使用聚合函数和其它函数<br>有一些方法可以将普通函数封装在聚合函数中<br>存储过程要返回IQ系统错误信息 SQLCODE || ERRORMSG(*) ：(两者都为EXCEPTION后第一条SQL语句才有效果)<br>IQ中若采用 FULL JOIN 连接则不能使用 WHERE 条件，否则FULL JOIN将失效，要筛选条件则用子查询先过滤记录后再FULL JOIN；</p>
+<h3 id="sybase常用SQL"><a href="#sybase常用SQL" class="headerlink" title="sybase常用SQL"></a>sybase常用SQL</h3><p>FROM后的子查询，要定义别名才可使用<br>IQ中若采用 FULL JOIN 连接则不能使用 WHERE 条件，否则FULL JOIN将失效，要筛选条件则用子查询先过滤记录后再FULL JOIN<br>根据SELECT 语句建立[临时]表的方法（ORACLE的CREATE TABLE）为 SELECT ..[*] INTO [‘#’]table_name FROM ..<br>其中如果在table_name加前缀’#’，则为会话级临时表，否则为实体表；<br>存储过程隐式游标语法：<br>FOR A AS B CURSOR FOR SELECT … FROM …<br>DO….<br>END FOR;<br>需要注意的时，这边的A 和 B 在 过程语句中都不能引用，所以为避免过程语句其他字段名与FOR SELECT 语句的字段名称重复，<br>FOR SELECT 语句的字段最好都定义别名区分<br>因Sybase为列存储模式，在执行上INSERT语句会比UPDATE语句慢，尤其表数据越多INSERT效率就越慢；所以在ETL时建议多用UPDATE而不是INSERT<br>空字符串’’在Sybase中也是个字符而不是null值，这点要注意<br>默认值和规则：Transact-SQL 提供维护实体完整性（确保为要求值得的每一列都提供值）和域完整性（确保列中的每个值都属于该列的合法值集合）的关键字</p>
+<h3 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h3><p>CONVERT(datetype,exp[,format-style])<br>CAST(exp AS data-type)</p>
+<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><p>DAY(date_exp):返回日期天值，DAYS(date_exp,int):返回日期date_exp加int后的日期；MONTH与MONTHS、YEAR与YEARS同理；<br>DATE(exp):将表达式转换为日期，并删除任何小时、分钟或秒；兼容性：IQ<br>DATEPART(date-part,date-exp): 返回日期分量的对应值(整数)<br>GETDATE():返回系统时间<br>DATENAME(datepart,date_expr):以字符串形式返回date_expr指定部分的值,转换成合适的名字<br>DATEDIFF(datepart,date_expr1,date_expr2):返回date_expr2-date_expr1,通过指定的datepart度量<br>DATEADD（date-part,num-exp,date-exp）:返回按指定date-part分量加num-exp值后生成的date-exp值；</p>
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p>CEIL(num-exp)：返回大于或等于指定表达式的最小整数；兼容性：IQ&amp;ASE<br>FLOOR(numeric_expr):返回小于或等于指定值的最大整数<br>ABS(num-exp):返回数值表达式的绝对值；兼容性：IQ&amp;ASE<br>TRUNCNUM(1231.1251,2)：截取数值；不四舍五入<br>ROUND(numeric_expr,int_expr)：把数值表达式圆整到int_expr指定的精度<br>RAND([int_expr])：返回0-1之间的随机浮点数，可指定基值<br>SIGN(int_expr)：返回正+1，零0或负-1<br>SQRT(float_expr)：返回指定值的平方根<br>PI()：返回常数3.1415926<br>POWER(numeric_expr,power)：返回numeric_expr的值给power的幂<br>EXP(float_expr)：给出指定值的指数值</p>
+<h3 id="常用DDL语句"><a href="#常用DDL语句" class="headerlink" title="常用DDL语句"></a>常用DDL语句</h3><p>1.删除列<br>ALTER TABLE table_name DELETE column_name<br>2.增加列<br>ALTER TABLE table_name ADD (column_name DATA_TYPE [NOT] NULL)<br>3.修改列的空与非空<br>ALTER TABLE table_name MODIFY column_name [NOT] NULL<br>4.修改列名<br>ALTER TABLE table_name RENAME old_column_name TO new_column_name<br>5.快速建立临时表<br>SELECT * INTO [#]table_name FROM …..<br>6、修改表名ALTER TABLE old_table_name RENAME new_table_name<br>7.增加主键约束<br>ALTER TABLE tb_name ADD CONSTRAINT pk_name PRIMARY KEY(col_name,..)<br>8.删除主键约束<br>ALTER TABLE tb_name DROP CONSTRAINT pk_name<br>9.建立自增长字段，与Oracle的SEQUENCE类似<br>CREATE TABLE TMP_001 (RES_ID INTEGER IDENTITY NOT NULL)<br>10.添加表注释<br>COMMENT ON TABLE table_name IS ‘….’<br>11.创建索引<br>CREATE INDEX index_name ON table_name(column_name)</p>
+<h3 id="SQL优化"><a href="#SQL优化" class="headerlink" title="SQL优化"></a>SQL优化</h3><p>常见瓶颈：<br>绝大多数瓶颈在于I/O子系统<br>若CPU很高，90%以上是因为索引不当<br>发生swap时，可能因为内存分配太小或过大<br>iowait太高时，想办法从索引角度入手优化，以及提高I/O设备性能，增加内存，减少排序，减少SELECT一次性读取数据量。<br>常见优化策略：<br>瞬间并发很高，采用thread pool<br>频繁order by\group by，索引入手<br>适当调整内存，不要太大或太小。一般ibp设置为50% ~ 70%为宜<br>iowait高，加内存，提高iops，减少数据读写。</p>
+<p>SQL优化<br>多用简单SQL<br>少用子查询和复杂查询<br>少用复杂join，注意join驱动表是否最优<br>where不使用函数，避免无法使用索引<br>注意类型隐式转换<br>事务快速提交，但不要频繁反复提交</p>
+<h3 id="查看执行计划"><a href="#查看执行计划" class="headerlink" title="查看执行计划"></a>查看执行计划</h3><p>查看语句的执行计划<br>set showplan on<br>set noexec on<br>go<br>select …….<br>go<br>set showplan off<br>set noexec off<br>go</p>
+<p>查看存储过程执行计划：<br>set showplan on<br>go</p>
+<p>exec sp_name<br>go<br>set showplan off<br>go</p>
+<p>dbcc traceon(3604)是把dbcc的结果输出到屏幕上。<br>dbcc sqltext(spid)是看指定的sybase进程的操作语句。<br>查看其查询计划，可以用sp_showplan spid,null,null,null</p>
+<h3 id="sybase系统函数"><a href="#sybase系统函数" class="headerlink" title="sybase系统函数"></a>sybase系统函数</h3><p>sp_iqtablesize ‘T1_table’  查看表的大小空间<br>select tablewidth(‘ConditionStyle’)   查看表的行宽<br>sp_iqcolumn  ‘ConditionData’  查看表中每一列的信息<br>select * from sp_table_size_statics();   此存储过程会输出所有用户表的大小</p>
+<h3 id="bat启动"><a href="#bat启动" class="headerlink" title="bat启动"></a>bat启动</h3><p>dbisql -c “uid=netmax;pwd=SOPinUETZ” -host 10.89.160.6 -port 3000 -oneerror continue   -&gt; bat启动</p>
+<p>###sql基础用法<br>drop table if exists tableA;</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[java集合]]></title>
+      <url>http://yoursite.com/2015/09/15/java%E9%9B%86%E5%90%88/</url>
+      <content type="html"><![CDATA[<h2 id="Java-Collection"><a href="#Java-Collection" class="headerlink" title="Java Collection"></a>Java Collection</h2><h3 id="ArrayList-Vector都是-数组-实现"><a href="#ArrayList-Vector都是-数组-实现" class="headerlink" title="ArrayList Vector都是(数组)实现"></a>ArrayList Vector都是(数组)实现</h3><p>集合容器可以容纳任何对象，但是在实际应用中往往都是容纳同一类型的对象<br>泛型只是在编译阶段有效，防止错误产生。<br>避免扩容操作，因为会产生垃圾，影响性能<br>Iterator itor = list.iterator();<br>        while (itor.hasNext()) {<br>            System.out.println(itor.next());</p>
+<pre><code>}
+</code></pre><p>for(String str:list){<br>    …<br>}<br>Vector底层也是数组，支持一种老的遍历方式Enumeration,ArralyList遍历的方式也支持<br>ArrayList线程不安全，Vector线程安全</p>
+<h3 id="LinkList-链表-实现"><a href="#LinkList-链表-实现" class="headerlink" title="LinkList(链表)实现"></a>LinkList(链表)实现</h3><p>提供了更为丰富的头尾操作</p>
+<h3 id="Java-Eclipse无法查看源代码"><a href="#Java-Eclipse无法查看源代码" class="headerlink" title="Java Eclipse无法查看源代码"></a>Java Eclipse无法查看源代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1.点 “window“-&gt; “Preferences”-&gt; “Java” -&gt; “Installed JRES”</div><div class="line">2.此时&quot;Installed JRES&quot;右边是列表窗格，列出了系统中的JRE 环境，选择你的JRE，然后点边上的“Edit...“， 会出现一个窗口(Edit JRE) </div><div class="line">3.选中rt.jar文件的这一项：“C:\Java\jdk1.5.0_04\jre\lib\rt.jar” 点 左边的“+”号展开它（JDK实际安装路径以你的为准）</div><div class="line">4.展开后，可以看到“Source Attachment:(none)”，点这一项，点右边的按钮“Source Attachment...“，选择你的JDK目录下的 “src.zip”文件</div><div class="line">5.一路点“ok”结束。</div></pre></td></tr></table></figure>
+<h3 id="HashSet-无序集合"><a href="#HashSet-无序集合" class="headerlink" title="HashSet 无序集合"></a>HashSet 无序集合</h3><p>容纳的对象必须根据自己的唯一标识来重写equals和hashCode方法<br>对象一旦放入HashSet容器，那么对象的唯一标识属性的值不能再修改，否则导致对象移除不了<br>因为HashSet存放元素的时候，元素的位置是和对象HashCode算法得到的值相关的，查找元素时也要根据这个算法的值然后找到<br>相关位置，移除元素，没有则remove方法返回false,久而久之，产生内存泄露<br>HashSet底层用的是HashMap</p>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>TreeSet容纳的对象有序，对象必须要能排序(排序方式自定义)<br>两种排序的比较器：<br>1.比较的对象实现Comparable接口，覆写compareTo方法<br>java.lang.Comparable,TreeSet使用无参数的构造函数，那么容纳的对象必须实现Comparable接口<br>implements Comparable<br>@Override<br>public int compareTo(User o){<br>    if(!this.name.equals(o.name))<br>        return this.name.compareTo(o.name);<br>    else<br>        return this.age-o.age; //名字相同，根据年龄排序<br>    return 0;<br>}<br>2.java.util.Comparator<br>TreeSet构造的时候使用Comparator作为构造函数的参数<br>TreeSet<user> ts = new TreeSet<user>(new MyComparator());<br>public class MyComparator implements Comparator<user>{<br>    @Override<br>    public int compare(User o1,user o2){<br>        return o1.getName().compareTo(o2.getName());<br>    }<br>}</user></user></user></p>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>HashMap hm = new HashMap()<br>//遍历Set集合，得到key，通过key获取value<br>Set set = hm.keySet();<br>for(Object obj:set){<br>    String key = (String)obj;<br>    User u = (User)hm.get(key);<br>}<br>//放入HashMap集合中的key，value都被包装成Map.Entry这个内部类的属性，有一个键值对，就存在一个Map.Entry的实例对象<br>//通过entrySet()方法就可以把这些实例对象都放入Set集合中<br>Set set1 = hm.entrySet();<br>for(Object obj:set1){<br>     Map.Entry me = (Map.Entry)object;<br>     System.out.println(me.getKey())+”=”+me.getValue();<br>}</p>
+<p>HashMap<string,user> user2 = new HashMap<string,user>();<br>user2.put(u1.getId(),u1);<br>Set<string> set = User.keySet();<br>for(String key:set){<br>    user.get(key);<br>}</string></string,user></string,user></p>
+<p>HashMap<map.entry<string,user>&gt; set1 = User.entrySet();<br>for(){}</map.entry<string,user></p>
+<p>map.put(key,value)如果key相同，则后面的值会覆盖前面的值<br>使用HashMap来统计字符出现的频率：<br>HashMap<string,integer> hm = new HashMap<string,integer>();</string,integer></string,integer></p>
+<pre><code>String s = &quot;abcdefghijklabcdiefabiddccdabffeg&quot;;
+for (int i = 0; i &lt; s.length(); i++) {
+    String str = s.substring(i, i+1);
+    if(hm.containsKey(str)){
+        hm.put(str, hm.get(str)+1);
+    }else{
+        hm.put(str, 1);
+    }
+}
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[java面试题]]></title>
       <url>http://yoursite.com/2015/09/15/java%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
       <content type="html"><![CDATA[<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h3><ol>
@@ -5866,82 +5942,6 @@ return numbers
 <li>你的项目中使用过缓存机制吗？有没用用户非本地缓存</li>
 </ol>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>1.常用的linux下的命令</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[java集合]]></title>
-      <url>http://yoursite.com/2015/09/15/java%E9%9B%86%E5%90%88/</url>
-      <content type="html"><![CDATA[<h2 id="Java-Collection"><a href="#Java-Collection" class="headerlink" title="Java Collection"></a>Java Collection</h2><h3 id="ArrayList-Vector都是-数组-实现"><a href="#ArrayList-Vector都是-数组-实现" class="headerlink" title="ArrayList Vector都是(数组)实现"></a>ArrayList Vector都是(数组)实现</h3><p>集合容器可以容纳任何对象，但是在实际应用中往往都是容纳同一类型的对象<br>泛型只是在编译阶段有效，防止错误产生。<br>避免扩容操作，因为会产生垃圾，影响性能<br>Iterator itor = list.iterator();<br>        while (itor.hasNext()) {<br>            System.out.println(itor.next());</p>
-<pre><code>}
-</code></pre><p>for(String str:list){<br>    …<br>}<br>Vector底层也是数组，支持一种老的遍历方式Enumeration,ArralyList遍历的方式也支持<br>ArrayList线程不安全，Vector线程安全</p>
-<h3 id="LinkList-链表-实现"><a href="#LinkList-链表-实现" class="headerlink" title="LinkList(链表)实现"></a>LinkList(链表)实现</h3><p>提供了更为丰富的头尾操作</p>
-<h3 id="Java-Eclipse无法查看源代码"><a href="#Java-Eclipse无法查看源代码" class="headerlink" title="Java Eclipse无法查看源代码"></a>Java Eclipse无法查看源代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1.点 “window“-&gt; “Preferences”-&gt; “Java” -&gt; “Installed JRES”</div><div class="line">2.此时&quot;Installed JRES&quot;右边是列表窗格，列出了系统中的JRE 环境，选择你的JRE，然后点边上的“Edit...“， 会出现一个窗口(Edit JRE) </div><div class="line">3.选中rt.jar文件的这一项：“C:\Java\jdk1.5.0_04\jre\lib\rt.jar” 点 左边的“+”号展开它（JDK实际安装路径以你的为准）</div><div class="line">4.展开后，可以看到“Source Attachment:(none)”，点这一项，点右边的按钮“Source Attachment...“，选择你的JDK目录下的 “src.zip”文件</div><div class="line">5.一路点“ok”结束。</div></pre></td></tr></table></figure>
-<h3 id="HashSet-无序集合"><a href="#HashSet-无序集合" class="headerlink" title="HashSet 无序集合"></a>HashSet 无序集合</h3><p>容纳的对象必须根据自己的唯一标识来重写equals和hashCode方法<br>对象一旦放入HashSet容器，那么对象的唯一标识属性的值不能再修改，否则导致对象移除不了<br>因为HashSet存放元素的时候，元素的位置是和对象HashCode算法得到的值相关的，查找元素时也要根据这个算法的值然后找到<br>相关位置，移除元素，没有则remove方法返回false,久而久之，产生内存泄露<br>HashSet底层用的是HashMap</p>
-<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>TreeSet容纳的对象有序，对象必须要能排序(排序方式自定义)<br>两种排序的比较器：<br>1.比较的对象实现Comparable接口，覆写compareTo方法<br>java.lang.Comparable,TreeSet使用无参数的构造函数，那么容纳的对象必须实现Comparable接口<br>implements Comparable<br>@Override<br>public int compareTo(User o){<br>    if(!this.name.equals(o.name))<br>        return this.name.compareTo(o.name);<br>    else<br>        return this.age-o.age; //名字相同，根据年龄排序<br>    return 0;<br>}<br>2.java.util.Comparator<br>TreeSet构造的时候使用Comparator作为构造函数的参数<br>TreeSet<user> ts = new TreeSet<user>(new MyComparator());<br>public class MyComparator implements Comparator<user>{<br>    @Override<br>    public int compare(User o1,user o2){<br>        return o1.getName().compareTo(o2.getName());<br>    }<br>}</user></user></user></p>
-<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>HashMap hm = new HashMap()<br>//遍历Set集合，得到key，通过key获取value<br>Set set = hm.keySet();<br>for(Object obj:set){<br>    String key = (String)obj;<br>    User u = (User)hm.get(key);<br>}<br>//放入HashMap集合中的key，value都被包装成Map.Entry这个内部类的属性，有一个键值对，就存在一个Map.Entry的实例对象<br>//通过entrySet()方法就可以把这些实例对象都放入Set集合中<br>Set set1 = hm.entrySet();<br>for(Object obj:set1){<br>     Map.Entry me = (Map.Entry)object;<br>     System.out.println(me.getKey())+”=”+me.getValue();<br>}</p>
-<p>HashMap<string,user> user2 = new HashMap<string,user>();<br>user2.put(u1.getId(),u1);<br>Set<string> set = User.keySet();<br>for(String key:set){<br>    user.get(key);<br>}</string></string,user></string,user></p>
-<p>HashMap<map.entry<string,user>&gt; set1 = User.entrySet();<br>for(){}</map.entry<string,user></p>
-<p>map.put(key,value)如果key相同，则后面的值会覆盖前面的值<br>使用HashMap来统计字符出现的频率：<br>HashMap<string,integer> hm = new HashMap<string,integer>();</string,integer></string,integer></p>
-<pre><code>String s = &quot;abcdefghijklabcdiefabiddccdabffeg&quot;;
-for (int i = 0; i &lt; s.length(); i++) {
-    String str = s.substring(i, i+1);
-    if(hm.containsKey(str)){
-        hm.put(str, hm.get(str)+1);
-    }else{
-        hm.put(str, 1);
-    }
-}
-</code></pre>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[sybase学习小记]]></title>
-      <url>http://yoursite.com/2015/09/15/sybase%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/</url>
-      <content type="html"><![CDATA[<h2 id="Sybase-sql"><a href="#Sybase-sql" class="headerlink" title="Sybase_sql"></a>Sybase_sql</h2><h3 id="语法特点"><a href="#语法特点" class="headerlink" title="语法特点"></a>语法特点</h3><p>1.没有“ ”，字符串使用‘ ’包含<br>2.没有逻辑相等，赋值和逻辑相等都是=<br>3.类型不再是最严格的。任何数据都可以包含在‘ ’以内<br>4.没有bool值的概念，但是在视图中可以输入true/false<br>5.它也有关系运算符：&gt; &lt; &gt;= &lt;= = &lt;&gt; != ,它返回一个bool值<br>6.它也有逻辑运算符： ！(not) &amp;&amp;(and) ||(or)<br>7.它不区别大小写<br>8.数据库完整性（Database Integrity）是指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。</p>
-<h3 id="事务的四个特点ACID"><a href="#事务的四个特点ACID" class="headerlink" title="事务的四个特点ACID"></a>事务的四个特点ACID</h3><p>A:原子性：事务必须是原子工作单元；对于其数据修改，要么全都执行，要么全都不执行。它是一个整体，不能再拆分<br>C：一致性：事务在完成时，必须使所有的数据都保持一致状态<br>I:隔离性：事务中隔离，每一个事务是单独的请求将单独的处理，与其它事务没有关系，互不影响<br>D：持久性：如果事务一旦提交，就对数据的修改永久保留</p>
-<h3 id="存储过程功能"><a href="#存储过程功能" class="headerlink" title="存储过程功能"></a>存储过程功能</h3><p>存储过程为标准SQL增加了如下功能：<br>条件执行、循环控制结构、命名变量、命名过程、语句块（调用存储过程让DBMS执行一系列SQL语句）</p>
-<h3 id="存储过程优点"><a href="#存储过程优点" class="headerlink" title="存储过程优点"></a>存储过程优点</h3><p>1）封装  只需要了解过程调用的输入输出就可以安全的使用数据库，防止用户跳过完整性检查<br>2）改善性能  调用存储过程时，DBMS可快速的执行存储过程中的语句，可直接转到语句的执行，无需分析，确认，优化和生成执行计划，这些步骤在预编译已经完成<br>3）减少网络流量，降低网络负载<br>4）标准组件化编程，极大的提高了程序的可移植性<br>5）安全性 系统管理员可向单独的用户授予对数据库对象的最小访问权限</p>
-<h3 id="数据库索引"><a href="#数据库索引" class="headerlink" title="数据库索引"></a>数据库索引</h3><h3 id="索引优点-缺点"><a href="#索引优点-缺点" class="headerlink" title="索引优点/缺点"></a>索引优点/缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>1.创建系统唯一性索引，可以保证每一行数据的唯一性<br>2.提高数据检索速度<br>3.加快表与表之间的连接，特别是具有主键外键关系的表之间<br>4.在针对order by 和 group by子句进行数据检索时，可以减少分组和排序的时间<br>5.查询优化器提高系统性能</p>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>1.创建索引和维护索引要耗费时间<br>2.索引需要占用物理空间<br>3.当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护</p>
-<p>###索引的类型</p>
-<blockquote>
-<ul>
-<li>聚集索引：数据表的物理顺序与索引顺序相同</li>
-<li>非聚集索引：数据表的物理顺序与索引顺序不同</li>
-</ul>
-</blockquote>
-<h3 id="存储过程-VS-函数"><a href="#存储过程-VS-函数" class="headerlink" title="存储过程 VS 函数"></a>存储过程 VS 函数</h3><p>1.存储过程需要使用execute单独执行，而函数可以随处调用<br>2.用户自定义函数不能修改表中的数据，但是存储过程可以</p>
-<h3 id="存储过程的执行过程"><a href="#存储过程的执行过程" class="headerlink" title="存储过程的执行过程"></a>存储过程的执行过程</h3><p>1.语法分析阶段，保证语法的正确性<br>2.解析阶段，检查该存储过程引用的对象名称是否存在<br>3.分析存储过程和生成存储过程执行计划的过程<br>4.执行阶段，执行主流在高速缓冲存储区的过程执行计划</p>
-<blockquote>
-<ul>
-<li>注意,当存储过程引用的基础表发生结构变化时，该存储过程的执行计划将会自动优化。但是如果在表中添加了索引或者更改了索引列中<br>的数据之后，该执行计划不会自动优化，这时候应该重新编译存储过程，更新原有的执行计划。</li>
-</ul>
-</blockquote>
-<h3 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h3><p>SELECT CONCAT(Cname,Tnum) FROM course WHERE Cnum=03</p>
-<h4 id="left-截取指定字符串的指定个数字符"><a href="#left-截取指定字符串的指定个数字符" class="headerlink" title="left 截取指定字符串的指定个数字符"></a>left 截取指定字符串的指定个数字符</h4><p>SELECT LEFT(Cname,5) FROM course WHERE Cnum=01<br>SELECT RIGHT(Cname,5) FROM course WHERE Cnum=01</p>
-<h4 id="charIndex"><a href="#charIndex" class="headerlink" title="charIndex()"></a>charIndex()</h4><p>SELECT LOCATE(‘ne’,cname) FROM course WHERE cnum=01<br>SELECT SUBSTRING(Cname,1,3) FROM course</p>
-<h3 id="delete-和-truncate"><a href="#delete-和-truncate" class="headerlink" title="delete 和 truncate"></a>delete 和 truncate</h3><p>delete from Teacher where Age&lt;20<br>–特点:<br>–1.删除是一条一条进行删除的<br>–2.每一条记录的删除都需要将操作写入到日志文件中<br>–3.标识列不会从种子值重新计算,以从上次最后一条标识列值往下计算<br>–4.这种删除可以触发delete触发器</p>
-<p>–truncate table 表名 –没有条件，它是一次性删除所有数据<br>–特点：<br>–1.一次性删除所有数据，没有条件，那么日志文件只以最小化的数据写入<br>–2.它可以使用标识列从种子值重新计算<br>–3.它不能触发delete触发器<br>truncate table teacher</p>
-<p>update Teacher set Salary=Salary+500 where ClassId=4 and Age&gt;20<br>–sign:正数==1  负数 ==-1  0=0<br>select SIGN(-100)</p>
-<p>mysql不存在top关键词，使用limit<br>SELECT <em> FROM course WHERE cnum=(SELECT  cnum FROM sc ORDER BY cnum DESC LIMIT 0,1)<br>–使用top分页<br>select top 5 </em> from Student where StudentNo not in(select top 5 studentno from Student)</p>
-<p>视图就是一张虚拟表，可以像使用子查询做为结果集一样使用视图<br>触发器:执行一个可以改变表数据的操作（增加删除和修改），会自动触发另外一系列（类似于存储过程中的模块）的操作。</p>
-<p>SQL语法顺序是：<br>SELECT[DISTINCT]<br>FROM<br>WHERE<br>GROUP BY<br>HAVING<br>UNION<br>ORDER BY<br>执行顺序为：<br>FROM<br>WHERE<br>GROUP BY<br>HAVING<br>SELECT<br>DISTINCT<br>UNION<br>ORDER BY<br>The first thing that happens is loading data from the disk into memory, in order to operate on such data.<br>WITH a AS (<br>  SELECT first_name, last_name, current_date - date_of_birth age<br>  FROM author<br>)<br>SELECT *<br>FROM a<br>WHERE age &gt; 10000</p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>SELECT 语句有很多特殊的规则，至少你应该熟悉以下几条<br>你仅能够使用那些能通过表引用而得来的字段<br>如果你有 GROUP BY 语句，你只能够使用 GROUP BY 语句后面的字段或者聚合函数<br>当你的语句中没有 GROUP BY 的时候，可以使用开窗函数代替聚合函数<br>当你的语句中没有 GROUP BY 的时候，你不能同时使用聚合函数和其它函数<br>有一些方法可以将普通函数封装在聚合函数中<br>存储过程要返回IQ系统错误信息 SQLCODE || ERRORMSG(*) ：(两者都为EXCEPTION后第一条SQL语句才有效果)<br>IQ中若采用 FULL JOIN 连接则不能使用 WHERE 条件，否则FULL JOIN将失效，要筛选条件则用子查询先过滤记录后再FULL JOIN；</p>
-<h3 id="sybase常用SQL"><a href="#sybase常用SQL" class="headerlink" title="sybase常用SQL"></a>sybase常用SQL</h3><p>FROM后的子查询，要定义别名才可使用<br>IQ中若采用 FULL JOIN 连接则不能使用 WHERE 条件，否则FULL JOIN将失效，要筛选条件则用子查询先过滤记录后再FULL JOIN<br>根据SELECT 语句建立[临时]表的方法（ORACLE的CREATE TABLE）为 SELECT ..[*] INTO [‘#’]table_name FROM ..<br>其中如果在table_name加前缀’#’，则为会话级临时表，否则为实体表；<br>存储过程隐式游标语法：<br>FOR A AS B CURSOR FOR SELECT … FROM …<br>DO….<br>END FOR;<br>需要注意的时，这边的A 和 B 在 过程语句中都不能引用，所以为避免过程语句其他字段名与FOR SELECT 语句的字段名称重复，<br>FOR SELECT 语句的字段最好都定义别名区分<br>因Sybase为列存储模式，在执行上INSERT语句会比UPDATE语句慢，尤其表数据越多INSERT效率就越慢；所以在ETL时建议多用UPDATE而不是INSERT<br>空字符串’’在Sybase中也是个字符而不是null值，这点要注意<br>默认值和规则：Transact-SQL 提供维护实体完整性（确保为要求值得的每一列都提供值）和域完整性（确保列中的每个值都属于该列的合法值集合）的关键字</p>
-<h3 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h3><p>CONVERT(datetype,exp[,format-style])<br>CAST(exp AS data-type)</p>
-<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><p>DAY(date_exp):返回日期天值，DAYS(date_exp,int):返回日期date_exp加int后的日期；MONTH与MONTHS、YEAR与YEARS同理；<br>DATE(exp):将表达式转换为日期，并删除任何小时、分钟或秒；兼容性：IQ<br>DATEPART(date-part,date-exp): 返回日期分量的对应值(整数)<br>GETDATE():返回系统时间<br>DATENAME(datepart,date_expr):以字符串形式返回date_expr指定部分的值,转换成合适的名字<br>DATEDIFF(datepart,date_expr1,date_expr2):返回date_expr2-date_expr1,通过指定的datepart度量<br>DATEADD（date-part,num-exp,date-exp）:返回按指定date-part分量加num-exp值后生成的date-exp值；</p>
-<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p>CEIL(num-exp)：返回大于或等于指定表达式的最小整数；兼容性：IQ&amp;ASE<br>FLOOR(numeric_expr):返回小于或等于指定值的最大整数<br>ABS(num-exp):返回数值表达式的绝对值；兼容性：IQ&amp;ASE<br>TRUNCNUM(1231.1251,2)：截取数值；不四舍五入<br>ROUND(numeric_expr,int_expr)：把数值表达式圆整到int_expr指定的精度<br>RAND([int_expr])：返回0-1之间的随机浮点数，可指定基值<br>SIGN(int_expr)：返回正+1，零0或负-1<br>SQRT(float_expr)：返回指定值的平方根<br>PI()：返回常数3.1415926<br>POWER(numeric_expr,power)：返回numeric_expr的值给power的幂<br>EXP(float_expr)：给出指定值的指数值</p>
-<h3 id="常用DDL语句"><a href="#常用DDL语句" class="headerlink" title="常用DDL语句"></a>常用DDL语句</h3><p>1.删除列<br>ALTER TABLE table_name DELETE column_name<br>2.增加列<br>ALTER TABLE table_name ADD (column_name DATA_TYPE [NOT] NULL)<br>3.修改列的空与非空<br>ALTER TABLE table_name MODIFY column_name [NOT] NULL<br>4.修改列名<br>ALTER TABLE table_name RENAME old_column_name TO new_column_name<br>5.快速建立临时表<br>SELECT * INTO [#]table_name FROM …..<br>6、修改表名ALTER TABLE old_table_name RENAME new_table_name<br>7.增加主键约束<br>ALTER TABLE tb_name ADD CONSTRAINT pk_name PRIMARY KEY(col_name,..)<br>8.删除主键约束<br>ALTER TABLE tb_name DROP CONSTRAINT pk_name<br>9.建立自增长字段，与Oracle的SEQUENCE类似<br>CREATE TABLE TMP_001 (RES_ID INTEGER IDENTITY NOT NULL)<br>10.添加表注释<br>COMMENT ON TABLE table_name IS ‘….’<br>11.创建索引<br>CREATE INDEX index_name ON table_name(column_name)</p>
-<h3 id="SQL优化"><a href="#SQL优化" class="headerlink" title="SQL优化"></a>SQL优化</h3><p>常见瓶颈：<br>绝大多数瓶颈在于I/O子系统<br>若CPU很高，90%以上是因为索引不当<br>发生swap时，可能因为内存分配太小或过大<br>iowait太高时，想办法从索引角度入手优化，以及提高I/O设备性能，增加内存，减少排序，减少SELECT一次性读取数据量。<br>常见优化策略：<br>瞬间并发很高，采用thread pool<br>频繁order by\group by，索引入手<br>适当调整内存，不要太大或太小。一般ibp设置为50% ~ 70%为宜<br>iowait高，加内存，提高iops，减少数据读写。</p>
-<p>SQL优化<br>多用简单SQL<br>少用子查询和复杂查询<br>少用复杂join，注意join驱动表是否最优<br>where不使用函数，避免无法使用索引<br>注意类型隐式转换<br>事务快速提交，但不要频繁反复提交</p>
-<h3 id="查看执行计划"><a href="#查看执行计划" class="headerlink" title="查看执行计划"></a>查看执行计划</h3><p>查看语句的执行计划<br>set showplan on<br>set noexec on<br>go<br>select …….<br>go<br>set showplan off<br>set noexec off<br>go</p>
-<p>查看存储过程执行计划：<br>set showplan on<br>go</p>
-<p>exec sp_name<br>go<br>set showplan off<br>go</p>
-<p>dbcc traceon(3604)是把dbcc的结果输出到屏幕上。<br>dbcc sqltext(spid)是看指定的sybase进程的操作语句。<br>查看其查询计划，可以用sp_showplan spid,null,null,null</p>
-<h3 id="sybase系统函数"><a href="#sybase系统函数" class="headerlink" title="sybase系统函数"></a>sybase系统函数</h3><p>sp_iqtablesize ‘T1_table’  查看表的大小空间<br>select tablewidth(‘ConditionStyle’)   查看表的行宽<br>sp_iqcolumn  ‘ConditionData’  查看表中每一列的信息<br>select * from sp_table_size_statics();   此存储过程会输出所有用户表的大小</p>
-<h3 id="bat启动"><a href="#bat启动" class="headerlink" title="bat启动"></a>bat启动</h3><p>dbisql -c “uid=netmax;pwd=SOPinUETZ” -host 10.89.160.6 -port 3000 -oneerror continue   -&gt; bat启动</p>
-<p>###sql基础用法<br>drop table if exists tableA;</p>
 ]]></content>
     </entry>
     
