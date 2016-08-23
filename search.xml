@@ -4202,28 +4202,6 @@ return numbers
     </entry>
     
     <entry>
-      <title><![CDATA[排序算法的稳定性]]></title>
-      <url>http://yoursite.com/2016/04/16/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E7%A8%B3%E5%AE%9A%E6%80%A7/</url>
-      <content type="html"><![CDATA[<p>稳定排序和不稳定排序</p>
-<blockquote>
-<p>这几天笔试了好几次了，连续碰到一个关于常见排序算法稳定性判别的问题，往往还是多选，对于我以及和我一样拿不准的同学可不是一个能轻易下结论的题目，当然如果你笔试之前已经记住了数据结构书上哪些是稳定的，哪些不是稳定的，做起来应该可以轻松搞定。本文是针对老是记不住这个或者想真正明白到底为什么是稳定或者不稳定的人准备的。<br>首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。<br>其次，说一下稳定性的好处。排序算法如果是稳定的，那么从一个键上排序，然后再从另一个键上排序，第一个键排序的结果可以为第二个键排序所用。基数排序就是这样，先按低位排序，逐次按高位排序，低位相同的元素其顺序再高位也相同时是不会改变的。另外，如果排序算法稳定，对基于比较的排序算法而言，元素交换的次数可能会少一些（个人感觉，没有证实）。</p>
-</blockquote>
-<p>回到主题，现在分析一下常见的排序算法的稳定性，每个都给出简单的理由。</p>
-<p>(1)冒泡排序</p>
-<p>冒泡排序就是把小的元素往前调或者把大的元素往后调。比较是相邻的两个元素比较，交换也发生在这两个元素之间。所以，如果两个元素相等，我想你是不会再无聊地把他们俩交换一下的；如果两个相等的元素没有相邻，那么即使通过前面的两两交换把两个相邻起来，这时候也不会交换，所以相同元素的前后顺序并没有改变，所以冒泡排序是一种稳定排序算法。</p>
-<p>(2)选择排序</p>
-<p>选择排序是给每个位置选择当前元素最小的，比如给第一个位置选择最小的，在剩余元素里面给第二个元素选择第二小的，依次类推，直到第n - 1个元素，第n个元素不用选择了，因为只剩下它一个最大的元素了。那么，在一趟选择，如果当前元素比一个元素小，而该小的元素又出现在一个和当前元素相等的元素后面，那么交换后稳定性就被破坏了。比较拗口，举个例子，序列5 8 5 2 9，我们知道第一遍选择第1个元素5会和2交换，那么原序列中2个5的相对前后顺序就被破坏了，所以选择排序不是一个稳定的排序算法。</p>
-<p>(3)插入排序<br>插入排序是在一个已经有序的小序列的基础上，一次插入一个元素。当然，刚开始这个有序的小序列只有1个元素，就是第一个元素。比较是从有序序列的末尾开始，也就是想要插入的元素和已经有序的最大者开始比起，如果比它大则直接插入在其后面，否则一直往前找直到找到它该插入的位置。如果碰见一个和插入元素相等的，那么插入元素把想插入的元素放在相等元素的后面。所以，相等元素的前后顺序没有改变，从原无序序列出去的顺序就是排好序后的顺序，所以插入排序是稳定的。</p>
-<p>(4)快速排序<br>快速排序有两个方向，左边的i下标一直往右走，当a[i] &lt;= a[center_index]，其中center_index是中枢元素的数组下标，一般取为数组第0个元素。而右边的j下标一直往左走，当a[j] &gt; a[center_index]。如果i和j都走不动了，i &lt;= j，交换a[i]和a[j],重复上面的过程，直到i &gt; j。 交换a[j]和a[center_index]，完成一趟快速排序。在中枢元素和a[j]交换的时候，很有可能把前面的元素的稳定性打乱，比如序列为5 3 3 4 3 8 9 10 11，现在中枢元素5和3（第5个元素，下标从1开始计）交换就会把元素3的稳定性打乱，所以快速排序是一个不稳定的排序算法，不稳定发生在中枢元素和a[j] 交换的时刻。</p>
-<p>(5)归并排序<br>归并排序是把序列递归地分成短序列，递归出口是短序列只有1个元素（认为直接有序）或者2个序列（1次比较和交换），然后把各个有序的段序列合并成一个有序的长序列，不断合并直到原序列全部排好序。可以发现，在1个或2个元素时，1个元素不会交换，2个元素如果大小相等也没有人故意交换，这不会破坏稳定性。那么，在短的有序序列合并的过程中，稳定是是否受到破坏？没有，合并过程中我们可以保证如果两个当前元素相等时，我们把处在前面的序列的元素保存在结果序列的前面，这样就保证了稳定性。所以，归并排序也是稳定的排序算法。</p>
-<p>(6)基数排序<br>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序，最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以其是稳定的排序算法。</p>
-<p>(7)希尔排序(shell)<br>希尔排序是按照不同步长对元素进行插入排序，当刚开始元素很无序的时候，步长最大，所以插入排序的元素个数很少，速度很快；当元素基本有序了，步长很小， 插入排序对于有序的序列效率很高。所以，希尔排序的时间复杂度会比O(n^2)好一些。由于多次插入排序，我们知道一次插入排序是稳定的，不会改变相同元素的相对顺序，但在不同的插入排序过程中，相同的元素可能在各自的插入排序中移动，最后其稳定性就会被打乱，所以shell排序是不稳定的。</p>
-<p>(8)堆排序<br>我们知道堆的结构是节点i的孩子为2 <em> i和2 </em> i + 1节点，大顶堆要求父节点大于等于其2个子节点，小顶堆要求父节点小于等于其2个子节点。在一个长为n 的序列，堆排序的过程是从第n / 2开始和其子节点共3个值选择最大（大顶堆）或者最小（小顶堆），这3个元素之间的选择当然不会破坏稳定性。但当为n / 2 - 1， n / 2 - 2， … 1这些个父节点选择元素时，就会破坏稳定性。有可能第n / 2个父节点交换把后面一个元素交换过去了，而第n / 2 - 1个父节点把后面一个相同的元素没 有交换，那么这2个相同的元素之间的稳定性就被破坏了。所以，堆排序不是稳定的排序算法。</p>
-<p>综上，得出结论: 选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，而冒泡排序、插入排序、归并排序和基数排序是稳定的排序算法<br>PS: 快[快速排序]些[希尔排序]选[选择排序]一堆[堆排序]不稳定排序</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[六大原则]]></title>
       <url>http://yoursite.com/2016/04/16/%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99/</url>
       <content type="html"><![CDATA[<h3 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h3><p>高内聚，低耦合。每一个类应该只有一个职责，对外只能提供一种功能，而引起类变化的原因应该只有一个。将不同的职责分别进行封装，不要将其组合在一个勒种，要使这个类只有一个可能会以前它变化的原因。</p>
@@ -4247,6 +4225,28 @@ return numbers
 <blockquote>
 <p>抽象类可以有构造方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public abstract class AMan &#123;</div><div class="line">	protected IPrettyGirl prettyGirl;</div><div class="line">	public AMan(IPrettyGirl prettyGirl)&#123;</div><div class="line">		this.prettyGirl = prettyGirl;</div><div class="line">	&#125;</div><div class="line">	public abstract void findGirl();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[排序算法的稳定性]]></title>
+      <url>http://yoursite.com/2016/04/16/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E7%A8%B3%E5%AE%9A%E6%80%A7/</url>
+      <content type="html"><![CDATA[<p>稳定排序和不稳定排序</p>
+<blockquote>
+<p>这几天笔试了好几次了，连续碰到一个关于常见排序算法稳定性判别的问题，往往还是多选，对于我以及和我一样拿不准的同学可不是一个能轻易下结论的题目，当然如果你笔试之前已经记住了数据结构书上哪些是稳定的，哪些不是稳定的，做起来应该可以轻松搞定。本文是针对老是记不住这个或者想真正明白到底为什么是稳定或者不稳定的人准备的。<br>首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。<br>其次，说一下稳定性的好处。排序算法如果是稳定的，那么从一个键上排序，然后再从另一个键上排序，第一个键排序的结果可以为第二个键排序所用。基数排序就是这样，先按低位排序，逐次按高位排序，低位相同的元素其顺序再高位也相同时是不会改变的。另外，如果排序算法稳定，对基于比较的排序算法而言，元素交换的次数可能会少一些（个人感觉，没有证实）。</p>
+</blockquote>
+<p>回到主题，现在分析一下常见的排序算法的稳定性，每个都给出简单的理由。</p>
+<p>(1)冒泡排序</p>
+<p>冒泡排序就是把小的元素往前调或者把大的元素往后调。比较是相邻的两个元素比较，交换也发生在这两个元素之间。所以，如果两个元素相等，我想你是不会再无聊地把他们俩交换一下的；如果两个相等的元素没有相邻，那么即使通过前面的两两交换把两个相邻起来，这时候也不会交换，所以相同元素的前后顺序并没有改变，所以冒泡排序是一种稳定排序算法。</p>
+<p>(2)选择排序</p>
+<p>选择排序是给每个位置选择当前元素最小的，比如给第一个位置选择最小的，在剩余元素里面给第二个元素选择第二小的，依次类推，直到第n - 1个元素，第n个元素不用选择了，因为只剩下它一个最大的元素了。那么，在一趟选择，如果当前元素比一个元素小，而该小的元素又出现在一个和当前元素相等的元素后面，那么交换后稳定性就被破坏了。比较拗口，举个例子，序列5 8 5 2 9，我们知道第一遍选择第1个元素5会和2交换，那么原序列中2个5的相对前后顺序就被破坏了，所以选择排序不是一个稳定的排序算法。</p>
+<p>(3)插入排序<br>插入排序是在一个已经有序的小序列的基础上，一次插入一个元素。当然，刚开始这个有序的小序列只有1个元素，就是第一个元素。比较是从有序序列的末尾开始，也就是想要插入的元素和已经有序的最大者开始比起，如果比它大则直接插入在其后面，否则一直往前找直到找到它该插入的位置。如果碰见一个和插入元素相等的，那么插入元素把想插入的元素放在相等元素的后面。所以，相等元素的前后顺序没有改变，从原无序序列出去的顺序就是排好序后的顺序，所以插入排序是稳定的。</p>
+<p>(4)快速排序<br>快速排序有两个方向，左边的i下标一直往右走，当a[i] &lt;= a[center_index]，其中center_index是中枢元素的数组下标，一般取为数组第0个元素。而右边的j下标一直往左走，当a[j] &gt; a[center_index]。如果i和j都走不动了，i &lt;= j，交换a[i]和a[j],重复上面的过程，直到i &gt; j。 交换a[j]和a[center_index]，完成一趟快速排序。在中枢元素和a[j]交换的时候，很有可能把前面的元素的稳定性打乱，比如序列为5 3 3 4 3 8 9 10 11，现在中枢元素5和3（第5个元素，下标从1开始计）交换就会把元素3的稳定性打乱，所以快速排序是一个不稳定的排序算法，不稳定发生在中枢元素和a[j] 交换的时刻。</p>
+<p>(5)归并排序<br>归并排序是把序列递归地分成短序列，递归出口是短序列只有1个元素（认为直接有序）或者2个序列（1次比较和交换），然后把各个有序的段序列合并成一个有序的长序列，不断合并直到原序列全部排好序。可以发现，在1个或2个元素时，1个元素不会交换，2个元素如果大小相等也没有人故意交换，这不会破坏稳定性。那么，在短的有序序列合并的过程中，稳定是是否受到破坏？没有，合并过程中我们可以保证如果两个当前元素相等时，我们把处在前面的序列的元素保存在结果序列的前面，这样就保证了稳定性。所以，归并排序也是稳定的排序算法。</p>
+<p>(6)基数排序<br>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序，最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以其是稳定的排序算法。</p>
+<p>(7)希尔排序(shell)<br>希尔排序是按照不同步长对元素进行插入排序，当刚开始元素很无序的时候，步长最大，所以插入排序的元素个数很少，速度很快；当元素基本有序了，步长很小， 插入排序对于有序的序列效率很高。所以，希尔排序的时间复杂度会比O(n^2)好一些。由于多次插入排序，我们知道一次插入排序是稳定的，不会改变相同元素的相对顺序，但在不同的插入排序过程中，相同的元素可能在各自的插入排序中移动，最后其稳定性就会被打乱，所以shell排序是不稳定的。</p>
+<p>(8)堆排序<br>我们知道堆的结构是节点i的孩子为2 <em> i和2 </em> i + 1节点，大顶堆要求父节点大于等于其2个子节点，小顶堆要求父节点小于等于其2个子节点。在一个长为n 的序列，堆排序的过程是从第n / 2开始和其子节点共3个值选择最大（大顶堆）或者最小（小顶堆），这3个元素之间的选择当然不会破坏稳定性。但当为n / 2 - 1， n / 2 - 2， … 1这些个父节点选择元素时，就会破坏稳定性。有可能第n / 2个父节点交换把后面一个元素交换过去了，而第n / 2 - 1个父节点把后面一个相同的元素没 有交换，那么这2个相同的元素之间的稳定性就被破坏了。所以，堆排序不是稳定的排序算法。</p>
+<p>综上，得出结论: 选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，而冒泡排序、插入排序、归并排序和基数排序是稳定的排序算法<br>PS: 快[快速排序]些[希尔排序]选[选择排序]一堆[堆排序]不稳定排序</p>
 ]]></content>
     </entry>
     
@@ -5689,32 +5689,6 @@ return numbers
     </entry>
     
     <entry>
-      <title><![CDATA[java集合]]></title>
-      <url>http://yoursite.com/2015/09/15/java%E9%9B%86%E5%90%88/</url>
-      <content type="html"><![CDATA[<h2 id="Java-Collection"><a href="#Java-Collection" class="headerlink" title="Java Collection"></a>Java Collection</h2><h3 id="ArrayList-Vector都是-数组-实现"><a href="#ArrayList-Vector都是-数组-实现" class="headerlink" title="ArrayList Vector都是(数组)实现"></a>ArrayList Vector都是(数组)实现</h3><p>集合容器可以容纳任何对象，但是在实际应用中往往都是容纳同一类型的对象<br>泛型只是在编译阶段有效，防止错误产生。<br>避免扩容操作，因为会产生垃圾，影响性能<br>Iterator itor = list.iterator();<br>        while (itor.hasNext()) {<br>            System.out.println(itor.next());</p>
-<pre><code>}
-</code></pre><p>for(String str:list){<br>    …<br>}<br>Vector底层也是数组，支持一种老的遍历方式Enumeration,ArralyList遍历的方式也支持<br>ArrayList线程不安全，Vector线程安全</p>
-<h3 id="LinkList-链表-实现"><a href="#LinkList-链表-实现" class="headerlink" title="LinkList(链表)实现"></a>LinkList(链表)实现</h3><p>提供了更为丰富的头尾操作</p>
-<h3 id="Java-Eclipse无法查看源代码"><a href="#Java-Eclipse无法查看源代码" class="headerlink" title="Java Eclipse无法查看源代码"></a>Java Eclipse无法查看源代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1.点 “window“-&gt; “Preferences”-&gt; “Java” -&gt; “Installed JRES”</div><div class="line">2.此时&quot;Installed JRES&quot;右边是列表窗格，列出了系统中的JRE 环境，选择你的JRE，然后点边上的“Edit...“， 会出现一个窗口(Edit JRE) </div><div class="line">3.选中rt.jar文件的这一项：“C:\Java\jdk1.5.0_04\jre\lib\rt.jar” 点 左边的“+”号展开它（JDK实际安装路径以你的为准）</div><div class="line">4.展开后，可以看到“Source Attachment:(none)”，点这一项，点右边的按钮“Source Attachment...“，选择你的JDK目录下的 “src.zip”文件</div><div class="line">5.一路点“ok”结束。</div></pre></td></tr></table></figure>
-<h3 id="HashSet-无序集合"><a href="#HashSet-无序集合" class="headerlink" title="HashSet 无序集合"></a>HashSet 无序集合</h3><p>容纳的对象必须根据自己的唯一标识来重写equals和hashCode方法<br>对象一旦放入HashSet容器，那么对象的唯一标识属性的值不能再修改，否则导致对象移除不了<br>因为HashSet存放元素的时候，元素的位置是和对象HashCode算法得到的值相关的，查找元素时也要根据这个算法的值然后找到<br>相关位置，移除元素，没有则remove方法返回false,久而久之，产生内存泄露<br>HashSet底层用的是HashMap</p>
-<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>TreeSet容纳的对象有序，对象必须要能排序(排序方式自定义)<br>两种排序的比较器：<br>1.比较的对象实现Comparable接口，覆写compareTo方法<br>java.lang.Comparable,TreeSet使用无参数的构造函数，那么容纳的对象必须实现Comparable接口<br>implements Comparable<br>@Override<br>public int compareTo(User o){<br>    if(!this.name.equals(o.name))<br>        return this.name.compareTo(o.name);<br>    else<br>        return this.age-o.age; //名字相同，根据年龄排序<br>    return 0;<br>}<br>2.java.util.Comparator<br>TreeSet构造的时候使用Comparator作为构造函数的参数<br>TreeSet<user> ts = new TreeSet<user>(new MyComparator());<br>public class MyComparator implements Comparator<user>{<br>    @Override<br>    public int compare(User o1,user o2){<br>        return o1.getName().compareTo(o2.getName());<br>    }<br>}</user></user></user></p>
-<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>HashMap hm = new HashMap()<br>//遍历Set集合，得到key，通过key获取value<br>Set set = hm.keySet();<br>for(Object obj:set){<br>    String key = (String)obj;<br>    User u = (User)hm.get(key);<br>}<br>//放入HashMap集合中的key，value都被包装成Map.Entry这个内部类的属性，有一个键值对，就存在一个Map.Entry的实例对象<br>//通过entrySet()方法就可以把这些实例对象都放入Set集合中<br>Set set1 = hm.entrySet();<br>for(Object obj:set1){<br>     Map.Entry me = (Map.Entry)object;<br>     System.out.println(me.getKey())+”=”+me.getValue();<br>}</p>
-<p>HashMap<string,user> user2 = new HashMap<string,user>();<br>user2.put(u1.getId(),u1);<br>Set<string> set = User.keySet();<br>for(String key:set){<br>    user.get(key);<br>}</string></string,user></string,user></p>
-<p>HashMap<map.entry<string,user>&gt; set1 = User.entrySet();<br>for(){}</map.entry<string,user></p>
-<p>map.put(key,value)如果key相同，则后面的值会覆盖前面的值<br>使用HashMap来统计字符出现的频率：<br>HashMap<string,integer> hm = new HashMap<string,integer>();</string,integer></string,integer></p>
-<pre><code>String s = &quot;abcdefghijklabcdiefabiddccdabffeg&quot;;
-for (int i = 0; i &lt; s.length(); i++) {
-    String str = s.substring(i, i+1);
-    if(hm.containsKey(str)){
-        hm.put(str, hm.get(str)+1);
-    }else{
-        hm.put(str, 1);
-    }
-}
-</code></pre>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[sybase学习小记]]></title>
       <url>http://yoursite.com/2015/09/15/sybase%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/</url>
       <content type="html"><![CDATA[<h2 id="Sybase-sql"><a href="#Sybase-sql" class="headerlink" title="Sybase_sql"></a>Sybase_sql</h2><h3 id="语法特点"><a href="#语法特点" class="headerlink" title="语法特点"></a>语法特点</h3><p>1.没有“ ”，字符串使用‘ ’包含<br>2.没有逻辑相等，赋值和逻辑相等都是=<br>3.类型不再是最严格的。任何数据都可以包含在‘ ’以内<br>4.没有bool值的概念，但是在视图中可以输入true/false<br>5.它也有关系运算符：&gt; &lt; &gt;= &lt;= = &lt;&gt; != ,它返回一个bool值<br>6.它也有逻辑运算符： ！(not) &amp;&amp;(and) ||(or)<br>7.它不区别大小写<br>8.数据库完整性（Database Integrity）是指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。</p>
@@ -5762,6 +5736,32 @@ for (int i = 0; i &lt; s.length(); i++) {
 <h3 id="bat启动"><a href="#bat启动" class="headerlink" title="bat启动"></a>bat启动</h3><p>dbisql -c “uid=netmax;pwd=SOPinUETZ” -host 10.89.160.6 -port 3000 -oneerror continue   -&gt; bat启动</p>
 <p>###sql基础用法<br>drop table if exists tableA;</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[java集合]]></title>
+      <url>http://yoursite.com/2015/09/15/java%E9%9B%86%E5%90%88/</url>
+      <content type="html"><![CDATA[<h2 id="Java-Collection"><a href="#Java-Collection" class="headerlink" title="Java Collection"></a>Java Collection</h2><h3 id="ArrayList-Vector都是-数组-实现"><a href="#ArrayList-Vector都是-数组-实现" class="headerlink" title="ArrayList Vector都是(数组)实现"></a>ArrayList Vector都是(数组)实现</h3><p>集合容器可以容纳任何对象，但是在实际应用中往往都是容纳同一类型的对象<br>泛型只是在编译阶段有效，防止错误产生。<br>避免扩容操作，因为会产生垃圾，影响性能<br>Iterator itor = list.iterator();<br>        while (itor.hasNext()) {<br>            System.out.println(itor.next());</p>
+<pre><code>}
+</code></pre><p>for(String str:list){<br>    …<br>}<br>Vector底层也是数组，支持一种老的遍历方式Enumeration,ArralyList遍历的方式也支持<br>ArrayList线程不安全，Vector线程安全</p>
+<h3 id="LinkList-链表-实现"><a href="#LinkList-链表-实现" class="headerlink" title="LinkList(链表)实现"></a>LinkList(链表)实现</h3><p>提供了更为丰富的头尾操作</p>
+<h3 id="Java-Eclipse无法查看源代码"><a href="#Java-Eclipse无法查看源代码" class="headerlink" title="Java Eclipse无法查看源代码"></a>Java Eclipse无法查看源代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1.点 “window“-&gt; “Preferences”-&gt; “Java” -&gt; “Installed JRES”</div><div class="line">2.此时&quot;Installed JRES&quot;右边是列表窗格，列出了系统中的JRE 环境，选择你的JRE，然后点边上的“Edit...“， 会出现一个窗口(Edit JRE) </div><div class="line">3.选中rt.jar文件的这一项：“C:\Java\jdk1.5.0_04\jre\lib\rt.jar” 点 左边的“+”号展开它（JDK实际安装路径以你的为准）</div><div class="line">4.展开后，可以看到“Source Attachment:(none)”，点这一项，点右边的按钮“Source Attachment...“，选择你的JDK目录下的 “src.zip”文件</div><div class="line">5.一路点“ok”结束。</div></pre></td></tr></table></figure>
+<h3 id="HashSet-无序集合"><a href="#HashSet-无序集合" class="headerlink" title="HashSet 无序集合"></a>HashSet 无序集合</h3><p>容纳的对象必须根据自己的唯一标识来重写equals和hashCode方法<br>对象一旦放入HashSet容器，那么对象的唯一标识属性的值不能再修改，否则导致对象移除不了<br>因为HashSet存放元素的时候，元素的位置是和对象HashCode算法得到的值相关的，查找元素时也要根据这个算法的值然后找到<br>相关位置，移除元素，没有则remove方法返回false,久而久之，产生内存泄露<br>HashSet底层用的是HashMap</p>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>TreeSet容纳的对象有序，对象必须要能排序(排序方式自定义)<br>两种排序的比较器：<br>1.比较的对象实现Comparable接口，覆写compareTo方法<br>java.lang.Comparable,TreeSet使用无参数的构造函数，那么容纳的对象必须实现Comparable接口<br>implements Comparable<br>@Override<br>public int compareTo(User o){<br>    if(!this.name.equals(o.name))<br>        return this.name.compareTo(o.name);<br>    else<br>        return this.age-o.age; //名字相同，根据年龄排序<br>    return 0;<br>}<br>2.java.util.Comparator<br>TreeSet构造的时候使用Comparator作为构造函数的参数<br>TreeSet<user> ts = new TreeSet<user>(new MyComparator());<br>public class MyComparator implements Comparator<user>{<br>    @Override<br>    public int compare(User o1,user o2){<br>        return o1.getName().compareTo(o2.getName());<br>    }<br>}</user></user></user></p>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>HashMap hm = new HashMap()<br>//遍历Set集合，得到key，通过key获取value<br>Set set = hm.keySet();<br>for(Object obj:set){<br>    String key = (String)obj;<br>    User u = (User)hm.get(key);<br>}<br>//放入HashMap集合中的key，value都被包装成Map.Entry这个内部类的属性，有一个键值对，就存在一个Map.Entry的实例对象<br>//通过entrySet()方法就可以把这些实例对象都放入Set集合中<br>Set set1 = hm.entrySet();<br>for(Object obj:set1){<br>     Map.Entry me = (Map.Entry)object;<br>     System.out.println(me.getKey())+”=”+me.getValue();<br>}</p>
+<p>HashMap<string,user> user2 = new HashMap<string,user>();<br>user2.put(u1.getId(),u1);<br>Set<string> set = User.keySet();<br>for(String key:set){<br>    user.get(key);<br>}</string></string,user></string,user></p>
+<p>HashMap<map.entry<string,user>&gt; set1 = User.entrySet();<br>for(){}</map.entry<string,user></p>
+<p>map.put(key,value)如果key相同，则后面的值会覆盖前面的值<br>使用HashMap来统计字符出现的频率：<br>HashMap<string,integer> hm = new HashMap<string,integer>();</string,integer></string,integer></p>
+<pre><code>String s = &quot;abcdefghijklabcdiefabiddccdabffeg&quot;;
+for (int i = 0; i &lt; s.length(); i++) {
+    String str = s.substring(i, i+1);
+    if(hm.containsKey(str)){
+        hm.put(str, hm.get(str)+1);
+    }else{
+        hm.put(str, 1);
+    }
+}
+</code></pre>]]></content>
     </entry>
     
     <entry>
@@ -5997,7 +5997,7 @@ for (int i = 0; i &lt; s.length(); i++) {
     
     <entry>
       <title><![CDATA[海量数据处理]]></title>
-      <url>http://yoursite.com/2015/09/06/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</url>
+      <url>http://yoursite.com/2015/09/06/%E5%A4%A7%E6%95%B0%E6%8D%AE%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
       <content type="html"><![CDATA[<p>作者：July、youwang、yanxionglu。<br>出处：<a href="http://blog.csdn.net/v_JULY_v。" target="_blank" rel="external">http://blog.csdn.net/v_JULY_v。</a></p>
 <h2 id="十道海量数据处理面试题"><a href="#十道海量数据处理面试题" class="headerlink" title="十道海量数据处理面试题"></a>十道海量数据处理面试题</h2><ul>
 <li>提取出某日访问百度次数最多的那个IP。</li>
@@ -6116,7 +6116,7 @@ for (int i = 0; i &lt; s.length(); i++) {
     
     <entry>
       <title><![CDATA[海量数据处理]]></title>
-      <url>http://yoursite.com/2015/09/06/%E5%A4%A7%E6%95%B0%E6%8D%AE%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+      <url>http://yoursite.com/2015/09/06/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<p>作者：July、youwang、yanxionglu。<br>出处：<a href="http://blog.csdn.net/v_JULY_v。" target="_blank" rel="external">http://blog.csdn.net/v_JULY_v。</a></p>
 <h2 id="十道海量数据处理面试题"><a href="#十道海量数据处理面试题" class="headerlink" title="十道海量数据处理面试题"></a>十道海量数据处理面试题</h2><ul>
 <li>提取出某日访问百度次数最多的那个IP。</li>
