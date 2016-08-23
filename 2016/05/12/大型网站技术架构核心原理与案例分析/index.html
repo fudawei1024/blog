@@ -17,12 +17,12 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+  <link rel="stylesheet" type="text/css" href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+<link rel="stylesheet" type="text/css" href="/blog/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="未有知而不行者。之二不行，只是未知" />
@@ -35,13 +35,13 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+  <link rel="shorticon icon" type="image/x-icon" href="/blog/favicon.ico?v=0.4.5.1" />
 
 
 <meta name="description" content="大型网站总览大型网站目标：打造一个高可用、高性能、易扩展、可伸缩且安全的网站大型网站特点：高并发大流量、高可用、海量数据、用户分布广泛网络情况复杂、需求快速变更、渐进式发展大型网站发展历程：先是应用和服务分开部署，然后使用缓存改善网站性能，80%的业务访问几种在20%的数据上，把这一小部分的数据缓存在内存中，可以减少数据库的压力，提高整个网站的数据访问速度，改善数据库的写入性能。缓存分两种：应用服">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大型网站技术架构核心原理与案例分析">
-<meta property="og:url" content="http://yoursite.com/2016/05/12/大型网站技术架构核心原理与案例分析/index.html">
+<meta property="og:url" content="https://fudw1987.github.io/blog/2016/05/12/大型网站技术架构核心原理与案例分析/index.html">
 <meta property="og:site_name" content="冰鸟">
 <meta property="og:description" content="大型网站总览大型网站目标：打造一个高可用、高性能、易扩展、可伸缩且安全的网站大型网站特点：高并发大流量、高可用、海量数据、用户分布广泛网络情况复杂、需求快速变更、渐进式发展大型网站发展历程：先是应用和服务分开部署，然后使用缓存改善网站性能，80%的业务访问几种在20%的数据上，把这一小部分的数据缓存在内存中，可以减少数据库的压力，提高整个网站的数据访问速度，改善数据库的写入性能。缓存分两种：应用服">
 <meta property="og:image" content="http://7xrkr6.com1.z0.glb.clouddn.com/16-5-11/20476640.jpg">
@@ -88,7 +88,7 @@
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
+  <a href="/blog/" class="brand" rel="start">
       <span class="logo">
         <i class="icon-next-logo"></i>
       </span>
@@ -113,7 +113,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/blog/" rel="section">
             <i class="menu-item-icon icon-next-home"></i> <br />
             首页
           </a>
@@ -121,7 +121,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+          <a href="/blog/categories" rel="section">
             <i class="menu-item-icon icon-next-categories"></i> <br />
             分类
           </a>
@@ -129,7 +129,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/blog/archives" rel="section">
             <i class="menu-item-icon icon-next-archives"></i> <br />
             归档
           </a>
@@ -137,7 +137,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/blog/tags" rel="section">
             <i class="menu-item-icon icon-next-tags"></i> <br />
             标签
           </a>
@@ -145,7 +145,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+          <a href="/blog/about" rel="section">
             <i class="menu-item-icon icon-next-about"></i> <br />
             关于
           </a>
@@ -153,7 +153,7 @@
       
         
         <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
+          <a href="/blog/404.html" rel="section">
             <i class="menu-item-icon icon-next-commonweal"></i> <br />
             公益404
           </a>
@@ -198,7 +198,7 @@
 
 </style>
 
-<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
 <script type="text/javascript">
     // 浮动圆点展开与收缩
     /*
@@ -341,7 +341,7 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Java/" itemprop="url" rel="index">
+                <a href="/blog/categories/Java/" itemprop="url" rel="index">
                   <span itemprop="name">Java</span>
                 </a>
               </span>
@@ -353,7 +353,7 @@
 
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Java/Java分布式/" itemprop="url" rel="index">
+                <a href="/blog/categories/Java/Java分布式/" itemprop="url" rel="index">
                   <span itemprop="name">Java分布式</span>
                 </a>
               </span>
@@ -579,7 +579,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/分布式/" rel="tag">#分布式</a>
+            <a href="/blog/tags/分布式/" rel="tag">#分布式</a>
           
         </div>
       
@@ -588,13 +588,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/12/疯狂java讲义笔记一/" rel="prev">疯狂java讲义笔记一</a>
+              <a href="/blog/2016/05/12/疯狂java讲义笔记一/" rel="prev">疯狂java讲义笔记一</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/12/Guava概览/" rel="next">Guava概览</a>
+              <a href="/blog/2016/05/12/Guava概览/" rel="next">Guava概览</a>
             
           </div>
         </div>
@@ -808,27 +808,27 @@
 
       <section class="site-overview">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <img class="site-author-image" src="/blog/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
           <p class="site-author-name" itemprop="name">冰鸟</p>
         </div>
         <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/archives">
+            <a href="/blog/archives">
               <span class="site-state-item-count">83</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
-            <a href="/categories">
+            <a href="/blog/categories">
               <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
-            <a href="/tags">
+            <a href="/blog/tags">
               <span class="site-state-item-count">62</span>
               <span class="site-state-item-name">标签</span>
               </a>
@@ -915,7 +915,7 @@
     <div class="back-to-top"></div>
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
 
   
   
@@ -928,27 +928,27 @@
 
   
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/blog/js/fancy-box.js?v=0.4.5.1"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/blog/js/helpers.js?v=0.4.5.1"></script>
   
 
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
-
-
+  <script type="text/javascript" src="/blog/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
 
 
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+
+  <script type="text/javascript" src="/blog/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="/blog/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
@@ -1145,11 +1145,11 @@
   
 
   
-  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript" src="/blog/js/lazyload.js"></script>
   <script type="text/javascript">
     $(function () {
       $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
+        placeholder: "/blog/images/loading.gif",
         effect: "fadeIn"
       });
     });

@@ -17,12 +17,12 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+  <link rel="stylesheet" type="text/css" href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+<link rel="stylesheet" type="text/css" href="/blog/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="未有知而不行者。之二不行，只是未知" />
@@ -35,14 +35,14 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+  <link rel="shorticon icon" type="image/x-icon" href="/blog/favicon.ico?v=0.4.5.1" />
 
 
 <meta name="description" content="方法解析
 Class文件的编译过程中不包含传统编译中的连接步骤，一切方法调用在Class文件里面存储的都只是符号引用，而不是方法在实际运行时内存布局中的入口地址。这个特性给Java带来了更强大的动态扩展能力，使得可以在类运行期间才能确定某些目标方法的直接引用，称为动态连接，也有一部分方法的符号引用在类加载阶段或第一次使用时转化为直接引用，这种转化称为静态解析。这在前面的“Java内存区域与内存溢出">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多态性实现机制——静态分派与动态分派">
-<meta property="og:url" content="http://yoursite.com/2016/07/23/多态性实现机制——静态分派与动态分派/index.html">
+<meta property="og:url" content="https://fudw1987.github.io/blog/2016/07/23/多态性实现机制——静态分派与动态分派/index.html">
 <meta property="og:site_name" content="冰鸟">
 <meta property="og:description" content="方法解析
 Class文件的编译过程中不包含传统编译中的连接步骤，一切方法调用在Class文件里面存储的都只是符号引用，而不是方法在实际运行时内存布局中的入口地址。这个特性给Java带来了更强大的动态扩展能力，使得可以在类运行期间才能确定某些目标方法的直接引用，称为动态连接，也有一部分方法的符号引用在类加载阶段或第一次使用时转化为直接引用，这种转化称为静态解析。这在前面的“Java内存区域与内存溢出">
@@ -86,7 +86,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
+  <a href="/blog/" class="brand" rel="start">
       <span class="logo">
         <i class="icon-next-logo"></i>
       </span>
@@ -111,7 +111,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/blog/" rel="section">
             <i class="menu-item-icon icon-next-home"></i> <br />
             首页
           </a>
@@ -119,7 +119,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+          <a href="/blog/categories" rel="section">
             <i class="menu-item-icon icon-next-categories"></i> <br />
             分类
           </a>
@@ -127,7 +127,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/blog/archives" rel="section">
             <i class="menu-item-icon icon-next-archives"></i> <br />
             归档
           </a>
@@ -135,7 +135,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/blog/tags" rel="section">
             <i class="menu-item-icon icon-next-tags"></i> <br />
             标签
           </a>
@@ -143,7 +143,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+          <a href="/blog/about" rel="section">
             <i class="menu-item-icon icon-next-about"></i> <br />
             关于
           </a>
@@ -151,7 +151,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
       
         
         <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
+          <a href="/blog/404.html" rel="section">
             <i class="menu-item-icon icon-next-commonweal"></i> <br />
             公益404
           </a>
@@ -196,7 +196,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
 
 </style>
 
-<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
 <script type="text/javascript">
     // 浮动圆点展开与收缩
     /*
@@ -339,7 +339,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Java/" itemprop="url" rel="index">
+                <a href="/blog/categories/Java/" itemprop="url" rel="index">
                   <span itemprop="name">Java</span>
                 </a>
               </span>
@@ -351,7 +351,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
 
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Java/多态/" itemprop="url" rel="index">
+                <a href="/blog/categories/Java/多态/" itemprop="url" rel="index">
                   <span itemprop="name">多态</span>
                 </a>
               </span>
@@ -457,7 +457,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
       
         <div class="post-tags">
           
-            <a href="/tags/多态/" rel="tag">#多态</a>
+            <a href="/blog/tags/多态/" rel="tag">#多态</a>
           
         </div>
       
@@ -466,13 +466,13 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/23/Java语法糖/" rel="prev">Java语法糖</a>
+              <a href="/blog/2016/07/23/Java语法糖/" rel="prev">Java语法糖</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/22/类加载机制/" rel="next">类加载机制</a>
+              <a href="/blog/2016/07/22/类加载机制/" rel="next">类加载机制</a>
             
           </div>
         </div>
@@ -686,27 +686,27 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
 
       <section class="site-overview">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
+          <img class="site-author-image" src="/blog/images/default_avatar.jpg" alt="冰鸟" itemprop="image"/>
           <p class="site-author-name" itemprop="name">冰鸟</p>
         </div>
         <p class="site-description motion-element" itemprop="description">未有知而不行者。之二不行，只是未知</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/archives">
+            <a href="/blog/archives">
               <span class="site-state-item-count">83</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
-            <a href="/categories">
+            <a href="/blog/categories">
               <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
-            <a href="/tags">
+            <a href="/blog/tags">
               <span class="site-state-item-count">62</span>
               <span class="site-state-item-name">标签</span>
               </a>
@@ -793,7 +793,7 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
     <div class="back-to-top"></div>
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
 
   
   
@@ -806,27 +806,27 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
 
   
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/blog/js/fancy-box.js?v=0.4.5.1"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/blog/js/helpers.js?v=0.4.5.1"></script>
   
 
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
-
-
+  <script type="text/javascript" src="/blog/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
 
 
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+
+  <script type="text/javascript" src="/blog/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="/blog/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
@@ -1023,11 +1023,11 @@ Class文件的编译过程中不包含传统编译中的连接步骤，一切方
   
 
   
-  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript" src="/blog/js/lazyload.js"></script>
   <script type="text/javascript">
     $(function () {
       $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
+        placeholder: "/blog/images/loading.gif",
         effect: "fadeIn"
       });
     });
